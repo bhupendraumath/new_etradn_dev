@@ -37,4 +37,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    /**
+     * Load login form frontend
+     *
+     * @return void
+     */
+    public function loginForm()
+    {
+        return view('auth/frontend/login');
+    }
 }

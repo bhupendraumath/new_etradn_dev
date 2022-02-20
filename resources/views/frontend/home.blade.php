@@ -49,7 +49,7 @@
 
                 </div>
                 <div class="col-md-4 modal_body_right modal_body_right1">
-                    <img src="images/log_pic.jpg" alt=" " />
+                    <img src="{{url('assets/images/frontend/log_pic.jpg')}}" alt=" " />
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -115,7 +115,7 @@
 
                 </div>
                 <div class="col-md-4 modal_body_right modal_body_right1">
-                    <img src="images/log_pic.jpg" alt=" " />
+                    <img src="{{url('assets/images/frontend/log_pic.jpg')}}" alt=" " />
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -223,7 +223,7 @@
                         <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
                             <div class="images image-left">
                                 <div class="background-gray left-side">
-                                    <img src="images/ciyp-bulk-image1.png" alt="" srcset="" />
+                                    <img src="{{url('assets/images/frontend/ciyp-bulk-image1.png')}}" alt="" srcset="" />
                                 </div>
 
                                 <br />
@@ -291,7 +291,7 @@
                         <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                             <div class="images">
                                 <div class="background-gray">
-                                    <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                    <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                 </div>
 
                                 <br />
@@ -312,7 +312,7 @@
                         <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                             <div class="images">
                                 <div class="background-gray">
-                                    <img src="images/product-2-191x132_copy.png" alt="" srcset="" />
+                                    <img src="{{url('assets/images/frontend/product-2-191x132_copy.png')}}" alt="" srcset="" />
                                 </div>
                                 <br />
 
@@ -333,7 +333,7 @@
                         <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                             <div class="images">
                                 <div class="background-gray">
-                                    <img src="images/pngkey.com-computer-png-44599.png" alt="" srcset="" />
+                                    <img src="{{url('assets/images/frontend/pngkey.com-computer-png-44599.png')}}" alt="" srcset="" />
                                 </div>
                                 <br />
 
@@ -353,7 +353,7 @@
                         <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                             <div class="images">
                                 <div class="background-gray">
-                                    <img src="images/imgbin_home-appliance-washing-machine-refrigerator-png.png" alt="" srcset="" />
+                                    <img src="{{url('assets/images/frontend/imgbin_home-appliance-washing-machine-refrigerator-png.png')}}" alt="" srcset="" />
                                 </div>
                                 <br />
 
@@ -491,7 +491,7 @@
                         <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                             <div class="images">
                                 <div class="background-gray">
-                                    <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                    <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                 </div>
 
                                 <br />
@@ -512,7 +512,7 @@
                         <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                             <div class="images">
                                 <div class="background-gray">
-                                    <img src="images/product-2-191x132_copy.png" alt="" srcset="" />
+                                    <img src="{{url('assets/images/frontend/product-2-191x132_copy.png')}}" alt="" srcset="" />
                                 </div>
                                 <br />
 
@@ -533,7 +533,7 @@
                         <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                             <div class="images">
                                 <div class="background-gray">
-                                    <img src="images/pngkey.com-computer-png-44599.png" alt="" srcset="" />
+                                    <img src="{{url('assets/images/frontend/pngkey.com-computer-png-44599.png')}}" alt="" srcset="" />
                                 </div>
                                 <br />
 
@@ -553,7 +553,7 @@
                         <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                             <div class="images">
                                 <div class="background-gray">
-                                    <img src="images/imgbin_home-appliance-washing-machine-refrigerator-png.png" alt="" srcset="" />
+                                    <img src="{{url('assets/images/frontend/imgbin_home-appliance-washing-machine-refrigerator-png.png')}}" alt="" srcset="" />
                                 </div>
                                 <br />
 
@@ -724,7 +724,7 @@
                                 <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
                                     <div class="images image-left">
                                         <div class="background-gray left-side">
-                                            <img src="images/pngkey.com-box-png-274941 (1).png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-box-png-274941 (1).png')}}" alt="" srcset="" />
                                         </div>
 
                                         <br />
@@ -780,7 +780,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 adv-image-left" style="background: url(images/Layer_63.png);
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 adv-image-left" style="background: url('assets/images/frontend/Layer_63.png');
 					margin-left: 15px;
 					background-repeat: no-repeat;
 				  ">
@@ -800,7 +800,7 @@
 
                             <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
 
-                                <div class="module" style="background: url(images/download.png);background-attachment: fixed;
+                                <div class="module" style="background: url(assets/images/frontend/download.png);background-attachment: fixed;
 									  background-position: center;
 									">
 
@@ -829,7 +829,7 @@
                             <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
 
 
-                                <div class="module" style="background: url('images/download (1).png');background-attachment: fixed;
+                                <div class="module" style="background: url('assets/images/frontend/download (1).png');background-attachment: fixed;
 									  background-position: center;
 									">
 
@@ -905,7 +905,7 @@
                                 <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                                     <div class="images">
                                         <div class="background-gray">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
 
                                         <br />
@@ -926,7 +926,7 @@
                                 <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                                     <div class="images">
                                         <div class="background-gray">
-                                            <img src="images/product-2-191x132_copy.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/product-2-191x132_copy.png')}}" alt="" srcset="" />
                                         </div>
                                         <br />
 
@@ -947,7 +947,7 @@
                                 <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                                     <div class="images">
                                         <div class="background-gray">
-                                            <img src="images/pngkey.com-computer-png-44599.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-computer-png-44599.png')}}" alt="" srcset="" />
                                         </div>
                                         <br />
 
@@ -967,7 +967,7 @@
                                 <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                                     <div class="images">
                                         <div class="background-gray">
-                                            <img src="images/imgbin_home-appliance-washing-machine-refrigerator-png.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/imgbin_home-appliance-washing-machine-refrigerator-png.png')}}" alt="" srcset="" />
                                         </div>
                                         <br />
 
@@ -1105,7 +1105,7 @@
                                 <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                                     <div class="images">
                                         <div class="background-gray">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
 
                                         <br />
@@ -1126,7 +1126,7 @@
                                 <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                                     <div class="images">
                                         <div class="background-gray">
-                                            <img src="images/product-2-191x132_copy.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/product-2-191x132_copy.png')}}" alt="" srcset="" />
                                         </div>
                                         <br />
 
@@ -1147,7 +1147,7 @@
                                 <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                                     <div class="images">
                                         <div class="background-gray">
-                                            <img src="images/pngkey.com-computer-png-44599.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-computer-png-44599.png')}}" alt="" srcset="" />
                                         </div>
                                         <br />
 
@@ -1167,7 +1167,7 @@
                                 <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
                                     <div class="images">
                                         <div class="background-gray">
-                                            <img src="images/imgbin_home-appliance-washing-machine-refrigerator-png.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/imgbin_home-appliance-washing-machine-refrigerator-png.png')}}" alt="" srcset="" />
                                         </div>
                                         <br />
 
@@ -1308,7 +1308,7 @@
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 adv-right-side">
                     <div class="adv-right">
                         <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-12">
-                            <img src="images/download (2).png" class="ad-right" alt="">
+                            <img src="{{url('assets/images/frontend/download (2).png')}}" class="ad-right" alt="">
 
                             <!-- <img src="images/Layer_63.png" alt=""> -->
                         </div>
@@ -1371,7 +1371,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/product-3-238x158_(1)_copy.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/product-3-238x158_(1)_copy.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1393,7 +1393,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/ciyp-bulk-image1.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/ciyp-bulk-image1.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1415,7 +1415,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/istockphoto-1159952152-612x612.jpg" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/istockphoto-1159952152-612x612.jpg')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1465,7 +1465,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/besan-besan-fortune-original-imag4gb4hzv2qzvy.jpeg" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/besan-besan-fortune-original-imag4gb4hzv2qzvy.jpeg')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1487,7 +1487,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/dsc07685_1280.jpg" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/dsc07685_1280.jpg')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1509,7 +1509,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1536,7 +1536,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1558,7 +1558,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1580,7 +1580,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1633,7 +1633,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1655,7 +1655,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1677,7 +1677,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1730,7 +1730,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1752,7 +1752,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1774,7 +1774,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="images/pngkey.com-surveillance-camera-png-1940678.png" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -1936,8 +1936,6 @@
 </script>
 
 <!-- //cart-js -->
-<!-- script for responsive tabs -->
-<script src="js/easy-responsive-tabs.js"></script>
 <script>
     $(document).ready(function() {
         $('#horizontalTab').easyResponsiveTabs({
@@ -1962,15 +1960,12 @@
 </script>
 <!-- //script for responsive tabs -->
 <!-- stats -->
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.countup.js"></script>
+
 <script>
     $('.counter').countUp();
 </script>
 <!-- //stats -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/jquery.easing.min.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($) {
         function codeAddress() {

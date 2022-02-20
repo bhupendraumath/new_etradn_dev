@@ -101,7 +101,7 @@
 
                     <ul class="colorwhite social">
                         <li>
-                            <img class="size-payement-method" src="images/Layer_35.png" alt="">
+                            <img class="size-payement-method" src="{{url('assets/images/frontend/Layer_35.png')}}" alt="">
 
                         </li>
                         <!-- <li> 
@@ -109,11 +109,11 @@
 								
 							</li> -->
                         <li>
-                            <img class="size-payement-method" src="images/Layer_34.png" alt="">
+                            <img class="size-payement-method" src="{{url('assets/images/frontend/Layer_34.png')}}" alt="">
 
                         </li>
                         <li>
-                            <img class="size-payement-method" src="images/Layer_35.png" alt="">
+                            <img class="size-payement-method" src="{{url('assets/images/frontend/Layer_35.png')}}" alt="">
 
                         </li>
 
