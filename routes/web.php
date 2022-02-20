@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\{
-    HomeController
+    HomeController,
+    UserController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
-    ForgotPasswordController
+    ForgotPasswordController,
 };
 use Illuminate\Support\Facades\Artisan;
 
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Artisan;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get(
     '/clear-cache',
     function () {
@@ -40,3 +42,7 @@ Route::get(
     'sign-in',
     [LoginController::class, 'loginForm']
 )->name('login');
+Route::get(
+    'sign-up',
+    [UserController::class, 'index']
+)->name('registration');

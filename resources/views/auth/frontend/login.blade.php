@@ -25,6 +25,9 @@
                         <div class="form-field">
                             <button class="btn" type="submit">Log in</button>
                         </div>
+                        <div class="form-field">
+                            <a href="{{route('registration')}}" style="font-size: 18px;">Sign up</a>
+                        </div>
                     </form>
                 </div>
             </div>
