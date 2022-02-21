@@ -1,5 +1,4 @@
-
-
+/*--
 
 /* -------------------------------- */
 
@@ -8,6 +7,141 @@
 /* .background-gray.left-side >img:hover {
     border: 3px solid white;
 } */
+
+
+/* product details */
+
+
+/* -- quantity box -- */
+
+.col-md-6.col-sm-6.col-xs-12.col-lg-6.margin-right-side {
+    margin-top: 24px;
+}
+h4.team_memebr {
+    color: #3d3d3d;
+    Font-size: 20px;
+}
+h3.our-team-heading {
+    color: #000000;
+    margin-bottom: 24px;
+}
+
+img.image-team {
+    width: 100%;
+}
+
+.container.margin-top--23 {
+    width: 1112px;
+    margin-top: 94px;
+}
+
+h3.our-team-heading {
+    margin-bottom: 24px;
+}
+
+p.about-us-paragraph {
+    margin-right: 54px;
+    font-size: 16px;
+}
+
+button.contact-us {
+    line-height: 2;
+    background: #ffa301;
+    margin-top: 60px;
+    padding: 6px;
+    color: white;
+    width: 138px;
+    border: none;
+    border-radius: 19px;
+    text-transform: uppercase;
+}
+
+.col-md-6.col-sm-6.col-xs-6.col-lg-6.margin-right-side {
+    margin-top: 58px;
+    padding-left: 74px;
+}
+
+.container-fluid.backgroundgary {
+    background: #80808040;
+    /* padding-top: 10px; */
+}
+
+img.images_about-us {
+    width: 100%;
+    height: 585px;
+	margin-left: -37px;
+
+}
+h3.whoareheading {
+    margin-bottom: 22px;
+}
+
+p.whoareparagraph {
+    font-size: 16px;
+    color: #3d3d3d;
+    margin-bottom: 80px;
+}
+
+.about-us {
+    text-align: center;
+}
+
+.quantity {
+	display: inline-block; }
+   
+   .quantity .input-text.qty {
+	width: 35px;
+	height: 39px;
+	padding: 0 5px;
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid #efefef;
+   }
+   
+   .quantity.buttons_added {
+	text-align: left;
+	position: relative;
+	white-space: nowrap;
+	vertical-align: top; }
+   
+   .quantity.buttons_added input {
+	display: inline-block;
+	margin: 0;
+	vertical-align: top;
+	box-shadow: none;
+   }
+   
+   .quantity.buttons_added .minus,
+   .quantity.buttons_added .plus {
+	padding: 7px 10px 8px;
+	height: 41px;
+	background-color: #ffffff;
+	border: 1px solid #efefef;
+	cursor:pointer;}
+   
+   .quantity.buttons_added .minus {
+	border-right: 0; }
+   
+   .quantity.buttons_added .plus {
+	border-left: 0; }
+   
+   .quantity.buttons_added .minus:hover,
+   .quantity.buttons_added .plus:hover {
+	background: #eeeeee; }
+   
+   .quantity input::-webkit-outer-spin-button,
+   .quantity input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	margin: 0; }
+	
+	.quantity.buttons_added .minus:focus,
+   .quantity.buttons_added .plus:focus {
+	outline: none; }
+   
+   
+
+/* product details */
 
 /* login form */
 .tacbox {
@@ -2064,30 +2198,32 @@ background: white;
 }
 .snipcart-details {
     text-align: center;
-	margin:0.5em auto 1em;
+	/* margin:0.5em auto 1em; */
     width:77%;
 }
 .btn-danger.my-cart-btn:focus {
     outline: none;
 }
 .snipcart-details input.button {
-    font-size: 13px;
+    font-size: 12px;
     color: #fff;
     /* background: #2fdab8; */
-background: black;
+background: #ffa301;
     text-decoration: none;
     position: relative;
     border: none;
     border-radius: 0;
     width: 100%;
     text-transform: uppercase;
-    padding: .5em 0;
+    padding: 11px;
     outline: none;
     letter-spacing: 1px;
     font-weight: 600;
 }
-.agile_top_brand_left_grid:hover .snipcart-details input.button,.snipcart-details input.button:hover{
-    background:#2fdab8;
+.agile_top_brand_left_grid:hover .snipcart-details input.button, .snipcart-details input.button:hover {
+    background: black;
+    color: white;
+    border-radius: 10px;
 }
 .product_list_header input.button {
     color: #fff;
@@ -2624,7 +2760,7 @@ color: #545454;
 }
 .page-head_agile_info_w3l h3 {
     color: #fff;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
     font-size:3em;
 	font-weight:700;
@@ -2961,6 +3097,20 @@ h3.agileits-icons-title {
 }
 @media (max-width:991px){
 
+	.container.margin-top--23 {
+		width: 1112px;
+		margin-top: 94px;
+		margin-bottom: -46px;
+	}
+	h4.team_memebr {
+		color: #3d3d3d;
+		Font-size: 18px;
+		margin-top: -15px;
+		margin-bottom: 23px;
+	}
+	.col-md-6.col-sm-6.col-xs-12.col-lg-6.margin-right-side {
+		margin-top: 24px;
+	}
 	a.forget-btn {
 		margin-left: 25px;
 		float: left;
@@ -3044,6 +3194,47 @@ h3.agileits-icons-title {
 	}
 }
 @media (max-width:768px){
+
+	.container.margin-top--23 {
+		width: 1112px;
+		margin-top: 94px;
+		margin-bottom: -46px;
+	}
+	h4.team_memebr {
+		color: #3d3d3d;
+		Font-size: 18px;
+		margin-top: -15px;
+		margin-bottom: 23px;
+	}
+	img.image-team {
+		width: 203px;
+	}
+	h3.our-team-heading {
+		margin-bottom: 24px;
+		margin-top: -38px;
+	}
+	.col-md-6.col-sm-6.col-xs-12.col-lg-6.margin-right-side {
+		margin-top: 24px;
+	}
+
+
+	button.contact-us {
+		line-height: 2;
+		background: #ffa301;
+		margin-top: 46px;
+		padding: 6px;
+		color: white;
+		width: 138px;
+		border: none;
+		border-radius: 19px;
+		text-transform: uppercase;
+		margin-bottom: 38px;
+	}
+	img.images_about-us {
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+	}
 
 	a.forget-btn {
 		margin-left: 25px;
@@ -3158,6 +3349,46 @@ h3.agileits-icons-title {
 }
 @media (max-width: 640px){
 
+	.container.margin-top--23 {
+		width: 1112px;
+		margin-top: 94px;
+		margin-bottom: -46px;
+	}
+	h4.team_memebr {
+		color: #3d3d3d;
+		Font-size: 18px;
+		margin-top: -15px;
+		margin-bottom: 23px;
+	}
+	h3.our-team-heading {
+		margin-bottom: 24px;
+		margin-top: -38px;
+	}
+	img.image-team {
+		width: 203px;
+	}
+	button.contact-us {
+		line-height: 2;
+		background: #ffa301;
+		margin-top: 46px;
+		padding: 6px;
+		color: white;
+		width: 138px;
+		border: none;
+		border-radius: 19px;
+		text-transform: uppercase;
+		margin-bottom: 38px;
+	}
+	
+	.col-md-6.col-sm-6.col-xs-12.col-lg-6.margin-right-side {
+		margin-top: 24px;
+	}
+
+	img.images_about-us {
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+	}
 	a.forget-btn {
 		margin-left: 25px;
 		float: left;
@@ -3306,6 +3537,45 @@ h3.agileits-icons-title {
 }
 @media (max-width:568px){
 
+	.container.margin-top--23 {
+		width: 1112px;
+		margin-top: 94px;
+		margin-bottom: -46px;
+	}
+	h4.team_memebr {
+		color: #3d3d3d;
+		Font-size: 18px;
+		margin-top: -15px;
+		margin-bottom: 23px;
+	}
+	h3.our-team-heading {
+		margin-bottom: 24px;
+		margin-top: -38px;
+	}
+	img.image-team {
+		width: 203px;
+	}
+	button.contact-us {
+		line-height: 2;
+		background: #ffa301;
+		margin-top: 46px;
+		padding: 6px;
+		color: white;
+		width: 138px;
+		border: none;
+		border-radius: 19px;
+		text-transform: uppercase;
+		margin-bottom: 38px;
+	}
+	.col-md-6.col-sm-6.col-xs-12.col-lg-6.margin-right-side {
+		margin-top: 24px;
+	}
+
+	img.images_about-us {
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+	}
 	a.forget-btn {
 		margin-left: 25px;
 		float: left;
@@ -3466,7 +3736,46 @@ h3.agileits-icons-title {
 	}
 }
 @media (max-width: 480px){
+	.container.margin-top--23 {
+		width: 1112px;
+		margin-top: 94px;
+		margin-bottom: -46px;
+	}
+	h4.team_memebr {
+		color: #3d3d3d;
+		Font-size: 18px;
+		margin-top: -15px;
+		margin-bottom: 23px;
+	}
+	h3.our-team-heading {
+		margin-bottom: 24px;
+		margin-top: -38px;
+	}
+	img.image-team {
+		width: 203px;
+	}
+	
+	button.contact-us {
+		line-height: 2;
+		background: #ffa301;
+		margin-top: 46px;
+		padding: 6px;
+		color: white;
+		width: 138px;
+		border: none;
+		border-radius: 19px;
+		text-transform: uppercase;
+		margin-bottom: 38px;
+	}
+	.col-md-6.col-sm-6.col-xs-12.col-lg-6.margin-right-side {
+		margin-top: 24px;
+	}
 
+	img.images_about-us {
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+	}
 	a.forget-btn {
 		margin-left: 25px;
 		float: left;
@@ -3637,7 +3946,46 @@ h3.agileits-icons-title {
 	}
 }
 @media (max-width: 414px){
+	.container.margin-top--23 {
+		width: 1112px;
+		margin-top: 94px;
+		margin-bottom: -46px;
+	}
 
+	h4.team_memebr {
+		color: #3d3d3d;
+		Font-size: 18px;
+		margin-top: -15px;
+		margin-bottom: 23px;
+	}
+	h3.our-team-heading {
+		margin-bottom: 24px;
+		margin-top: -38px;
+	}
+	img.image-team {
+		width: 203px;
+	}
+	button.contact-us {
+		line-height: 2;
+		background: #ffa301;
+		margin-top: 46px;
+		padding: 6px;
+		color: white;
+		width: 138px;
+		border: none;
+		border-radius: 19px;
+		text-transform: uppercase;
+		margin-bottom: 38px;
+	}
+	.col-md-6.col-sm-6.col-xs-12.col-lg-6.margin-right-side {
+		margin-top: 24px;
+	}
+
+	img.images_about-us {
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+	}
 	a.forget-btn {
 		margin-left: 25px;
 		float: left;
@@ -3808,7 +4156,45 @@ h3.agileits-icons-title {
 	}
 }
 @media (max-width: 384px){
-
+	
+	.container.margin-top--23 {
+		width: 1112px;
+		margin-top: 94px;
+		margin-bottom: -46px;
+	}
+	h4.team_memebr {
+		color: #3d3d3d;
+		Font-size: 18px;
+		margin-top: -15px;
+		margin-bottom: 23px;
+	}
+	h3.our-team-heading {
+		margin-bottom: 24px;
+		margin-top: -38px;
+	}
+	img.image-team {
+		width: 203px;
+	}
+	button.contact-us {
+		line-height: 2;
+		background: #ffa301;
+		margin-top: 46px;
+		padding: 6px;
+		color: white;
+		width: 138px;
+		border: none;
+		border-radius: 19px;
+		text-transform: uppercase;
+		margin-bottom: 38px;
+	}
+	.col-md-6.col-sm-6.col-xs-12.col-lg-6.margin-right-side {
+		margin-top: 24px;
+	}
+	img.images_about-us {
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+	}
 	a.forget-btn {
 		margin-left: 25px;
 		float: left;
@@ -3963,7 +4349,46 @@ h3.agileits-icons-title {
 	}
 }
 @media (max-width: 375px){
+	.container.margin-top--23 {
+		width: 1112px;
+		margin-top: 94px;
+		margin-bottom: -46px;
+	}
+	h3.our-team-heading {
+		margin-bottom: 24px;
+		margin-top: -38px;
+	}
 
+	h4.team_memebr {
+		color: #3d3d3d;
+		Font-size: 18px;
+		margin-top: -15px;
+		margin-bottom: 23px;
+	}
+	button.contact-us {
+		line-height: 2;
+		background: #ffa301;
+		margin-top: 46px;
+		padding: 6px;
+		color: white;
+		width: 138px;
+		border: none;
+		border-radius: 19px;
+		text-transform: uppercase;
+		margin-bottom: 38px;
+	}
+	img.image-team {
+		width: 203px;
+	}
+	.col-md-6.col-sm-6.col-xs-12.col-lg-6.margin-right-side {
+		margin-top: 24px;
+	}
+
+	img.images_about-us {
+		width: 100%;
+		height: auto;
+		margin-left: 0;
+	}
 	a.forget-btn {
 		margin-left: 25px;
 		float: left;
@@ -4960,9 +5385,9 @@ font-weight: 300;
 .single-right-left h3 {
     text-transform: capitalize;
     font-size: 23px;
-    color: #2fdab8;
+    color: black;
     margin: 0;
-    letter-spacing: 1px;
+    letter-spacing: 0px;
     font-weight: 600;
 }
 .single-right-left p{
@@ -5095,11 +5520,11 @@ color: #000;
 .add-review form{
 	margin:2em 0 0;
 }
-.add-review input[type="text"],.add-review input[type="email"],.add-review textarea{
+.add-review input[type="text"], .add-review input[type="email"], .add-review textarea {
     outline: none;
     padding: 10px;
     border: 1px solid #D2D2D2;
-    width: 49%;
+    /* width: 49%; */
     font-size: 15px;
     color: #888;
 }
@@ -5146,7 +5571,7 @@ background: black;
 }
 .single_page_agile_its_w3ls {
     padding: 2em;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
 }
 .single_page_agile_its_w3ls h6 {
     font-size: 1.2em;

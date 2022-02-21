@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,27 +14,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend/home');
+        //
     }
-    /**
-     * Display about resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function about()
-    {
-        return view('frontend/about');
-    }
-    /**
-     * Display contactUs resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function contactUs()
-    {
-        return view('frontend/contact-us');
-    }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -63,9 +44,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('frontend/product/details');
     }
 
     /**

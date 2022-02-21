@@ -9,7 +9,7 @@
 		</div>
 		<div class="col-12 col-sm-6 col-md-6 col-lg-6">
 			<ul class="right-menu">
-				<li> <a href="#"> About Us &nbsp;| </a></li>
+				<li> <a href="{{route('about')}}"> About Us &nbsp;| </a></li>
 				<li> <a href="{{route('login')}}"> My Account &nbsp;| </a></li>
 				<li> <a href="#"> Blog &nbsp;|</a></li>
 				<li> <a href="#">Contact Us </a></li>

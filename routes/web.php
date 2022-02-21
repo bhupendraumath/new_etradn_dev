@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\{
     HomeController,
-    UserController
+    UserController,
+    ProductController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -46,3 +47,17 @@ Route::get(
     'sign-up',
     [UserController::class, 'index']
 )->name('registration');
+Route::get(
+    'about-us',
+    [HomeController::class, 'about']
+)->name('about');
+
+Route::get(
+    'contact-us',
+    [HomeController::class, 'contactUs']
+)->name('contact');
+
+Route::get(
+    'product-details',
+    [ProductController::class, 'show']
+)->name('product.details');
