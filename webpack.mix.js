@@ -40,6 +40,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/frontend/style.css',
         'resources/css/frontend/jquery-ui.css',
         'resources/css/frontend/flexslider.css',
+        'resources/css/frontend/easy-responsive-tabs.css',
         'resources/css/frontend/font-awesome.css',
         'resources/css/frontend/toastr.min.css',
         'resources/css/frontend/team.css'
