@@ -33,6 +33,7 @@ mix.js('resources/js/app.js', 'public/js')
 
         'public/vendor/jsvalidation/js/jsvalidation.min.js',
         'resources/js/frontend/toastr.min.js',
+        'resources/js/frontend/common.js',
     ], 'public/assets/js/frontend/main.js')
     .styles([
         'resources/css/frontend/bootstrap.css',

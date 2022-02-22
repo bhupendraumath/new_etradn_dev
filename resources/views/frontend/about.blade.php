@@ -91,7 +91,5 @@
     <!--//single_page-->
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-
     <a href="#about" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
     @endsection
