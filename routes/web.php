@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\{
     HomeController,
     UserController,
-    ProductController
+    ProductController,
+    SellerController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -61,3 +62,7 @@ Route::get(
     'product-details',
     [ProductController::class, 'show']
 )->name('product.details');
+Route::get(
+    'dashboard',
+    [SellerController::class, 'dashboard']
+)->name('seller.dashboard');
