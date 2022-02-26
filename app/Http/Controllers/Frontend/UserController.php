@@ -3,10 +3,21 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\UserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 
 class UserController extends Controller
 {
+
+    public $users;
+
+    public function __construct()
+    {
+        $this->users = new User();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +44,46 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function registrationAction(UserRequest $request)
     {
-        //
+        try {
+            $result = $this->users->createUser($request);
+            if ($result) {
+                return response()->json(
+                    [
+                        'success' => true,
+                        'data' => $result,
+                        'message' => Lang::get(
+                            trans('admin.user_registration')
+                        )
+                    ]
+                );
+            } else {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => [
+                            'message' => Lang::get(
+                                trans('api.something_went_wrong')
+                            )
+                        ]
+                    ],
+                    422
+                );
+            }
+        } catch (\Exception $ex) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'data' => [],
+                    'error' => [
+                        'message' => $ex->getMessage()
+                    ]
+                ],
+                422
+            );
+        }
     }
 
     /**

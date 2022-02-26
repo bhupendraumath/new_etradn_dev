@@ -26,8 +26,8 @@
 
                 <div class="col-md-7 col-sm-7 col-lg-7 col-xl-7 col-xs-12">
                     <div class="details-right">
-                        <h3 class="seller-h3"> Taiba Arshad</h3>
-                        <p class="sellerr-pagamil">taiba.s@gmail.com</p>
+                        <h3 class="seller-h3">{{Auth::user()->firstName. " ".Auth::user()->lastName }}</h3>
+                        <p class="sellerr-pagamil">{{Auth::user()->email}} </p>
                     </div>
                 </div>
             </div>
@@ -35,52 +35,52 @@
             <div class="row border-row">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <h4 class="Heading-h4">MINIMUM ORDER</h4>
-                    <h4 class="Heading-yellow-h4">SAR0.00</h4>
+                    <h4 class="Heading-yellow-h4">{{Auth::user()->minimum_order}}</h4>
                 </div>
             </div>
             <hr />
             <div class="row border-row">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <h4 class="Heading-h4">BUSINESS NAME</h4>
-                    <h4 class="Heading-yellow-h4">Online Shop</h4>
+                    <h4 class="Heading-yellow-h4">{{Auth::user()->business_name}}</h4>
                 </div>
             </div>
             <hr />
             <div class="row border-row">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <h4 class="Heading-h4">BUSINESS ADDRESS</h4>
-                    <h4 class="Heading-yellow-h4">Lahore, Pakistan</h4>
+                    <h4 class="Heading-yellow-h4">{{Auth::user()->business_address}}</h4>
                 </div>
             </div>
             <hr />
             <div class="row border-row">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <h4 class="Heading-h4">PHONE NUMBER</h4>
-                    <h4 class="Heading-yellow-h4">3128804060</h4>
+                    <h4 class="Heading-yellow-h4">{{Auth::user()->phone_number}}</h4>
                 </div>
             </div>
             <hr />
             <div class="row border-row">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <h4 class="Heading-h4">BUSINESS TYPE</h4>
-                    <h4 class="Heading-yellow-h4">Online Business</h4>
+                    <h4 class="Heading-yellow-h4">{{Auth::user()->business_type_id}}</h4>
                 </div>
             </div>
             <hr />
             <div class="row border-row">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <h4 class="Heading-h4">BUSINESS CATEGORY</h4>
-                    <h4 class="Heading-yellow-h4">["Manufacturing Business"]</h4>
+                    <h4 class="Heading-yellow-h4">{{Auth::user()->category}}</h4>
                 </div>
             </div>
             <hr />
-            <div class="row border-row">
+            <!-- <div class="row border-row">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <h4 class="Heading-h4">PHONE Number</h4>
                     <h4 class="Heading-yellow-h4">3128804060</h4>
                 </div>
             </div>
-            <hr />
+            <hr /> -->
             <div class="row border-row">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <h4 class="Heading-h4">UPLOAD DOCUMENTS</h4>

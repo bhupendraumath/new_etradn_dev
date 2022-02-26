@@ -12,18 +12,19 @@
                     <h3 class="login-heading">
                         ACCOUNT LOGIN
                     </h3>
-                    <form>
+                    <form id="loginFrm" method="post" action="{{route('loginAction')}}">
+                        {{csrf_field()}}
                         <label for="email" class="label-11">Phone Number or Email*</label>
                         <div class="form-field">
-                            <input type="email" id="email" placeholder="Email / Username" required />
+                            <input type="email" id="email" name="email" placeholder="Enter email address" />
                         </div>
                         <label for="password" class="label-11">Password*</label>
                         <div class="form-field">
-                            <input type="password" id="password" placeholder="Password" required />
+                            <input type="password" id="password" placeholder="Password" name="password" required />
                         </div>
-
+                        <input type="hidden" name="remember" value="true">
                         <div class="form-field">
-                            <button class="btn color-chnage-btn" type="submit">SEND</button>
+                            <button id="loginBtn" class="btn color-chnage-btn" type="submit">LOGIN</button>
                         </div>
 
                         <div class="form-field bottom">
@@ -39,4 +40,9 @@
 </div>
 <!-- partial -->
 <a href="#sign-in" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+{!! JsValidator::formRequest('App\Http\Requests\Frontend\LoginRequest','#loginFrm') !!}
 @endsection
+@push('scripts')
+
+<script src="{{ asset('assets/js/frontend/auth/login.js') }}"></script>
+@endpush

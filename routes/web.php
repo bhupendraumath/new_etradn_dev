@@ -44,10 +44,24 @@ Route::get(
     'sign-in',
     [LoginController::class, 'loginForm']
 )->name('login');
+Route::post(
+    'loginAction',
+    [LoginController::class, 'loginAction']
+)->name('loginAction');
+Route::get(
+    '/logout',
+    [LoginController::class, 'logout']
+)->name('logout');
 Route::get(
     'sign-up',
     [UserController::class, 'index']
 )->name('registration');
+
+Route::post(
+    'registrationAction',
+    [UserController::class, 'registrationAction']
+)->name('registrationAction');
+
 Route::get(
     'about-us',
     [HomeController::class, 'about']
@@ -62,7 +76,13 @@ Route::get(
     'product-details',
     [ProductController::class, 'show']
 )->name('product.details');
-Route::get(
-    'dashboard',
-    [SellerController::class, 'dashboard']
-)->name('seller.dashboard');
+
+Route::group(
+    ['middleware' => 'user:web'],
+    function () {
+        Route::get(
+            'dashboard',
+            [SellerController::class, 'dashboard']
+        )->name('seller.dashboard');
+    }
+);
