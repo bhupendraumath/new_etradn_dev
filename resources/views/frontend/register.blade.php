@@ -14,56 +14,65 @@
                     </h3>
                     <form id="registrationFrm" method="post" action="{{route('registrationAction')}}" enctype="multipart/form-data">
                         {{csrf_field()}}
-                        <label for="fname" class="label-11">First Name*</label>
-                        <div class="form-field">
-                            <input type="text" id="fname" placeholder="Please enter your first name" required name="first_name" />
-                        </div>
 
-                        <label for="lname" class="label-11">Last Name*</label>
-                        <div class="form-field">
-                            <input type="text" id="lname" placeholder="Please enter your last name" required name="last_name" />
-                        </div>
                         <label for="lname" class="label-11">User type*</label>
                         <div class="form-field">
-                            <select class="form-control" name="user_type">
+                            <select class="form-control" name="user_type" id="usertype" onchange="showDivuser(this)">
                                 <option value="">select</option>
                                 <option value="s">seller</option>
                                 <option value="b">buyer</option>
                             </select>
                         </div>
+
+                        <label for="fname" class="label-11">First Name*</label>
+                        <div class="form-field">
+                            <input type="text" placeholder="Please enter your first name" required name="first_name" />
+                        </div>
+
+                        <label for="lname" class="label-11">Last Name*</label>
+                        <div class="form-field">
+                            <input type="text" placeholder="Please enter your last name" required name="last_name" />
+                        </div>
+
                         <label for="email" class="label-11"> Email*</label>
                         <div class="form-field">
-                            <input type="email" name="email" id="email" placeholder="Please enter your Email"  />
+                            <input type="email" name="email" placeholder="Please enter your Email" />
                         </div>
                         <label for="lname" class="label-11">Telephone*</label>
                         <div class="form-field">
-                            <input type="text" id="lname" placeholder="Please enter your telephone" required name="phone" />
+                            <input type="text" placeholder="Please enter your telephone" required name="phone" />
                         </div>
-                        <label for="lname" class="label-11">Business Name*</label>
-                        <div class="form-field">
-                            <input type="text" id="lname" placeholder="Please enter your Business Name" required name="business_name" />
-                        </div>
-                        <label for="lname" class="label-11">Select Business Type*</label>
-                        <div class="form-field">
-                            <select class="form-control" name="business_type_id">
-                                <option value="">select</option>
-                                <option value="3">test</option>
-                            </select>
-                        </div>
-                        <label for="lname" class="label-11">Select Business Category*</label>
-                        <div class="form-field">
-                            <select class="form-control" name="business_category">
-                                <option value="">select</option>
-                                <option>test</option>
-                            </select>
-                        </div>
-                        <label for="lname" class="label-11">Business Address*</label>
-                        <div class="form-field">
-                            <input type="text" id="lname" placeholder="Please enter your Business Address" required name="business_address" />
+                        <div id="byseller">
+                            <label for="lname" class="label-11">Business Name*</label>
+                            <div class="form-field">
+                                <input type="text" placeholder="Please enter your Business Name" required name="business_name" />
+                            </div>
+                            <label for="lname" class="label-11">Select Business Type*</label>
+                            <div class="form-field">
+                                <select class="form-control" name="business_type_id">
+                                    <option value="">select</option>
+                                    @foreach($businesstype as $businesstypevalue)
+                                    <option value="{{$businesstypevalue->id}}">{{$businesstypevalue->typeName}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <label for="lname" class="label-11">Select Business Category*</label>
+                            <div class="form-field">
+                                <select class="form-control" name="business_category">
+                                    <option value="">select</option>
+                                    @foreach($businessCategory as $businessCategoryvalue)
+                                    <option value="{{$businessCategoryvalue->id}}">{{$businessCategoryvalue->categoryName}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <label for="lname" class="label-11">Business Address*</label>
+                            <div class="form-field">
+                                <input type="text" placeholder="Please enter your Business Address" required name="business_address" />
+                            </div>
                         </div>
                         <label for="password" class="label-11">Password*</label>
                         <div class="form-field">
-                            <input type="password" id="password" placeholder="Password" required name="password" />
+                            <input type="password" placeholder="Password" required name="password" />
                         </div>
                         <label for="password" class="label-11">Confirm Password*</label>
                         <div class="form-field">
@@ -100,6 +109,14 @@
 {!! JsValidator::formRequest('App\Http\Requests\Frontend\UserRequest','#registrationFrm') !!}
 @endsection
 @push('scripts')
-
+<script>
+    function showDivuser(select) {
+        if (select.value == 's') {
+            document.getElementById('byseller').style.display = "block";
+        } else {
+            document.getElementById('byseller').style.display = "none";
+        }
+    }
+</script>
 <script src="{{ asset('assets/js/frontend/auth/registration.js') }}"></script>
 @endpush

@@ -54,13 +54,13 @@ class UserRequest extends FormRequest
             'last_name' => 'required|min:2|max:25|string',
             'phone' => 'required|min:6|max:14|unique:tbl_users,phone_number',
             'email' => 'required|email|unique:tbl_users,email',
-            //'stage_id' => 'required_if:user_type,mentee',
-            'business_name' => 'required_if:user_type,seller|min:3|max:50',
+            'user_type' => 'required',
+            'business_name' => 'required_if:user_type,s',
             'password' => 'required|string|min:6|max:15',
             'password_confirmation' => 'required|
             string|min:6|same:password',
-            'business_category' => 'required_if:user_type,seller',
-            'business_type_id' => 'required_if:user_type,seller'
+            'business_category' => 'required_if:user_type,s',
+            'business_type_id' => 'required_if:user_type,s'
 
         ];
     }

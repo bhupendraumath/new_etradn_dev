@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\UserRequest;
+use App\Models\BusinessCategory;
+use App\Models\BusinessType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
@@ -25,7 +27,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('frontend/register');
+        $businesstype = BusinessType::where('isActive', '=', 'y')->get();
+        $businessCategory = BusinessCategory::where('isActive', '=', 'y')->get();
+
+        return view('frontend/register', compact('businesstype', 'businessCategory'));
     }
 
     /**
