@@ -15,28 +15,28 @@
                     <form>
                         <label for="fname" class="label-11">First Name*</label>
                         <div class="form-field">
-                            <input type="text" id="fname" placeholder="Please enter your first name" required />
+                            <input type="text"  placeholder="Please enter your first name" required />
                         </div>
 
                         <label for="lname" class="label-11">Last Name*</label>
                         <div class="form-field">
-                            <input type="text" id="lname" placeholder="Please enter your last name" required />
+                            <input type="text"  placeholder="Please enter your last name" required />
                         </div>
                         <label for="email" class="label-11">Phone Number or Email*</label>
                         <div class="form-field">
-                            <input type="email" id="email" placeholder="Email / Username" required />
+                            <input type="email"  placeholder="Email / Username" required />
                         </div>
                         <label for="lname" class="label-11">Telephone*</label>
                         <div class="form-field">
-                            <input type="text" id="lname" placeholder="Please enter your telephone" required />
+                            <input type="text"  placeholder="Please enter your telephone" required />
                         </div>
                         <label for="password" class="label-11">Password*</label>
                         <div class="form-field">
-                            <input type="password" id="password" placeholder="Password" required />
+                            <input type="password"  placeholder="Password" required />
                         </div>
                         <label for="password" class="label-11">Confirm Password*</label>
                         <div class="form-field">
-                            <input type="password" id="password" placeholder="Password" required />
+                            <input type="password"  placeholder="Password" required />
                         </div>
 
                         <div class="form-field">

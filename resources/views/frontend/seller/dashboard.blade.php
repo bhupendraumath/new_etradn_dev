@@ -107,23 +107,44 @@
 
         </div>
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
-            <div class="card-dashboard">
+            <div class="card-dashboard  col-12uy">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
                                 MY REVIEW AND RATING
                             </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
+                                BUSINESS ADDRESS
                             </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">0</div><br/>
+                            <span class="view-more">VIEW MORE</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                        <div class="card-2">
+                            <h4 class="review-dashbord">
+                                MY UPLOAD PRODUCTS
+                            </h4>
+                            <div class="gray-number">0</div><br/>
+                            <span class="view-more">VIEW MORE</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                        <div class="card-2">
+                            <h4 class="review-dashbord">
+                                BIDS PLACED ON MY <br/>LISTED PRODUCT
+                            </h4>
+                            <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
                         </div>
                     </div>
@@ -133,39 +154,18 @@
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
+                                MY ORDERS
                             </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
+                              MY DELIVARY  AREAS
                             </h4>
-                            <div class="gray-number">0</div><br />
-                            <span class="view-more">VIEW MORE</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                        <div class="card-2">
-                            <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
-                            </h4>
-                            <div class="gray-number">0</div><br />
-                            <span class="view-more">VIEW MORE</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                        <div class="card-2">
-                            <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
-                            </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
                         </div>
                     </div>
@@ -174,58 +174,18 @@
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
+                                REFUND REQUESTS
                             </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
+                                Account settings
                             </h4>
-                            <div class="gray-number">0</div><br />
-                            <span class="view-more">VIEW MORE</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                        <div class="card-2">
-                            <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
-                            </h4>
-                            <div class="gray-number">0</div><br />
-                            <span class="view-more">VIEW MORE</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                        <div class="card-2">
-                            <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
-                            </h4>
-                            <div class="gray-number">0</div><br />
-                            <span class="view-more">VIEW MORE</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                        <div class="card-2">
-                            <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
-                            </h4>
-                            <div class="gray-number">0</div><br />
-                            <span class="view-more">VIEW MORE</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                        <div class="card-2">
-                            <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
-                            </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
                         </div>
                     </div>
@@ -233,5 +193,6 @@
             </div>
         </div>
     </div>
+ </div>
     
     @endsection
