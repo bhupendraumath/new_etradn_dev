@@ -93,7 +93,7 @@
             </div>
         </a>
 
-        <a href="review-and-rating.php">
+        <a href="#">
 
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
@@ -109,7 +109,7 @@
             </div>
         </a>
 
-        <a href="delivary-area.php">
+        <a href="#">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="delivary-area.php">
                     <span><i class="fa fa-truck margin-leftor-right"></i> <b class="heading-business">MY DELIVERY AREAS</b> </span>
@@ -126,7 +126,7 @@
             </div>
         </a>
 
-        <a href="refund-request.php">
+        <a href="#">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="refund-request.php">
                     <span><i class="fas fa-hand-holding-usd margin-leftor-right"></i> <b class="heading-business">REFUND REQUEST</b> </span>
@@ -134,7 +134,7 @@
             </div>
         </a>
 
-        <a href="wallet.php">
+        <a href="#">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="wallet.php">
                     <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">WALLET</b> </span>
@@ -152,7 +152,7 @@
 
         <a href="rfq-list.php">
             <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="wallet.php">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="#">
                     <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">RFQ LIST</b> </span>
                 </div>
             </div>
