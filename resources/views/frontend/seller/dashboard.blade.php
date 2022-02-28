@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <!--/single_page-->
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
@@ -14,98 +15,9 @@
 <!-- banner-bootom-w3-agileits -->
 <div class="banner-bootom-w3-agileits">
     <div class="container-fluid dashboard-container">
-        <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12 card-dashboard">
+        @include('frontend/include/seller-side-bar')
 
-            <div class="row">
-                <div class="col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xs-12">
-                    <div class="imageAvt">
-                        <img src="{{url('assets/images/frontend/t1.jpg')}}" alt="" srcset="">
 
-                    </div>
-                </div>
-
-                <div class="col-md-7 col-sm-7 col-lg-7 col-xl-7 col-xs-12">
-                    <div class="details-right">
-                        <h3 class="seller-h3"> Taiba Arshad</h3>
-                        <p class="sellerr-pagamil">taiba.s@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">MINIMUM ORDER</h4>
-                    <h4 class="Heading-yellow-h4">SAR0.00</h4>
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">BUSINESS NAME</h4>
-                    <h4 class="Heading-yellow-h4">Online Shop</h4>
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">BUSINESS ADDRESS</h4>
-                    <h4 class="Heading-yellow-h4">Lahore, Pakistan</h4>
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">PHONE NUMBER</h4>
-                    <h4 class="Heading-yellow-h4">3128804060</h4>
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">BUSINESS TYPE</h4>
-                    <h4 class="Heading-yellow-h4">Online Business</h4>
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">BUSINESS CATEGORY</h4>
-                    <h4 class="Heading-yellow-h4">["Manufacturing Business"]</h4>
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">PHONE Number</h4>
-                    <h4 class="Heading-yellow-h4">3128804060</h4>
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">UPLOAD DOCUMENTS</h4>
-                    <!-- <h4 class="Heading-yellow-h4">3128804060</h4> -->
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">BUSINESS DESCRIPTION</h4>
-                    <!-- <h4 class="Heading-yellow-h4">3128804060</h4> -->
-                </div>
-            </div>
-            <hr />
-            <div class="row border-row">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <h4 class="Heading-h4">EDIT></h4>
-                    <button class="view-more">
-                        VIEW MORE
-                    </button>
-                    <!-- <h4 class="Heading-yellow-h4">3128804060</h4> -->
-                </div>
-            </div>
-
-        </div>
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
             <div class="card-dashboard  col-12uy">
                 <div class="row">
@@ -114,8 +26,13 @@
                             <h4 class="review-dashbord">
                                 MY REVIEW AND RATING
                             </h4>
+<<<<<<< HEAD
                             <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
+=======
+                            <div class="gray-number">0</div><br />
+                            <span class="view-more dashboard"><a href="review-and-rating.php">VIEW MORE</a></span>
+>>>>>>> 4dc55eab8c28acbf3eba573799d68270a0bd49ae
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
@@ -123,8 +40,13 @@
                             <h4 class="review-dashbord">
                                 BUSINESS ADDRESS
                             </h4>
+<<<<<<< HEAD
                             <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
+=======
+                            <div class="gray-number">0</div><br />
+                            <span class="view-more dashboard"><a href="business-address.php">VIEW MORE</a></span>
+>>>>>>> 4dc55eab8c28acbf3eba573799d68270a0bd49ae
                         </div>
                     </div>
                 </div>
@@ -135,17 +57,29 @@
                             <h4 class="review-dashbord">
                                 MY UPLOAD PRODUCTS
                             </h4>
+<<<<<<< HEAD
                             <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
+=======
+                            <div class="gray-number">0</div><br />
+                            <span class="view-more dashboard"><a href="upload-product.php">VIEW MORE</a></span>
+>>>>>>> 4dc55eab8c28acbf3eba573799d68270a0bd49ae
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
+<<<<<<< HEAD
                                 BIDS PLACED ON MY <br/>LISTED PRODUCT
                             </h4>
                             <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
+=======
+                                BIDS PLACED ON MY <br />LISTED PRODUCT
+                            </h4>
+                            <div class="gray-number">0</div><br />
+                            <span class="view-more dashboard"><a href="bids-placed.php">VIEW MORE</a></span>
+>>>>>>> 4dc55eab8c28acbf3eba573799d68270a0bd49ae
                         </div>
                     </div>
                 </div>
@@ -155,14 +89,41 @@
                         <div class="card-2">
                             <h4 class="review-dashbord">
                                 MY ORDERS
+<<<<<<< HEAD
                             </h4>
                             <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
+=======
+                            </h4>
+                            <div class="gray-number">0</div><br />
+                            <span class="view-more dashboard"><a href="orders.php">VIEW MORE</a></span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
+                                MY DELIVARY AREAS
+                            </h4>
+                            <div class="gray-number">0</div><br />
+                            <span class="view-more dashboard"><a href="delivary-area.php">VIEW MORE</a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                        <div class="card-2">
+                            <h4 class="review-dashbord">
+                                REFUND REQUESTS
+                            </h4>
+                            <div class="gray-number">0</div><br />
+                            <span class="view-more dashboard"><a href="refund-request.php">VIEW MORE</a></span>
+>>>>>>> 4dc55eab8c28acbf3eba573799d68270a0bd49ae
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                        <div class="card-2">
+                            <h4 class="review-dashbord">
+<<<<<<< HEAD
                               MY DELIVARY  AREAS
                             </h4>
                             <div class="gray-number">0</div><br/>
@@ -187,12 +148,25 @@
                             </h4>
                             <div class="gray-number">0</div><br/>
                             <span class="view-more">VIEW MORE</span>
+=======
+                                Account settings
+                            </h4>
+                            <div class="gray-number">0</div><br />
+                            <span class="view-more dashboard"><a href="account-settings.php">VIEW MORE</a></span>
+>>>>>>> 4dc55eab8c28acbf3eba573799d68270a0bd49ae
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
  </div>
     
     @endsection
+=======
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+@endsection
+>>>>>>> 4dc55eab8c28acbf3eba573799d68270a0bd49ae

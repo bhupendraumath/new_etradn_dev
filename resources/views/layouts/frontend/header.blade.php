@@ -1,5 +1,6 @@
 <!-- header -->
 <div class="header" id="home">
+	@if(empty(Auth::user()))
 	<div class="container-fluid">
 
 		<div class="col-12 col-sm-6 col-md-6 col-lg-6">
@@ -19,6 +20,7 @@
 		</div>
 
 	</div>
+	@endif
 </div>
 <!-- //header -->
 <!-- header-bot -->

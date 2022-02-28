@@ -45,4 +45,10 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/frontend/toastr.min.css',
         'resources/css/frontend/team.css'
 
-    ], 'public/assets/css/frontend/style.css');
+    ], 'public/assets/css/frontend/style.css')
+    .js([
+        'resources/js/frontend/auth/login.js'
+    ], 'public/assets/js/frontend/auth/login.js')
+    .js([
+        'resources/js/frontend/auth/registration.js'
+    ], 'public/assets/js/frontend/auth/registration.js');

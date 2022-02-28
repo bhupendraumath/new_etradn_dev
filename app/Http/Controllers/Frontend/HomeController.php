@@ -32,7 +32,7 @@ class HomeController extends Controller
      */
     public function contactUs()
     {
-        return view('frontend/contact-us');
+        return view('frontend/contactus');
     }
     
 

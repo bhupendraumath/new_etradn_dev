@@ -14,7 +14,26 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend/product/add');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function myUploadProduct()
+    {
+        return view('frontend/product/my-upload-product');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function bidsPlaced()
+    {
+        return view('frontend/bid-placed/index');
     }
 
     /**

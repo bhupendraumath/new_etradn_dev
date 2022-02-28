@@ -14,7 +14,16 @@ class SellerController extends Controller
      */
     public function dashboard()
     {
-       return view('frontend/seller/dashboard');
+        return view('frontend/seller/dashboard');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function businessInformation()
+    {
+        return view('frontend/seller/business-information');
     }
 
     /**

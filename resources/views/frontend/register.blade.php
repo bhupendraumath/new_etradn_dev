@@ -12,35 +12,75 @@
                     <h3 class="login-heading">
                         ACCOUNT REGISTER
                     </h3>
-                    <form>
+                    <form id="registrationFrm" method="post" action="{{route('registrationAction')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+
+                        <label for="lname" class="label-11">User type*</label>
+                        <div class="form-field">
+                            <select class="form-control" name="user_type" id="usertype" onchange="showDivuser(this)">
+                                <option value="">select</option>
+                                <option value="s">seller</option>
+                                <option value="b">buyer</option>
+                            </select>
+                        </div>
+
                         <label for="fname" class="label-11">First Name*</label>
                         <div class="form-field">
-                            <input type="text"  placeholder="Please enter your first name" required />
+                            <input type="text" placeholder="Please enter your first name" required name="first_name" />
                         </div>
 
                         <label for="lname" class="label-11">Last Name*</label>
                         <div class="form-field">
-                            <input type="text"  placeholder="Please enter your last name" required />
+                            <input type="text" placeholder="Please enter your last name" required name="last_name" />
                         </div>
-                        <label for="email" class="label-11">Phone Number or Email*</label>
+
+                        <label for="email" class="label-11"> Email*</label>
                         <div class="form-field">
-                            <input type="email"  placeholder="Email / Username" required />
+                            <input type="email" name="email" placeholder="Please enter your Email" />
                         </div>
                         <label for="lname" class="label-11">Telephone*</label>
                         <div class="form-field">
-                            <input type="text"  placeholder="Please enter your telephone" required />
+                            <input type="text" placeholder="Please enter your telephone" required name="phone" />
+                        </div>
+                        <div id="byseller">
+                            <label for="lname" class="label-11">Business Name*</label>
+                            <div class="form-field">
+                                <input type="text" placeholder="Please enter your Business Name" required name="business_name" />
+                            </div>
+                            <label for="lname" class="label-11">Select Business Type*</label>
+                            <div class="form-field">
+                                <select class="form-control" name="business_type_id">
+                                    <option value="">select</option>
+                                    @foreach($businesstype as $businesstypevalue)
+                                    <option value="{{$businesstypevalue->id}}">{{$businesstypevalue->typeName}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <label for="lname" class="label-11">Select Business Category*</label>
+                            <div class="form-field">
+                                <select class="form-control" name="business_category">
+                                    <option value="">select</option>
+                                    @foreach($businessCategory as $businessCategoryvalue)
+                                    <option value="{{$businessCategoryvalue->id}}">{{$businessCategoryvalue->categoryName}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <label for="lname" class="label-11">Business Address*</label>
+                            <div class="form-field">
+                                <input type="text" placeholder="Please enter your Business Address" required name="business_address" />
+                            </div>
                         </div>
                         <label for="password" class="label-11">Password*</label>
                         <div class="form-field">
-                            <input type="password"  placeholder="Password" required />
+                            <input type="password" placeholder="Password" required name="password" />
                         </div>
                         <label for="password" class="label-11">Confirm Password*</label>
                         <div class="form-field">
-                            <input type="password"  placeholder="Password" required />
+                            <input type="password" placeholder="Password" required name="password_confirmation" />
                         </div>
 
                         <div class="form-field">
-                            <button class="btn color-chnage-btn" type="submit">SEND</button>
+                            <button class="btn color-chnage-btn" id="registerBtn" type="submit">REGISTER</button>
                         </div>
 
                         <div class="form-field bottom">
@@ -62,69 +102,21 @@
 
 <!-- partial -->
 
-<!-- login -->
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content modal-info">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body modal-spa">
-                <div class="login-grids">
-                    <div class="login">
-                        <div class="login-bottom">
-                            <h3>Sign up for free</h3>
-                            <form>
-                                <div class="sign-up">
-                                    <h4>Email :</h4>
-                                    <input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">
-                                </div>
-                                <div class="sign-up">
-                                    <h4>Password :</h4>
-                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
 
-                                </div>
-                                <div class="sign-up">
-                                    <h4>Re-type Password :</h4>
-                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
-
-                                </div>
-                                <div class="sign-up">
-                                    <input type="submit" value="REGISTER NOW">
-                                </div>
-
-                            </form>
-                        </div>
-                        <div class="login-right">
-                            <h3>Sign in with your account</h3>
-                            <form>
-                                <div class="sign-in">
-                                    <h4>Email :</h4>
-                                    <input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">
-                                </div>
-                                <div class="sign-in">
-                                    <h4>Password :</h4>
-                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
-                                    <a href="#">Forgot password?</a>
-                                </div>
-                                <div class="single-bottom">
-                                    <input type="checkbox" id="brand" value="">
-                                    <label for="brand"><span></span>Remember Me.</label>
-                                </div>
-                                <div class="sign-in">
-                                    <input type="submit" value="SIGNIN">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <p>By logging in you agree to our <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- //login -->
 <a href="#sign-up" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
+{!! JsValidator::formRequest('App\Http\Requests\Frontend\UserRequest','#registrationFrm') !!}
 @endsection
+@push('scripts')
+<script>
+    function showDivuser(select) {
+        if (select.value == 's') {
+            document.getElementById('byseller').style.display = "block";
+        } else {
+            document.getElementById('byseller').style.display = "none";
+        }
+    }
+</script>
+<script src="{{ asset('assets/js/frontend/auth/registration.js') }}"></script>
+@endpush
