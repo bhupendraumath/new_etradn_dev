@@ -1,5 +1,6 @@
 <!-- header -->
 <div class="header" id="home">
+	@if(empty(Auth::user()))
 	<div class="container-fluid">
 
 		<div class="col-12 col-sm-6 col-md-6 col-lg-6">
@@ -19,6 +20,7 @@
 		</div>
 
 	</div>
+	@endif
 </div>
 <!-- //header -->
 <!-- header-bot -->
@@ -29,14 +31,16 @@
 			<a href="{{route('home')}}"> <img src="{{url('assets/images/frontend/logo.png')}}" alt="" srcset=""></a>
 		</div>
 		<!-- header-bot -->
-		<div class="col-md-2 col-sm-2 col-lg-2 col-xl-2"></div>
-		<div class="col-md-7 col-sm-7 col-lg-7 col-xl-7 header-middle">
+		<div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
+		<div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 header-middle">
 			<form action="#" method="post">
 				<input type="search" name="search" placeholder="Search here..." required="">
 				<button type="submit" class="searchbutton"><i class="fa fa-search"></i></button>
 				<div class="clearfix"></div>
 			</form>
 		</div>
+		@if(empty(Auth::user()))
+		
 		<div class="col-md-1 col-sm-1 col-lg-1 col-xl-1 header-middle">
 			<div class="rightpanel-for-mobile">
 				<form action="#" method="post" class="last">
@@ -53,6 +57,46 @@
 			</div>
 
 		</div>
+		@endif
+
+		<div class="col-md-2 col-sm-2 col-lg-2 col-xl-2 header-middle">
+
+			<div class="rightpanel-for-mobile header-user dropdown">
+				<i class="fa fa-globe color-right-account" aria-hidden="true"></i>
+				<div class="language-drop-down">
+
+					<!-- <span><b>Language</b></span> <br/> -->
+					<div class="">
+						<span class="dropbtn"><b>Language</b></span>
+
+						<div class="dropdown-content">
+							<a href="#">English</a>
+							<a href="#">Arabic</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		@if(!empty(Auth::user()))
+		<div class="col-md-1 col-sm-1 col-lg-1 col-xl-1 header-middle">
+
+			<div class="rightpanel-for-mobile Account header-user dropdown">
+				<i class="fas fa-user-circle Account color-right-account" aria-hidden="true"></i>
+				<div class="account-drop-down">
+					<div class="">
+						<span class="dropbtn"><b>Account</b></span>
+
+						<div class="dropdown-content">
+							<a href="{{route('seller.dashboard')}}">Dashboard</a>
+							<a href="{{route('logout')}}">Logout</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		@endif
 		<div class="clearfix"></div>
 
 	</div>

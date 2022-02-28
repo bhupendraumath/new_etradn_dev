@@ -1,3 +1,4 @@
+@if(empty(Auth::user()))
 <!-- Special  -->
 <section class="trigger section gutter-horizontal bg-gray gutter-vertical--m gutter-horizontal">
     <div class="customer-logos slider">
@@ -18,7 +19,7 @@
         <div class="slide-in-right slide"><img src="https://camo.githubusercontent.com/0112d20015b4dad56fbb07088e76552042539151/687474703a2f2f7069676d656e742e6769746875622e696f2f66616b652d6c6f676f732f6c6f676f732f766563746f722f636f6c6f722f70657465732d626c696e64732e737667" alt="Seitenalm" height="150" width="150"></a></div>
         <div class="slide-in-right slide"><img src="https://camo.githubusercontent.com/e4eb289d352d7c4cbb8493d6a212448036e3e2d2/687474703a2f2f7069676d656e742e6769746875622e696f2f66616b652d6c6f676f732f6c6f676f732f766563746f722f636f6c6f722f796f67612d626162792e737667" alt="Testerhof" height="150" width="150"></a></div>
 </section>
-
+@endif
 
 
 
@@ -67,10 +68,14 @@
                     </h3>
 
                     <ul class="colorwhite">
-                        <li>About Us
-                        </li>
-                        <li>Contact
-                        </li>
+                        <a href="{{route('about')}}">
+                            <li>About Us
+                            </li>
+                        </a>
+                        <a href="{{route('contact')}}">
+                            <li>Contact
+                            </li>
+                        </a>
                         <li>Returns
                         </li>
                         <li>Shipping & Payment</li>
