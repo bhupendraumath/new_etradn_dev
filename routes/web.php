@@ -5,7 +5,8 @@ use App\Http\Controllers\Frontend\{
     HomeController,
     UserController,
     ProductController,
-    SellerController
+    SellerController,
+    CommonController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -84,5 +85,29 @@ Route::group(
             'dashboard',
             [SellerController::class, 'dashboard']
         )->name('seller.dashboard');
+        Route::get(
+            'person-information',
+            [CommonController::class, 'personInformation']
+        )->name('personInformation');
+        Route::get(
+            'business-information',
+            [SellerController::class, 'businessInformation']
+        )->name('businessInformation');
+        Route::get(
+            'add-product',
+            [ProductController::class, 'index']
+        )->name('add-product');
+        Route::get(
+            'my-upload-product',
+            [ProductController::class, 'myUploadProduct']
+        )->name('myUploadProduct');
+        Route::get(
+            'bids-placed',
+            [ProductController::class, 'bidsPlaced']
+        )->name('bidsPlaced');
+        Route::get(
+            'account-setting',
+            [CommonController::class, 'accountSetting']
+        )->name('accountSetting');
     }
 );

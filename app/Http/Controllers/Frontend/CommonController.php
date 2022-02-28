@@ -5,25 +5,26 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SellerController extends Controller
+class CommonController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
+    public function personInformation()
     {
-        return view('frontend/seller/dashboard');
+        return view('frontend/seller/personal-information');
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function businessInformation()
+    public function accountSetting()
     {
-        return view('frontend/seller/business-information');
+        return view('frontend/seller/account-settings');
     }
 
     /**
