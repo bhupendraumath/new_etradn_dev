@@ -49,7 +49,7 @@
                             </div>
                             <label for="lname" class="label-11">Select Business Type*</label>
                             <div class="form-field">
-                                <select class="form-control" name="business_type_id">
+                                <select class="form-control" name="business_type_id" id="category-b">
                                     <option value="">select</option>
                                     @foreach($businesstype as $businesstypevalue)
                                     <option value="{{$businesstypevalue->id}}">{{$businesstypevalue->typeName}}</option>
@@ -58,7 +58,7 @@
                             </div>
                             <label for="lname" class="label-11">Select Business Category*</label>
                             <div class="form-field">
-                                <select class="form-control" name="business_category">
+                                <select class="form-control" name="business_category" id="business_type_id">
                                     <option value="">select</option>
                                     @foreach($businessCategory as $businessCategoryvalue)
                                     <option value="{{$businessCategoryvalue->id}}">{{$businessCategoryvalue->categoryName}}</option>

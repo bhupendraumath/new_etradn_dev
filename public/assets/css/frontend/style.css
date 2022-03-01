@@ -6595,6 +6595,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 /* 28-02-22 */
 /*blog*/
 
+select#usertype,select#category-b,select#business_type_id {
+    width: 80%;
+    margin-left: 42px;
+}
 h3.blog-heading:hover {
     border-bottom: 1px solid blue;
     color: blue;

@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class CommonController extends Controller
 {
+
+    public function home()
+    {
+       
+        
+        return view('frontend/home');
+    }
     /**
      * Display a listing of the resource.
      *
