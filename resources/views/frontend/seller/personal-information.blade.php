@@ -9,13 +9,6 @@
         height: 103px;
     }
 
-    /* .area {
-    border: 5px dotted #ccc;
-    padding: 37px;
-    width: 93%;
-    text-align: center;
-    margin-left: 3%;
-} */
 
     .drag {
         border: 5px dotted green;
@@ -52,29 +45,29 @@
 <!-- banner-bootom-w3-agileits -->
 <div class="banner-bootom-w3-agileits">
     <div class="container-fluid dashboard-container">
-   
+
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12 col-sm-offset-2 col-md-2">
             <div class="card-dashboard  col-12uy">
-                <!-- <h3>PASSWORD SETTINGS</h3>
-                <hr class="business-address"/> -->
+
 
                 <div class="card-profile">
                     <img src="{{url('assets/images/frontend/t1.jpg')}}" alt="">
                 </div>
                 <div class="form-settings-account">
-                    <form action="#" class="personal-details">
 
+                    <form class="personal-details" id="profile-update-form" enctype="multipart/form-data">
+                        {{csrf_field()}}
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="First Name*" />
+                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="First Name*" value="{{Auth::user()->firstName}}" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                    <input type="text" class="form-control 60per lock" name="lastname" placeholder="Last Name*" />
+                                    <input type="text" class="form-control 60per lock" name="lastname" placeholder="Last Name*" value="{{Auth::user()->lastName}}" />
                                 </div>
                             </div>
                         </div>
@@ -83,28 +76,13 @@
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="Prefered language*" />
+                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="Prefered language*" value="{{Auth::user()->user_language}}" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                    <input type="text" class="form-control 60per lock" name="lastname" placeholder="Phone*" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                <div class="inner-addon left-addon">
-                                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="Business Name*" />
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                <div class="inner-addon left-addon">
-                                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                    <input type="text" class="form-control 60per lock" name="lastname" placeholder="Minimum order*" />
+                                    <input type="text" class="form-control 60per lock" name="lastname" placeholder="Phone*" value="{{Auth::user()->phone_code}}"/>
                                 </div>
                             </div>
                         </div>
@@ -113,13 +91,28 @@
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="Addresss*" />
+                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="Business Name*" value="{{Auth::user()->business_name}}"/>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                    <input type="text" class="form-control 60per lock" name="lastname" placeholder="Online Business*" />
+                                    <input type="text" class="form-control 60per lock" name="lastname" placeholder="Minimum order*" value="{{Auth::user()->minimum_order}}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                                <div class="inner-addon left-addon">
+                                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="Addresss*"  value="{{Auth::user()->address}}"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                                <div class="inner-addon left-addon">
+                                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                    <input type="text" class="form-control 60per lock" name="lastname" placeholder="Online Business*" value="{{Auth::user()->business_type_id}}"/>
                                 </div>
                             </div>
                         </div>
@@ -129,11 +122,11 @@
                             <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="Business Category*" />
+                                    <input type="text" class="form-control 60per lock" name="fname" placeholder="Business Category*"  value="{{Auth::user()->category}}" />
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
-                                <textarea name="Message" placeholder="Business Description" required=""></textarea>
+                                <textarea name="Message" placeholder="Business Description" required="" value="{{Auth::user()->description}}"></textarea>
                             </div>
                         </div>
 

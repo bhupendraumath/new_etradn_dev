@@ -77,6 +77,10 @@ Route::get(
     '/product-details',
     [ProductController::class, 'show']
 )->name('product.details');
+Route::get(
+    '/logout',
+    [LoginController::class, 'logout']
+)->name('logout');
 
 Route::group(
     ['middleware' => 'user:web'],
@@ -109,9 +113,13 @@ Route::group(
             '/account-setting',
             [CommonController::class, 'accountSetting']
         )->name('accountSetting');
-        Route::get(
-            '/logout',
-            [LoginController::class, 'logout']
-        )->name('logout');
+
+        Route::post(
+            '/save-change-password',
+            [
+                CommonController::class,
+                'saveChangePassword'
+            ]
+        )->name('save/password');
     }
 );
