@@ -54,4 +54,7 @@ mix.js('resources/js/app.js', 'public/js')
     ], 'public/assets/js/frontend/auth/registration.js')
     .js([
         'resources/js/frontend/auth/change_password.js'
-    ], 'public/assets/js/frontend/auth/change_password.js');
+    ], 'public/assets/js/frontend/auth/change_password.js')
+    .js([
+        'resources/js/frontend/profile/update-user.js'
+    ], 'public/assets/js/frontend/profile/update-user.js');

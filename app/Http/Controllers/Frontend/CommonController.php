@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\ChangePasswordRequest;
+use App\Models\BusinessCategory;
+use App\Models\BusinessType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +26,13 @@ class CommonController extends Controller
      */
     public function personInformation()
     {
-        return view('frontend/seller/personal-information');
+        $businesstype = BusinessType::where('isActive', '=', 'y')->get();
+        $businessCategory = BusinessCategory::where('isActive', '=', 'y')->get();
+
+        return view(
+            'frontend/seller/personal-information',
+            compact('businesstype', 'businessCategory')
+        );
     }
 
     /**

@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\UserRequest;
+use App\Http\Requests\Frontend\UserUpdateRequest;
 use App\Models\BusinessCategory;
 use App\Models\BusinessType;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 
 class UserController extends Controller
@@ -134,5 +136,38 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Update admin profile action page
+     *
+     * @param \Illuminate\Http\Request $request request data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateProfile(UserUpdateRequest $request)
+    {
+        try {
+            $user = User::updateSellerWeb($request, Auth::user()->id);
+            if (!empty($user)) {
+                return response()->json(
+                    [
+                        'success' => true,
+                        'message' => trans('admin.update_profile')
+                    ]
+                );
+            }
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => trans('admin.something_went_wrong')
+                ]
+            );
+        } catch (\Exception $e) {
+
+            return response()->json(
+                ['success' => false, 'message' => $e->getMessage()]
+            );
+        }
     }
 }

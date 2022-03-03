@@ -121,5 +121,14 @@ Route::group(
                 'saveChangePassword'
             ]
         )->name('save/password');
+
+        Route::post(
+            '/update-profile',
+            [
+                UserController::class,
+                'updateProfile'
+            ]
+        )->name('updateProfile');
+
     }
 );
