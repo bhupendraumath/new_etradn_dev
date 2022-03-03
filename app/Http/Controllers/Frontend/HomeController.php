@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Product;
+use App\Models\Category;
+
 class HomeController extends Controller
 {
     /**
@@ -14,8 +17,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
-        return view('frontend/home');
+
+        $list=Category::with(['category_based_product'])
+        ->limit(4)
+        ->get();
+
+        $popular_produts=Category::with(['category_based_product'])
+        ->limit(1)
+        ->get();
+
+        $special_produts=Category::with(['category_based_product'])
+        ->limit(1)
+        ->get();
+
+        $latest_produts=Category::with(['category_based_product'])
+        ->limit(4)
+        ->get();
+
+        $feature_produts=Category::with(['category_based_product'])
+        ->limit(4)
+        ->get();
+        // dd($list);die;
+        return view('frontend/home',['data'=>$list,'popular_list'=>$popular_produts,'special_list'=>$special_produts,'latest_list'=>$latest_produts,'feature_list'=>$feature_produts]);
     }
     /**
      * Display about resource.

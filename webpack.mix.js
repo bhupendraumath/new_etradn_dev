@@ -30,6 +30,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/modernizr.custom.js',
         'resources/js/frontend/move-top.js',
         'resources/js/frontend/responsiveslides.min.js',
+        
 
         'public/vendor/jsvalidation/js/jsvalidation.min.js',
         'resources/js/frontend/toastr.min.js',
@@ -51,4 +52,10 @@ mix.js('resources/js/app.js', 'public/js')
     ], 'public/assets/js/frontend/auth/login.js')
     .js([
         'resources/js/frontend/auth/registration.js'
-    ], 'public/assets/js/frontend/auth/registration.js');
+    ], 'public/assets/js/frontend/auth/registration.js')
+    .js([
+        'resources/js/frontend/w3.js'
+        ], 'public/assets/js/frontend/w3.js');
+    
+
+        

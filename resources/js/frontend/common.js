@@ -1,3 +1,158 @@
+
+$(document).ready(function(){
+
+  $('.customer-logos').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    arrows: true,
+    dots: false,
+    pauseOnHover: true,
+    prevArrow: '<i class="slick-prev fas fa-angle-left"></i>',
+    nextArrow: '<i class="slick-next fas fa-angle-right"></i>',
+    responsive: [{
+        breakpoint: 768,
+        settings: {
+            slidesToShow: 1
+        }
+    }, {
+        breakpoint: 520,
+        settings: {
+            slidesToShow: 1
+        }
+    }]
+});
+
+
+  $('.product-show-list').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 1500,
+      arrows: true,
+      dots: false,
+      pauseOnHover: true,
+      prevArrow: '<i class="slick-prev fa fa-chevron-circle-left  top-left"></i>',
+      nextArrow: '<i class="slick-next fa fa-chevron-circle-right top-right"></i>',
+      responsive: [{
+          breakpoint: 768,
+          settings: {
+              slidesToShow: 1
+          }
+      }, {
+          breakpoint: 520,
+          settings: {
+              slidesToShow: 1
+          }
+      }]
+  });
+
+
+
+
+  $('.product-show-hot').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: true,
+    dots: false,
+    pauseOnHover: true,
+    prevArrow: '<i class="slick-prev fa fa-chevron-circle-left hot-left"></i>',
+    nextArrow: '<i class="slick-next fa fa-chevron-circle-right hot-right"></i>',
+    responsive: [{
+        breakpoint: 768,
+        settings: {
+            slidesToShow: 1
+        }
+    }, {
+        breakpoint: 520,
+        settings: {
+            slidesToShow: 1
+        }
+    }]
+});
+
+
+  
+  $('.show-special-list').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  arrows: true,
+  dots: false,
+  pauseOnHover: true,
+  prevArrow: '<i class="slick-prev fa fa-chevron-circle-left special-left"></i>',
+  nextArrow: '<i class="slick-next fa fa-chevron-circle-right special-right"></i>',
+  responsive: [{
+    breakpoint: 768,
+    settings: {
+      slidesToShow: 1
+    }
+  }, {
+    breakpoint: 520,
+    settings: {
+      slidesToShow: 1
+    }
+  }]
+  });
+
+
+  $('.product-latest_list').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    arrows: true,
+    dots: false,
+    pauseOnHover: true,
+    prevArrow: '<i class="slick-prev fa fa-chevron-circle-left latest-left"></i>',
+    nextArrow: '<i class="slick-next fa fa-chevron-circle-right latest-right"></i>',
+    responsive: [{
+        breakpoint: 768,
+        settings: {
+            slidesToShow: 1
+        }
+    }, {
+        breakpoint: 520,
+        settings: {
+            slidesToShow: 1
+        }
+    }]
+});
+  
+  // $('.product-latest_list').slick({
+  //   slidesToShow: 4,
+  //   slidesToScroll: 1,
+  //   autoplay: true,
+  //   autoplaySpeed: 3000,
+  //   arrows: true,
+  //   dots: false,
+  //   pauseOnHover: true,
+  //   prevArrow: '<i class="slick-prev fa fa-chevron-circle-left latest-left"></i>',
+  //   nextArrow: '<i class="slick-next fa fa-chevron-circle-right latest-right"></i>',
+  //   responsive: [{
+  //     breakpoint: 768,
+  //     settings: {
+  //       slidesToShow: 1
+  //     }
+  //   }, {
+  //     breakpoint: 520,
+  //     settings: {
+  //       slidesToShow: 1
+  //     }
+  //   }]
+  //   });
+  
+
+  
+
+
+});
+
+
 window.showButtonLoader = function (button, text = '', action) {
     if (action === 'disabled') {
         button.append('<span class="buttonLoader spinner-border spinner-border-sm ml-2"></span>');
@@ -23,6 +178,9 @@ window.onload = codeAddress;
 
 
 function openCity(evt, cityName="All") {
+
+  document.getElementById("all_id").innerHTML ="Hello rinky";
+
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -84,31 +242,6 @@ function openCity(evt, cityName="All") {
                         
     });
 
-    	
-$(document).ready(function(){
-    $('.customer-logos').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1000,
-    arrows: true,
-    dots: false,
-    pauseOnHover: false,
-    prevArrow: '<i class="slick-prev fas fa-angle-left"></i>',
-    nextArrow: '<i class="slick-next fas fa-angle-right"></i>',
-    responsive: [{
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 3
-      }
-    }, {
-      breakpoint: 520,
-      settings: {
-        slidesToShow: 2
-      }
-    }]
-    });
-  });
 
 
 
@@ -244,7 +377,6 @@ $(document).ready(function() {
             return false;
           }
         });
-        console.log("matched   ",matched);
   
         // if matched is true the current .product element is returned
         return matched;

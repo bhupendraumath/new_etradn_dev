@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Product;
+use App\Models\Category;
 class ProductController extends Controller
 {
     /**
@@ -65,9 +66,18 @@ class ProductController extends Controller
      */
     public function show()
     {
-        return view('frontend/product/details');
+        $list=Category::with('category_based_product')->get();
+        return view('frontend/product/details',['data'=>$list]);
     }
 
+    public function list()
+    {
+        $list=Category::with('category_based_product')->get();
+        // print_r($list);die;//
+        return view('frontend/product/details',['data'=>$list]);
+    }
+
+    
     /**
      * Show the form for editing the specified resource.
      *

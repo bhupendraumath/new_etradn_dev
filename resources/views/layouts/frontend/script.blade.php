@@ -33,7 +33,7 @@
     function open2(evt, cityName = "All2") {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent2");
-        console.log("jhdfj ", tabcontent)
+        // console.log("jhdfj ", tabcontent)
 
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
@@ -49,7 +49,7 @@
     function open3(evt, cityName = "All3") {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent3");
-        console.log("jhdfj ", tabcontent)
+        // console.log("jhdfj ", tabcontent)
 
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
@@ -79,33 +79,7 @@
 
     });
 
-
-    $(document).ready(function() {
-        $('.customer-logos').slick({
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 1000,
-            arrows: true,
-            dots: false,
-            pauseOnHover: false,
-            prevArrow: '<i class="slick-prev fas fa-angle-left"></i>',
-            nextArrow: '<i class="slick-next fas fa-angle-right"></i>',
-            responsive: [{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3
-                }
-            }, {
-                breakpoint: 520,
-                settings: {
-                    slidesToShow: 2
-                }
-            }]
-        });
-    });
-
-
+    
 
 
 
@@ -181,5 +155,58 @@
         paypal.minicart.reset();
     }
 
+
+
+    	
+    $(document).ready(function(){
+
+$('.product-show-list').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    arrows: false,
+    dots: false,
+    pauseOnHover: true,
+    prevArrow: '<i class="slick-prev fas fa-angle-left"></i>',
+    nextArrow: '<i class="slick-next fas fa-angle-right"></i>',
+    responsive: [{
+        breakpoint: 768,
+        settings: {
+            slidesToShow: 4
+        }
+    }, {
+        breakpoint: 520,
+        settings: {
+            slidesToShow: 3
+        }
+    }]
+});
+
+
+
+    $('.customer-logos').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    arrows: true,
+    dots: false,
+    pauseOnHover: false,
+    prevArrow: '<i class="slick-prev fas fa-angle-left"></i>',
+    nextArrow: '<i class="slick-next fas fa-angle-right"></i>',
+    responsive: [{
+    breakpoint: 768,
+    settings: {
+        slidesToShow: 3
+    }
+    }, {
+    breakpoint: 520,
+    settings: {
+        slidesToShow: 2
+    }
+    }]
+    });
+    });
 
 </script>

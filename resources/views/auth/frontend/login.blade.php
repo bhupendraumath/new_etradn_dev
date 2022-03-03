@@ -12,6 +12,9 @@
                     <h3 class="login-heading">
                         ACCOUNT LOGIN
                     </h3>
+
+
+                   
                     <form id="loginFrm" method="post" action="{{route('loginAction')}}">
                         {{csrf_field()}}
                         <label for="email" class="label-11">Phone Number or Email*</label>
@@ -24,7 +27,9 @@
                         </div>
                         <input type="hidden" name="remember" value="true">
                         <div class="form-field">
-                            <button id="loginBtn" class="btn color-chnage-btn" type="submit">LOGIN</button>
+
+                        <!-- id="loginBtn" -->
+                            <button class="btn color-chnage-btn" type="submit">LOGIN</button>
                         </div>
 
                         <div class="form-field bottom">

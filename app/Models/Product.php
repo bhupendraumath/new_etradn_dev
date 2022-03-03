@@ -20,7 +20,7 @@ class Product extends Model
     protected $table = 'tbl_product';
     public $timestamps = false;
     use HasFactory;
-
+    protected $with=['image','review'];
     protected $fillable = [
         'user_id',
         'cat_id',

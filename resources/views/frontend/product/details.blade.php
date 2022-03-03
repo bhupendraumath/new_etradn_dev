@@ -11,7 +11,7 @@
 </div>
 
 <!-- banner-bootom-w3-agileits -->
-<div class="banner-bootom-w3-agileits">
+<div class="banner-bootom-w3-agileits product-details">
     <div class="container-fluid">
         <div class="col-md-5 single-right-left ">
             <div class="grid images_3_of_2" style="">

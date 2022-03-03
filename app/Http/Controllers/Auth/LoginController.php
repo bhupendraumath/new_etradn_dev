@@ -42,7 +42,6 @@ class LoginController extends Controller
     {
 
 
-
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
             $this->sendLockoutResponse($request);
@@ -93,16 +92,24 @@ class LoginController extends Controller
         
         $request->session()->regenerate();
         $this->clearLoginAttempts($request);
-        if ($request->expectsJson()) {
-            $redirectionUrl = url('dashboard');
-            return response()->json(
-                [
-                    'success' => true,
-                    'message' => 'Login is successfull.',
-                    'redirectionUrl' => $redirectionUrl
-                ]
-            );
-        }
+
+        $redirectionUrl = url('dashboard');
+
+        return redirect($redirectionUrl)->with( 'message', 'Login is successfull.');
+
+
+        // if ($request->expectsJson()) {
+        //     $redirectionUrl = url('dashboard');
+
+        //     print_r($redirectionUrl);die;
+        //     return response()->json(
+        //         [
+        //             'success' => true,
+        //             'message' => 'Login is successfull.',
+        //             'redirectionUrl' => $redirectionUrl
+        //         ]
+        //     );
+        // }
     }
 
     /**
@@ -217,7 +224,7 @@ class LoginController extends Controller
             $this->guard('web')->logout();
         }
         $request->session()->flush();
-        $request->session()->regenerate();
+        // $request->session()->regenerate();
         return redirect('sign-in')
             ->with('message', 'You are now signed out')
             ->with('status', 'success')

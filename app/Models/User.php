@@ -303,7 +303,7 @@ class User extends Authenticatable
 
      */
 
-    public function checkLoginStatus($request)
+    public static function checkLoginStatus($request)
     {
         $where = array(
             'email' => $request->email,

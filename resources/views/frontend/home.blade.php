@@ -76,9 +76,16 @@
     </a>
     <!-- The Modal -->
 </div>
+
+
+{{--{{ $data }}--}} 
+
+
 <!-- //banner -->
 <div class="banner_bottom_agile_info">
     <div class="container-fluid  newclass">
+
+    <!-- Popular_list -->
         <div class="col-md-3 col-sm-3 col-lg-3 col-xl-3 col-12">
             <div class="card ">
                 <div class="row">
@@ -89,25 +96,56 @@
 
                     <div class="col-12 col-md-5 col-sm-5 col-lg-5 col-xl-5">
                         <div class="buttons-left-right">
-                            <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
-                            <i class="fa fa-chevron-circle-right" style="font-size:24px"></i>
+                            <!-- <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
+                            <i class="fa fa-chevron-circle-right" style="font-size:24px"></i> -->
                         </div>
                     </div>
 
                 </div>
                 <hr class="margin-top-bottom">
                 <div>
-                    <div class="row">
-
-                        <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
-                            <div class="images image-left">
+                    <div class="row product-show-hot slider">
+                    @if(!empty($popular_list))
+                          @foreach ($popular_list as $cat)
+                          @foreach ($cat->category_based_product as $product)
+                        <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide">
+                        <div class="images image-left">
+                                <div class="background-gray left-side">
+                                @if(!empty($product->image))
+                                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                @else
+                                <img src="{{url('assets/images/frontend/ciyp-bulk-image1.png')}}" alt="" srcset="" />
+                                @endif
+                                </div>
+                                    <br/>
+                                    <h4>{{$product->product_name}}</h4>
+                                    <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
+                                    
+                                    @if(!empty($product->review) && (count($product->review)!=0))
+                                    <div>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                    </div>
+                                    @else
+                                    <div>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                    </div>
+                                    @endif
+                                </div>
+                            <!-- <div class="images image-left">
                                 <div class="background-gray left-side">
                                     <img src="{{url('assets/images/frontend/ciyp-bulk-image1.png')}}" alt="" srcset="" />
                                 </div>
-
                                 <br />
 
-                                <h4>B2b Product Name</h4>
+                                <h4>{{$product->product_name}}</h4>
                                 <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
                                 <div>
                                     <span class="fa fa-star checked"></span>
@@ -118,8 +156,11 @@
 
                                 </div>
 
-                            </div>
+                            </div> -->
                         </div>
+                         @endforeach
+                        @endforeach
+                    @endif
                     </div>
                 </div>
             </div>
@@ -138,23 +179,16 @@
                     <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
 
                         <div class="buttons-left-right">
-                            <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
-                            <i class="fa fa-chevron-circle-right" style="font-size:24px"></i>
                         </div>
                         <ul class="popular-items tab">
+                        @if(!empty($data))
+                          @foreach ($data as $cat)
                             <li>
-                                <button class="tablinks" onclick="openCity(event, 'Fruits')">Fruits</button>
+                                <button class="tablinks"  id="{{$loop->index==0?'defaultOpen':''}}" onclick="openCity(event, '{{$cat->categoryName}}')">{{$cat->categoryName}}</button>
                             </li>
-                            <li>
-                                <button class="tablinks" onclick="openCity(event, 'Meet')">Meet</button>
-                            </li>
-                            <li>
-                                <button class="tablinks" onclick="openCity(event, 'Vegetables')">Vegetables</button>
-                            </li>
-                            <li>
-                                <button class="tablinks" onclick="openCity(event, 'All')" id="defaultOpen">
-                                    All</button>
-                            </li>
+                          @endforeach
+                        @endif
+                            
 
                         </ul>
 
@@ -163,406 +197,61 @@
                 </div>
                 <hr class="margin-top-bottom">
 
+                @if(!empty($data))
+                    @foreach ($data as $cat)
 
-                <div id="All" class="tabcontent all">
-                    <div class="row">
+                    
 
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-                                <div class="background-gray">
-                                    <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+                    <div id="{{$cat->categoryName}}" class="tabcontent">
+                    
+                    @if(!empty($cat->category_based_product))
+                        <div class="row product-show-list slider">
+                        @foreach ($cat->category_based_product as $product)
+                            <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3 slide">
+
+                            {{--{{$product->image['product_img']}}--}}
+
+                                <div class="images">
+                                @if(!empty($product->image))
+                                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                @else
+                                <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
+                                @endif
+                                    <br/>
+                                    <h4>{{$product->product_name}}</h4>
+                                    <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
+                                    
+                                    @if(!empty($product->review) && (count($product->review)!=0))
+                                    <div>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                    </div>
+                                    @else
+                                    <div>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                    </div>
+                                    @endif
                                 </div>
 
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
                             </div>
-
+                            
+                            @endforeach                           
+                           
                         </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-                                <div class="background-gray">
-                                    <img src="{{url('assets/images/frontend/product-2-191x132_copy.png')}}" alt="" srcset="" />
-                                </div>
-                                <br />
+                        
 
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-                                <div class="background-gray">
-                                    <img src="{{url('assets/images/frontend/pngkey.com-computer-png-44599.png')}}" alt="" srcset="" />
-                                </div>
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-                                <div class="background-gray">
-                                    <img src="{{url('assets/images/frontend/imgbin_home-appliance-washing-machine-refrigerator-png.png')}}" alt="" srcset="" />
-                                </div>
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-								<div class="images">
-									
-									<img src="images/kindpng_1404282.png" alt="" srcset=""/>
-									<br/>
-									<br/>
-								
-								<h4>B2b Product Name</h4>
-								<span>$100.00 &nbsp; <span> $90.00  </span></span>
-								</div>
-								
-							</div>
-							<div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-								<div class="images">
-									
-									<img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset=""/>
-									<br/>
-									<br/>
-								
-								<h4>B2b Product Name</h4>
-								<span>$100.00 &nbsp; <span> $90.00  </span></span>
-								</div>
-								
-							</div> -->
-
+                    @endif
+                    
                     </div>
-                </div>
-
-                <div id="Vegetables" class="tabcontent">
-                    <div class="row">
-
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-
-                                <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
-                                <br />
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-
-                                <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
-                                <br />
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-
-                                <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
-                                <br />
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-
-                                <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
-                                <br />
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div id="Meet" class="tabcontent">
-                    <div class="row">
-
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-                                <div class="background-gray">
-                                    <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
-                                </div>
-
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-                                <div class="background-gray">
-                                    <img src="{{url('assets/images/frontend/product-2-191x132_copy.png')}}" alt="" srcset="" />
-                                </div>
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-                                <div class="background-gray">
-                                    <img src="{{url('assets/images/frontend/pngkey.com-computer-png-44599.png')}}" alt="" srcset="" />
-                                </div>
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-                                <div class="background-gray">
-                                    <img src="{{url('assets/images/frontend/imgbin_home-appliance-washing-machine-refrigerator-png.png')}}" alt="" srcset="" />
-                                </div>
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-								<div class="images">
-									
-									<img src="images/kindpng_1404282.png" alt="" srcset=""/>
-									<br/>
-									<br/>
-								
-								<h4>B2b Product Name</h4>
-								<span>$100.00 &nbsp; <span> $90.00  </span></span>
-								</div>
-								
-							</div>
-							<div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-								<div class="images">
-									
-									<img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset=""/>
-									<br/>
-									<br/>
-								
-								<h4>B2b Product Name</h4>
-								<span>$100.00 &nbsp; <span> $90.00  </span></span>
-								</div>
-								
-							</div> -->
-
-                    </div>
-                </div>
-
-                <div id="Fruits" class="tabcontent">
-                    <div class="row">
-
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-
-                                <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
-                                <br />
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-
-                                <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
-                                <br />
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-
-                                <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
-                                <br />
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-                            <div class="images">
-
-                                <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
-                                <br />
-                                <br />
-
-                                <h4>B2b Product Name</h4>
-                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-                                    <span class="fa fa-star-o checked"></span>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
+                    @endforeach
+                @endif 
 
 
 
@@ -571,6 +260,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Special  -->
 
@@ -585,42 +275,76 @@
                         <div class="row">
                             <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xl-8">
                                 <p class="font-family-change">SPEACIAL ITEMS</p>
-
+                                <!-- special_list -->
                             </div>
 
                             <div class="col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4">
                                 <div class="buttons-left-right">
-                                    <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
-                                    <i class="fa fa-chevron-circle-right" style="font-size:24px"></i>
+                                    <!-- <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
+                                    <i class="fa fa-chevron-circle-right" style="font-size:24px"></i> -->
                                 </div>
                             </div>
 
                         </div>
                         <hr class="margin-top-bottom">
                         <div>
-                            <div class="row">
-
-                                <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
-                                    <div class="images image-left">
-                                        <div class="background-gray left-side">
-                                            <img src="{{url('assets/images/frontend/pngkey.com-box-png-274941 (1).png')}}" alt="" srcset="" />
-                                        </div>
-
-                                        <br />
-
-                                        <h4>B2b Product Name</h4>
-                                        <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                                        <div>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star-o checked"></span>
-                                            <span class="fa fa-star-o checked"></span>
-
-                                        </div>
-
-                                    </div>
+                            <div class="row show-special-list slider">
+                                @if(!empty($special_list))
+                                @foreach ($special_list as $cat)
+                                @foreach ($cat->category_based_product as $product)
+                        <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide">
+                        <div class="images image-left">
+                                <div class="background-gray left-side">
+                                @if(!empty($product->image))
+                                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                @else
+                                <img src="{{url('assets/images/frontend/ciyp-bulk-image1.png')}}" alt="" srcset="" />
+                                @endif
                                 </div>
+                                    <br/>
+                                    <h4>{{$product->product_name}}</h4>
+                                    <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
+                                    
+                                    @if(!empty($product->review) && (count($product->review)!=0))
+                                    <div>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                    </div>
+                                    @else
+                                    <div>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                        <span class="fa fa-star-o checked"></span>
+                                    </div>
+                                    @endif
+                                </div>
+                            <!-- <div class="images image-left">
+                                <div class="background-gray left-side">
+                                    <img src="{{url('assets/images/frontend/ciyp-bulk-image1.png')}}" alt="" srcset="" />
+                                </div>
+                                <br />
+
+                                <h4>{{$product->product_name}}</h4>
+                                <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
+                                <div>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star-o checked"></span>
+                                    <span class="fa fa-star-o checked"></span>
+
+                                </div>
+
+                            </div> -->
+                        </div>
+                         @endforeach
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -673,7 +397,6 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
                     <div class="card">
-                        <!-- ghkhfghj	 -->
 
                         <div class="row">
 
@@ -740,7 +463,6 @@
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
                     <div class="card">
-                        <!-- ghkhfghj	 -->
 
                         <div class="row">
 
@@ -752,23 +474,18 @@
                             <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
 
                                 <div class="buttons-left-right">
-                                    <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
-                                    <i class="fa fa-chevron-circle-right" style="font-size:24px"></i>
+                                    <!-- <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
+                                    <i class="fa fa-chevron-circle-right" style="font-size:24px"></i> -->
                                 </div>
                                 <ul class="popular-items tab">
+
+                                    @if(!empty($latest_list))
+                                    @foreach ($latest_list as $cat)
                                     <li>
-                                        <button class="tablinks2" onclick="open2(event, 'Fruits2')">Fruits</button>
+                                    <button class="tablinks2"  id="{{$loop->index==0?'defaultOpen2':''}}" onclick="open2(event, '{{$cat->categoryName}}2')">{{$cat->categoryName}}</button>
                                     </li>
-                                    <li>
-                                        <button class="tablinks2" onclick="open2(event, 'Meet2')">Meet</button>
-                                    </li>
-                                    <li>
-                                        <button class="tablinks2" onclick="open2(event, 'Vegetables2')">Vegetables</button>
-                                    </li>
-                                    <li>
-                                        <button class="tablinks2" onclick="open2(event, 'All2')" id="defaultOpen2">
-                                            All</button>
-                                    </li>
+                                    @endforeach
+                                    @endif
 
                                 </ul>
 
@@ -777,8 +494,62 @@
                         </div>
                         <hr class="margin-top-bottom">
 
+                        @if(!empty($latest_list))
+                            @foreach ($latest_list as $cat)                            
 
-                        <div id="All2" class="tabcontent2 all">
+                            <div id="{{$cat->categoryName}}2" class="tabcontent2 all">
+                            
+                            @if(!empty($cat->category_based_product))
+                                <div class="row product-latest_list slider">
+                                @foreach ($cat->category_based_product as $product)
+                                    <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xs-12 slide">
+
+                                    {{--{{$product->image['product_img']}}--}}
+
+                                        <div class="images">
+                                        @if(!empty($product->image))
+                                            <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                        @else
+                                        <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
+                                        @endif
+                                            <br/>
+                                            <h4>{{$product->product_name}}</h4>
+                                            <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
+                                            
+                                            @if(!empty($product->review) && (count($product->review)!=0))
+                                            <div>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star-o checked"></span>
+                                                <span class="fa fa-star-o checked"></span>
+                                            </div>
+                                            @else
+                                            <div>
+                                                <span class="fa fa-star-o checked"></span>
+                                                <span class="fa fa-star-o checked"></span>
+                                                <span class="fa fa-star-o checked"></span>
+                                                <span class="fa fa-star-o checked"></span>
+                                                <span class="fa fa-star-o checked"></span>
+                                            </div>
+                                            @endif
+                                        </div>
+
+                                    </div>
+                                    
+                                    @endforeach                           
+                                
+                                </div>
+                                
+
+                            @endif
+                            
+                            </div>
+                            @endforeach
+                        @endif 
+
+
+                        <!-- <div id="All2" class="tabcontent2 all">
                             <div class="row">
 
                                 <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
@@ -862,31 +633,7 @@
                                         </div>
                                     </div>
 
-                                </div>
-                                <!-- <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="images/kindpng_1404282.png" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div>
-									<div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div> -->
+                                </div>                              
 
                             </div>
                         </div>
@@ -1063,30 +810,7 @@
                                     </div>
 
                                 </div>
-                                <!-- <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="images/kindpng_1404282.png" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div>
-									<div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div> -->
+                               
 
                             </div>
                         </div>
@@ -1176,7 +900,7 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> -->
 
 
 
@@ -1189,7 +913,6 @@
                         <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-12">
                             <img src="{{url('assets/images/frontend/download (2).png')}}" class="ad-right" alt="">
 
-                            <!-- <img src="images/Layer_63.png" alt=""> -->
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-12">
                             <div class="right-adv">
@@ -1205,7 +928,6 @@
 
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
                     <div class="card">
-                        <!-- ghkhfghj	 -->
 
                         <div class="row">
 
@@ -1221,7 +943,15 @@
                                     <i class="fa fa-chevron-circle-right" style="font-size:24px"></i>
                                 </div>
                                 <ul class="popular-items tab">
-                                    <li>
+
+                                    @if(!empty($feature_list))
+                                        @foreach ($feature_list as $cat)
+                                            <li>
+                                                <button class="tablinks"  id="{{$loop->index==0?'defaultOpen3':''}}" onclick="open3(event, '{{$cat->categoryName}}3')">{{$cat->categoryName}}</button>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                    <!-- <li>
                                         <button class="tablinks3" onclick="open3(event, 'Fruits3')">Fruits</button>
                                     </li>
                                     <li>
@@ -1233,7 +963,7 @@
                                     <li>
                                         <button class="tablinks3" onclick="open3(event, 'All3')" id="defaultOpen3">
                                             All</button>
-                                    </li>
+                                    </li> -->
 
                                 </ul>
 
@@ -1243,7 +973,140 @@
                         <hr class="margin-top-bottom">
 
 
-                        <div id="All3" class="tabcontent3 all">
+                        @if(!empty($feature_list))
+                         @foreach ($feature_list as $cat)
+
+                    
+
+                            <div id="{{$cat->categoryName}}3" class="tabcontent3">
+                            
+                            @if(!empty($cat->category_based_product))
+                                <div class="row product-feature_list slider">
+                                @foreach ($cat->category_based_product as $product)
+                                    <div class="col-12 col-xs-12 col-md-4 col-sm-4 col-lg-4 col-xl-4 reducewidth slide">
+
+                                        <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
+                                            <div class="background-gray new-size">
+                                            @if(!empty($product->image))
+                                                <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+                                            @else
+                                            <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
+                                            @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
+                                                <h4>{{$product->product_name}}</h4>
+                                                <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
+                                                
+                                                @if(!empty($product->review) && (count($product->review)!=0))
+                                                <div>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star-o checked"></span>
+                                                    <span class="fa fa-star-o checked"></span>
+                                                </div>
+                                                @else
+                                                <div>
+                                                    <span class="fa fa-star-o checked"></span>
+                                                    <span class="fa fa-star-o checked"></span>
+                                                    <span class="fa fa-star-o checked"></span>
+                                                    <span class="fa fa-star-o checked"></span>
+                                                    <span class="fa fa-star-o checked"></span>
+                                                </div>
+                                                @endif
+                                        </div>
+
+
+
+                                    </div>
+                                    @endforeach                           
+                                
+                                </div>
+                                
+
+                            @endif
+                            
+                            </div>
+                            @endforeach
+                        @endif 
+
+
+                        <div id="Fruits3" class="tabcontent3">
+                            <div class="row">
+
+                                <div class="col-12 col-xs-12 col-md-4 col-sm-4 col-lg-4 col-xl-4 reducewidth">
+
+                                    <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
+                                        <div class="background-gray new-size">
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
+                                        <h4>Product Name</h4>
+                                        <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
+                                        <div>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star-o checked"></span>
+                                            <span class="fa fa-star-o checked"></span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-12 col-xs-12 col-md-4 col-sm-4 col-lg-4 col-xl-4 reducewidth">
+
+                                    <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
+                                        <div class="background-gray new-size">
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
+                                        <h4>Product Name</h4>
+                                        <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
+                                        <div>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star-o checked"></span>
+                                            <span class="fa fa-star-o checked"></span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-12 col-xs-12 col-md-4 col-sm-4 col-lg-4 col-xl-4 reducewidth">
+
+                                    <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
+                                        <div class="background-gray new-size">
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
+                                        <h4>Product Name</h4>
+                                        <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
+                                        <div>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star-o checked"></span>
+                                            <span class="fa fa-star-o checked"></span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                
+
+                            </div>
+                        </div>
+
+                        <!-- <div id="All3" class="tabcontent3 all">
                             <div class="row">
 
                                 <div class="col-12 col-xs-12 col-md-4 col-sm-4 col-lg-4 col-xl-4 reducewidth">
@@ -1312,30 +1175,7 @@
 
                                 </div>
 
-                                <!-- <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="images/kindpng_1404282.png" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div>
-									<div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div> -->
+                              
 
                             </div>
                             <div class="row margin-top">
@@ -1477,30 +1317,6 @@
 
                                 </div>
 
-                                <!-- <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="images/kindpng_1404282.png" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div>
-									<div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div> -->
 
                             </div>
                         </div>
@@ -1574,30 +1390,7 @@
 
                                 </div>
 
-                                <!-- <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="images/kindpng_1404282.png" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div>
-									<div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div> -->
+                                
 
                             </div>
                         </div>
@@ -1671,33 +1464,10 @@
 
                                 </div>
 
-                                <!-- <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="images/kindpng_1404282.png" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div>
-									<div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3">
-										<div class="images">
-											
-											<img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset=""/>
-											<br/>
-											<br/>
-										
-										<h4>B2b Product Name</h4>
-										<span>$100.00 &nbsp; <span> $90.00  </span></span>
-										</div>
-										
-									</div> -->
+                               
 
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -1712,3 +1482,9 @@
 <a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 @endsection
+
+@push('scripts')
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+@endpush

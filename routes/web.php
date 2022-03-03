@@ -1,6 +1,6 @@
 <?php
 
-
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\{
     HomeController,
     UserController,
@@ -12,9 +12,7 @@ use App\Http\Controllers\Auth\{
     LoginController,
     ForgotPasswordController,
 };
-
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,84 +32,96 @@ Route::get(
         Artisan::call('config:clear');
         Artisan::call('view:clear');
         echo "Cache clear successfully";
-        dd();
+        // dd();
     }
 );
 
 // Auth::routes();
-
 Route::get(
     '/',
-    [CommonController::class, 'home']
+    [HomeController::class, 'index']
+)->name('home');
+
+Route::get(
+    'home',
+    [HomeController::class, 'index']
 )->name('home');
 Route::get(
-    '/sign-in',
+    'sign-in',
     [LoginController::class, 'loginForm']
 )->name('login');
+
+
 Route::post(
-    '/loginAction',
+    'loginAction',
     [LoginController::class, 'loginAction']
 )->name('loginAction');
 
+Route::post(
+    '/logout',
+    [LoginController::class, 'logout']
+)->name('logout');
 Route::get(
-    '/sign-up',
+    'sign-up',
     [UserController::class, 'index']
 )->name('registration');
 
 Route::post(
-    '/registrationAction',
+    'registrationAction',
     [UserController::class, 'registrationAction']
 )->name('registrationAction');
 
 Route::get(
-    '/about-us',
+    'about-us',
     [HomeController::class, 'about']
 )->name('about');
 
 Route::get(
-    '/contact-us',
+    'contact-us',
     [HomeController::class, 'contactUs']
 )->name('contact');
 
 Route::get(
-    '/product-details',
+    'product-details',
     [ProductController::class, 'show']
 )->name('product.details');
+
+//list of product
+Route::get(
+    'product-list',
+    [ProductController::class, 'list']
+)->name('product.list');
 
 Route::group(
     ['middleware' => 'user:web'],
     function () {
         Route::get(
-            '/dashboard',
+            'dashboard',
             [SellerController::class, 'dashboard']
         )->name('seller.dashboard');
         Route::get(
-            '/person-information',
+            'person-information',
             [CommonController::class, 'personInformation']
         )->name('personInformation');
         Route::get(
-            '/business-information',
+            'business-information',
             [SellerController::class, 'businessInformation']
         )->name('businessInformation');
         Route::get(
-            '/add-product',
+            'add-product',
             [ProductController::class, 'index']
         )->name('add-product');
         Route::get(
-            '/my-upload-product',
+            'my-upload-product',
             [ProductController::class, 'myUploadProduct']
         )->name('myUploadProduct');
         Route::get(
-            '/bids-placed',
+            'bids-placed',
             [ProductController::class, 'bidsPlaced']
         )->name('bidsPlaced');
         Route::get(
-            '/account-setting',
+            'account-setting',
             [CommonController::class, 'accountSetting']
         )->name('accountSetting');
-        Route::get(
-            '/logout',
-            [LoginController::class, 'logout']
-        )->name('logout');
     }
 );
