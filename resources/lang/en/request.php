@@ -145,4 +145,6 @@ return [
     'page_name_min' => 'Title must be at least 3 characters.',
     'page_name_max' => 'Title cannot exceed 50 characters.',
     'email_max' => 'Email cannot exceed 50 characters.',
+
+    'current_password' => 'Wrong old password',
 ];

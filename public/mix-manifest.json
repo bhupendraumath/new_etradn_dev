@@ -3,6 +3,8 @@
     "/assets/js/frontend/auth/login.js": "/assets/js/frontend/auth/login.js",
     "/assets/js/frontend/auth/registration.js": "/assets/js/frontend/auth/registration.js",
     "/assets/js/frontend/w3.js": "/assets/js/frontend/w3.js",
+    "/assets/js/frontend/auth/change_password.js": "/assets/js/frontend/auth/change_password.js",
+    "/assets/js/frontend/profile/update-user.js": "/assets/js/frontend/profile/update-user.js",
     "/css/app.css": "/css/app.css",
     "/assets/js/frontend/main.js": "/assets/js/frontend/main.js",
     "/assets/css/frontend/style.css": "/assets/css/frontend/style.css"

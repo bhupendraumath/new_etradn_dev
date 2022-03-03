@@ -85,6 +85,10 @@ Route::get(
     'product-details',
     [ProductController::class, 'show']
 )->name('product.details');
+Route::get(
+    '/logout',
+    [LoginController::class, 'logout']
+)->name('logout');
 
 //list of product
 Route::get(
@@ -123,5 +127,22 @@ Route::group(
             'account-setting',
             [CommonController::class, 'accountSetting']
         )->name('accountSetting');
+
+        Route::post(
+            '/save-change-password',
+            [
+                CommonController::class,
+                'saveChangePassword'
+            ]
+        )->name('save/password');
+
+        Route::post(
+            '/update-profile',
+            [
+                UserController::class,
+                'updateProfile'
+            ]
+        )->name('updateProfile');
+
     }
 );

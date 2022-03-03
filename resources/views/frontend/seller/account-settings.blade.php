@@ -23,19 +23,19 @@
                 <h3>PASSWORD SETTINGS</h3>
                 <hr class="business-address" />
                 <div class="form-settings-account">
-                    <form action="#">
-
+                    <form id="change-password-form" action="{{route('save/password') }}" method="POST">
+                        {{csrf_field()}}
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <i class="glyphicon glyphicon-lock"></i>
-                                    <input type="text" class="form-control 60per lock" name="Current-password" placeholder="Current Password*" />
+                                    <input type="text" class="form-control 60per lock" name="current_password" placeholder="Current Password*" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <i class="glyphicon glyphicon-lock"></i>
-                                    <input type="text" class="form-control 60per lock" name="New-password" placeholder="New Password*" />
+                                    <input type="text" class="form-control 60per lock" name="password" placeholder="New Password*" />
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
                                     <i class="glyphicon glyphicon-lock"></i>
-                                    <input type="text" class="form-control" name="Confirm-password" placeholder="Confirm Password*" />
+                                    <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password*" />
                                 </div>
                             </div>
 
@@ -53,15 +53,14 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="buttons-account-seetings">
-                                    <input type="submit" value="CHANGE PASSWORD" class="change-password">
+                                    <input type="submit" value="CHANGE PASSWORD" class="change-password" id="submit-btn">
+                                    <!-- <button type="submit" id="submit-btn" class="btn btn-primary mw-210 ml-20 ripple-effect">CHANGE PASSWORD</button> -->
                                 </div>
                             </div>
 
                         </div>
-
-
-
                     </form>
+
                 </div>
 
                 <h3 class="margin-top-heading">NOTIFICATION SETTINGS</h3>
@@ -144,4 +143,6 @@
             </div>
         </div>
     </div>
+    {!! JsValidator::formRequest('App\Http\Requests\Frontend\ChangePasswordRequest','#change-password-form') !!}
+    <script type="text/javascript" src="{{asset('assets/js/frontend/auth/change_password.js')}}"></script>
     @endsection

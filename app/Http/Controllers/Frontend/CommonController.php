@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ChangePasswordRequest;
+use App\Models\BusinessCategory;
+use App\Models\BusinessType;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommonController extends Controller
 {
 
     public function home()
     {
-       
-        
+
+
         return view('frontend/home');
     }
     /**
@@ -21,7 +26,13 @@ class CommonController extends Controller
      */
     public function personInformation()
     {
-        return view('frontend/seller/personal-information');
+        $businesstype = BusinessType::where('isActive', '=', 'y')->get();
+        $businessCategory = BusinessCategory::where('isActive', '=', 'y')->get();
+
+        return view(
+            'frontend/seller/personal-information',
+            compact('businesstype', 'businessCategory')
+        );
     }
 
     /**
@@ -98,5 +109,40 @@ class CommonController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * Function saveChangePasswordREquest
+     *
+     * @param AdminChangePasswordRequest $request 
+     * 
+     * @return void
+     */
+    public function saveChangePassword(ChangePasswordRequest $request)
+    {
+        try {
+            $id = Auth::guard('web')->user()->id;
+            $data = array(
+                'password' => bcrypt($request->password)
+            );
+
+            $changePassword = User::where('id', $id)->update($data);
+            if (!empty($changePassword)) {
+                return response()->json(
+                    ['success' => true, 'message' => trans('admin.password_changed')]
+                );
+            }
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => trans('admin.something_went_wrong')
+                ]
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                ['success' => false, 'message' => $e->getMessage()]
+            );
+        }
     }
 }

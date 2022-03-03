@@ -61,5 +61,6 @@ return [
         ]
     ],
 
-    'user_registration' => 'Your registration succesfull.'
+    'user_registration' => 'Your registration succesfull.',
+    'password_changed' => 'Password changed successfully',
 ];
