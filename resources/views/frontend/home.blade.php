@@ -974,9 +974,7 @@
 
 
                         @if(!empty($feature_list))
-                         @foreach ($feature_list as $cat)
-
-                    
+                         @foreach ($feature_list as $cat)                    
 
                             <div id="{{$cat->categoryName}}3" class="tabcontent3">
                             

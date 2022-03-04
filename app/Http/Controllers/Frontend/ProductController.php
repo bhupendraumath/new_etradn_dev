@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Brand;
+
 class ProductController extends Controller
 {
     /**
@@ -72,9 +74,11 @@ class ProductController extends Controller
 
     public function list($id)
     {
-        // $list=Category::with('category_based_product')->get();
-        // print_r($list);die;//
-        return view('frontend/product/cat-product');
+        $list=Product::whereCatId($id)
+        ->paginate(12);
+
+        $brand_list=Brand::all();
+        return view('frontend/product/cat-product',['list'=>$list,'brand_list'=>$brand_list]);
     }
 
     
