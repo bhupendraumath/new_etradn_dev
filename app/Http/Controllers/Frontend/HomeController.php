@@ -22,6 +22,9 @@ class HomeController extends Controller
         ->limit(4)
         ->get();
 
+        $category_list=Category::with(['category_based_product'])
+        ->get();
+
         $popular_produts=Category::with(['category_based_product'])
         ->limit(1)
         ->get();
@@ -38,7 +41,7 @@ class HomeController extends Controller
         ->limit(4)
         ->get();
         // dd($list);die;
-        return view('frontend/home',['data'=>$list,'popular_list'=>$popular_produts,'special_list'=>$special_produts,'latest_list'=>$latest_produts,'feature_list'=>$feature_produts]);
+        return view('frontend/home',['data'=>$list,'popular_list'=>$popular_produts,'special_list'=>$special_produts,'latest_list'=>$latest_produts,'feature_list'=>$feature_produts,'category_list'=>$category_list]);
     }
     /**
      * Display about resource.

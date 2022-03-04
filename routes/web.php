@@ -92,7 +92,7 @@ Route::get(
 
 //list of product
 Route::get(
-    'product-list',
+    '/product-list/{id}',
     [ProductController::class, 'list']
 )->name('product.list');
 

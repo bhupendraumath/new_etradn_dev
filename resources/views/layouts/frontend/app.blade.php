@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    @include('layouts/frontend/header')
+    @include('layouts/frontend/header', ['categories' => App\Models\Category::limit(14)->get()])
     <main class="py-4">
         @yield('content')
     </main>

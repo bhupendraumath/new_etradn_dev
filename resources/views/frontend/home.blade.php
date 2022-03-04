@@ -939,15 +939,15 @@
                             <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
 
                                 <div class="buttons-left-right">
-                                    <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
-                                    <i class="fa fa-chevron-circle-right" style="font-size:24px"></i>
+                                    <!-- <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
+                                    <i class="fa fa-chevron-circle-right" style="font-size:24px"></i> -->
                                 </div>
                                 <ul class="popular-items tab">
 
                                     @if(!empty($feature_list))
                                         @foreach ($feature_list as $cat)
                                             <li>
-                                                <button class="tablinks"  id="{{$loop->index==0?'defaultOpen3':''}}" onclick="open3(event, '{{$cat->categoryName}}3')">{{$cat->categoryName}}</button>
+                                                <button class="tablinks3"  id="{{$loop->index==0?'defaultOpen3':''}}" onclick="open3(event, '{{$cat->categoryName}}3')">{{$cat->categoryName}}</button>
                                             </li>
                                         @endforeach
                                     @endif

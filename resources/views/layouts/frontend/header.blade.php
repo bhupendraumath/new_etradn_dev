@@ -23,6 +23,9 @@
 	@endif
 </div>
 <!-- //header -->
+
+
+<!-- {{$categories}} -->
 <!-- header-bot -->
 <div class="header-bot">
 	<div class="header-bot_inner_wthreeinfo_header_mid">
@@ -154,11 +157,45 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav menu__list">
-							<li class="active menu__item menu__item--current"><a class="menu__link" href="index.html"><i class="fa fa-list"></i> Categories <span class="sr-only">(current)</span></a></li>
+							<li class="active menu__item menu__item--current">
+								
+							<!-- <a class="menu__link" href="index.html"><i class="fa fa-list"></i> Categories <span class="sr-only">(current)</span></a> -->
+
+							<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-list"></i>
+							Categories <span class="caret"></span></a>
+								<ul class="dropdown-menu multi-column columns-3">
+									<div class="agile_inner_drop_nav_info">
+										<div class="col-sm-12 multi-gd-img">
+										@if(!empty($categories))
+											<ul class="multi-column-dropdown">
+											
+												@foreach($categories as $cat)
+												<li><a href="product-list/{{$cat->id}}">{{$cat->categoryName}}</a></li>
+												@endforeach
+												<!-- <li><a href="womens.html">Wallets</a></li>
+												<li><a href="womens.html">Footwear</a></li>
+												<li><a href="womens.html">Watches</a></li>
+												<li><a href="womens.html">Accessories</a></li>
+												<li><a href="womens.html">Bags</a></li>
+												<li><a href="womens.html">Caps & Hats</a></li> -->
+											</ul>
+											@else
+												Category list not avaiable now
+											@endif
+
+										</div>
+										
+										<!-- <div class="col-sm-6 multi-gd-img multi-gd-text ">
+											<a href="womens.html"><img src="{{url('assets/images/frontend/top1.jpg')}}" alt=" " /></a>
+										</div> -->
+										<div class="clearfix"></div>
+									</div>
+								</ul>
+							</li>
 							<li class=" menu__item"><a class="menu__link" href="promotions.html">Promotions</a></li>
 							<li class="dropdown menu__item">
-								<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New Arrivals <span class="caret"></span></a>
-								<ul class="dropdown-menu multi-column columns-3">
+								<a href="#" class="menu__link" >New Arrivals</a>
+								<!-- <ul class="dropdown-menu multi-column columns-3">
 									<div class="agile_inner_drop_nav_info">
 										<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
 											<a href="mens.html"><img src="{{url('assets/images/frontend/top2.jpg')}}" alt=" " /></a>
@@ -187,11 +224,13 @@
 										</div>
 										<div class="clearfix"></div>
 									</div>
-								</ul>
+								</ul> -->
 							</li>
 							<li class="dropdown menu__item">
-								<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ready to ship <span class="caret"></span></a>
-								<ul class="dropdown-menu multi-column columns-3">
+								<a href="#" class="menu__link">Ready to ship 
+									<!-- <span class="caret"></span> -->
+								</a>
+								<!-- <ul class="dropdown-menu multi-column columns-3">
 									<div class="agile_inner_drop_nav_info">
 										<div class="col-sm-3 multi-gd-img">
 											<ul class="multi-column-dropdown">
@@ -220,7 +259,7 @@
 										</div>
 										<div class="clearfix"></div>
 									</div>
-								</ul>
+								</ul> -->
 							</li>
 							<li class="menu__item dropdown">
 								<a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Buyer central <b class="caret"></b></a>

@@ -64,17 +64,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $list=Category::with('category_based_product')->get();
-        return view('frontend/product/details',['data'=>$list]);
+        // $list=Category::with('category_based_product')->get();
+        return view('frontend/product/cat-product');
     }
 
-    public function list()
+    public function list($id)
     {
-        $list=Category::with('category_based_product')->get();
+        // $list=Category::with('category_based_product')->get();
         // print_r($list);die;//
-        return view('frontend/product/details',['data'=>$list]);
+        return view('frontend/product/cat-product');
     }
 
     

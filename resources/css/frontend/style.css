@@ -10,6 +10,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 /* 28-02-22 */
 /*blog*/
 
+.row.product-feature_list.slider.slick-initialized.slick-slider{
+	margin-top:0px;
+}
 i.slick-prev.fa.fa-chevron-circle-left.latest-left.slick-arrow{
 	top:-70px;
 	left:841px;
@@ -2544,7 +2547,7 @@ background: black;
     padding: 0px 0;
 }
 .dropdown-menu.columns-3 {
-    min-width: 700px;
+    min-width: 346px;
     padding: 30px 30px;
 }
 .multi-gd-img img{
