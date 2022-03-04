@@ -42,10 +42,10 @@ Route::get(
     [HomeController::class, 'index']
 )->name('home');
 
-Route::get(
-    'home',
-    [HomeController::class, 'index']
-)->name('home');
+// Route::get(
+//     'home',
+//     [HomeController::class, 'index']
+// )->name('home');
 Route::get(
     'sign-in',
     [LoginController::class, 'loginForm']
@@ -85,10 +85,7 @@ Route::get(
     'product-details',
     [ProductController::class, 'show']
 )->name('product.details');
-Route::get(
-    '/logout',
-    [LoginController::class, 'logout']
-)->name('logout');
+
 
 //list of product
 Route::get(
@@ -127,7 +124,7 @@ Route::group(
             'account-setting',
             [CommonController::class, 'accountSetting']
         )->name('accountSetting');
-
+      
         Route::post(
             '/save-change-password',
             [
@@ -143,6 +140,11 @@ Route::group(
                 'updateProfile'
             ]
         )->name('updateProfile');
+
+        Route::post(
+            'add-business',
+            [CommonController::class, 'addBusiness']
+        )->name('addBusiness');
 
     }
 );

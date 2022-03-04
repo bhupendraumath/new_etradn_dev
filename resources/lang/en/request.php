@@ -147,4 +147,10 @@ return [
     'email_max' => 'Email cannot exceed 50 characters.',
 
     'current_password' => 'Wrong old password',
+    'shop_name_required'=>'Shop name required',
+    'address1_required'=>'Address1 is required',
+    'city_required'=>'City is required',
+    'state_required'=>'State is required',
+    'country_required'=>'Country is required',
+    'zip_code_required'=>'Zip code is required',
 ];

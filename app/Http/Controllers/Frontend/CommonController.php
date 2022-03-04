@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\BusinessAddRequest;
 use App\Http\Requests\Frontend\ChangePasswordRequest;
+use App\Models\Address;
 use App\Models\BusinessCategory;
 use App\Models\BusinessType;
 use App\Models\User;
@@ -131,6 +133,36 @@ class CommonController extends Controller
             if (!empty($changePassword)) {
                 return response()->json(
                     ['success' => true, 'message' => trans('admin.password_changed')]
+                );
+            }
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => trans('admin.something_went_wrong')
+                ]
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                ['success' => false, 'message' => $e->getMessage()]
+            );
+        }
+    }
+
+    /**
+     * Function saveChangePasswordREquest
+     *
+     * @param AdminChangePasswordRequest $request 
+     * 
+     * @return void
+     */
+    public function addBusiness(BusinessAddRequest $request)
+    {
+        try {
+
+            $address = Address::create($request->all());
+            if (!empty($address)) {
+                return response()->json(
+                    ['success' => true, 'message' => trans('admin.add_business')]
                 );
             }
             return response()->json(

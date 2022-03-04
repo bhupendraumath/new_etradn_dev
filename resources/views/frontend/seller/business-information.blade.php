@@ -23,20 +23,27 @@
                 <h3>BUSINESS INFORMATION</h3>
                 <hr class="business-address" />
                 <div class="form-settings">
-                    <form action="#">
-                        <input type="text" id="fname" name="shopname" placeholder="Shop Name*" class="shopname"> <br />
+                    <form id="businessFrm" method="post">
+                        @csrf
+                        <input type="hidden" name="address_type" value="business">
+                        <input type="hidden" name="userId" value="{{Auth::user()->id}}">
+                        <input type="text"  name="name" placeholder="Shop Name*" class="shopname"> <br />
 
-                        <input type="text" id="lname" name="address1" placeholder="Address Line1*" class="60per">
-                        <input type="text" id="lname" name="address" placeholder="Address Line2*" class="60per"><br />
-                        <input type="text" id="lname" name="city" placeholder="City*" class="60per">
-                        <input type="text" id="lname" name="state" placeholder="State*" class="60per"><br />
+                        <input type="text"  name="address1" placeholder="Address Line1*" class="60per">
 
-                        <input type="text" id="lname" name="country" placeholder="Country*" class="60per">
-                        <input type="text" id="lname" name="zipcode" placeholder="Zip Code*" class="60per"><br />
+                        <input type="text"  name="address2" placeholder="Address Line2*" class="60per">
+                        <br />
+                        <input type="text" name="city" placeholder="City*" class="60per">
+
+                        <input type="text" name="state" placeholder="State*" class="60per"><br />
+
+                        <input type="text" name="country" placeholder="Country*" class="60per">
+                        <input type="text" name="zip_code" placeholder="Zip Code*" class="60per"><br />
 
                         <div class="buttons">
-                            <input type="submit" value="Save Changes" class="save-changes">
-                            <input type="submit" value="Cancel" class="cancel">
+                            <input type="submit" value="Save Changes" class="save-changes" id="submitbtn">
+                            <a href="{{url('dashboard')}}" <input type="button" value="Cancel" class="cancel">
+                            </a>
                         </div>
 
                     </form>
@@ -48,19 +55,22 @@
     </div>
 </div>
 
+@endsection
+
+@push('scripts')
 <script>
     jQuery(function($) {
         var path = window.location.href;
         console.log("pathfdf  ", path)
         $('a').each(function() {
             if (path == this.href) {
-
-                console.log("added...")
                 $(this).addClass('left-active');
             }
 
         })
     })
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-@endsection
+
+{!! JsValidator::formRequest('App\Http\Requests\Frontend\BusinessAddRequest','#businessFrm') !!}
+<script type="text/javascript" src="{{asset('assets/js/frontend/profile/business.js')}}"></script>
+@endpush

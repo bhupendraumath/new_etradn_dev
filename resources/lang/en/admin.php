@@ -63,4 +63,5 @@ return [
 
     'user_registration' => 'Your registration succesfull.',
     'password_changed' => 'Password changed successfully',
+    'add_business' => 'Add business information successfully.',
 ];

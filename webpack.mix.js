@@ -16,10 +16,10 @@ mix.js('resources/js/app.js', 'public/js')
         //
     ])
     .scripts([
-      
+
         'resources/js/frontend/jquery-2.1.4.min.js',
         'resources/js/frontend/jquery-ui.js',
-         'resources/js/frontend/bootstrap.js',
+        'resources/js/frontend/bootstrap.js',
         'resources/js/frontend/easy-responsive-tabs.js',
         'resources/js/frontend/imagezoom.js',
         'resources/js/frontend/jquery.countup.js',
@@ -30,7 +30,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/modernizr.custom.js',
         'resources/js/frontend/move-top.js',
         'resources/js/frontend/responsiveslides.min.js',
-        
+
 
         'public/vendor/jsvalidation/js/jsvalidation.min.js',
         'resources/js/frontend/toastr.min.js',
@@ -55,10 +55,13 @@ mix.js('resources/js/app.js', 'public/js')
     ], 'public/assets/js/frontend/auth/registration.js')
     .js([
         'resources/js/frontend/w3.js'
-        ], 'public/assets/js/frontend/w3.js')    
-    .js([        
+    ], 'public/assets/js/frontend/w3.js')
+    .js([
         'resources/js/frontend/auth/change_password.js'
     ], 'public/assets/js/frontend/auth/change_password.js')
     .js([
         'resources/js/frontend/profile/update-user.js'
-    ], 'public/assets/js/frontend/profile/update-user.js');
+    ], 'public/assets/js/frontend/profile/update-user.js')
+    .js([
+        'resources/js/frontend/profile/business.js'
+    ], 'public/assets/js/frontend/profile/business.js');

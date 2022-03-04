@@ -1,33 +1,35 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-/*!*******************************************************!*\
-  !*** ./resources/js/frontend/auth/change_password.js ***!
-  \*******************************************************/
+/*!***************************************************!*\
+  !*** ./resources/js/frontend/profile/business.js ***!
+  \***************************************************/
 $(window).ready(function () {
-  $("#submit-btn").on('click', function (e) {
-    var frm = $('#change-password-form');
-    var btn = $('#submit-btn');
+  $("#submitbtn").on('click', function (e) {
+    var frm = $('#businessFrm');
+    var btn = $('#submitbtn');
 
     if (frm.valid()) {
       btn.prop('disabled', true);
       $.ajax({
-        url: "http://localhost/etradn" + "/save-change-password",
+        url: "http://localhost/etradn" + "/add-business",
         type: "POST",
         data: frm.serialize(),
         dataType: 'JSON',
         success: function success(response) {
           if (response.success) {
-            toastr.success(response.message, {
+            toastr.clear();
+            btn.html('Update');
+            toastr.success(response.message, 'Add business', {
               timeOut: 2000
             });
             setTimeout(function () {
-              window.location.href = "http://localhost/etradn" + "/account-setting";
+              window.location.href = "http://localhost/etradn" + "/dashboard";
             }, 2000);
           } else {
             btn.prop('disabled', false);
             btn.html('Update');
             toastr.clear();
-            toastr.error(response.message, {
+            toastr.error(response.message, 'Update profile', {
               timeOut: 2000
             });
           }
@@ -38,7 +40,6 @@ $(window).ready(function () {
           for (var x in obj) {
             btn.prop('disabled', false);
             btn.html('Update');
-            var errors = obj[x].length;
             $('#' + x + '-error').html(obj[x]);
             $('#' + x + '-error').parent('.form-group').removeClass('has-success').addClass('has-error');
           }
