@@ -67,27 +67,21 @@
                         <br />
                         <select name="Category" id="Category" class="shopname">
                             <option disabled">--Select Category-- </option>
-                            <option value="cat1">Category 1</option>
-                            <option value="cat2">Category 2</option>
-                            <option value="cat3">Category 3</option>
-                            <option value="cat4">Category 4</option>
+                            @foreach($category as $category_value)
+                            <option value="{{$category_value->id}}">{{$category_value->categoryName}}</option>
+                            @endforeach
                         </select>
 
 
-                        <select name="sub-category" id="60per" class="shopname">
-                            <option disabled">--Select Sub category-- </option>
-                            <option value="cat1">Category 1</option>
-                            <option value="cat2">Category 2</option>
-                            <option value="cat3">Category 3</option>
-                            <option value="cat4">Category 4</option>
+                        <select name="sub-category" id="subcategory" class="shopname form-control">
+
                         </select>
 
                         <select name="Brand" id="60per" class="shopname">
                             <option disabled">--Select Brand-- </option>
-                            <option value="cat1">Brand 1</option>
-                            <option value="cat2">Brand 2</option>
-                            <option value="cat3">Brand 3</option>
-                            <option value="cat4">Brand 4</option>
+                            @foreach($brand as $brand_value)
+                            <option value="cat1">{{$brand_value->brandName}}</option>
+                            @endforeach
                         </select>
 
                         <br /><br />
@@ -104,18 +98,28 @@
                         <hr class="business-address" />
 
                         <div class="change-position">
-                            <input id="buyitnow" type="radio" name="user" value="buyitnow">
+                            <input type="radio" name="user" value="buyitnow">
                             <label for="buyitnow"><span></span>Buy it Now</label> &nbsp;&nbsp;&nbsp;
 
-                            <input id="Auction" type="radio" name="user" value="Auction">
+                            <input type="radio" name="user" value="Auction">
                             <label for="Auction"><span></span>Auction</label>&nbsp;&nbsp;&nbsp;
 
-                            <input id="both" type="radio" name="user" value="both">
+                            <input type="radio" name="user" value="both">
                             <label for="both"><span></span>Both</label>
                         </div>
+                        <br />
 
+                        <h3 class="change-side">REFUND REQUEST</h3>
+                        <hr class="business-address" />
 
-                        <br /><br />
+                        <div class="change-position">
+                            <input type="radio" name="address" value="Existing">
+                            <label for="Existing"><span></span>Yes</label> &nbsp;&nbsp;&nbsp;
+
+                            <input type="radio" name="new" value="new">
+                            <label for="new"><span></span>No</label><br /><br />
+                        </div>
+                        <br />
                         <h3 class="change-side">SHIPPED ADDRESS FROM PRODUCT</h3>
                         <hr class="business-address" />
 
@@ -125,6 +129,16 @@
 
                             <input id="new" type="radio" name="new" value="new">
                             <label for="new"><span></span>New Address</label><br /><br /><br />
+                        </div>
+                        <h3 class="change-side">SHIPPING TYPE PRODUCT</h3>
+                        <hr class="business-address" />
+
+                        <div class="change-position">
+                            <input type="radio" name="address" value="Existing">
+                            <label for="Existing"><span></span>Free</label> &nbsp;&nbsp;&nbsp;
+
+                            <input type="radio" name="new" value="new">
+                            <label for="new"><span></span>Paid</label><br /><br /><br />
                         </div>
 
 
@@ -142,7 +156,44 @@
 </div>
 
 
+
+@endsection
+@push('scripts')
 <script>
+    $(document).ready(function() {
+        $('#Category').on('change', function() {
+            var category_id = this.value;
+            $("#subcategory").html('');
+            $.ajax({
+                url: "{{url('getsubCategroy')}}",
+                type: "POST",
+                data: {
+                    category_id: category_id,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function(result) {
+
+                    $('#subcategory').html('<option value="">Select sub category</option>');
+                    console.log(result.data);
+                    var template;
+                    for (var i = 0; i < result.data.length; i++) {
+                        template += '<option value="' + result.data[i].id  + '">' + result.data[i].subCategoryName +'</option>';
+                    }
+
+                    
+                    $("#subcategory").append(template);
+
+                    // $.each(result.data, function(key, value) {
+                    //     $("#subcategory").append('<option value="' + value
+                    //         .id + '">' + value.subCategoryName + '</option>');
+                    // });
+                    // $('#subcategory').html('<option value="">--Select Sub category--</option>');
+                }
+            });
+        });
+    });
+
     function dragHandler(event) {
         event.stopPropagation();
         event.preventDefault();
@@ -189,4 +240,4 @@
         }
     }
 </script>
-@endsection
+@endpush

@@ -8,6 +8,7 @@ use App\Http\Requests\Frontend\ChangePasswordRequest;
 use App\Models\Address;
 use App\Models\BusinessCategory;
 use App\Models\BusinessType;
+use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -163,6 +164,38 @@ class CommonController extends Controller
             if (!empty($address)) {
                 return response()->json(
                     ['success' => true, 'message' => trans('admin.add_business')]
+                );
+            }
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => trans('admin.something_went_wrong')
+                ]
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                ['success' => false, 'message' => $e->getMessage()]
+            );
+        }
+    }
+
+    /**
+     * Function getsubCategroy
+     *
+     * @param Request $request 
+     * 
+     * @return void
+     */
+    public function getsubCategroy(Request $request)
+    {
+        try {
+            $category = SubCategory::where('id', $request->category_id)->get();
+            if (!empty($category)) {
+                return response()->json(
+                    [
+                        'success' => true,
+                        'data' => $category
+                    ]
                 );
             }
             return response()->json(

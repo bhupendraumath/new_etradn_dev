@@ -15,7 +15,7 @@
 
 
                    
-                    <form id="loginFrm" method="post" action="{{route('loginAction')}}">
+                    <form id="loginFrm" method="post">
                         {{csrf_field()}}
                         <label for="email" class="label-11">Phone Number or Email*</label>
                         <div class="form-field">
@@ -29,7 +29,7 @@
                         <div class="form-field">
 
                         <!-- id="loginBtn" -->
-                            <button class="btn color-chnage-btn" type="submit">LOGIN</button>
+                            <button class="btn color-chnage-btn" type="submit" id="loginBtn">LOGIN</button>
                         </div>
 
                         <div class="form-field bottom">
