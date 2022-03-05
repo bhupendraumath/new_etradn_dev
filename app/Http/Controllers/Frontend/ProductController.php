@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
+use Illuminate\Contracts\View\View;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('frontend/product/add');
+        $category = Category::where('isActive', 'y')->get();
+        $brand = Brand::where('isActive', 'y')->get();
+        return view(
+            'frontend/product/add',
+            compact(
+                'category',
+                'brand'
+            )
+        );
     }
 
     /**
@@ -27,7 +36,10 @@ class ProductController extends Controller
      */
     public function myUploadProduct()
     {
-        return view('frontend/product/my-upload-product');
+
+        return View(
+            'frontend/product/my-upload-product'
+        );
     }
     /**
      * Display a listing of the resource.
@@ -74,14 +86,14 @@ class ProductController extends Controller
 
     public function list($id)
     {
-        $list=Product::whereCatId($id)
-        ->paginate(12);
+        $list = Product::whereCatId($id)
+            ->paginate(12);
 
-        $brand_list=Brand::all();
-        return view('frontend/product/cat-product',['list'=>$list,'brand_list'=>$brand_list]);
+        $brand_list = Brand::all();
+        return view('frontend/product/cat-product', ['list' => $list, 'brand_list' => $brand_list]);
     }
 
-    
+
     /**
      * Show the form for editing the specified resource.
      *

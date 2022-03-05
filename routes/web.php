@@ -92,6 +92,11 @@ Route::get(
     '/product-list/{id}',
     [ProductController::class, 'list']
 )->name('product.list');
+//list of product
+Route::post(
+    '/getsubCategroy',
+    [CommonController::class, 'getsubCategroy']
+)->name('getsubCategroy');
 
 Route::group(
     ['middleware' => 'user:web'],
@@ -124,7 +129,7 @@ Route::group(
             'account-setting',
             [CommonController::class, 'accountSetting']
         )->name('accountSetting');
-      
+
         Route::post(
             '/save-change-password',
             [
@@ -145,6 +150,5 @@ Route::group(
             'add-business',
             [CommonController::class, 'addBusiness']
         )->name('addBusiness');
-
     }
 );
