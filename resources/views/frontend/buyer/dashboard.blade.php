@@ -36,7 +36,8 @@
 
                             </div>
                               
-                            <span class="view-more dashboard personal-information"><a href="review-and-rating.php">Edit></a></span><br/>
+                            <span class="view-more dashboard personal-information">
+                                <a href="{{route('buyerPersonalDetails')}}">Edit></a></span><br/>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
@@ -45,7 +46,7 @@
                                MY FAVORITE PRODUCTS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="business-address.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('favoriteProduct')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
@@ -54,7 +55,7 @@
                                 MY PLACED BIDS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="upload-product.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('buyer.bidsPlaced')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                 </div>
@@ -67,16 +68,16 @@
                                 MY PURCHASE HISTORY
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="bids-placed.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('buyer.purchaseHistory')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY SHIPPING ADDRESS
+                                MY DELIVERY AREAS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="orders.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('buyer.deliveryArea')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
@@ -85,7 +86,7 @@
                                 ACCOUNT SETTINGS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="delivary-area.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('buyer.buyerAccountSetting')}}">VIEW MORE</a></span>
                         </div>
                     </div>                    
                 </div>

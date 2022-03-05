@@ -6,31 +6,27 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>MY PLACED BIDS</h3>
+        <h3>MY PURCHASE HISTORY</h3>
 
     </div>
 </div>
-
-
-
 <!-- banner-bootom-w3-agileits -->
 <div class="banner-bootom-w3-agileits">
     <div class="container-fluid dashboard-container">
 
-        @include('frontend/include/seller-side-bar')
-
+        @include('frontend/include/buyer-side-bar')
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
             <div class="card-dashboard  col-12uy">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="inner-addon left-addon search-bar">
-                            <i class="fas fa-search glyphicon"></i>
+                            <i class="fa fa-search glyphicon"></i>
                             <input type="text" class="form-control 60per lock change-style-search" name="payment-id" placeholder="Searching..." />
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12 float-right">
                         <!-- filter section    -->
-                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="filter-button">Pending Result <i class="fas fa-filter" style="color:black"></i></button>
+                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="filter-button">Listed With <i class="fas fa-filter" style="color:black"></i></button>
 
                         <div id="id01" class="modal">
                             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -103,11 +99,7 @@
                 <div class="products row">
 
                     <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="aloe" data-category="green small medium africa">
-                        <div class="images onhover-show-menus">
-                            <div class="operation-edit-delete">
-                                <!-- <p>Lots of interesting information!
-                                </p> -->
-                            </div>
+                        <div class="images">
                             <div class="background-gray">
                                 <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                             </div>
@@ -115,7 +107,7 @@
                             <br />
 
                             <h4>B2b Product Name</h4>
-                            <span><strike>$110.00</strike> &nbsp; <span> $90.00 </span></span>
+                            <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
                             <div>
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -183,8 +175,10 @@
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star-o checked"></span>
                                 <span class="fa fa-star-o checked"></span>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <br /><br />
@@ -192,18 +186,5 @@
         </div>
     </div>
 </div>
-<script>
-    jQuery(function($) {
-        var path = window.location.href;
-        console.log("pathfdf  ", path)
-        $('a').each(function() {
-            if (path == this.href) {
 
-                console.log("added...")
-                $(this).addClass('left-active');
-            }
-
-        })
-    })
-</script>
 @endsection

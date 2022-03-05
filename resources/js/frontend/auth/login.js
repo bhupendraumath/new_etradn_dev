@@ -16,7 +16,8 @@ $("#loginBtn").on('click', (function (e) {
                 showButtonLoader(btn, showLoader, 'enable');
                 toastr.success(data.message, 'Login', {timeOut: 2000});
                 setTimeout(() => {
-                    window.location.href = data.redirectionUrl;
+                    console.log(data.data);
+                    window.location.href = data.data;
                 }, 3000);
                 
             },

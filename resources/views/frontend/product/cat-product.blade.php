@@ -213,33 +213,6 @@ function filter() {
 }
 
 
-// $('#page_limit').on('change', function() {
-//             var page_limit = $(this).val();        
-            
-//             $.ajax({
-//                 url: "{{env('WHEREVER_FORM'). '/api/brandsListBasedCat'}} ",
-//                 type: "POST",
-//                 data: {
-//                     id: catid
-//                 },
-//                 success: function(res) {
-                    
-//                     if (res) {
-//                         $("#brand_name").empty();
-//                         var template = '';
-//                         $("#brand_name").append('<option value="" disabled selected> Select Brand</option>');
-//                         for (var i = 0; i < res.length; i++) {
-//                            template += '<option value="' + res[i].id  + '">' + res[i].brand_name +'</option>';
-//                         }
-
-                       
-//                         $("#brand_name").append(template);
-//                     } else {
-//                         $("#brand_name").empty();
-//                     }
-//                 }
-//             });
-// })
 
 
 </script>

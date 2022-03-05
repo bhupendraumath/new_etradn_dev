@@ -27,7 +27,7 @@
 
                     <div class="col-md-7 col-sm-7 col-lg-7 col-xl-7 col-xs-6">
 
-                        <a href="{{route('personInformation')}}">
+                        <a href="{{route('buyerPersonalDetails')}}">
 
                             <div class="details-right-settings">
                                 <button class="view-more-button">
@@ -52,7 +52,7 @@
 
     <div class="background-gredient">
         <!-- <hr class="margin-bottom"/> -->
-        <a href="{{route('seller.dashboard')}}">
+        <a href="{{route('buyer.dashboard')}}">
             <div class="row border-row-top-border top-vv">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <span><i class="fas fa-list margin-leftor-right"></i> <b class="heading-business">DASHBOARD</b> </span>
@@ -60,100 +60,54 @@
             </div>
         </a>
 
-        <a href="{{route('businessInformation')}}">
+        <a href="{{route('favoriteProduct')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-user-alt margin-leftor-right"></i> <b class="heading-business">BUSINESS INFORMATION</b> </span>
+                    <span><i class="fas fa-plus margin-leftor-right"></i> <b class="heading-business">
+                        MY FAVORITE PRODUCT</b> </span>
                 </div>
             </div>
         </a>
 
-        <a href="{{route('add-product')}}">
+        <a href="{{route('buyer.bidsPlaced')}}">
             <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-plus margin-leftor-right"></i> <b class="heading-business">ADD PRODUCT</b> </span>
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="bids-placed.php">
+                    <span><i class="fas fa-gavel margin-leftor-right"></i> <b class="heading-business">MY BIDS PLACED</b> </span>
                 </div>
             </div>
         </a>
 
-        <a href="#">
+
+        <a href="{{route('buyer.purchaseHistory')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <!-- <i class="fas fa-bags-shopping"></i> -->
-                    <!-- <i class="fa-solid fa-bag-shopping"></i> -->
-                    <span><i class="fa fa-shopping-bag margin-leftor-right"></i> <b class="heading-business">MY ORDERS</b> </span>
-                </div>
-            </div>
-        </a>
-        <a href="{{route('myUploadProduct')}}">
-            <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-file-upload margin-leftor-right"></i> <b class="heading-business">MY UPLOADED PRODUCTS</b> </span>
+                    <span><i class="fas fa-file-upload margin-leftor-right"></i> <b class="heading-business">MY PURCHASE HISTORY</b> </span>
                 </div>
             </div>
         </a>
 
-        <a href="#">
 
+        <a href="{{route('buyer.deliveryArea')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fa fa-star margin-leftor-right"></i> <b class="heading-business">MY REVIEW AND RATING</b> </span>
-                </div>
-            </div>
-        </a>
-        <a href="{{route('businessInformation')}}">
-            <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-map-marker-alt margin-leftor-right"></i> <b class="heading-business">BUSINESS ADDRESS</b> </span>
+                    <span><i class="fas fa-map-marker-alt margin-leftor-right"></i> <b class="heading-business">MY DELIVERY AREAS</b> </span>
                 </div>
             </div>
         </a>
 
-        <a href="#">
+        <!-- <a href="#">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="delivary-area.php">
                     <span><i class="fa fa-truck margin-leftor-right"></i> <b class="heading-business">MY DELIVERY AREAS</b> </span>
                 </div>
             </div>
-        </a>
+        </a> -->
 
 
-        <a href="{{route('bidsPlaced')}}">
-            <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="bids-placed.php">
-                    <span><i class="fas fa-gavel margin-leftor-right"></i> <b class="heading-business">BIDS PLACED</b> </span>
-                </div>
-            </div>
-        </a>
-
-        <a href="#">
-            <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="refund-request.php">
-                    <span><i class="fas fa-hand-holding-usd margin-leftor-right"></i> <b class="heading-business">REFUND REQUEST</b> </span>
-                </div>
-            </div>
-        </a>
-
-        <a href="#">
-            <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="wallet.php">
-                    <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">WALLET</b> </span>
-                </div>
-            </div>
-        </a>
-
-        <a href="{{route('accountSetting')}}" class="top-borders">
+        <a href="{{route('buyer.buyerAccountSetting')}}" class="top-borders">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="account-settings.php">
                     <span><i class="fas fa-cog margin-leftor-right"></i> <b class="heading-business">ACCOUNT SETTINGS</b> </span>
-                </div>
-            </div>
-        </a>
-
-        <a href="rfq-list.php">
-            <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="#">
-                    <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">RFQ LIST</b> </span>
                 </div>
             </div>
         </a>

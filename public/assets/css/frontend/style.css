@@ -6593,7 +6593,51 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* -------------------------------- */
 /* 28-02-22 */
+span.color-yellow-number {
+    color: #f2ae3d;
+}
+
+button.filter-button.remove-color-black {
+    background: black;
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+hr.favorite {
+    margin-top: 20px;
+    margin-bottom: -24px;
+    margin-left: -10px;
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-right: -11px;
+}
 /*blog*/
+
+select#subcategory {
+    width: 94%;
+    margin-left: 20px;
+}
+
+.form-control {
+    outline: none;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    height: 39px;
+	outline: none;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 13px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
 
 span.view-more.dashboard.personal-information {
     font-size: 19px;

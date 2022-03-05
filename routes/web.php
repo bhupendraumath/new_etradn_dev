@@ -170,6 +170,36 @@ Route::group(
             [BuyerController::class, 'dashboard']
         )->name('buyer.dashboard');
 
+        Route::get(
+            'buyer_personal_details',
+            [BuyerController::class, 'buyer_personal_details']
+        )->name('buyerPersonalDetails');
+
+        Route::get(
+            'favorite_product',
+            [BuyerController::class, 'favorite_product']
+        )->name('favoriteProduct');
+
+        Route::get(
+            'buyer_bids_placed',
+            [BuyerController::class, 'buyer_bids_placed']
+        )->name('buyer.bidsPlaced');
+
+        
+        Route::get(
+            'purchase_history',
+            [BuyerController::class, 'purchase_history']
+        )->name('buyer.purchaseHistory');
+
+        Route::get(
+            'delivery-area',
+            [BuyerController::class, 'delivery_area']
+        )->name('buyer.deliveryArea');
+
+        Route::get(
+            'buyer-account-setting',
+            [BuyerController::class, 'buyer_account_setting']
+        )->name('buyer.buyerAccountSetting');
 
         // Buyer panel end
 

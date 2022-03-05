@@ -6,7 +6,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>Account settings</span></h3>
+        <h3>DELIVERY ADDRESS</span></h3>
 
     </div>
 </div>
@@ -17,10 +17,10 @@
 <div class="banner-bootom-w3-agileits">
     <div class="container-fluid dashboard-container">
 
-        @include('frontend/include/seller-side-bar')
+        @include('frontend/include/buyer-side-bar')
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
             <div class="card-dashboard  col-12uy">
-                <h3>BUSINESS INFORMATION</h3>
+                <h3>SHIPPING ADDRESS</h3>
                 <hr class="business-address" />
                 <div class="form-settings">
                     <form id="businessFrm" class="businessInformation" method="post">

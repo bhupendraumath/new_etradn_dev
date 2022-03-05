@@ -91,11 +91,20 @@
 			<div class="rightpanel-for-mobile Account header-user dropdown">
 				<i class="fas fa-user-circle Account color-right-account" aria-hidden="true"></i>
 				<div class="account-drop-down">
+
+				
+				<?php  $user=Auth::user(); ?>
+
 					<div class="">
 						<span class="dropbtn"><b>Account</b></span>
 
 						<div class="dropdown-content">
+							
+							@if($user->user_type=='s')
 							<a href="{{route('seller.dashboard')}}">Dashboard</a>
+							@elseif($user->user_type=='b')
+							<a href="{{route('buyer.dashboard')}}">Dashboard</a>
+							@endif
 							<!-- <a href="{{route('logout')}}">Logout</a> -->
 
 							<div>
@@ -145,7 +154,6 @@
 		<div class="top_nav_left">
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 							<span class="sr-only">Toggle navigation</span>
@@ -159,8 +167,7 @@
 						<ul class="nav navbar-nav menu__list">
 							<li class="active menu__item menu__item--current">
 								
-							<!-- <a class="menu__link" href="index.html"><i class="fa fa-list"></i> Categories <span class="sr-only">(current)</span></a> -->
-
+							
 							<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-list"></i>
 							Categories <span class="caret"></span></a>
 								<ul class="dropdown-menu multi-column columns-3">
@@ -172,12 +179,7 @@
 												@foreach($categories as $cat)
 												<li><a href="product-list/{{$cat->id}}">{{$cat->categoryName}}</a></li>
 												@endforeach
-												<!-- <li><a href="womens.html">Wallets</a></li>
-												<li><a href="womens.html">Footwear</a></li>
-												<li><a href="womens.html">Watches</a></li>
-												<li><a href="womens.html">Accessories</a></li>
-												<li><a href="womens.html">Bags</a></li>
-												<li><a href="womens.html">Caps & Hats</a></li> -->
+												
 											</ul>
 											@else
 												Category list not avaiable now
@@ -185,9 +187,6 @@
 
 										</div>
 										
-										<!-- <div class="col-sm-6 multi-gd-img multi-gd-text ">
-											<a href="womens.html"><img src="{{url('assets/images/frontend/top1.jpg')}}" alt=" " /></a>
-										</div> -->
 										<div class="clearfix"></div>
 									</div>
 								</ul>
@@ -195,71 +194,13 @@
 							<li class=" menu__item"><a class="menu__link" href="promotions.html">Promotions</a></li>
 							<li class="dropdown menu__item">
 								<a href="#" class="menu__link" >New Arrivals</a>
-								<!-- <ul class="dropdown-menu multi-column columns-3">
-									<div class="agile_inner_drop_nav_info">
-										<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-											<a href="mens.html"><img src="{{url('assets/images/frontend/top2.jpg')}}" alt=" " /></a>
-										</div>
-										<div class="col-sm-3 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li><a href="mens.html">Clothing</a></li>
-												<li><a href="mens.html">Wallets</a></li>
-												<li><a href="mens.html">Footwear</a></li>
-												<li><a href="mens.html">Watches</a></li>
-												<li><a href="mens.html">Accessories</a></li>
-												<li><a href="mens.html">Bags</a></li>
-												<li><a href="mens.html">Caps & Hats</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-3 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li><a href="mens.html">Jewellery</a></li>
-												<li><a href="mens.html">Sunglasses</a></li>
-												<li><a href="mens.html">Perfumes</a></li>
-												<li><a href="mens.html">Beauty</a></li>
-												<li><a href="mens.html">Shirts</a></li>
-												<li><a href="mens.html">Sunglasses</a></li>
-												<li><a href="mens.html">Swimwear</a></li>
-											</ul>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</ul> -->
+								
 							</li>
 							<li class="dropdown menu__item">
 								<a href="#" class="menu__link">Ready to ship 
 									<!-- <span class="caret"></span> -->
 								</a>
-								<!-- <ul class="dropdown-menu multi-column columns-3">
-									<div class="agile_inner_drop_nav_info">
-										<div class="col-sm-3 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li><a href="womens.html">Clothing</a></li>
-												<li><a href="womens.html">Wallets</a></li>
-												<li><a href="womens.html">Footwear</a></li>
-												<li><a href="womens.html">Watches</a></li>
-												<li><a href="womens.html">Accessories</a></li>
-												<li><a href="womens.html">Bags</a></li>
-												<li><a href="womens.html">Caps & Hats</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-3 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li><a href="womens.html">Jewellery</a></li>
-												<li><a href="womens.html">Sunglasses</a></li>
-												<li><a href="womens.html">Perfumes</a></li>
-												<li><a href="womens.html">Beauty</a></li>
-												<li><a href="womens.html">Shirts</a></li>
-												<li><a href="womens.html">Sunglasses</a></li>
-												<li><a href="womens.html">Swimwear</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-6 multi-gd-img multi-gd-text ">
-											<a href="womens.html"><img src="{{url('assets/images/frontend/top1.jpg')}}" alt=" " /></a>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</ul> -->
+								
 							</li>
 							<li class="menu__item dropdown">
 								<a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Buyer central <b class="caret"></b></a>

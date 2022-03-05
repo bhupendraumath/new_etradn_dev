@@ -36,6 +36,7 @@ class LoginController extends Controller
      */
     public function loginForm()
     {
+
         return view('auth/frontend/login');
     }
     public function loginAction(Request $request)
@@ -89,6 +90,7 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request,$user)
     {
+
         
         $request->session()->regenerate();
         $this->clearLoginAttempts($request);
@@ -100,7 +102,16 @@ class LoginController extends Controller
             $redirectionUrl = url('buyer-dashboard');
         }
 
-        return redirect($redirectionUrl)->with( 'message', 'Login is successfull.');
+
+        return response()->json(
+            [
+                'success' => true, 'data' => $redirectionUrl,
+                'message' => "Login is successfull."
+            ],
+            200
+        );
+
+        // return redirect('dashboard')->with( 'message', 'Login is successfull.');
 
     }
 

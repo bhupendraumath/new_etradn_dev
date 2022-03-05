@@ -16,7 +16,7 @@
 <div class="banner-bootom-w3-agileits">
     <div class="container-fluid dashboard-container">
 
-        @include('frontend/include/seller-side-bar')
+        @include('frontend/include/buyer-side-bar')
 
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
             <div class="card-dashboard  col-12uy">
