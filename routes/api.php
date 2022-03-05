@@ -3,6 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Frontend\{
+    HomeController,
+    UserController,
+    ProductController,
+    SellerController,
+    CommonController
+};
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +24,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+

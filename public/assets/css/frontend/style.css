@@ -6595,14 +6595,78 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 /* 28-02-22 */
 /*blog*/
 
+span.view-more.dashboard.personal-information {
+    font-size: 19px;
+    /* margin-bottom: 38px; */
+}
+
+.margin-top-padding {
+    text-align: left;
+    margin-top: 47px;
+    font-size: 19px;
+    padding-bottom: 16px;
+}
+
+.card-2.card-personal {
+    padding-left: 24px;
+}
+.card-2.card-personal {
+    text-align: left;
+}
+
+
+.card-2.card-personal {
+    border-top: 0;
+}
+
+h4.review-dashbord.personal-information {
+    position: absolute;
+    top: -15px;
+    left: 60px;
+}
+
+form#businessFrm>input {
+    width: 89%;
+    height: 44px;
+}
+select#usertype, select#category-b, select#business_type_id {
+    width: 99% !important;
+    margin-left: 0 !important;
+}
+
+form#businessFrm>input.\36 0per {
+    width: 45%;
+    margin-left: 10px;
+}
+img.filter-product-image {
+    width: 100%;
+}
 label.brand {
     font-weight: 500;
     text-transform: capitalize;
     font-size: 20px;
 }
 
+button#filterr {
+    background: #f2ae3d;
+    width: 117px;
+    padding: 9px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    float: right;
+    margin-top: 38px;
+    margin-bottom: 38px;
+    margin-right: 17px;
+}
+
+select.sorting-low-high.page-limit {
+    width: 93px;
+}
 select.sorting-low-high {
     width: 96%;
+	text-transform: capitalize;
     margin-bottom: 10px;
     height: 35px;
     border: 1px solid #80808087;
@@ -8730,7 +8794,7 @@ i.fa.fa-chevron-circle-left {
     font-weight: 600;
     margin-top: 10px;
     font-size: 19px;
-    font-family: monospace;
+    /* font-family: monospace; */
 }
 
 ul.popular-items>li {

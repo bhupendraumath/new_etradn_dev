@@ -72,13 +72,68 @@ class ProductController extends Controller
         return view('frontend/product/cat-product');
     }
 
+    public function detailedlist(Request $request){
+
+
+        $order=$request->order;
+        $brand=$request->brand;
+        $category=$request->category;
+        $page_limit=$request->page_limit!=null?$request->page_limit:6;
+        // $sequence="";
+        $sequence="asc";
+        $dataArr=['cat_id'=>$category];
+        if($brand!=null){
+            $dataArr['brand_id']=$brand;
+        }
+
+        if($order!=null){
+            if($order=="atoz"){
+                // $sequence['product_name']='ASC';
+
+            }else if($order=="ztoa"){
+                // $sequence['product_name']='desc';
+            }
+            elseif($order=="higher"){
+                $sequence='desc';
+            }
+            elseif($order=="lower"){
+                $sequence='ASC';
+
+            }
+
+        }
+
+        // return response()->json([
+        //     'error' => false,
+        //     'data'=>$dataArr,
+        //     'sequence'=>$sequence,
+        //     'message' =>  "sucess",
+        //     ], 200);
+
+        $list=Product::where($dataArr)
+        ->orderBy('bid_amount',$sequence)
+        ->paginate($page_limit);
+
+        $brand_list=Brand::all();
+        $category_list=Category::all();
+
+        $result=['list'=>$list,'brand_list'=>$brand_list,'category_list'=>$category_list];
+
+        return response()->json([
+            'error' => false,
+            'data'=>$result,
+            'message' =>  "sucess",
+            ], 200);
+    }
     public function list($id)
     {
         $list=Product::whereCatId($id)
-        ->paginate(12);
+        ->paginate(6);
 
         $brand_list=Brand::all();
-        return view('frontend/product/cat-product',['list'=>$list,'brand_list'=>$brand_list]);
+        $category_list=Category::all();
+
+        return view('frontend/product/cat-product',['list'=>$list,'brand_list'=>$brand_list,'category_list'=>$category_list]);
     }
 
     

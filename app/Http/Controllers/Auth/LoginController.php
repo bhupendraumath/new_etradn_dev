@@ -68,7 +68,7 @@ class LoginController extends Controller
             } else {
                
                 if ($this->attemptLogin($request, 'web')) {
-                    return $this->sendLoginResponse($request);
+                    return $this->sendLoginResponse($request,$user);
                 }
             }
         } else {
@@ -87,29 +87,21 @@ class LoginController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function sendLoginResponse(Request $request)
+    protected function sendLoginResponse(Request $request,$user)
     {
         
         $request->session()->regenerate();
         $this->clearLoginAttempts($request);
 
+        if($user->user_type=='s'){
         $redirectionUrl = url('dashboard');
+        }
+        else if($user->user_type=='b'){
+            $redirectionUrl = url('buyer-dashboard');
+        }
 
         return redirect($redirectionUrl)->with( 'message', 'Login is successfull.');
 
-
-        // if ($request->expectsJson()) {
-        //     $redirectionUrl = url('dashboard');
-
-        //     print_r($redirectionUrl);die;
-        //     return response()->json(
-        //         [
-        //             'success' => true,
-        //             'message' => 'Login is successfull.',
-        //             'redirectionUrl' => $redirectionUrl
-        //         ]
-        //     );
-        // }
     }
 
     /**

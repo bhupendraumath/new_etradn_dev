@@ -6,7 +6,8 @@ use App\Http\Controllers\Frontend\{
     UserController,
     ProductController,
     SellerController,
-    CommonController
+    CommonController,
+    BuyerController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -42,10 +43,12 @@ Route::get(
     [HomeController::class, 'index']
 )->name('home');
 
-// Route::get(
-//     'home',
-//     [HomeController::class, 'index']
-// )->name('home');
+Route::post(
+    '/product-list',
+    [ProductController::class, 'detailedlist']
+)->name('product.detailedlist');
+
+
 Route::get(
     'sign-in',
     [LoginController::class, 'loginForm']
@@ -93,9 +96,15 @@ Route::get(
     [ProductController::class, 'list']
 )->name('product.list');
 
+
+
+
+
 Route::group(
     ['middleware' => 'user:web'],
     function () {
+
+        // Seller panel start
         Route::get(
             'dashboard',
             [SellerController::class, 'dashboard']
@@ -145,6 +154,19 @@ Route::group(
             'add-business',
             [CommonController::class, 'addBusiness']
         )->name('addBusiness');
+
+        // Seller panel End 
+
+        // Buyer panel start
+
+
+        Route::get(
+            'buyer-dashboard',
+            [BuyerController::class, 'dashboard']
+        )->name('buyer.dashboard');
+
+
+        // Buyer panel end
 
     }
 );
