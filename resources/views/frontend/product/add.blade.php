@@ -53,8 +53,9 @@
                 <hr class="business-address" />
 
                 <div class="form-settings">
-                    <form action="#">
-
+                    <form method="post" enctype="multipart/form-data" id="addProductFrm">
+                        {{csrf_field()}}
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <!-- <input type="file" class="files-class-hide"> -->
                         <div id="drop_area" class="area">
                             <div>
@@ -65,22 +66,22 @@
 
                         <div id="result"></div>
                         <br />
-                        <select name="Category" id="Category" class="shopname">
-                            <option disabled">--Select Category-- </option>
+                        <select name="category_id" id="Category" class="shopname">
+                            <option value=""">--Select Category-- </option>
                             @foreach($category as $category_value)
-                            <option value="{{$category_value->id}}">{{$category_value->categoryName}}</option>
+                            <option value=" {{$category_value->id}}">{{$category_value->categoryName}}</option>
                             @endforeach
                         </select>
 
 
-                        <select name="sub-category" id="subcategory" class="shopname form-control">
-
+                        <select name="sub_category_id" id="subcategory" class="shopname form-control">
+                            <option value=""">--Select sub category-- </option>
                         </select>
 
-                        <select name="Brand" id="60per" class="shopname">
-                            <option disabled">--Select Brand-- </option>
+                        <select name=" brand_id" id="60per" class="shopname">
+                            <option value=""">--Select Brand-- </option>
                             @foreach($brand as $brand_value)
-                            <option value="cat1">{{$brand_value->brandName}}</option>
+                            <option value=" {{$brand_value->id}}">{{$brand_value->brandName}}</option>
                             @endforeach
                         </select>
 
@@ -88,23 +89,24 @@
                         <h3 class="change-side">ENGLISH LANGUAGE*</h3>
                         <hr class="business-address" />
 
-                        <input type="text" id="product-name" name="product-name" placeholder="Product Name in English*" class="60per">
+                        <input type="text" name="product_name_eng" placeholder="Product Name in English*" class="60per">
 
-                        <textarea name="Message" placeholder="Product Description English*" required=""></textarea>
+                        <textarea name="product_description_eng" placeholder="Product Description English*" required=""></textarea>
 
+                        <input type="text" name="warranty_description_eng" placeholder="Product warranty in English*" class="60per">
 
                         <br /><br />
                         <h3 class="change-side">LIST PRODUCT*</h3>
                         <hr class="business-address" />
 
                         <div class="change-position">
-                            <input type="radio" name="user" value="buyitnow">
+                            <input type="radio" name="list_product" value="b" checked>
                             <label for="buyitnow"><span></span>Buy it Now</label> &nbsp;&nbsp;&nbsp;
 
-                            <input type="radio" name="user" value="Auction">
+                            <input type="radio" name="list_product" value="a">
                             <label for="Auction"><span></span>Auction</label>&nbsp;&nbsp;&nbsp;
 
-                            <input type="radio" name="user" value="both">
+                            <input type="radio" name="list_product" value="bo">
                             <label for="both"><span></span>Both</label>
                         </div>
                         <br />
@@ -113,10 +115,10 @@
                         <hr class="business-address" />
 
                         <div class="change-position">
-                            <input type="radio" name="address" value="Existing">
+                            <input type="radio" name="refund_request" value="y" checked>
                             <label for="Existing"><span></span>Yes</label> &nbsp;&nbsp;&nbsp;
 
-                            <input type="radio" name="new" value="new">
+                            <input type="radio" name="refund_request" value="n">
                             <label for="new"><span></span>No</label><br /><br />
                         </div>
                         <br />
@@ -124,7 +126,7 @@
                         <hr class="business-address" />
 
                         <div class="change-position">
-                            <input id="Existing" type="radio" name="address" value="Existing">
+                            <input id="Existing" type="radio" name="address" value="Existing" checked>
                             <label for="Existing"><span></span>Existing Address</label> &nbsp;&nbsp;&nbsp;
 
                             <input id="new" type="radio" name="new" value="new">
@@ -134,16 +136,16 @@
                         <hr class="business-address" />
 
                         <div class="change-position">
-                            <input type="radio" name="address" value="Existing">
+                            <input type="radio" name="shipping_type" value="f" checked>
                             <label for="Existing"><span></span>Free</label> &nbsp;&nbsp;&nbsp;
 
-                            <input type="radio" name="new" value="new">
-                            <label for="new"><span></span>Paid</label><br /><br /><br />
+                            <input type="radio" name="shipping_type" value="new">
+                            <label for="p"><span></span>Paid</label><br /><br /><br />
                         </div>
 
 
                         <div class="buttons">
-                            <input type="submit" value="ADD PRODUCT" class="save-changes">
+                            <input type="submit" value="ADD PRODUCT" class="save-changes" id="submitbtn">
                         </div>
                     </form>
 
@@ -159,6 +161,8 @@
 
 @endsection
 @push('scripts')
+{!! JsValidator::formRequest('App\Http\Requests\Frontend\ProductRequest','#addProductFrm') !!}
+<script src="{{ asset('assets/js/frontend/product/product.js') }}"></script>
 <script>
     $(document).ready(function() {
         $('#Category').on('change', function() {
@@ -178,10 +182,10 @@
                     console.log(result.data);
                     var template;
                     for (var i = 0; i < result.data.length; i++) {
-                        template += '<option value="' + result.data[i].id  + '">' + result.data[i].subCategoryName +'</option>';
+                        template += '<option value="' + result.data[i].id + '">' + result.data[i].subCategoryName + '</option>';
                     }
 
-                    
+
                     $("#subcategory").append(template);
 
                     // $.each(result.data, function(key, value) {

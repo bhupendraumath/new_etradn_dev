@@ -159,7 +159,11 @@ Route::group(
             'add-business',
             [CommonController::class, 'addBusiness']
         )->name('addBusiness');
-
+        Route::post(
+            'add-product',
+            [ProductController::class, 'addProduct']
+        )->name('addProduct');
+        
         // Seller panel End 
 
         // Buyer panel start

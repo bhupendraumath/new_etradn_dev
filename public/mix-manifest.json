@@ -6,6 +6,7 @@
     "/assets/js/frontend/auth/change_password.js": "/assets/js/frontend/auth/change_password.js",
     "/assets/js/frontend/profile/update-user.js": "/assets/js/frontend/profile/update-user.js",
     "/assets/js/frontend/profile/business.js": "/assets/js/frontend/profile/business.js",
+    "/assets/js/frontend/product/product.js": "/assets/js/frontend/product/product.js",
     "/css/app.css": "/css/app.css",
     "/assets/js/frontend/main.js": "/assets/js/frontend/main.js",
     "/assets/css/frontend/style.css": "/assets/css/frontend/style.css"
