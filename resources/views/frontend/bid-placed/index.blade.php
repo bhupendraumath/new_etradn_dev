@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="inner-addon left-addon search-bar">
-                            <i class="fas fa-search glyphicon"></i>
+                            <i class="fa fa-search glyphicon"></i>
                             <input type="text" class="form-control 60per lock change-style-search" name="payment-id" placeholder="Searching..." />
                         </div>
                     </div>

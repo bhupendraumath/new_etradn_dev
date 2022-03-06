@@ -8,8 +8,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* -------------------------------- */
 /* 28-02-22 */
+
+
+.left-addon .glyphicon {
+    left: 0px;
+    top: 8px;
+    color: blue;
+}
+
 span.color-yellow-number {
     color: #f2ae3d;
+}
+
+input.shopname {
+    /* margin-left: 18px; */
+    width: 96%;
+}
+
+.form-field>span {
+    margin-left: 46px;
 }
 
 button.filter-button.remove-color-black {
@@ -37,10 +54,22 @@ select#subcategory {
 .form-control {
     outline: none;
 }
+
+input, button, select, textarea {
+    font-family: inherit;
+    outline: none;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+input.\36 0per {
+    width: 92%;
+}
+
 input {
     width: 100%;
     padding: 10px;
-    height: 39px;
+    height: 46px;
 	outline: none;
     background-color: #fff;
     background-image: none;
@@ -89,8 +118,9 @@ form#businessFrm>input {
     height: 44px;
 }
 select#usertype, select#category-b, select#business_type_id {
-    width: 99% !important;
-    margin-left: 0 !important;
+    width: 79% !important;
+    border-radius: 7px;
+    margin-left: 47px !important;
 }
 
 form#businessFrm>input.\36 0per {
@@ -711,7 +741,7 @@ input.form-control.\36 0per.lock {
     width: 100%;
 }
 textarea {
-    width: 97% !important;
+    width: 92% !important;
     min-height: 141px;
     border-radius: 18px;
     margin: 1em 0;

@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="inner-addon left-addon search-bar">
-                            <i class="fas fa-search glyphicon"></i>
+                            <i class="fa fa-search glyphicon"></i>
                             <input type="text" class="form-control 60per lock change-style-search" name="payment-id" placeholder="Searching..." />
                         </div>
                     </div>
@@ -104,10 +104,7 @@
 
                     <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="aloe" data-category="green small medium africa">
                         <div class="images onhover-show-menus">
-                            <div class="operation-edit-delete">
-                                <p>Lots of interesting information!
-                                </p>
-                            </div>
+                            
                             <div class="background-gray">
                                 <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
                             </div>
