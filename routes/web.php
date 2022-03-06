@@ -37,6 +37,19 @@ Route::get(
     }
 );
 
+Route::get(
+    '/blog',
+    [HomeController::class, 'blog']
+)->name('blog');
+
+Route::get(
+    '/blog-details',
+    [HomeController::class, 'blogDetails']
+)->name('blog-details');
+
+// view('fontend/blog-details');
+// blog-details
+
 // Auth::routes();
 Route::get(
     '/',

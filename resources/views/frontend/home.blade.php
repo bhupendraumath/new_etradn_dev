@@ -171,12 +171,12 @@
 
                 <div class="row">
 
-                    <div class="col-12 col-md-5 col-sm-5 col-lg-5 col-xl-5">
+                    <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
                         <p class="font-family-change">POPULAR ITEMS</p>
 
                     </div>
 
-                    <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
+                    <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
 
                         <div class="buttons-left-right">
                         </div>
@@ -409,7 +409,7 @@
                                     <header>
                                         <div class="rotationclass">
                                             <h1 class="yearColor">
-                                                2021
+                                                2022
 
                                             </h1>
                                             <span class="Deals">
@@ -438,7 +438,7 @@
                                     <header>
                                         <div class="rotationclass">
                                             <h1 class="yearColor">
-                                                2021
+                                            2022
 
                                             </h1>
                                             <span class="Deals">
@@ -466,12 +466,12 @@
 
                         <div class="row">
 
-                            <div class="col-12 col-md-5 col-sm-5 col-lg-5 col-xl-5">
+                        <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
                                 <p class="font-family-change">LATEST PRODUCT</p>
 
                             </div>
 
-                            <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
 
                                 <div class="buttons-left-right">
                                     <!-- <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
@@ -931,12 +931,12 @@
 
                         <div class="row">
 
-                            <div class="col-12 col-md-5 col-sm-5 col-lg-5 col-xl-5">
+                        <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
                                 <p class="font-family-change">FEATURED PRODUCTS</p>
 
                             </div>
 
-                            <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
 
                                 <div class="buttons-left-right">
                                     <!-- <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>

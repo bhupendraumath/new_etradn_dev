@@ -17,4 +17,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function blog()
+    {
+        print_r("blog");die;
+        return view('frontend/blog');
+    }
 }

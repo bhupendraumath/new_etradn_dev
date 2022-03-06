@@ -12,7 +12,7 @@
 			<ul class="right-menu">
 				<li> <a href="{{route('about')}}"> About Us &nbsp;| </a></li>
 				<li> <a href="{{route('login')}}"> My Account &nbsp;| </a></li>
-				<li> <a href="#"> Blog &nbsp;|</a></li>
+				<li> <a href="{{route('blog')}}"> Blog &nbsp;|</a></li>
 				<li> <a href="{{route('contact')}}">Contact Us </a></li>
 				<!-- <li><i class="fa fa-phone" aria-hidden="true"></i> Call : 01234567898</li>
 				<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@example.com">info@example.com</a></li> -->

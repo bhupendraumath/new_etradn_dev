@@ -6591,11 +6591,44 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 
 
+/*default version*/
+@font-face {
+	font-family: 'Sary Soft - Semi Bold';
+	src: url('../Sary/Fonts/Sary_Soft_SemiBlod.otf'); 
+}
+/*bold version*/
+@font-face {
+	font-family: 'Sary Soft - Thin';
+	src: url('../Sary/Fonts/Sary_Soft_Thin.otf'); 
+	/* font-weight: bold; */
+}
+
+@font-face {
+	font-family: 'Sary Soft - Light';
+	src: url('../Sary/Fonts/Sary_Soft_Light.otf'); 
+	/* font-weight: bold; */
+}
+
+@font-face {
+	font-family: 'Sary Soft';
+	src: url('../Sary/Fonts/Sary_Soft.otf'); 
+	/* font-weight: bold; */
+}
+
+@font-face {
+	font-family: 'Sary Soft - ExtraLight';
+	src: url('../Sary/Fonts/Sary_Soft_ExtraLight.otf'); 
+	/* font-weight: bold; */
+}
 /* -------------------------------- */
 /* 28-02-22 */
 
 
-.left-addon .glyphicon {
+p.sellerr-pagamil {
+    font-family: 'Lato';
+}
+
+.left-addon .glyphicon {	
     left: 0px;
     top: 8px;
     color: blue;
@@ -6996,10 +7029,10 @@ p.whoareparagraph.blog-our.details-page {
     height: 364px;
 }
 
-p.whoareparagraph.blog-our {
+/* p.whoareparagraph.blog-our {
     word-spacing: -2px;
     font-size: 17px;
-}
+} */
 
 h4.blog-heading-yellow {
     font-size: 17px;
@@ -7024,7 +7057,7 @@ h4.blog-heading-yellow {
 h3.blog-heading {
     margin-top: 18px;
     margin-bottom: 8px;
-    font-family: 'Lato';
+    /* font-family: 'Lato'; */
 }
 
 /*blog*/
@@ -8136,7 +8169,7 @@ h4.float-right {
     /* top: 0; */
     /* left: 0; */
     width: 892px;
-    top: 670px;
+    top: 745px;
 	text-align: center;
 	box-shadow: 1px 1px 1px 1px gray;
 }
@@ -8193,6 +8226,9 @@ h3.our-team-heading {
 p.about-us-paragraph {
     margin-right: 54px;
     font-size: 16px;
+    font-family: 'Lato';
+    letter-spacing: normal;
+    color: #3d3d3d;
 }
 
 button.contact-us {
@@ -8213,7 +8249,7 @@ button.contact-us {
 }
 
 .container-fluid.backgroundgary {
-    background: #80808040;
+    background: #f3f3f3;
     /* padding-top: 10px; */
 }
 
@@ -8229,9 +8265,11 @@ h3.whoareheading {
 }
 
 p.whoareparagraph {
-    font-size: 16px;
+	font-size: 16px;
     color: #3d3d3d;
+    font-family: 'Lato';
     margin-bottom: 80px;
+    letter-spacing: normal
 }
 
 .about-us {
@@ -8305,6 +8343,7 @@ p.whoareparagraph {
 	max-width: 800px;
   }
 button.btn.color-chnage-btn {
+	outline:none;
     color: white;
 }
 
@@ -8325,7 +8364,9 @@ a.signup {
     border-bottom: 1px solid black;
 	color:black
 }
-button.btn {
+	button.btn {
+		outline: none;
+	outline: none;
     width: 400px;
     margin-left: 46px;
     margin-top: 9px;
@@ -8939,6 +8980,7 @@ ul.right-menu {
 
 li.active.menu__item {
     background: #ffbf54;
+	font-family: "Sary Soft - Semi Bold";
 }
 
 .rightpanel-for-mobile{
@@ -8984,7 +9026,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 	
 
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
 }
 p{
 	margin:0;
@@ -9001,6 +9043,7 @@ label{
 /*-- header --*/
 .header {
     background: #000;
+    font-family: 'Lato';
 }
 .header ul li {
     display: inline-block;
@@ -11461,7 +11504,7 @@ h3.agileits-icons-title {
 		margin-bottom: -46px;
 	}
 	h4.team_memebr {
-		color: #3d3d3d;
+		color: #454545;
 		Font-size: 18px;
 		margin-top: -15px;
 		margin-bottom: 23px;
@@ -11483,7 +11526,8 @@ h3.agileits-icons-title {
 		color: black;
 	}
 
-	button.btn {
+		button.btn {
+          	outline: none;
 		width: 85%;
 		margin-left: 25px;
 		margin-top: 9px;
@@ -11992,6 +12036,7 @@ h3.agileits-icons-title {
 		background: #ffa301;
 		margin-top: 46px;
 		padding: 6px;
+		font-family: 'Lato';
 		color: white;
 		width: 138px;
 		border: none;
@@ -12019,7 +12064,8 @@ h3.agileits-icons-title {
 		border-bottom: 1px solid black;
 		color: black;
 	}
-	button.btn {
+		button.btn {
+          	outline: none;
 		width: 85%;
 		margin-left: 25px;
 		margin-top: 9px;
@@ -12367,6 +12413,7 @@ h3.agileits-icons-title {
 	}
 	button.contact-us {
 		line-height: 2;
+		font-family: 'Lato';
 		background: #ffa301;
 		margin-top: 46px;
 		padding: 6px;
@@ -12400,7 +12447,8 @@ h3.agileits-icons-title {
 		border-bottom: 1px solid black;
 		color: black;
 	}
-	button.btn {
+		button.btn {
+          	outline: none;
 		width: 85%;
 		margin-left: 25px;
 		margin-top: 9px;
@@ -12785,6 +12833,7 @@ h3.agileits-icons-title {
 		width: 203px;
 	}
 	button.contact-us {
+		font-family: 'Lato';
 		line-height: 2;
 		background: #ffa301;
 		margin-top: 46px;
@@ -12818,7 +12867,8 @@ h3.agileits-icons-title {
 		border-bottom: 1px solid black;
 		color: black;
 	}
-	button.btn {
+		button.btn {
+          	outline: none;
 		width: 85%;
 		margin-left: 25px;
 		margin-top: 9px;
@@ -12847,11 +12897,16 @@ h3.agileits-icons-title {
 		padding: 21px;
 	}
 
+	.col-md-3.sign-gd.flickr-post>p {
+		font-family: 'Lato';
+	}
+
 	ul.colorwhite {
 		color: white;
 		display: list-item;
 		list-style: none;
 		margin-left: 85px;
+		font-family:'Lato'
 	}
 
 	h3.footerclass {
@@ -13383,6 +13438,7 @@ h3.agileits-icons-title {
 	}
 	
 	button.contact-us {
+		font-family: 'Lato';
 		line-height: 2;
 		background: #ffa301;
 		margin-top: 46px;
@@ -13416,7 +13472,8 @@ h3.agileits-icons-title {
 		border-bottom: 1px solid black;
 		color: black;
 	}
-	button.btn {
+		button.btn {
+		outline: none;
 		width: 85%;
 		margin-left: 25px;
 		margin-top: 9px;
@@ -13976,6 +14033,7 @@ h3.agileits-icons-title {
 		width: 203px;
 	}
 	button.contact-us {
+		font-family: 'Lato';
 		line-height: 2;
 		background: #ffa301;
 		margin-top: 46px;
@@ -14009,7 +14067,8 @@ h3.agileits-icons-title {
 		border-bottom: 1px solid black;
 		color: black;
 	}
-	button.btn {
+		button.btn {
+		outline: none;
 		width: 85%;
 		margin-left: 25px;
 		margin-top: 9px;
@@ -14415,6 +14474,7 @@ h3.agileits-icons-title {
 		width: 203px;
 	}
 	button.contact-us {
+		font-family: 'Lato';
 		line-height: 2;
 		background: #ffa301;
 		margin-top: 46px;
@@ -14447,7 +14507,8 @@ h3.agileits-icons-title {
 		border-bottom: 1px solid black;
 		color: black;
 	}
-	button.btn {
+		button.btn {
+		outline: none;
 		width: 85%;
 		margin-left: 25px;
 		margin-top: 9px;
@@ -14835,6 +14896,7 @@ h3.agileits-icons-title {
 	}
 	button.contact-us {
 		line-height: 2;
+		font-family: 'Lato';
 		background: #ffa301;
 		margin-top: 46px;
 		padding: 6px;
@@ -14870,7 +14932,8 @@ h3.agileits-icons-title {
 		border-bottom: 1px solid black;
 		color: black;
 	}
-	button.btn {
+		button.btn {
+		outline: none;
 		width: 85%;
 		margin-left: 25px;
 		margin-top: 9px;
@@ -15996,6 +16059,7 @@ color: #000;
     /* width: 49%; */
     font-size: 15px;
     color: #888;
+    background-color: #f8f8f8;
 }
 .add-review input[type="email"]{
     /* margin-left: 1.55%; */

@@ -128,4 +128,14 @@ class HomeController extends Controller
     {
         //
     }
+
+    public function blog()
+    {
+        return view('frontend/blog');
+    }
+    public function blogDetails()
+    {
+        return view('frontend/blog-details');
+    }
+    
 }
