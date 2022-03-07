@@ -105,10 +105,10 @@
 							@elseif($user->user_type=='b')
 							<a href="{{route('buyer.dashboard')}}">Dashboard</a>
 							@endif
-							<!-- <a href="{{route('logout')}}">Logout</a> -->
+							 <a href="{{route('logout')}}">Logout</a> 
 
 							<div>
-							<a  href="{{ route('logout') }}"
+							<!-- <a  href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         Logout
@@ -116,7 +116,7 @@
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
-                            	</form>
+                            	</form> -->
 							</div>
 						
 						</div>

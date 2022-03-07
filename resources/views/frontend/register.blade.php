@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="form-field">
-                            <button class="btn color-chnage-btn"  type="submit">REGISTER</button>
+                            <button class="btn color-chnage-btn"  type="button" id="registerBtn">REGISTER</button>
                         </div>
 
                         <div class="form-field bottom">
