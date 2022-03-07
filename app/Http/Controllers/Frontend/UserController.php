@@ -56,16 +56,16 @@ class UserController extends Controller
         try {
             $result = $this->users->createUser($request);
             if ($result) {
-                return redirect("sign-in")->with( 'message', 'Registeration is successfull.');
-                // return response()->json(
-                //     [
-                //         'success' => true,
-                //         'data' => $result,
-                //         'message' => Lang::get(
-                //             trans('admin.user_registration')
-                //         )
-                //     ]
-                // );
+               
+                return response()->json(
+                    [
+                        'success' => true,
+                        'data' => $result,
+                        'message' => Lang::get(
+                            trans('admin.user_registration')
+                        )
+                    ]
+                );
             } else {
                 return response()->json(
                     [

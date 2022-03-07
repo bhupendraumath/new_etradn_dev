@@ -25,7 +25,7 @@
                         <div class="form-field">
                             <input type="password" id="password" placeholder="Password" name="password" required />
                         </div>
-                        <input type="hidden" name="remember" value="true">
+                        <input type="hidden" name="remember" value="false">
                         <div class="form-field">
 
                         <!-- id="loginBtn" -->

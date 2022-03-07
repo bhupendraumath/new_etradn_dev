@@ -65,31 +65,28 @@ Route::get(
 )->name('product.productDetails');
 
 
-Route::get(
-    'sign-in',
-    [LoginController::class, 'loginForm']
-)->name('login');
+Route::group(
+    ['middleware' => 'checkLogin:web'],
+    function () {
+        Route::get(
+            'sign-in',
+            [LoginController::class, 'loginForm']
+        )->name('login');
+        Route::post(
+            'loginAction',
+            [LoginController::class, 'loginAction']
+        )->name('loginAction');
+        Route::get(
+            'sign-up',
+            [UserController::class, 'index']
+        )->name('registration');
 
-
-Route::post(
-    'loginAction',
-    [LoginController::class, 'loginAction']
-)->name('loginAction');
-
-Route::post(
-    '/logout',
-    [LoginController::class, 'logout']
-)->name('logout');
-Route::get(
-    'sign-up',
-    [UserController::class, 'index']
-)->name('registration');
-
-Route::post(
-    'registrationAction',
-    [UserController::class, 'registrationAction']
-)->name('registrationAction');
-
+        Route::post(
+            'registrationAction',
+            [UserController::class, 'registrationAction']
+        )->name('registrationAction');
+    }
+);
 Route::get(
     'about-us',
     [HomeController::class, 'about']
@@ -117,13 +114,17 @@ Route::post(
     [CommonController::class, 'getsubCategroy']
 )->name('getsubCategroy');
 
-
+Route::get(
+    '/logout',
+    [LoginController::class, 'logout']
+)->name('logout');
 
 
 
 Route::group(
     ['middleware' => 'user:web'],
     function () {
+       
 
         // Seller panel start
         Route::get(
@@ -139,7 +140,7 @@ Route::group(
             [SellerController::class, 'businessInformation']
         )->name('businessInformation');
 
-        
+
         Route::get(
             'business-address',
             [SellerController::class, 'businessAddress']
@@ -200,7 +201,7 @@ Route::group(
             'add-product',
             [ProductController::class, 'addProduct']
         )->name('addProduct');
-        
+
         // Seller panel End 
 
         // Buyer panel start
@@ -226,7 +227,7 @@ Route::group(
             [BuyerController::class, 'buyer_bids_placed']
         )->name('buyer.bidsPlaced');
 
-        
+
         Route::get(
             'purchase_history',
             [BuyerController::class, 'purchase_history']
