@@ -159,8 +159,15 @@ class CommonController extends Controller
     public function addBusiness(BusinessAddRequest $request)
     {
         try {
+            if($request->id){
+                $existsAdrress = Address::find($request->id);                
+                $address=$existsAdrress->update($request->all());
+            }
+            else{
+                $address = Address::create($request->all());
+               
+            }
 
-            $address = Address::create($request->all());
             if (!empty($address)) {
                 return response()->json(
                     ['success' => true, 'message' => trans('admin.add_business')]
@@ -172,6 +179,7 @@ class CommonController extends Controller
                     'message' => trans('admin.something_went_wrong')
                 ]
             );
+           
         } catch (\Exception $e) {
             return response()->json(
                 ['success' => false, 'message' => $e->getMessage()]

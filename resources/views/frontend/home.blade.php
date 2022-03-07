@@ -96,8 +96,7 @@
 
                     <div class="col-12 col-md-5 col-sm-5 col-lg-5 col-xl-5">
                         <div class="buttons-left-right">
-                            <!-- <i class="fa fa-chevron-circle-left" style="font-size:24px"></i>
-                            <i class="fa fa-chevron-circle-right" style="font-size:24px"></i> -->
+                            
                         </div>
                     </div>
 
@@ -111,6 +110,7 @@
                         <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide">
                         <div class="images image-left">
                                 <div class="background-gray left-side">
+                                    {{$product->image}}
                                 @if(!empty($product->image))
                                     <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
                                 @else

@@ -51,6 +51,12 @@ class ProductController extends Controller
         return view('frontend/bid-placed/index');
     }
 
+    public function productDetails()
+    {
+        return view('frontend/product/details');
+    }
+
+    
     /**
      * Show the form for creating a new resource.
      *

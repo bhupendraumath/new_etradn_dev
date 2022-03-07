@@ -3,6 +3,8 @@ $(window).ready(function () {
         var frm = $('#addProductFrm');
         var btn = $('#submitbtn');
         if (frm.valid()) {
+
+            console.log("frm.serialize()---   ",frm.serialize())
             btn.prop('disabled', true);
             $.ajax({
                 url: process.env.MIX_APP_URL + "/add-product",

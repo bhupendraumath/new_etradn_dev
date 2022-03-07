@@ -59,13 +59,15 @@
                         <!-- <input type="file" class="files-class-hide"> -->
                         <div id="drop_area" class="area">
                             <div>
-                                <label for="files" class="btn center-drag-drop"><b>Choose or Drag & Drop Your Product Images Here! </b></label>
+                                <label for="files" class="btn center-drag-drop"><b>Choose or Drag & Drop
+                                    <br/> Your Product Images Here! </b></label>
                                 <input id="files" style="visibility:hidden;" type="file">
                             </div>
                         </div>
 
                         <div id="result"></div>
                         <br />
+                        <label class="left-align">Category</label>
                         <select name="category_id" id="Category" class="shopname">
                             <option value=""">--Select Category-- </option>
                             @foreach($category as $category_value)
@@ -73,10 +75,12 @@
                             @endforeach
                         </select>
 
-
+                        <label class="left-align">Sub Category</label>
                         <select name="sub_category_id" id="subcategory" class="shopname form-control">
                             <option value=""">--Select sub category-- </option>
                         </select>
+
+                        <label class="left-align">Brand</label>
 
                         <select name=" brand_id" id="60per" class="shopname">
                             <option value=""">--Select Brand-- </option>
@@ -89,10 +93,13 @@
                         <h3 class="change-side">ENGLISH LANGUAGE*</h3>
                         <hr class="business-address" />
 
+                        <label class="left-align">Product Name</label>
                         <input type="text" name="product_name_eng" placeholder="Product Name in English*" class="60per">
 
+                        <label class="left-align">Product Description</label>
                         <textarea name="product_description_eng" placeholder="Product Description English*" required=""></textarea>
 
+                        <label class="left-align">Product Warranty</label>
                         <input type="text" name="warranty_description_eng" placeholder="Product warranty in English*" class="60per">
 
                         <br /><br />

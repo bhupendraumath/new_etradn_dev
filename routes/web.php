@@ -47,10 +47,7 @@ Route::get(
     [HomeController::class, 'blogDetails']
 )->name('blog-details');
 
-// view('fontend/blog-details');
-// blog-details
 
-// Auth::routes();
 Route::get(
     '/',
     [HomeController::class, 'index']
@@ -60,6 +57,12 @@ Route::post(
     '/product-list',
     [ProductController::class, 'detailedlist']
 )->name('product.detailedlist');
+
+
+Route::get(
+    '/product-details/{id}',
+    [ProductController::class, 'productDetails']
+)->name('product.productDetails');
 
 
 Route::get(
@@ -135,6 +138,27 @@ Route::group(
             'business-information',
             [SellerController::class, 'businessInformation']
         )->name('businessInformation');
+
+        
+        Route::get(
+            'business-address',
+            [SellerController::class, 'businessAddress']
+        )->name('business-address');
+
+        Route::get(
+            'business-address-edit/{id}',
+            [SellerController::class, 'businessAddressEdit']
+        )->name('business-address-edit');
+
+        Route::get(
+            'business-address-delete/{id}',
+            [SellerController::class, 'businessAddressDelete']
+        )->name('business-address-delete');
+
+        // Route::any ( '/search-address',  
+        // [SellerController::class, 'searchAddress']
+        // )->name('search-address');
+
         Route::get(
             'add-product',
             [ProductController::class, 'index']
