@@ -110,11 +110,11 @@
                         <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide">
                         <div class="images image-left">
                                 <div class="background-gray left-side">
-                                    {{$product->image}}
-                                @if(!empty($product->image))
-                                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                @if(!empty($product->image))                                  
+
+                                    <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" />
                                 @else
-                                <img src="{{url('assets/images/frontend/ciyp-bulk-image1.png')}}" alt="" srcset="" />
+                                     <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
                                 @endif
                                 </div>
                                     <br/>
@@ -213,7 +213,7 @@
 
                                 <div class="images">
                                 @if(!empty($product->image))
-                                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images"/>
                                 @else
                                 <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
                                 @endif
@@ -296,7 +296,7 @@
                         <div class="images image-left">
                                 <div class="background-gray left-side">
                                 @if(!empty($product->image))
-                                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset=""/>
                                 @else
                                 <img src="{{url('assets/images/frontend/ciyp-bulk-image1.png')}}" alt="" srcset="" />
                                 @endif
@@ -508,7 +508,7 @@
 
                                         <div class="images">
                                         @if(!empty($product->image))
-                                            <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                        <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images"/>
                                         @else
                                         <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
                                         @endif
@@ -986,7 +986,7 @@
                                         <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                             <div class="background-gray new-size">
                                             @if(!empty($product->image))
-                                                <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images"/>
                                             @else
                                                 <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
                                             @endif

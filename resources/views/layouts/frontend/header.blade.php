@@ -177,7 +177,7 @@
 											<ul class="multi-column-dropdown">
 											
 												@foreach($categories as $cat)
-												<li><a href="product-list/{{$cat->id}}">{{$cat->categoryName}}</a></li>
+												<li><a href="{{url('product-list/'.$cat->id)}}">{{$cat->categoryName}}</a></li>
 												@endforeach
 												
 											</ul>

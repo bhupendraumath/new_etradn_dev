@@ -23,7 +23,7 @@
                         </div> 
                         <div class="row">
                             <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
-
+                                <input type="hidden" id="pathimage" value="{{url('assets/images/product-images/')}}">
                                 <span class="sorting-pagination">Sort By :</span>
 
                                 <select class="sorting-low-high" id="order">
@@ -151,7 +151,9 @@ function filter() {
   var page_limit = $('#page_limit').val();
   var brand = $('#brand').val();
   var category = $('#category').val();
+  var path=$('#pathimage').val();
 
+  console.log(path);
     $.ajax({
     url: "{{url('product-list')}}",
     type: "POST",
@@ -172,7 +174,7 @@ function filter() {
                         template +=`<div class="col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4">
                                 <div class="images images-padding">
                                     <div class="background-gray1">                                        
-                                        <img class="filter-product-image" src="https://freepngimg.com/thumb/technology/51051-2-home-appliance-hd-png-download-free.png" alt="" srcset=""/>
+                                    <img src="${path}/${res.data.list.data[i].image.product_img }" alt="" srcset="" class="resize-images-ca-details"/>
                                     </div>
                                     
                                     <br/>
@@ -213,6 +215,33 @@ function filter() {
 }
 
 
+// $('#page_limit').on('change', function() {
+//             var page_limit = $(this).val();        
+            
+//             $.ajax({
+//                 url: "{{env('WHEREVER_FORM'). '/api/brandsListBasedCat'}} ",
+//                 type: "POST",
+//                 data: {
+//                     id: catid
+//                 },
+//                 success: function(res) {
+                    
+//                     if (res) {
+//                         $("#brand_name").empty();
+//                         var template = '';
+//                         $("#brand_name").append('<option value="" disabled selected> Select Brand</option>');
+//                         for (var i = 0; i < res.length; i++) {
+//                            template += '<option value="' + res[i].id  + '">' + res[i].brand_name +'</option>';
+//                         }
+
+                       
+//                         $("#brand_name").append(template);
+//                     } else {
+//                         $("#brand_name").empty();
+//                     }
+//                 }
+//             });
+// })
 
 
 </script>
