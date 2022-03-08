@@ -92,23 +92,23 @@
 				<i class="fas fa-user-circle Account color-right-account" aria-hidden="true"></i>
 				<div class="account-drop-down">
 
-				
-				<?php  $user=Auth::user(); ?>
+
+					<?php $user = Auth::user(); ?>
 
 					<div class="">
 						<span class="dropbtn"><b>Account</b></span>
 
 						<div class="dropdown-content">
-							
+
 							@if($user->user_type=='s')
 							<a href="{{route('seller.dashboard')}}">Dashboard</a>
 							@elseif($user->user_type=='b')
 							<a href="{{route('buyer.dashboard')}}">Dashboard</a>
 							@endif
-							 <a href="{{route('logout')}}">Logout</a> 
+							<a href="{{route('logout')}}">Logout</a>
 
 							<div>
-							<!-- <a  href="{{ route('logout') }}"
+								<!-- <a  href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         Logout
@@ -118,14 +118,14 @@
                                         @csrf
                             	</form> -->
 							</div>
-						
+
 						</div>
 					</div>
 				</div>
 
 
 
-							<!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+				<!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -166,41 +166,41 @@
 					<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav menu__list">
 							<li class="active menu__item menu__item--current">
-								
-							
-							<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-list"></i>
-							Categories <span class="caret"></span></a>
+
+
+								<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-list"></i>
+									Categories <span class="caret"></span></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<div class="agile_inner_drop_nav_info">
 										<div class="col-sm-12 multi-gd-img">
-										@if(!empty($categories))
+											@if(!empty($categories))
 											<ul class="multi-column-dropdown">
-											
+
 												@foreach($categories as $cat)
 												<li><a href="{{url('product-list/'.$cat->id)}}">{{$cat->categoryName}}</a></li>
 												@endforeach
-												
+
 											</ul>
 											@else
-												Category list not avaiable now
+											Category list not avaiable now
 											@endif
 
 										</div>
-										
+
 										<div class="clearfix"></div>
 									</div>
 								</ul>
 							</li>
 							<li class=" menu__item"><a class="menu__link" href="promotions.html">Promotions</a></li>
 							<li class="dropdown menu__item">
-								<a href="#" class="menu__link" >New Arrivals</a>
-								
+								<a href="#" class="menu__link">New Arrivals</a>
+
 							</li>
 							<li class="dropdown menu__item">
-								<a href="#" class="menu__link">Ready to ship 
+								<a href="#" class="menu__link">Ready to ship
 									<!-- <span class="caret"></span> -->
 								</a>
-								
+
 							</li>
 							<li class="menu__item dropdown">
 								<a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Buyer central <b class="caret"></b></a>
