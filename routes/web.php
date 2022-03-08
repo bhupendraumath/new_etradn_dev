@@ -168,6 +168,10 @@ Route::group(
             'my-upload-product',
             [ProductController::class, 'myUploadProduct']
         )->name('myUploadProduct');
+        Route::post(
+            'my-upload-product-list',
+            [ProductController::class, 'myUploadProductPost']
+        )->name('myUploadProduct.post');
         Route::get(
             'bids-placed',
             [ProductController::class, 'bidsPlaced']

@@ -82,8 +82,8 @@
 
                         <label class="left-align">Brand</label>
 
-                        <select name=" brand_id" id="60per" class="shopname">
-                            <option value=""">--Select Brand-- </option>
+                        <select name="brand_id" id="60per" class="shopname">
+                            <option value="">--Select Brand-- </option>
                             @foreach($brand as $brand_value)
                             <option value=" {{$brand_value->id}}">{{$brand_value->brandName}}</option>
                             @endforeach

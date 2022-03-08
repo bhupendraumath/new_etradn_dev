@@ -100,107 +100,22 @@
                 <br /><br />
 
 
-                <div class="products row">
-
-                    <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="aloe" data-category="green small medium africa">
-                        <div class="images onhover-show-menus">
-                            
-                            <div class="background-gray">
-                                <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
-                            </div>
-
-                            <br />
-
-                            <h4>B2b Product Name</h4>
-                            <span><strike>$110.00</strike> &nbsp; <span> $90.00 </span></span>
-                            <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="gorse" data-category="green yellow large europe">
-                        <div class="images">
-                            <div class="background-gray">
-                                <img src="{{url('assets/images/frontend/product-2-191x132_copy.png')}}" alt="" srcset="" />
-                            </div>
-                            <br />
-
-                            <h4>B2b Product Name</h4>
-                            <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                            <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="hemp" data-category="green large asia">
-                        <div class="images">
-                            <div class="background-gray">
-                                <img src="{{url('assets/images/frontend/pngkey.com-computer-png-44599.png')}}" alt="" srcset="" />
-                            </div>
-                            <br />
-
-                            <h4>B2b Product Name</h4>
-                            <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                            <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="lavendar" data-category="purple green medium africa europe">
-                        <div class="images">
-                            <div class="background-gray">
-                                <img src="{{url('assets/images/frontend/imgbin_home-appliance-washing-machine-refrigerator-png.png')}}" alt="" srcset="" />
-                            </div>
-                            <br />
-
-                            <h4>B2b Product Name</h4>
-                            <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
-                            <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="products row" id='listing'>
                 </div>
                 <br /><br />
             </div>
         </div>
     </div>
 </div>
-<script>
-    jQuery(function($) {
-        var path = window.location.href;
-        console.log("pathfdf  ", path)
-        $('a').each(function() {
-            if (path == this.href) {
 
-                console.log("added...")
-                $(this).addClass('left-active');
-            }
-
-        })
-    })
-</script>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
+<script src="{{ asset('assets/js/frontend/product/product-list.js') }}"></script>
+@endpush

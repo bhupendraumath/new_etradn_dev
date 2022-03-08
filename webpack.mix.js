@@ -67,4 +67,7 @@ mix.js('resources/js/app.js', 'public/js')
     ], 'public/assets/js/frontend/profile/business.js')
     .js([
         'resources/js/frontend/product/product.js'
-    ], 'public/assets/js/frontend/product/product.js');
+    ], 'public/assets/js/frontend/product/product.js')
+    .js([
+        'resources/js/frontend/product/product-list.js'
+    ], 'public/assets/js/frontend/product/product-list.js');

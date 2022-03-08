@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -34,13 +35,62 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function myUploadProduct()
+    public function myUploadProduct(Request $request)
     {
-
+       
         return View(
             'frontend/product/my-upload-product'
         );
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function myUploadProductPost(Request $request)
+    {
+
+        if ($request->ajax()) {
+            try {
+
+                $productlist = Product::where('user_id', Auth::user()->id)->paginate(4);
+                $completeSessionView = view(
+                    'frontend/product/my-upload-product-list',
+                    compact('productlist')
+                )->render();
+
+                if ($productlist->isNotEmpty()) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' => $completeSessionView
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -53,15 +103,17 @@ class ProductController extends Controller
 
     public function productDetails($productId)
     {
-        $product_details=Product::find($productId);
+        $product_details = Product::find($productId);
         // dd($product_details);die;
-        return view('frontend/product/details',
-        compact(
-            'product_details',
-        ));
+        return view(
+            'frontend/product/details',
+            compact(
+                'product_details',
+            )
+        );
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      *
