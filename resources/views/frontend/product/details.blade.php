@@ -3,91 +3,76 @@
 @section('content')
 <!--/single_page-->
 <!-- /banner_bottom_agile_info -->
+
 <div class="page-head_agile_info_w3l">
     <div class="container">
-        <h3>Black<span> Grapes </span></h3>
+        <h3>{{$product_details['product_name']}}</span></h3>
 
     </div>
 </div>
 
 <!-- banner-bootom-w3-agileits -->
 <div class="banner-bootom-w3-agileits product-details">
-    <div class="container-fluid">
+    <div class="container">
         <div class="col-md-5 single-right-left ">
             <div class="grid images_3_of_2" style="">
                 <div class="flexslider">
 
                     <ul class="slides">
-                        <li data-thumb="{{url('assets/images/frontend/d1_ccexpress.png')}}">
-                            <div class="thumb-image add-class"> <img src="{{url('assets/images/frontend/d1_ccexpress.png')}}" data-imagezoom="true" class="img-responsive"> </div>
+
+                        @if(!empty($product_details))
+                            @foreach($product_details['image_many'] as $imgList)
+                            <li data-thumb="{{url('assets/images/product-images/'.$imgList->product_img)}}">
+                                <div class="thumb-image add-class"> 
+                                <img src="{{url('assets/images/product-images/'.$imgList->product_img)}}" data-imagezoom="true" class="img-responsive">
+                                 </div>
+                            </li>
+                            @endforeach
+                          
+                        @else
+
+                        
+                        <li data-thumb="{{url('assets/images/product-images/NicePng_rakhi-clipart-png_3611849.png')}}">
+                            <div class="thumb-image add-class"> <img src="{{url('assets/images/product-images/NicePng_rakhi-clipart-png_3611849.png')}}" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
-                        <li data-thumb="{{url('assets/images/frontend/d2_ccexpress.png')}}">
-                            <div class="thumb-image add-class"> <img src="{{url('assets/images/frontend/d2_ccexpress.png')}}" data-imagezoom="true" class="img-responsive"> </div>
-                        </li>
-                        <li data-thumb="{{url('assets/images/frontend/d3_ccexpress.png')}}">
-                            <div class="thumb-image add-class"> <img src="{{url('assets/images/frontend//d3_ccexpress.png')}}" data-imagezoom="true" class="img-responsive"> </div>
-                        </li>
+                        @endif
                     </ul>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </div>
         <div class="col-md-6 single-right-left simpleCart_shelfItem">
-            <h3 class="product-details-heading">BLACK GRAPES 5 KG</h3>
-            <p class="product-details-page">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+            <h3 class="product-details-heading">{{$product_details['product_name']}} </h3>
+            <p class="product-details-page">{{$product_details['product_desc']}}</p>
             <p>
+
+
+            
+            <input type="hidden" id="rating_value" value="{{$product_details->review[0]['rating']}}">
             <div class="rating1">
                 <span class="starRating">
                     <input id="rating5" type="radio" name="rating" value="5">
                     <label for="rating5">5</label>
                     <input id="rating4" type="radio" name="rating" value="4">
                     <label for="rating4">4</label>
-                    <input id="rating3" type="radio" name="rating" value="3" checked="">
+                    <input id="rating3" type="radio" name="rating" value="3" >
                     <label for="rating3">3</label>
-                    <input id="rating2" type="radio" name="rating" value="2">
+                    <input id="rating2" type="radio" name="rating" value="2"  >
                     <label for="rating2">2</label>
-                    <input id="rating1" type="radio" name="rating" value="1">
+                    <input id="rating1" type="radio" name="rating" value="1" >
                     <label for="rating1">1</label>
+            
                 </span>
             </div>
+            <span class="item_price"><b>PRICE:</b> &nbsp;<del>- ${{$product_details->quantity->price}} &nbsp;</del> &nbsp;&nbsp;<b>${{$product_details->quantity->price - $product_details->quantity->discount}}</b> </span> </p>
 
-            <span class="item_price"><b>PRICE:</b> &nbsp;<del>- $900 &nbsp;</del> <b>$650</b> </span> </p>
-
-            <!-- <div class="description">
-						<h5>Check delivery, payment options and charges at your location</h5>
-						 <form action="#" method="post">
-						<input type="text" value="Enter pincode" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter pincode';}" required="">
-						<input type="submit" value="Check">
-						</form>
-					</div> -->
-            <!-- <div class="color-quality">
-						<div class="color-quality-right">
-							<h5>Quality :</h5>
-							<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-								<option value="null">5 Qty</option>
-								<option value="null">6 Qty</option> 
-								<option value="null">7 Qty</option>					
-								<option value="null">10 Qty</option>								
-							</select>
-						</div>
-					</div> -->
-            <!-- <div class="occasional">
-						<h5>Types :</h5>
-						<div class="colr ert">
-							<label class="radio"><input type="radio" name="radio" checked=""><i></i>Casual Shoes</label>
-						</div>
-						<div class="colr">
-							<label class="radio"><input type="radio" name="radio"><i></i>Sneakers </label>
-						</div>
-						<div class="colr">
-							<label class="radio"><input type="radio" name="radio"><i></i>Formal Shoes</label>
-						</div>
-						<div class="clearfix"> </div>
-					</div> -->
-            <div class="row">
+             <div class="row">
                 <div class="col-md-2 col-6 col-sm-2 col-xs-12">
-                    <div class="quantity buttons_added">
-                        <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                        <div class="quantity buttons_added">
+                        <input type="number" step="1" min="1" max="{{$product_details->quantity->quantity}}" name="quantity" value="1" title="Qty" class="input-text qty text numberofdigits" size="4" pattern="" inputmode="">
+                        <input type="button" value="-" class="minus button_minus">
+                        <input type="button" value="+" class="plus button_plus">
+                        
                     </div>
                 </div>
 
@@ -113,13 +98,11 @@
 
                     </div>
                 </div>
-
-
-            </div><br />
+            </div>
 
             <span class="item_price"><b>SKU:</b> &nbsp; IFF_grapes_186</span> <br />
-            <span class="item_price"><b>Category:</b> &nbsp; FRUIT</span><br />
-            <span class="item_price"><b>Tags:</b> &nbsp; Casual, Fashion, Loose, Stylish</span><br />
+            <span class="item_price"><b>Category:</b> &nbsp; <span class="uppercase">{{$product_details['category']['categoryName']}}</span></span><br />
+            <!-- <span class="item_price"><b>Tags:</b> &nbsp; Casual, Fashion, Loose, Stylish</span> -->
 
 
             <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
@@ -157,9 +140,9 @@
                         <div class="tab1">
 
                             <div class="single_page_agile_its_w3ls">
-                                <h6>Lorem ipsum dolor sit amet</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore magna aliqua.</p>
-                                <p class="w3ls_para">Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore magna aliqua.</p>
+                                <!-- <h6>Lorem ipsum dolor sit amet</h6> -->
+                                <p>{{$product_details['product_desc']}}</p>
+                               
                             </div>
                         </div>
                         <!--//tab_one-->
@@ -214,6 +197,12 @@
     <a href="#product-details" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
     <script>
         $(document).ready(function() {
+
+            var rating_value=$("#rating_value").val();
+            document.getElementById(`rating${rating_value}`).checked = true;
+
+
+
             $('#horizontalTab').easyResponsiveTabs({
                 type: 'default', //Types: default, vertical, accordion           
                 width: 'auto', //auto or any width like 600px

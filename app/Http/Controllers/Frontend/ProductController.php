@@ -51,9 +51,14 @@ class ProductController extends Controller
         return view('frontend/bid-placed/index');
     }
 
-    public function productDetails()
+    public function productDetails($productId)
     {
-        return view('frontend/product/details');
+        $product_details=Product::find($productId);
+        // dd($product_details);die;
+        return view('frontend/product/details',
+        compact(
+            'product_details',
+        ));
     }
 
     
