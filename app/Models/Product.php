@@ -20,7 +20,7 @@ class Product extends Model
     protected $table = 'tbl_product';
     public $timestamps = false;
     use HasFactory;
-    protected $with=['image','review'];
+    protected $with=['image','review','quantity','image_many','category'];
     protected $fillable = [
         'user_id',
         'cat_id',
@@ -55,6 +55,11 @@ class Product extends Model
     public function image()
     {
         return $this->hasOne(ImageUpload::class, 'product_id');
+    }
+
+    public function image_many()
+    {
+        return $this->hasMany(ImageUpload::class, 'product_id');
     }
 
     /**

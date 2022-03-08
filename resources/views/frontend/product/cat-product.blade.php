@@ -24,6 +24,8 @@
                         <div class="row">
                             <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
                                 <input type="hidden" id="pathimage" value="{{url('assets/images/product-images/')}}">
+
+                                <input type="hidden" id="url" value="{{url('product-details')}}">
                                 <span class="sorting-pagination">Sort By :</span>
 
                                 <select class="sorting-low-high" id="order">
@@ -104,29 +106,14 @@
                     </div>                   
                   					
                         <div class="col-12 col-md-3 col-sm-3 col-xl-3">
+                        {{--{!! $data->links() !!}--}}
 
-                        
-                                <!-- <div class="row">
-                                    <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
-                                        <span class="show-pagination sorting-pagination">Show :</span>    
-                                        <select class="sorting-low-high page-limit"  id="page_limit">
-                                            <option value="12">12</option>
-                                            <option value="48">48</option>
-                                            <option value="60">60</option>
-                                            <option value="100">100</option>
-                                        </select>                           
-                                        
-                                    </div>
-                                </div> -->
-
+                        <div id="pagination"></div>
                         </div>
                 </div>
                 <hr class="margin-top-bottom">
                 <div>
-                <div class="row"  id="filters_card_show_here">
-
-                          
-                        </div>
+                <div class="row"  id="filters_card_show_here"></div>
 
                 </div>
                 
@@ -152,8 +139,10 @@ function filter() {
   var brand = $('#brand').val();
   var category = $('#category').val();
   var path=$('#pathimage').val();
+  var url_file=$('#url').val();
 
-  console.log(path);
+
+  console.log(path,url_file);
     $.ajax({
     url: "{{url('product-list')}}",
     type: "POST",
@@ -172,6 +161,7 @@ function filter() {
                     $("#filters_card_show_here").empty();
                     for(var i=0;i<res.data.list.data.length;i++){
                         template +=`<div class="col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4">
+                        <a href="${url_file}/${res.data.list.data[i].id}">
                                 <div class="images images-padding">
                                     <div class="background-gray1">                                        
                                     <img src="${path}/${res.data.list.data[i].image.product_img }" alt="" srcset="" class="resize-images-ca-details"/>
@@ -192,6 +182,8 @@ function filter() {
                                     </div>
                                    
                                 </div>
+                        </a>
+                                
                                 
                             </div>`;
                     }
@@ -199,6 +191,8 @@ function filter() {
                     // console.log("template  ",template);
                   
                     $("#filters_card_show_here").append(template);
+
+                    
                 } else{
                     $("#filters_card_show_here").empty();
                     template+=`<div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">

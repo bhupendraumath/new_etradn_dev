@@ -9,17 +9,32 @@ $(document).ready(function(){
       pauseOnHover: true,
       prevArrow: '<i class="slick-prev fas fa-angle-left"></i>',
       nextArrow: '<i class="slick-next fas fa-angle-right"></i>',
-      responsive: [{
-          breakpoint: 768,
+      responsive: [
+        {
+          breakpoint: 1024,
           settings: {
-              slidesToShow: 1
+            slidesToShow: 1,
+            slidesToScroll: 3,
+            infinite: false,
+            dots: false
           }
-      }, {
-          breakpoint: 520,
+        },
+        {
+          breakpoint: 600,
           settings: {
-              slidesToShow: 1
+            slidesToShow: 1,
+            slidesToScroll: 2
           }
-      }]
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        
+    ]
   });
   
   
@@ -33,17 +48,32 @@ $(document).ready(function(){
         pauseOnHover: true,
         prevArrow: '<i class="slick-prev fa fa-chevron-circle-left  top-left"></i>',
         nextArrow: '<i class="slick-next fa fa-chevron-circle-right top-right"></i>',
-        responsive: [{
-            breakpoint: 768,
+        responsive: [
+          {
+            breakpoint: 1024,
             settings: {
-                slidesToShow: 1
+              slidesToShow: 1,
+              slidesToScroll: 3,
+              infinite: false,
+              dots: false
             }
-        }, {
-            breakpoint: 520,
+          },
+          {
+            breakpoint: 600,
             settings: {
-                slidesToShow: 1
+              slidesToShow: 1,
+              slidesToScroll: 2
             }
-        }]
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          
+      ]
     });
   
   
@@ -59,17 +89,32 @@ $(document).ready(function(){
       pauseOnHover: true,
       prevArrow: '<i class="slick-prev fa fa-chevron-circle-left hot-left"></i>',
       nextArrow: '<i class="slick-next fa fa-chevron-circle-right hot-right"></i>',
-      responsive: [{
-          breakpoint: 768,
+      responsive: [
+        {
+          breakpoint: 1024,
           settings: {
-              slidesToShow: 1
+            slidesToShow: 1,
+            slidesToScroll: 3,
+            infinite: false,
+            dots: false
           }
-      }, {
-          breakpoint: 520,
+        },
+        {
+          breakpoint: 600,
           settings: {
-              slidesToShow: 1
+            slidesToShow: 1,
+            slidesToScroll: 2
           }
-      }]
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        
+    ]
   });
   
   
@@ -84,17 +129,32 @@ $(document).ready(function(){
     pauseOnHover: true,
     prevArrow: '<i class="slick-prev fa fa-chevron-circle-left special-left"></i>',
     nextArrow: '<i class="slick-next fa fa-chevron-circle-right special-right"></i>',
-    responsive: [{
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 1
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 3,
+          infinite: false,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
       }
-    }, {
-      breakpoint: 520,
-      settings: {
-        slidesToShow: 1
-      }
-    }]
+      
+  ]
     });
   
   
@@ -108,17 +168,32 @@ $(document).ready(function(){
       pauseOnHover: true,
       prevArrow: '<i class="slick-prev fa fa-chevron-circle-left latest-left"></i>',
       nextArrow: '<i class="slick-next fa fa-chevron-circle-right latest-right"></i>',
-      responsive: [{
-          breakpoint: 768,
+      responsive: [
+        {
+          breakpoint: 1024,
           settings: {
-              slidesToShow: 1
+            slidesToShow: 1,
+            slidesToScroll: 3,
+            infinite: false,
+            dots: false
           }
-      }, {
-          breakpoint: 520,
+        },
+        {
+          breakpoint: 600,
           settings: {
-              slidesToShow: 1
+            slidesToShow: 1,
+            slidesToScroll: 2
           }
-      }]
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        
+    ]
   });
     
   $('.product-feature_list').slick({
@@ -131,17 +206,32 @@ $(document).ready(function(){
   pauseOnHover: true,
   prevArrow: '<i class="slick-prev fa fa-chevron-circle-left latest-left"></i>',
   nextArrow: '<i class="slick-next fa fa-chevron-circle-right latest-right"></i>',
-  responsive: [{
-      breakpoint: 768,
+  responsive: [
+    {
+      breakpoint: 1024,
       settings: {
-      slidesToShow: 1
+        slidesToShow: 1,
+        slidesToScroll: 3,
+        infinite: false,
+        dots: false
       }
-  }, {
-      breakpoint: 520,
+    },
+    {
+      breakpoint: 600,
       settings: {
-      slidesToShow: 1
+        slidesToShow: 1,
+        slidesToScroll: 2
       }
-  }]
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    
+]
   });
 
 
@@ -190,10 +280,11 @@ window.onload = codeAddress;
 });
 
 
-function openCity(evt, cityName="All") {
+function openCity(evt, tabName="All") {
 
 // document.getElementById("all_id").innerHTML ="Hello rinky";
-
+$('.product-show-list').slick('refresh'); 
+$('.product-show-list').slick('refresh'); 
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -203,15 +294,18 @@ function openCity(evt, cityName="All") {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(cityName).style.display = "block";
+  document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
 
 
-function open2(evt, cityName="All2") {
+function open2(evt, tabName="All2") {
+
+$('.product-latest_list').slick('refresh'); 
+$('.product-latest_list').slick('refresh');
+
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent2");
-    // console.log("jhdfj ",tabcontent)
 
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
@@ -220,12 +314,15 @@ function open2(evt, cityName="All2") {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(cityName).style.display = "block";
+  document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
 
-function open3(evt, cityName="All3") {
+function open3(evt, tabName="All3") {
   var i, tabcontent, tablinks;
+  
+  $('.product-feature_list').slick('refresh'); 
+$('.product-feature_list').slick('refresh');
   tabcontent = document.getElementsByClassName("tabcontent3");
     console.log("jhdfj ",tabcontent)
 
@@ -236,7 +333,7 @@ function open3(evt, cityName="All3") {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(cityName).style.display = "block";
+  document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
 

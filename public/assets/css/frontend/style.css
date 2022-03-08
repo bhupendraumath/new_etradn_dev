@@ -6865,9 +6865,17 @@ select.sorting-low-high {
     /* margin-right: 39px; */
 }
 
-.images.images-padding:hover {
+/* .images.images-padding:hover {
     border: 2px solid #f2ae3d;
 	padding: 2px;
+} */
+.background-gray1:hover{
+    border-left: 4px solid #f2ae3d;
+    /* width: 100%; */
+}
+
+.images.images-padding:hover .background-gray1{
+	border-left: 4px solid #f2ae3d;
 }
 
 .background-gray1 {
@@ -6911,7 +6919,7 @@ i.slick-prev.fa.fa-chevron-circle-left.special-left.slick-arrow{
 i.slick-next.fa.fa-chevron-circle-right.special-right.slick-arrow{
 	top:-60px;
 	font-size:26px;
-	right: 16px;
+	right: 5px;
 }
 .row.show-special-list.slider.slick-initialized.slick-slider{
 	margin-top:0px
@@ -6998,9 +7006,9 @@ i.slick-next.fa.fa-chevron-circle-right.top-right.slick-arrow {
 }
 
 input.input-text.qty.text {
-    width: 27px;
+    /* width: 27px;
     margin-left: 6px;
-    margin-right: 6px;
+    margin-right: 6px; */
 }
 .banner-bootom-w3-agileits {
     margin-top: 71px;
@@ -8356,16 +8364,27 @@ p.whoareparagraph {
     text-align: center;
 }
 
+.quantity.buttons_added .minus {
+    /* border-right: 0; */
+    border-radius: 0;
+    height: 22px;
+    padding: 0px;
+    margin-left: -6px;
+}
+
 .quantity {
 	display: inline-block; }
    
    .quantity .input-text.qty {
-	width: 35px;
+	text-align: center;
+    border-radius: 0px;
+
+	/* width: 35px;
 	height: 39px;
 	padding: 0 5px;
 	text-align: center;
 	background-color: transparent;
-	border: 1px solid #efefef;
+	border: 1px solid #efefef; */
    }
    
    .quantity.buttons_added {
@@ -8383,17 +8402,27 @@ p.whoareparagraph {
    
    .quantity.buttons_added .minus,
    .quantity.buttons_added .plus {
-	padding: 7px 10px 8px;
-	height: 41px;
+	/* padding: 7px 10px 8px;
+	height: 41px; */
 	background-color: #ffffff;
 	border: 1px solid #efefef;
 	cursor:pointer;}
    
    .quantity.buttons_added .minus {
-	border-right: 0; }
+	/* border-right: 0;  */
+}
+
+input.plus.button_plus {
+    height: 24px;
+    border-radius: 0;
+    padding: 0;
+    margin-left: -45px;
+    margin-top: 22px;
+}
    
    .quantity.buttons_added .plus {
-	border-left: 0; }
+	/* border-left: 0;  */
+}
    
    .quantity.buttons_added .minus:hover,
    .quantity.buttons_added .plus:hover {
@@ -8897,9 +8926,23 @@ p.bottom-heading {
   }
 
 .background-gray:hover {
-    border: 2px solid #ffbf54;
+    border-left: 4px solid #ffbf54;
 }
 
+.images.image-left:hover .background-gray {
+    border-left: 4px solid #ffbf54;
+}
+
+.col-6.col-md-6.col-sm-6.col-lg-6.col-xl-6.reducewidth.col-xs-6{
+	padding:14px;
+}
+ .images.right-side>img:hover{
+	border-left: 4px solid #ffbf54;
+}
+
+.images.right-side:hover img{
+	border-left: 4px solid #ffbf54;
+} 
 body {
     margin: 0px;
     padding: 0px;
@@ -9252,7 +9295,8 @@ a.pinterest .front {
 }
 .w3_agile_social .front i{
 	color: #fff;
-    font-size: 12px;
+    font-size: 18px;
+    padding: 6px;
 }
 .w3_agile_social .back i{
 	color: #000;
@@ -15961,7 +16005,7 @@ label.checkbox {
 }
 ul.social-nav.model-3d-0.footer-social.w3_agile_social.single_page_w3ls {
     float: none;
-    margin-top: 2em;
+    /* margin-top: 2em; */
 }
 /*-- //treeview --*/
 .men-wear-left{
@@ -16041,15 +16085,16 @@ font-weight: 300;
     font-weight: 600;
     font-family: "Sary Soft - Semi Bold";
 }
-.single-right-left p{
-    color: #000;
-    font-size: 18px;
+.single-right-left p {
+    color: #000000c2;
+    font-family: 'Lato';
+    font-size: 16px;
     margin: .5em 0 1em;
 }
 .single-right-left del {
     color: #999;
     margin-left: 10px;
-    font-weight: 300;
+    font-weight: 500;
 }
 .description{
 	margin:1.5em 0;
@@ -16226,7 +16271,11 @@ background: black;
 }
 .single_page_agile_its_w3ls {
     padding: 2em;
+    font-family: 'Lato';
+    color: #3d3d3d;
+    font-size: 17px;
     /* border: 1px solid #ddd; */
+    /* font-family: 'Lato'; */
 }
 .single_page_agile_its_w3ls h6 {
     font-size: 1.2em;
@@ -16237,7 +16286,7 @@ background: black;
 	margin-bottom:0.5em;
 }
 .single_page_agile_its_w3ls p {
-    line-height: 2em;
+    /* line-height: 2em; */
 }
 p.w3ls_para {
     margin-top: 1em;
