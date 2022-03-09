@@ -355,8 +355,8 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
         try {
-
-            $Product = Product::storeProduct($request);
+            $product= new Product;
+            $Product =  $product->storeProduct($request);
             if (!empty($Product)) {
                 return response()->json(
                     ['success' => true, 'message' => trans('admin.add_product')]
