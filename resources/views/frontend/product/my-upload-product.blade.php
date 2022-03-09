@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12 float-right">
                         <!-- filter section    -->
-                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="filter-button">Pending Result <i class="fas fa-filter" style="color:black"></i></button>
+                        <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="filter-button">Pending Result <i class="fas fa-filter" style="color:black"></i></button>
 
                         <div id="id01" class="modal">
                             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -77,8 +77,18 @@
                                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Submit</button>
                             </div>
 
-                        </div>
+                        </div> -->
 
+
+                        <span class="show-pagination sorting-pagination uploaded-product">Show Records :</span>    
+                        <select class="sorting-low-high uploaded-product" id="uploaded_product_page">
+                            <!-- <option disabled selected >--Show--</option> -->
+                            <option value="4" selected >4</option>
+                            <option value="12" >12</option>
+                            <option value="48">48</option>
+                            <option value="60">60</option>
+                            <option value="100">100</option>
+                        </select> 
 
                         <!-- filter section    -->
 
@@ -116,6 +126,12 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+
+
+
+
+
 </script>
 <script src="{{ asset('assets/js/frontend/product/product-list.js') }}"></script>
 @endpush

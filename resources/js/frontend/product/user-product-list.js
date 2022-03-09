@@ -11,7 +11,7 @@ $(window).load(function () {
         console.log("reords -- ",records)
         var filter_by = 'desc';
         $.ajax({
-            url: process.env.MIX_APP_URL + "/my-upload-product-list",
+            url: process.env.MIX_APP_URL + "/product-list-render",
             type: "POST",
             data: {
                 filter_by: filter_by,

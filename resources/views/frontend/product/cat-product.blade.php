@@ -154,7 +154,6 @@ function filter() {
         _token: '{{csrf_token()}}'
     },
     success: function(res) {
-        console.log(res.data.list.data)
                 var template = '';
                 
                 if (res) {
@@ -162,7 +161,7 @@ function filter() {
                     for(var i=0;i<res.data.list.data.length;i++){
                         template +=`<div class="col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4">
                         <a href="${url_file}/${res.data.list.data[i].id}">
-                                <div class="images images-padding">
+                            <div class="images images-padding">
                                     <div class="background-gray1">                                        
                                     <img src="${path}/${res.data.list.data[i].image.product_img }" alt="" srcset="" class="resize-images-ca-details"/>
                                     </div>
@@ -187,8 +186,6 @@ function filter() {
                                 
                             </div>`;
                     }
-                    
-                    // console.log("template  ",template);
                   
                     $("#filters_card_show_here").append(template);
 
@@ -208,34 +205,6 @@ function filter() {
  
 }
 
-
-// $('#page_limit').on('change', function() {
-//             var page_limit = $(this).val();        
-            
-//             $.ajax({
-//                 url: "{{env('WHEREVER_FORM'). '/api/brandsListBasedCat'}} ",
-//                 type: "POST",
-//                 data: {
-//                     id: catid
-//                 },
-//                 success: function(res) {
-                    
-//                     if (res) {
-//                         $("#brand_name").empty();
-//                         var template = '';
-//                         $("#brand_name").append('<option value="" disabled selected> Select Brand</option>');
-//                         for (var i = 0; i < res.length; i++) {
-//                            template += '<option value="' + res[i].id  + '">' + res[i].brand_name +'</option>';
-//                         }
-
-                       
-//                         $("#brand_name").append(template);
-//                     } else {
-//                         $("#brand_name").empty();
-//                     }
-//                 }
-//             });
-// })
 
 
 </script>

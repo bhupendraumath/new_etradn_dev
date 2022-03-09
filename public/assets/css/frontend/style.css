@@ -6734,6 +6734,17 @@ button.filter-button.remove-color-black {
     border-radius: 10px;
 }
 
+.col-12.right-side-column {
+    text-align: right;
+    margin-right: 18px;
+}
+
+.sorting-low-high.uploaded-product {
+    width: 78px;
+	text-align: center;
+    margin-top: 11px;
+}
+
 hr.favorite {
     margin-top: 20px;
     margin-bottom: -24px;

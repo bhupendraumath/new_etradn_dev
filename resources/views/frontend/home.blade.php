@@ -108,18 +108,23 @@
                           @foreach ($popular_list as $cat)
                           @foreach ($cat->category_based_product as $product)
                         <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide">
-                        <div class="images image-left">
-                                <div class="background-gray left-side">
-                                @if(!empty($product->image))                                  
+                           {{-- <a href="{{url('product-details/'.$product->id)}}">--}}
+                            <div class="images image-left">
+                                    <div class="background-gray left-side">
+                                        @if(!empty($product->image))                                  
 
-                                    <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" />
-                                @else
-                                     <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
-                                @endif
-                                </div>
+                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" />
+                                        @else
+                                            <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                        @endif
+                                    </div>
                                     <br/>
                                     <h4>{{$product->product_name}}</h4>
-                                    <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
+                                    @if(!empty($product->quantity))
+                                    <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                    @else
+                                    <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                    @endif
                                     
                                     @if(!empty($product->review) && (count($product->review)!=0))
                                     <div>
@@ -138,8 +143,8 @@
                                         <span class="fa fa-star-o checked"></span>
                                     </div>
                                     @endif
-                                </div>
-                           
+                            </div>
+                            {{--</a>--}}
                         </div>
                          @endforeach
                         @endforeach
@@ -201,7 +206,11 @@
                                 @endif
                                     <br/>
                                     <h4>{{$product->product_name}}</h4>
-                                    <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
+                                    @if(!empty($product->quantity))
+                                    <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                    @else
+                                    <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                    @endif
                                     
                                     @if(!empty($product->review) && (count($product->review)!=0))
                                     <div>
@@ -284,8 +293,12 @@
                                 </div>
                                     <br/>
                                     <h4>{{$product->product_name}}</h4>
-                                    <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
-                                    
+                                    @if(!empty($product->quantity))
+                                    <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                    @else
+                                    <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                    @endif
+
                                     @if(!empty($product->review) && (count($product->review)!=0))
                                     <div>
                                         <span class="fa fa-star checked"></span>
@@ -477,7 +490,11 @@
                                         @endif
                                             <br/>
                                             <h4>{{$product->product_name}}</h4>
-                                            <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
+                                            @if(!empty($product->quantity))
+                                            <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                            @else
+                                            <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                            @endif
                                             
                                             @if(!empty($product->review) && (count($product->review)!=0))
                                             <div>
@@ -590,7 +607,11 @@
                                         </div>
                                         <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
                                                 <h4>{{$product->product_name}}</h4>
-                                                <span><strike>${{$product->bid_amount}}</strike> &nbsp; <span> ${{$product->shipping_price}} </span></span>
+                                                @if(!empty($product->quantity))
+                                                <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                                @else
+                                                <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                                @endif
                                                 
                                                 @if(!empty($product->review) && (count($product->review)!=0))
                                                 <div>

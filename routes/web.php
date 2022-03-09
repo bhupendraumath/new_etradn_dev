@@ -59,6 +59,13 @@ Route::post(
 )->name('product.detailedlist');
 
 
+Route::post(
+    '/product-list-render',
+    [ProductController::class, 'detailedlistRender']
+)->name('product.detailedlistrender');
+
+
+
 Route::get(
     '/product-details/{id}',
     [ProductController::class, 'productDetails']
