@@ -6,7 +6,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>MY PLACED BIDS</h3>
+        <h3>MY UPLOAD PRODUCT</h3>
 
     </div>
 </div>

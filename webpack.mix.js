@@ -34,6 +34,7 @@ mix.js('resources/js/app.js', 'public/js')
 
         'public/vendor/jsvalidation/js/jsvalidation.min.js',
         'resources/js/frontend/toastr.min.js',
+        'resources/js/frontend/cropper.min.js',
         'resources/js/frontend/common.js',
     ], 'public/assets/js/frontend/main.js')
     .styles([
@@ -44,7 +45,8 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/frontend/easy-responsive-tabs.css',
         'resources/css/frontend/font-awesome.css',
         'resources/css/frontend/toastr.min.css',
-        'resources/css/frontend/team.css'
+        'resources/css/frontend/team.css',
+        'resources/css/frontend/cropper.min.css',
 
     ], 'public/assets/css/frontend/style.css')
     .js([

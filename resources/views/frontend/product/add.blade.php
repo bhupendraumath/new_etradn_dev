@@ -33,6 +33,10 @@
     ul.inline-css>li {
         display: inline;
     }
+
+    .modal-backdrop {
+        z-index: 0 !important;
+    }
 </style>
 
 <div class="page-head_agile_info_w3l-seller-dashboard">
@@ -60,10 +64,12 @@
                         <div id="drop_area" class="area">
                             <div>
                                 <label for="files" class="btn center-drag-drop"><b>Choose or Drag & Drop
-                                    <br/> Your Product Images Here! </b></label>
-                                <input id="files" style="visibility:hidden;" type="file">
+                                        <br /> Your Product Images Here! </b></label>
+                                <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg">
                             </div>
                         </div>
+                        <input type="hidden" name="profile_image[]" id="imagedata">
+                        <img id="previewImage" width="100" height="100">
 
                         <div id="result"></div>
                         <br />
@@ -80,80 +86,80 @@
                             <option value=""">--Select sub category-- </option>
                         </select>
 
-                        <label class="left-align">Brand</label>
+                        <label class=" left-align">Brand</label>
 
-                        <select name="brand_id" id="60per" class="shopname">
-                            <option value="">--Select Brand-- </option>
-                            @foreach($brand as $brand_value)
-                            <option value=" {{$brand_value->id}}">{{$brand_value->brandName}}</option>
-                            @endforeach
-                        </select>
+                                <select name="brand_id" id="60per" class="shopname">
+                                    <option value="">--Select Brand-- </option>
+                                    @foreach($brand as $brand_value)
+                                    <option value=" {{$brand_value->id}}">{{$brand_value->brandName}}</option>
+                                    @endforeach
+                                </select>
 
-                        <br /><br />
-                        <h3 class="change-side">ENGLISH LANGUAGE*</h3>
-                        <hr class="business-address" />
+                                <br /><br />
+                                <h3 class="change-side">ENGLISH LANGUAGE*</h3>
+                                <hr class="business-address" />
 
-                        <label class="left-align">Product Name</label>
-                        <input type="text" name="product_name_eng" placeholder="Product Name in English*" class="60per">
+                                <label class="left-align">Product Name</label>
+                                <input type="text" name="product_name_eng" placeholder="Product Name in English*" class="60per">
 
-                        <label class="left-align">Product Description</label>
-                        <textarea name="product_description_eng" placeholder="Product Description English*" required=""></textarea>
+                                <label class="left-align">Product Description</label>
+                                <textarea name="product_description_eng" placeholder="Product Description English*" required=""></textarea>
 
-                        <label class="left-align">Product Warranty</label>
-                        <input type="text" name="warranty_description_eng" placeholder="Product warranty in English*" class="60per">
+                                <label class="left-align">Product Warranty</label>
+                                <input type="text" name="warranty_description_eng" placeholder="Product warranty in English*" class="60per">
 
-                        <br /><br />
-                        <h3 class="change-side">LIST PRODUCT*</h3>
-                        <hr class="business-address" />
+                                <br /><br />
+                                <h3 class="change-side">LIST PRODUCT*</h3>
+                                <hr class="business-address" />
 
-                        <div class="change-position">
-                            <input type="radio" name="list_product" value="b" checked>
-                            <label for="buyitnow"><span></span>Buy it Now</label> &nbsp;&nbsp;&nbsp;
+                                <div class="change-position">
+                                    <input type="radio" name="list_product" value="b" checked>
+                                    <label for="buyitnow"><span></span>Buy it Now</label> &nbsp;&nbsp;&nbsp;
 
-                            <input type="radio" name="list_product" value="a">
-                            <label for="Auction"><span></span>Auction</label>&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="list_product" value="a">
+                                    <label for="Auction"><span></span>Auction</label>&nbsp;&nbsp;&nbsp;
 
-                            <input type="radio" name="list_product" value="bo">
-                            <label for="both"><span></span>Both</label>
-                        </div>
-                        <br />
+                                    <input type="radio" name="list_product" value="bo">
+                                    <label for="both"><span></span>Both</label>
+                                </div>
+                                <br />
 
-                        <h3 class="change-side">REFUND REQUEST</h3>
-                        <hr class="business-address" />
+                                <h3 class="change-side">REFUND REQUEST</h3>
+                                <hr class="business-address" />
 
-                        <div class="change-position">
-                            <input type="radio" name="refund_request" value="y" checked>
-                            <label for="Existing"><span></span>Yes</label> &nbsp;&nbsp;&nbsp;
+                                <div class="change-position">
+                                    <input type="radio" name="refund_request" value="y" checked>
+                                    <label for="Existing"><span></span>Yes</label> &nbsp;&nbsp;&nbsp;
 
-                            <input type="radio" name="refund_request" value="n">
-                            <label for="new"><span></span>No</label><br /><br />
-                        </div>
-                        <br />
-                        <h3 class="change-side">SHIPPED ADDRESS FROM PRODUCT</h3>
-                        <hr class="business-address" />
+                                    <input type="radio" name="refund_request" value="n">
+                                    <label for="new"><span></span>No</label><br /><br />
+                                </div>
+                                <br />
+                                <h3 class="change-side">SHIPPED ADDRESS FROM PRODUCT</h3>
+                                <hr class="business-address" />
 
-                        <div class="change-position">
-                            <input id="Existing" type="radio" name="address" value="Existing" checked>
-                            <label for="Existing"><span></span>Existing Address</label> &nbsp;&nbsp;&nbsp;
+                                <div class="change-position">
+                                    <input id="Existing" type="radio" name="address" value="Existing" checked>
+                                    <label for="Existing"><span></span>Existing Address</label> &nbsp;&nbsp;&nbsp;
 
-                            <input id="new" type="radio" name="new" value="new">
-                            <label for="new"><span></span>New Address</label><br /><br /><br />
-                        </div>
-                        <h3 class="change-side">SHIPPING TYPE PRODUCT</h3>
-                        <hr class="business-address" />
+                                    <input id="new" type="radio" name="new" value="new">
+                                    <label for="new"><span></span>New Address</label><br /><br /><br />
+                                </div>
+                                <h3 class="change-side">SHIPPING TYPE PRODUCT</h3>
+                                <hr class="business-address" />
 
-                        <div class="change-position">
-                            <input type="radio" name="shipping_type" value="f" checked>
-                            <label for="Existing"><span></span>Free</label> &nbsp;&nbsp;&nbsp;
+                                <div class="change-position">
+                                    <input type="radio" name="shipping_type" value="f" checked>
+                                    <label for="Existing"><span></span>Free</label> &nbsp;&nbsp;&nbsp;
 
-                            <input type="radio" name="shipping_type" value="new">
-                            <label for="p"><span></span>Paid</label><br /><br /><br />
-                        </div>
+                                    <input type="radio" name="shipping_type" value="new">
+                                    <label for="p"><span></span>Paid</label><br /><br /><br />
+                                </div>
 
 
-                        <div class="buttons">
-                            <input type="submit" value="ADD PRODUCT" class="save-changes" id="submitbtn">
-                        </div>
+                                <div class="buttons">
+                                    <input type="submit" value="ADD PRODUCT" class="save-changes" id="submitbtn">
+                                </div>
                     </form>
 
                 </div>
@@ -164,7 +170,7 @@
     </div>
 </div>
 
-
+@include('frontend.common.profile-cropper')
 
 @endsection
 @push('scripts')
