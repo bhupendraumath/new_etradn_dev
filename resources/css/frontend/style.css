@@ -38,6 +38,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 /* -------------------------------- */
 /* 28-02-22 */
 
+
+
+
 img.resize-images{
 	background-color: #e1dede;
 	padding:28px
@@ -821,19 +824,23 @@ h4.heading-4-change {
 /* Rating & review */
 
 p.rating-paragraph {
-    font-size: 17px;
+    font-size: 16px;
     line-height: normal;
     margin-top: 6px;
-    /* font-family: "Sary Soft - Semi Bold"; */
-	word-spacing: 0px;
-	color:gray;
+    font-family: 'Sary Soft -thin';
+    word-spacing: 0px;
+    color: gray;
     word-spacing: -3px;
     /* font-family: none; */
 }
 
+.col-9.col-md-9.col-sm-9.col-lg-9.col-xl-9.reducewidth.col-xs-12.text-left {
+    margin-top: 10px;
+}
+
 .background-gray.rating.new-size {
-    width: 100%;
-    padding: 31px;
+    width: 87%;
+    padding: 21px;
 }
 
 

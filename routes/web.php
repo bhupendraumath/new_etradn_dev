@@ -110,6 +110,10 @@ Route::get(
 )->name('product.details');
 
 
+Route::get(
+    'review-rating',
+    [ProductController::class, 'review_rating']
+)->name('review-rating');
 //list of product
 Route::get(
     '/product-list/{id}',

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
+use App\Models\ProductReview;
+
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
@@ -192,6 +194,34 @@ class ProductController extends Controller
     {
         // $list=Category::with('category_based_product')->get();
         return view('frontend/product/cat-product');
+    }
+
+    
+
+    public function review_rating()
+    {
+
+            // $productlist = Product::withOut(['quantity','image_many','category'])
+            // ->where('user_id', Auth::user()->id)
+            // ->get();
+    
+            $userid=Auth::user()->id;
+            $productreview=new ProductReview;
+
+            // $productlist=$productreview->with(['product'=>function($q) use($userid) {
+            //     $q->whereUserId($userid);
+            // }])
+            
+            $productlist=$productreview->with(['product'=>function($q) use($userid) {
+                $q->whereUserId($userid)->get();
+            }])
+            ->get();
+
+            return view('frontend/seller/review-rating',
+            compact(
+                'productlist',
+            ));
+
     }
 
     public function detailedlist(Request $request)
