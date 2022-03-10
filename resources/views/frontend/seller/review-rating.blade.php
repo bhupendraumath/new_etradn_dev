@@ -46,18 +46,22 @@
                             <p class="rating-paragraph">{{$list->description}}
                             </p>
                             <br/>
-                            <!-- <div>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-                                <span class="fa fa-star-o checked"></span>
-                                
-                            </div> -->
 
-                            <input type="hidden" id="rating_value" value="{{$list->rating}}">
+                            <!-- <input type="hidden" id="rating_value" value="{{$list->rating}}"> -->
                             <div class="rating1">
-                                <span class="starRating">
+
+                            
+                            @for($star = 1; $star <= 5; $star++)
+                                <?php  $class_name = ''; ?>
+                               @if($list->rating >= $star)
+                                    <?php $class_name = 'text-warning'; ?>
+                                @else
+                                    <?php $class_name = 'star-light'; ?>
+                                @endif
+                                <i class="fas fa-star <?php echo $class_name ?>  mr-1"></i>
+                            @endfor
+
+                                <!-- <span class="starRating">
                                     <input id="rating5" type="radio" name="rating" value="5">
                                     <label for="rating5">5</label>
                                     <input id="rating4" type="radio" name="rating" value="4">
@@ -69,7 +73,7 @@
                                     <input id="rating1" type="radio" name="rating" value="1" >
                                     <label for="rating1">1</label>
                             
-                                </span>
+                                </span> -->
                             </div>
                             <br/>
                         </div>
@@ -91,8 +95,8 @@
 
 <script>
     $(document).ready(function() {
-        var rating_value=$("#rating_value").val();
-        document.getElementById(`rating${rating_value}`).checked = true;
+        // var rating_value=$("#rating_value").val();
+        // document.getElementById(`rating${rating_value}`).checked = true;
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>

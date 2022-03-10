@@ -198,31 +198,7 @@ class ProductController extends Controller
 
     
 
-    public function review_rating()
-    {
 
-            // $productlist = Product::withOut(['quantity','image_many','category'])
-            // ->where('user_id', Auth::user()->id)
-            // ->get();
-    
-            $userid=Auth::user()->id;
-            $productreview=new ProductReview;
-
-            // $productlist=$productreview->with(['product'=>function($q) use($userid) {
-            //     $q->whereUserId($userid);
-            // }])
-            
-            $productlist=$productreview->with(['product'=>function($q) use($userid) {
-                $q->whereUserId($userid)->get();
-            }])
-            ->get();
-
-            return view('frontend/seller/review-rating',
-            compact(
-                'productlist',
-            ));
-
-    }
 
     public function detailedlist(Request $request)
     {

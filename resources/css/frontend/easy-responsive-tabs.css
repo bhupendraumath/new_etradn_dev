@@ -57,7 +57,7 @@ h2.resp-accordion {
   position: absolute;
   width: 0;
   height: 0;
-  border-top: 10px solid #ffa301;
+  /* border-top: 10px solid #ffa301; */
   border-left: 10px solid rgba(69, 42, 21, 0);
   border-right: 10px solid rgba(199, 57, 57, 0);
   left: 45%;

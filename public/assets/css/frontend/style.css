@@ -6625,6 +6625,113 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
+.modal-backdrop {
+    position: inherit;
+}
+
+button.close {
+    color: black;
+}
+.text-center>.star-light,  .star-light {
+    color: #f5f5f5;
+}
+
+.mb-3>.text-warning {
+    color: #f3b145;
+}
+
+.text-warning {
+    color: #ffa301;
+}
+
+.star-light {
+    color: #f5f5f5;
+}
+
+.mb-3> .main-start {
+    font-size: 21px;
+}
+
+.rating1>.text-warning {
+    color: #ffa301;
+}
+
+.star-light {
+    color: #f5f5f5;
+}
+
+.dropzone {
+	background: #e3e6ff;
+	border-radius: 13px;
+	max-width: 550px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px dotted #1833FF;
+	margin-top: 50px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.card-body {
+    margin-top: 16px;
+}
+
+.card-body>.text-warning {
+    color: #ffa301;
+}
+
+.bg-danger {
+    background-color: #f2dede;
+    border-radius: 50%;
+    height: 76px;
+    width: 76px;
+    color: white;
+    padding: 24px;
+}
+
+.form-group>input {
+    width: 96%;
+    margin-left: 2%;
+}
+h4.text-center.mt-2.mb-4 {
+    font-size: 22px;
+    margin-bottom: 11px;
+}
+.form-group.text-center.mt-4>button {
+    width: 96%;
+    margin-left: 2%;
+    text-transform: uppercase;
+}
+
+button#add_review {
+    width: 136px;
+    text-transform: uppercase;
+    border: none;
+}
+
+.progress-label-left>.text-warning, .text-center>.text-warning {
+    color: #f3b145;
+}
+div#review_modal {
+    display: none;
+    /* position: inherit; */
+    /* z-index: 1; */
+    /* text-align: left; */
+    left: 0;
+    border: none;
+    top: 0%;
+    /* bottom: 8%; */
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; */
+    background-color: #ffffffd9 !important;
+    /* padding-top: 50px; */
+    /* border-radius: 10px; */
+    /* padding-left: 65px; */
+    /* color: white; */
+}
 
 img.resize-images{
 	background-color: #e1dede;
@@ -8699,8 +8806,20 @@ section.trigger.section.gutter-horizontal.bg-gray.gutter-vertical--m.gutter-hori
   }
   
   .fas {
-	  color: #96bd0b;
+	  color: #eee;
+	  font-size: 18px;
   }
+
+  .progress {
+    height: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+}
+
   .slick-prev {
 	  left: 0;
   }
@@ -18859,7 +18978,7 @@ h2.resp-accordion {
   position: absolute;
   width: 0;
   height: 0;
-  border-top: 10px solid #ffa301;
+  /* border-top: 10px solid #ffa301; */
   border-left: 10px solid rgba(69, 42, 21, 0);
   border-right: 10px solid rgba(199, 57, 57, 0);
   left: 45%;

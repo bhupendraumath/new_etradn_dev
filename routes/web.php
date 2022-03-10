@@ -7,7 +7,8 @@ use App\Http\Controllers\Frontend\{
     ProductController,
     SellerController,
     CommonController,
-    BuyerController
+    BuyerController,
+    ReviewController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -72,6 +73,19 @@ Route::get(
 )->name('product.productDetails');
 
 
+
+Route::post(
+    '/submit_rating',
+    [ReviewController::class, 'submit_rating']
+)->name('submit_rating');
+
+
+Route::post(
+    '/submit_rating_load',
+    [ReviewController::class, 'submit_rating_load']
+)->name('submit_rating_load');
+
+
 Route::group(
     ['middleware' => 'checkLogin:web'],
     function () {
@@ -112,13 +126,13 @@ Route::get(
 
 Route::get(
     'review-rating',
-    [ProductController::class, 'review_rating']
+    [ReviewController::class, 'review_rating']
 )->name('review-rating');
 //list of product
 Route::get(
     '/product-list/{id}',
     [ProductController::class, 'list']
-)->name('product.list');
+)->name('product.list');    
 //list of product
 Route::post(
     '/getsubCategroy',
