@@ -1,3 +1,76 @@
+/* image cropper functions*/
+window.setImage = function setImage(input, img_type) {
+  $('.validation').empty();
+  var fileTypes = ['jpg', 'jpeg', 'png']; //acceptable file types
+  $('#crop_image').attr('src', '');
+  let defaultSrc = $('#defaultImagePreview').attr('src');
+  $('#imagePreview').attr('src', defaultSrc);
+  if (input.files && input.files[0]) {
+      var extension = input.files[0].name.split('.').pop().toLowerCase(), //file extension from input file
+          isSuccess = fileTypes.indexOf(extension) > -1; //is extension in acceptable types
+      if (!isSuccess) {
+          $('#uploadImage').val('');
+          $("#uploadImage").parent().after("<div class= 'validation help-block error-help-block  pl-2 pr-1' > Please add either a JPEG, JPG or a PNG file.</div > ");
+      } else if (input.files[0].size >= 5120000) {
+          $('#uploadImage').val('');
+          var fileTxt = img_type == 'business_image' ? 'a logo' : 'image'; // for diff msg
+          $("#uploadImage").parents('.upload_photo ').
+              after("<div class='validation help-block error-help-block text-center' style='margin-top:2px;'>Please add " + fileTxt + " file not exceeding 5MBs.</div>");
+      } else {
+          openImageCropperModal(input, img_type);
+      }
+  }
+}
+
+$(document).on('hidden.bs.modal', '#imageCropperModal', function (e) {
+  $('#crop_image').attr('src', '');
+  var $image = $("#crop_image");
+  var input = $("#cropImageInput");
+  input.replaceWith(input.val('').clone(true));
+  $image.cropper("destroy");
+});
+
+//cropper
+window.loadCropper = function () {
+  var $image = $("#crop_image");
+  $image.cropper({
+      viewMode: 1,
+      dragMode: 'move',
+      aspectRatio: 1,
+      movable: false,
+      zoomable: true,
+      rotatable: true,
+      center: true,
+      responsive: true,
+      cropBoxResizable: true,
+      minContainerWidth: '100%',
+      minContainerHeight: '100%',
+
+  });
+}
+function openImageCropperModal(input, img_type) {
+  var reader = new FileReader();
+  reader.onload = function (e) {
+      //Initiate the JavaScript Image object.
+      var image = new Image();
+      //Set the Base64 string return from FileReader as source.
+      image.src = e.target.result;
+      //Validate the File Height and Width.
+      image.onload = function () {
+          $("#imageCropperModal").modal("show");
+          $('#crop_image').attr('src', e.target.result);
+          $('#imageBaseCode').val(e.target.result);
+          $('#image_type').val(img_type);
+          setTimeout(function () {
+              loadCropper();
+          }, 150);
+          $(input).val(null);
+      };
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+
 $(document).ready(function(){
   $('.customer-logos').slick({
       slidesToShow: 4,
@@ -455,3 +528,7 @@ if (event.target == modal) {
   modal.style.display = "none";
 }
 }
+
+
+
+

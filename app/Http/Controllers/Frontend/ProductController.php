@@ -39,7 +39,7 @@ class ProductController extends Controller
      */
     public function myUploadProduct(Request $request)
     {
-       
+
         return View(
             'frontend/product/my-upload-product'
         );
@@ -54,9 +54,9 @@ class ProductController extends Controller
 
         if ($request->ajax()) {
             try {
-               
+
                 $productlist = Product::where('user_id', Auth::user()->id)
-                ->paginate($request->record);
+                    ->paginate($request->record);
                 $completeSessionView = view(
                     'frontend/product/my-upload-product-list',
                     compact('productlist')
@@ -102,7 +102,7 @@ class ProductController extends Controller
             try {
                 $category = $request->category;
                 $productlist = Product::where('cat_id', $category)
-                ->paginate($request->record);
+                    ->paginate($request->record);
                 $completeSessionView = view(
                     'frontend/product/my-upload-product-list',
                     compact('productlist')
@@ -226,48 +226,65 @@ class ProductController extends Controller
 
     public function detailedlist(Request $request)
     {
-
-        try{
-
-            $order = $request->order;
-            $brand = $request->brand;
-            $category = $request->category;
-            $page_limit = $request->page_limit != null ? $request->page_limit : 6;
-            $sequence = "asc";
-            $dataArr = ['cat_id' => $category];
-            if ($brand != null) {
-                $dataArr['brand_id'] = $brand;
-            }
-
-            if ($order != null) {
-                if ($order == "higher") {
-                    $sequence = 'desc';
-                } elseif ($order == "lower") {
-                    $sequence = 'ASC';
+        if ($request->ajax()) {
+            try {
+                $order = $request->order;
+                $brand = $request->brand;
+                $category = $request->category;
+                $page_limit = $request->page_limit != null ? $request->page_limit : 6;
+                $sequence = "asc";
+                $dataArr = ['cat_id' => $category];
+                if ($brand != null) {
+                    $dataArr['brand_id'] = $brand;
                 }
-            }
 
-            $list = Product::where($dataArr)
-                ->orderBy('bid_amount', $sequence)
-                ->paginate($page_limit);
+                if ($order != null) {
+                    if ($order == "higher") {
+                        $sequence = 'desc';
+                    } elseif ($order == "lower") {
+                        $sequence = 'ASC';
+                    }
+                }
+
+                $productlist = Product::where($dataArr)
+                    ->orderBy('bid_amount', $sequence)
+                    ->paginate($page_limit);
 
 
 
-            $brand_list = Brand::all();
-            $category_list = Category::all();
+                $brand_list = Brand::all();
+                $category_list = Category::all();
 
-            $result = ['list' => $list, 
-            'brand_list' => $brand_list,
-            'category_list' => $category_list
-            ];
+                $result = [
+                    'list' => $productlist,
+                    'brand_list' => $brand_list,
+                    'category_list' => $category_list
+                ];
+                $completeSessionView = view(
+                    'frontend/product/my-upload-product-list',
+                    compact('productlist')
+                )->render();
 
-            return response()->json([
-                'error' => false,
-                'data' => $result,
-                'message' =>  "sucess",
-            ], 200);
-
-            }catch (\Exception $ex) {
+                if ($productlist->isNotEmpty()) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' => $completeSessionView
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
                 return response()->json(
                     [
                         'success' => false,
@@ -277,9 +294,8 @@ class ProductController extends Controller
                     422
                 );
             }
-       
+        }
     }
-
 
     public function detailedlist_2(Request $request)
     {
@@ -326,8 +342,15 @@ class ProductController extends Controller
         $brand_list = Brand::all();
         $category_list = Category::all();
 
-        $result= ['list' => $list, 'brand_list' => $brand_list, 'category_list' => $category_list];
-        return view('frontend/product/cat-product',$result);
+        $product = Product::where('cat_id', $id)
+            ->paginate(1);
+        $result = [
+            'list' => $list,
+            'brand_list' => $brand_list,
+            'category_list' => $category_list,
+            'product' => $product
+        ];
+        return view('frontend/product/cat-product', $result);
     }
 
 
