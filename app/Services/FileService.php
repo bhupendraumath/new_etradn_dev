@@ -29,7 +29,7 @@ class FileService
 
         $s3->put($path . $imageName, $image, $permission);
 
-        return $path . $imageName;
+        return  $imageName;
     }
 
     /**

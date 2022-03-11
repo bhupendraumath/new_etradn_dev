@@ -369,9 +369,10 @@ class ProductController extends Controller
 
                 $fileService = new FileService();
                 $image =  $fileService->uploadBaseCodeImage(
-                    'uploads/product/',
+                    'assets/images/product-images/',
                     $imagefile
                 );
+                
                 //Save image
                 ImageUpload::saveImageProduct(
                     $Product->id,

@@ -6,7 +6,7 @@
     <div class="images onhover-show-menus">
 
         <div class="background-gray">
-            <img src="{{$productvalue->image->product_img}}" alt="" srcset="" />
+            <img src="{{url('assets/images/product-images/')}}/{{$productvalue->image->product_img}}" alt="" srcset="" />
         </div>
 
         <br />
