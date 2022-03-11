@@ -71,6 +71,15 @@ button.close {
     color: #ffa301;
 }
 
+button.btn.btn-primary {
+	width: 136px;
+    text-transform: uppercase;
+    border: none;
+}
+
+button.btn.btn-primary>a{
+	color:white
+}
 .star-light {
     color: #f5f5f5;
 }

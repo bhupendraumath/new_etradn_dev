@@ -8,7 +8,8 @@ use App\Http\Controllers\Frontend\{
     SellerController,
     CommonController,
     BuyerController,
-    ReviewController
+    ReviewController,
+    OrderController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -72,7 +73,10 @@ Route::get(
     [ProductController::class, 'productDetails']
 )->name('product.productDetails');
 
-
+Route::post(
+    '/checking_order_existing',
+    [ReviewController::class, 'checking_order_existing']
+)->name('checking_order_existing');
 
 Route::post(
     '/submit_rating',
@@ -156,10 +160,12 @@ Route::group(
             'dashboard',
             [SellerController::class, 'dashboard']
         )->name('seller.dashboard');
+
         Route::get(
             'person-information',
             [CommonController::class, 'personInformation']
         )->name('personInformation');
+
         Route::get(
             'business-information',
             [SellerController::class, 'businessInformation']
@@ -170,6 +176,12 @@ Route::group(
             'business-address',
             [SellerController::class, 'businessAddress']
         )->name('business-address');
+
+
+        Route::get(
+            'my-order',
+            [OrderController::class, 'myorder']
+        )->name('my-order');
 
         Route::get(
             'business-address-edit/{id}',

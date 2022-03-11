@@ -8,9 +8,11 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\ProductReview;
+use App\Models\OrderItem;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class ReviewController extends Controller
 {
@@ -20,6 +22,87 @@ class ReviewController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function checking_order_existing(Request $request){
+        
+        $product_review=ProductReview::where(['buyerId'=>$request->buyerId,
+                    'sellerId'=>$request->seller_id,
+                    'productId'=>$request->productId
+                    ])
+                    ->get();
+
+                    
+        if(count($product_review)==0){
+           
+            $buyerId=$request->buyerId;
+            $order_item=OrderItem::with(['getOrder'=>function($q) use($buyerId){
+                $q->where("buyer_id",$buyerId);
+            }])
+            ->where('seller_id',$request->seller_id)
+            ->get();
+
+            $order_id='';
+
+            if(!empty($order_item)){
+
+                for($i=0;$i<count($order_item);$i++){
+                   
+                    if(!empty($order_item[$i]['product_detail_1'])){
+
+                    $encode=json_encode($order_item[$i]['product_detail_1']);
+                    $decode=json_decode($encode,true);
+
+                    $my_str_arr = preg_split ("/,/", $decode);
+                    $id_convert=preg_split ("/{/", $my_str_arr[0]);
+                    $id_remove=  preg_split ('/"id":/', $id_convert[1]);
+                    $id_remove2=  preg_split ('/"/', $id_remove[1]);
+                    $product_id=$id_remove2[1];
+                    
+
+                    if($product_id==$request->productId){
+
+                        $order_id=$order_item[$i]['id'];
+                        // return $order_id;
+                        return response()->json(
+                            [
+                                'success' => true,
+                                'message'=>'Order id exist',
+                                'data' =>
+                                ['orderId'=>$order_id]
+                                
+                            ]
+                        );
+
+                    }
+                    else{
+                        // return $order_id;
+                        return response()->json(
+                            [
+                                'success' => false,
+                                'message'=>'Order id not exist',
+                                'data' =>
+                                ['orderId'=>$order_id]
+                                
+                            ]
+                        );
+                    }
+                    }
+                }
+
+               
+
+            }
+        }
+        else{
+            return response()->json(
+                [
+                    'success' => false,
+                    'message'=>'You are already submitted Review & Rating.',
+                    'data' =>$product_review
+                    
+                ]
+            );
+        }
+    }
 
     public function submit_rating(Request $request ){
 
@@ -63,15 +146,16 @@ class ReviewController extends Controller
         $total_user_rating = 0;
         $review_content = array();
 
-        $product=ProductReview::where("productId",$request->id)
+        $product=ProductReview::with("user")->where("productId",$request->id)
         ->orderBy("id",'desc')
         ->get();
 
 
+        // print_r($product);die;
         foreach($product as $row)
         {
             $review_content[] = array(
-                'user_name'		=>	"test",
+                'user_name'		=>	$row->user->firstName,
                 'user_review'	=>	$row["description"],
                 'rating'		=>	$row["rating"],
                 // 'datetime'		=>	date('l jS, F Y h:i:s A', $row["createdDate"])
@@ -151,18 +235,18 @@ class ReviewController extends Controller
     }
     public function review_rating()
     {
-
-            // $productlist = Product::withOut(['quantity','image_many','category'])
-            // ->where('user_id', Auth::user()->id)
-            // ->get();
     
             $userid=Auth::user()->id;
-            $productreview=new ProductReview;
+            // $productreview=new ProductReview;
 
-            $productlist=$productreview->with(['product'=>function($q) use($userid) {
-                $q->whereUserId($userid)->get();
-            }])
-            ->get();
+            // $productlist=$productreview->with(['product'=>function($q) use($userid) {
+            //     $q->whereUserId($userid)->get();
+            // }])
+            // ->get();
+            
+            $productlist = ProductReview::where('sellerid',$userid)
+            ->with('product')
+            ->paginate(4);
 
             return view('frontend/seller/review-rating',
             compact(
@@ -170,4 +254,6 @@ class ReviewController extends Controller
             ));
 
     }
+
+
 }

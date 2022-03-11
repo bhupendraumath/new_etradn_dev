@@ -113,9 +113,15 @@
             <span class="item_price"><b>SKU:</b> &nbsp; IFF_grapes_186</span> <br />
             <span class="item_price"><b>Category:</b> &nbsp; <span class="uppercase">{{$product_details['category']['categoryName']}}</span></span><br />
             <!-- <span class="item_price"><b>Tags:</b> &nbsp; Casual, Fashion, Loose, Stylish</span> -->
-
+                
+            <?php $user=Auth::user(); ?>
+            @if(!empty($user))
+            <input type="hidden" value="{{$user}}" id="user_details">
+            <input type="hidden" value="{{$user->id}}" id="user_id">
+            @endif
             <input type="hidden" value="{{$product_details->id}}" id="product_id">
-
+            <input type="hidden" value="{{$product_details->user_id}}" id="seller_id">
+            
             <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
                 <li class="share">SOCIAL MEDIA SHARE : </li>
                 <li><a href="#">
@@ -264,7 +270,12 @@
                                     </div>
                                     <div class="col-sm-4 text-center">
                                         <!-- <h3 class="mt-4 mb-3">Write Your Review Here</h3> -->
+                                        <?php $user=Auth::user();?>
+                                       {{-- @if(!empty($user))--}}
                                         <button type="button" name="add_review" id="add_review" class="btn btn-primary">Your Review</button>
+                                       {{-- @else
+                                        <button type="button" name="add_review"  class="btn btn-primary" onclick="confirm('Please login before giving your review and rating...')"><a href="{{route('login')}}">Your Review</a></button>
+                                        @endif --}}
                                     </div>
                                 </div>
                             </div>
@@ -384,9 +395,54 @@
  
 
     var rating_data = 0;
+    var user=$('#user_details').val();
+    var user_id=$('#user_id').val();
+    
+    
+    var id=$('#product_id').val();//product id
+
+    var seller_id=$('#seller_id').val();
+    var buyerId=user_id;
+    var orderId;
 
     $('#add_review').click(function(){
-        $('#review_modal').modal('show');
+       console.log("user id --- ",user);
+
+    //    if(user!=undefined)
+    // ||( user.length!=0)
+        if((user!=undefined )){
+
+            $.ajax({
+                url:"{{url('checking_order_existing')}}",
+                method:"POST",
+                data:{
+                    productId:id,
+                    seller_id:seller_id,                 
+                    buyerId:buyerId,
+                    _token: '{{csrf_token()}}'
+                    },
+                success:function(res)
+                {
+                    orderId=res.data.orderId;
+                    if(orderId==""){                        
+                        alert("Please order the product....")
+                    }
+                    else{
+                        console.log("order exist")
+                        $('#review_modal').modal('show');
+
+                    }
+
+                }
+            })
+
+
+        }
+        else{
+            if(confirm('Please login before giving your review and rating...')){
+                window.location="{{url('sign-in')}}"
+            }
+        }
     });
 
     $(document).on('mouseenter', '.submit_star', function(){
@@ -427,8 +483,7 @@
 
 
     $('#save_review').click(function(){
-
-        // var user_name = $('#user_name').val();
+        
         var user_review = $('#user_review').val();
         if(user_review == '')
         {
@@ -437,14 +492,15 @@
         }
         else
         {
+
             $.ajax({
                 url:"{{url('submit_rating')}}",
                 method:"POST",
                 data:{
-                    productId:'14',
-                    orderItemId:'374',
-                    sellerId:'374',
-                    buyerId:'374',
+                    productId:id,
+                    orderItemId:orderId,
+                    sellerId:seller_id,
+                    buyerId:buyerId,
                     description:user_review,
                     rating:rating_data,
                     status:'a',

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Bids;
 
 class OrderItem extends Model
 {
@@ -51,6 +52,11 @@ class OrderItem extends Model
     public function getOrder()
     {
         return $this->belongsTo(Order::class, 'order_number', 'order_number');
+    }
+
+    public function bid_details()
+    {
+        return $this->belongsTo(Bids::class, 'id', 'bid_id');
     }
 
     public function getOrderItemsByOrderNumber($orderNumber) {

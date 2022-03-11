@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class ProductReview extends Model
 {
@@ -23,6 +24,7 @@ class ProductReview extends Model
         'ipAddress'
     ];
 
+
     public function saveReview($request) {
         $saveReview = ProductReview::create([
             'orderItemId' => $request->order_item_id,
@@ -35,6 +37,10 @@ class ProductReview extends Model
             'ipAddress' => ''
         ]);
         return $saveReview;
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'buyerId', 'id');
     }
 
     public function product() {

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ProductReview;
+use App\Models\OrderItem;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -17,6 +20,24 @@ class OrderController extends Controller
         //
     }
 
+    public function myorder(){
+
+
+        $userid=Auth::user()->id;
+
+        // $productlist = OrderItem::where('seller_id',$userid)
+        //                 ->paginate(4);
+
+        $productlist = ProductReview::where('sellerid',$userid)
+        ->with('product')
+        ->paginate(4);
+
+        return view('frontend/seller/my-order',
+        compact(
+            'productlist',
+        ));
+
+    }
     /**
      * Show the form for creating a new resource.
      *
