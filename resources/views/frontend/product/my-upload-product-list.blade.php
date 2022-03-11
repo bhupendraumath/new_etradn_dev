@@ -6,11 +6,11 @@
     <div class="images onhover-show-menus">
 
         <div class="background-gray">
-            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+            <img src="{{$productvalue->image->product_img}}" alt="" srcset="" />
         </div>
 
         <br />
-
+        
         <h4>{{$productvalue->product_name}}</h4>
         <span><strike>$110.00</strike> &nbsp; <span> $90.00 </span></span>
         <div>
