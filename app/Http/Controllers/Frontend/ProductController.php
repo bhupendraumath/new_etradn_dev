@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
+use App\Models\ImageUpload;
 use App\Models\ProductReview;
-
+use App\Services\FileService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
@@ -103,6 +104,7 @@ class ProductController extends Controller
                 $category = $request->category;
                 $productlist = Product::where('cat_id', $category)
                     ->paginate($request->record);
+                
                 $completeSessionView = view(
                     'frontend/product/my-upload-product-list',
                     compact('productlist')
@@ -196,7 +198,7 @@ class ProductController extends Controller
         return view('frontend/product/cat-product');
     }
 
-    
+
 
 
 
@@ -361,8 +363,24 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
         try {
-            $product= new Product;
+            $product = new Product;
             $Product =  $product->storeProduct($request);
+            foreach ($request->image_name as $imagefile) {
+
+                $fileService = new FileService();
+                $image =  $fileService->uploadBaseCodeImage(
+                    'assets/images/product-images/',
+                    $imagefile
+                );
+                
+                //Save image
+                ImageUpload::saveImageProduct(
+                    $Product->id,
+                    $image
+                );
+            }
+
+
             if (!empty($Product)) {
                 return response()->json(
                     ['success' => true, 'message' => trans('admin.add_product')]

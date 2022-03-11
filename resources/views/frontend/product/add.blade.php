@@ -68,8 +68,9 @@
                                 <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg">
                             </div>
                         </div>
-                        <input type="hidden" name="profile_image[]" id="imagedata">
+                        <input type="hidden" name="image_name[]" id="imagedata">
                         <img id="previewImage" width="100" height="100">
+                        <img id="previewImage1" width="100" height="100">
 
                         <div id="result"></div>
                         <br />

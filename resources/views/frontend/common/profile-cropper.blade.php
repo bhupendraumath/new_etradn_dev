@@ -38,6 +38,12 @@
         var $type = $("#type").val();
         var $imageBaseCode = $("#imageBaseCode").val();
         $imageCover.val();
+        var firstimage = document.getElementById("previewImage");
+        if (firstimage == '') {
+            $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
+        } else {
+            $('#previewImage1').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
+        }
         $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
         $('#imagedata').val($imageCover.cropper('getCroppedCanvas').toDataURL());
         $("#imageCropperModal").modal("hide");
