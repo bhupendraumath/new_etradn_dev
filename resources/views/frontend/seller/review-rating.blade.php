@@ -48,10 +48,7 @@
                             </p>
                             <br/>
 
-                            <!-- <input type="hidden" id="rating_value" value="{{$list->rating}}"> -->
-                            <div class="rating1">
-
-                            
+                            <div class="rating1">                            
                             @for($star = 1; $star <= 5; $star++)
                                 <?php  $class_name = ''; ?>
                                @if($list->rating >= $star)
@@ -87,7 +84,7 @@
                 @endforeach
             @endif
             <div class="row">
-           {{ $productlist->render() }}
+           {{ $productlist->render('frontend.common.pagination') }}
             </div>
             </div>
         </div>

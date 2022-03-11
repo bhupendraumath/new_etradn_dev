@@ -28,7 +28,7 @@
 <div class="row">
     <div class="col-12  right-side-column">
     <!-- 'frontend.common.pagination' -->
-          {{ $list->links() }}
+          {{ $list->links('frontend.common.pagination') }}
     </div>
 </div>
 

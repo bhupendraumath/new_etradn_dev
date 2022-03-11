@@ -48,4 +48,7 @@ class ImageUpload extends Model
         $productImage = ImageUpload::where('product_id', $id)->first();
         return $productImage;
     }
+
+
+    
 }

@@ -424,8 +424,15 @@
                 success:function(res)
                 {
                     orderId=res.data.orderId;
+                    console.log("order-id",orderId)
+
                     if(orderId==""){                        
-                        alert("Please order the product....")
+                        // alert("Please order the product....");
+                        toastr.error("Please order the product....", { timeOut: 2000 });
+                    }
+                    else if(res.message=="You are already submitted Review & Rating."){
+                        // alert(res.message);
+                        toastr.error(res.message, { timeOut: 2000 });
                     }
                     else{
                         console.log("order exist")
@@ -487,7 +494,7 @@
         var user_review = $('#user_review').val();
         if(user_review == '')
         {
-            alert("Please Fill Both Field");
+            toastr.error('Please Fill Both Field', { timeOut: 2000 });
             return false;
         }
         else
@@ -510,8 +517,9 @@
                 {
 
                     $('#review_modal').modal('hide');
-
+                    toastr.success("Successfully Added your review & rating..", { timeOut: 2000 });
                     load_rating_data();
+                    
 
                 }
             })

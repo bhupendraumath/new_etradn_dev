@@ -56,7 +56,6 @@ class ReviewController extends Controller
                     $id_remove=  preg_split ('/"id":/', $id_convert[1]);
                     $id_remove2=  preg_split ('/"/', $id_remove[1]);
                     $product_id=$id_remove2[1];
-                    
 
                     if($product_id==$request->productId){
 

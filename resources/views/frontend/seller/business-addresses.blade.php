@@ -79,7 +79,7 @@
             
                         </tbody>
                     </table>
-                    {!! $list->render() !!}@endif
+                    {!! $list->render('frontend.common.pagination') !!}@endif
 
 
                     <!-- <form id="businessFrm" class="businessInformation" method="post">

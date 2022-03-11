@@ -25,12 +25,9 @@ class OrderController extends Controller
 
         $userid=Auth::user()->id;
 
-        // $productlist = OrderItem::where('seller_id',$userid)
-        //                 ->paginate(4);
-
-        $productlist = ProductReview::where('sellerid',$userid)
-        ->with('product')
-        ->paginate(4);
+        $productlist = OrderItem::where('seller_id',$userid)
+                    ->orderBy("id",'desc')
+                    ->paginate(2);
 
         return view('frontend/seller/my-order',
         compact(

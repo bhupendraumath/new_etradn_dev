@@ -38,7 +38,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 /* -------------------------------- */
 /* 28-02-22 */
 
+.background-gray.new-size>img.order-image {
+    height: auto;
+    width: 100%;
+    margin: 1px;
+}
 
+h3, .h3 {
+    font-size: 20px;
+}
 
 .modal-backdrop {
     position: inherit;
@@ -46,6 +54,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 button.close {
     color: black;
+}
+input#submitbtn {
+    text-align: center;
 }
 .text-center>.star-light,  .star-light {
     color: #f5f5f5;
@@ -67,6 +78,12 @@ button.close {
     font-size: 21px;
 }
 
+.order-date {
+    float: right;
+}
+b.orderd-date-time {
+    color: #f2ae3d;
+}
 .rating1>.text-warning {
     color: #ffa301;
 }
@@ -75,6 +92,11 @@ button.btn.btn-primary {
 	width: 136px;
     text-transform: uppercase;
     border: none;
+}
+
+.color-size {
+    font-size: 14px;
+    margin-top: 9px;
 }
 
 button.btn.btn-primary>a{
@@ -2297,10 +2319,19 @@ section.trigger.section.gutter-horizontal.bg-gray.gutter-vertical--m.gutter-hori
     width: 80px;
     /* margin-top: -26px; */
 }
+.background-gray.rating.new-size.order-image-gary {
+    width: 94%;
+    padding: 21px;
+    height: 192px;
+    margin-top: 1px;
+}
+
+
 
 .background-gray.new-size>img {
     margin-bottom: 0px;
     padding: 3px;
+	padding-left: 10px;
 }
 
 .background-gray.new-size {
