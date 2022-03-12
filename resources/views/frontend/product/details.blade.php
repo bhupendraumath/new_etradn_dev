@@ -39,6 +39,7 @@
                         </li>
                         @endif
                     </ul>
+
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -46,20 +47,18 @@
         <div class="col-md-6 single-right-left simpleCart_shelfItem">
             <h3 class="product-details-heading">{{$product_details['product_name']}} </h3>
             <p class="product-details-page">{{$product_details['product_desc']}}</p>
-            <p>
-
-
-            
-            <input type="hidden" id="rating_value" value="{{$product_details->review[0]['rating']}}">
+            <p>            
+            {{--<input type="hidden" id="rating_value" value="{{$product_details->review[0]['rating']}}">--}}
             <div class="rating1">
                 <div class="mb-3">
-                    <i class="fas fa-star star-light mr-1 main_star_1"></i>
-                    <i class="fas fa-star star-light mr-1 main_star_1"></i>
-                    <i class="fas fa-star star-light mr-1 main_star_1"></i>
-                    <i class="fas fa-star star-light mr-1 main_star_1"></i>
-                    <i class="fas fa-star star-light mr-1 main_star_1"></i>
+                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
+                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
+                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
+                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
+                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
                 </div>
             </div>
+
             <span class="item_price"><b>PRICE:</b> &nbsp;<del>- ${{$product_details->quantity->price}} &nbsp;</del> &nbsp;&nbsp;<b>${{$product_details->quantity->price - $product_details->quantity->discount}}</b> </span> </p>
 
              <div class="row">
@@ -164,11 +163,11 @@
                                             <b><span id="average_rating">0.0</span> / 5</b>
                                         </h1>
                                         <div class="mb-3">
-                                            <i class="fas fa-star star-light mr-1 main_star"></i>
-                                            <i class="fas fa-star star-light mr-1 main_star"></i>
-                                            <i class="fas fa-star star-light mr-1 main_star"></i>
-                                            <i class="fas fa-star star-light mr-1 main_star"></i>
-                                            <i class="fas fa-star star-light mr-1 main_star"></i>
+                                            <i class="fa fa-star star-light mr-1 main_star"></i>
+                                            <i class="fa fa-star star-light mr-1 main_star"></i>
+                                            <i class="fa fa-star star-light mr-1 main_star"></i>
+                                            <i class="fa fa-star star-light mr-1 main_star"></i>
+                                            <i class="fa fa-star star-light mr-1 main_star"></i>
                                         </div>
                                         <h3><span id="total_review">0</span> Review</h3>
                                     </div>
@@ -540,8 +539,15 @@
 
                     if(Math.ceil(res.data.average_rating) >= count_star)
                     {
+                        console.log("main_star_1 --- > ",this);
                         $(this).addClass('text-warning');
+
                         $(this).addClass('star-light');
+
+                    }
+                    else{
+                        $(this).removeClass('fa fa-star');
+                        $(this).addClass('fa fa-star-o star-light checked');
                     }
                 });
 
@@ -549,9 +555,15 @@
                     count_star1++;
                     if(Math.ceil(res.data.average_rating) >= count_star1)
                     {
+                        console.log("main_star_1 --- > ",this);
                         $(this).addClass('text-warning');
+
                         $(this).addClass('star-light');
 
+                    }
+                    else{
+                        $(this).removeClass('fa fa-star');
+                        $(this).addClass('fa fa-star-o star-light checked');
                     }
                 });
 
@@ -592,16 +604,17 @@
                         for(var star = 1; star <= 5; star++)
                         {
                             var class_name = '';
+
                             if(res.data.review_data[count].rating >= star)
                             {
-                                class_name = 'text-warning';
+                                class_name = ' text-warning';
                             }
                             else
                             {
-                                class_name = 'star-light';
+                                class_name = '-o star-light checked';
                             }
 
-                            html += '<i class="fas fa-star '+class_name+' mr-1"></i>';
+                            html += '<i class="fa fa-star'+class_name+' mr-1"></i>';
                         }
 
                         html += '<br />';

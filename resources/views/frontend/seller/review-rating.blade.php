@@ -52,11 +52,12 @@
                             @for($star = 1; $star <= 5; $star++)
                                 <?php  $class_name = ''; ?>
                                @if($list->rating >= $star)
-                                    <?php $class_name = 'text-warning'; ?>
+                                        <?php $class_name = ' text-warning'; ?>
                                 @else
-                                    <?php $class_name = 'star-light'; ?>
+                                <?php $class_name = '-o star-light checked'; ?>
                                 @endif
-                                <i class="fas fa-star <?php echo $class_name ?>  mr-1"></i>
+                            
+                            <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
                             @endfor
                             </div>
                             <br/>

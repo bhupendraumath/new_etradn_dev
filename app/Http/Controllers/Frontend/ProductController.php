@@ -226,11 +226,13 @@ class ProductController extends Controller
 
                 // $page_limit
                 $productlist = Product::where($dataArr)
+                    ->with(['quantity'=>function($q) use ($sequence){
+                        $q->orderBy('tbl_product_attribute_quantity.price', 'ASC');
+                    }])
                     ->orderBy('id', $sequence)
                     ->paginate($page_limit);
+                    // ->get();
 
-
-                // dd($productlist);die;
                 $brand_list = Brand::all();
                 $category_list = Category::all();
 
@@ -375,7 +377,8 @@ class ProductController extends Controller
                 );
                 
                 //Save image
-                ImageUpload::saveImageProduct(
+                $upload=new ImageUpload;
+                $upload->saveImageProduct(
                     $Product->id,
                     $image
                 );

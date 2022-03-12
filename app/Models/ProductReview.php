@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use DB;
 
 class ProductReview extends Model
 {
@@ -66,5 +67,28 @@ class ProductReview extends Model
             }))
             ->orderBy('id', 'DESC')->get();
         return $reviews;
+    }
+
+
+    public function review_average($product_id)
+    {
+    
+            // $userid=Auth::user()->id;
+           $total_review=0;
+           $total_rating=0;
+            $average_review = ProductReview::where('productId',$product_id)
+            ->get();
+
+            foreach($average_review as $row){
+                $total_review++;
+                $total_rating=$total_rating+$row['rating'];
+            }
+
+            if($total_review!=0){
+              return ($total_rating/$total_review);
+            } 
+            else{
+                return 0;
+            }  
     }
 }

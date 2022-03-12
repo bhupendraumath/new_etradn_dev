@@ -123,26 +123,34 @@
                                     @if(!empty($product->quantity))
                                     <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
                                     @else
-                                    <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                    <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                     @endif
                                     
-                                    @if(!empty($product->review) && (count($product->review)!=0))
-                                    <div>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
+
+                                    <div class="rating-review-upload">
+
+                                        <?php
+                                        
+                                        $review=new App\Models\ProductReview;
+                                        $avg_review=$review->review_average($product->id);            
+                                        ?>
+
+
+                                        @for($star = 1; $star <= 5; $star++)
+                                        <?php  $class_name = ''; ?>
+                                    
+                                            @if($avg_review >= $star)
+                                            <?php $class_name = ' text-warning'; ?>
+                                            @else
+                                            <?php $class_name = '-o star-light checked'; ?>
+                                            @endif
+                                        
+                                        <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
+                                        @endfor
+
+                                       
+
                                     </div>
-                                    @else
-                                    <div>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                    </div>
-                                    @endif
                             </div>
                             {{--</a>--}}
                         </div>
@@ -209,26 +217,33 @@
                                     @if(!empty($product->quantity))
                                     <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
                                     @else
-                                    <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                    <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                     @endif
                                     
-                                    @if(!empty($product->review) && (count($product->review)!=0))
-                                    <div>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
+                                    <div class="rating-review-upload">
+
+                                        <?php
+                                        
+                                        $review=new App\Models\ProductReview;
+                                        $avg_review=$review->review_average($product->id);            
+                                        ?>
+
+
+                                        @for($star = 1; $star <= 5; $star++)
+                                        <?php  $class_name = ''; ?>
+                                    
+                                            @if($avg_review >= $star)
+                                            <?php $class_name = ' text-warning'; ?>
+                                            @else
+                                            <?php $class_name = '-o star-light checked'; ?>
+                                            @endif
+                                        
+                                        <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
+                                        @endfor
+
+                                       
+
                                     </div>
-                                    @else
-                                    <div>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                    </div>
-                                    @endif
                                 </div>
 
                             </div>
@@ -296,26 +311,33 @@
                                     @if(!empty($product->quantity))
                                     <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
                                     @else
-                                    <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                    <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                     @endif
 
-                                    @if(!empty($product->review) && (count($product->review)!=0))
-                                    <div>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
+                                    <div class="rating-review-upload">
+
+                                        <?php
+                                        
+                                        $review=new App\Models\ProductReview;
+                                        $avg_review=$review->review_average($product->id);            
+                                        ?>
+
+
+                                        @for($star = 1; $star <= 5; $star++)
+                                        <?php  $class_name = ''; ?>
+                                    
+                                            @if($avg_review >= $star)
+                                            <?php $class_name = ' text-warning'; ?>
+                                            @else
+                                            <?php $class_name = '-o star-light checked'; ?>
+                                            @endif
+                                        
+                                        <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
+                                        @endfor
+
+                                       
+
                                     </div>
-                                    @else
-                                    <div>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                        <span class="fa fa-star-o checked"></span>
-                                    </div>
-                                    @endif
                                 </div>
                           
                         </div>
@@ -493,26 +515,33 @@
                                             @if(!empty($product->quantity))
                                             <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
                                             @else
-                                            <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                            <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                             @endif
                                             
-                                            @if(!empty($product->review) && (count($product->review)!=0))
-                                            <div>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star-o checked"></span>
-                                                <span class="fa fa-star-o checked"></span>
-                                            </div>
-                                            @else
-                                            <div>
-                                                <span class="fa fa-star-o checked"></span>
-                                                <span class="fa fa-star-o checked"></span>
-                                                <span class="fa fa-star-o checked"></span>
-                                                <span class="fa fa-star-o checked"></span>
-                                                <span class="fa fa-star-o checked"></span>
-                                            </div>
-                                            @endif
+                                            <div class="rating-review-upload">
+
+                                                <?php
+
+                                                $review=new App\Models\ProductReview;
+                                                $avg_review=$review->review_average($product->id);            
+                                                ?>
+
+
+                                                @for($star = 1; $star <= 5; $star++)
+                                                <?php  $class_name = ''; ?>
+
+                                                    @if($avg_review >= $star)
+                                                    <?php $class_name = ' text-warning'; ?>
+                                                    @else
+                                                    <?php $class_name = '-o star-light checked'; ?>
+                                                    @endif
+
+                                                <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
+                                                @endfor
+
+
+
+                                                </div>
                                         </div>
 
                                     </div>
@@ -610,26 +639,33 @@
                                                 @if(!empty($product->quantity))
                                                 <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
                                                 @else
-                                                <span><strike>$100</strike> &nbsp; <span> $98</span></span>
+                                                <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                                 @endif
                                                 
-                                                @if(!empty($product->review) && (count($product->review)!=0))
-                                                <div>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star checked"></span>
-                                                    <span class="fa fa-star-o checked"></span>
-                                                    <span class="fa fa-star-o checked"></span>
+                                                <div class="rating-review-upload">
+
+                                                    <?php
+                                                    
+                                                    $review=new App\Models\ProductReview;
+                                                    $avg_review=$review->review_average($product->id);            
+                                                    ?>
+
+
+                                                    @for($star = 1; $star <= 5; $star++)
+                                                    <?php  $class_name = ''; ?>
+                                                
+                                                        @if($avg_review >= $star)
+                                                        <?php $class_name = ' text-warning'; ?>
+                                                        @else
+                                                        <?php $class_name = '-o star-light checked'; ?>
+                                                        @endif
+                                                    
+                                                    <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
+                                                    @endfor
+
+                                                
+
                                                 </div>
-                                                @else
-                                                <div>
-                                                    <span class="fa fa-star-o checked"></span>
-                                                    <span class="fa fa-star-o checked"></span>
-                                                    <span class="fa fa-star-o checked"></span>
-                                                    <span class="fa fa-star-o checked"></span>
-                                                    <span class="fa fa-star-o checked"></span>
-                                                </div>
-                                                @endif
                                         </div>
 
 
@@ -659,7 +695,7 @@
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
                                         <h4>Product Name</h4>
-                                        <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
+                                        <span><strike>$0.00</strike> &nbsp; <span> $90.00 </span></span>
                                         <div>
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>
@@ -681,7 +717,7 @@
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
                                         <h4>Product Name</h4>
-                                        <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
+                                        <span><strike>$0.00</strike> &nbsp; <span> $90.00 </span></span>
                                         <div>
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>
@@ -703,7 +739,7 @@
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
                                         <h4>Product Name</h4>
-                                        <span><strike>$100.00</strike> &nbsp; <span> $90.00 </span></span>
+                                        <span><strike>$0.00</strike> &nbsp; <span> $90.00 </span></span>
                                         <div>
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>

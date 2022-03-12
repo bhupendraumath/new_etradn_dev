@@ -63,16 +63,28 @@
                         <!-- <input type="file" class="files-class-hide"> -->
                         <div id="drop_area" class="area">
                             <div>
-                                <label for="files" class="btn center-drag-drop"><b>Choose or Drag & Drop
+                                <!-- <label for="files" class="btn center-drag-drop"><b>Choose or Drag & Drop
                                         <br /> Your Product Images Here! </b></label>
-                                <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg">
+                                <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg"> -->
+
+
+                             <label for="uploadImage" class="btn"><b>Choose or Drag & Drop
+                                        <br /> Your Product Images Here! </b></label>
+                             <input id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg" style="visibility:hidden;" type="file">
+
+
+                              <img id="previewImage1"  >
+                              <img id="previewImage" >
+
                             </div>
                         </div>
                         <input type="hidden" name="image_name[]" id="imagedata">
-                        <img id="previewImage" width="100" height="100">
-                        <img id="previewImage1" width="100" height="100">
+                        <!-- <div class="images-show">
+                            <img id="previewImage1" width="100" height="100" >
+                            <img id="previewImage"  width="100" height="100">
 
-                        <div id="result"></div>
+                        </div> -->
+                        
                         <br />
                         <label class="left-align">Category</label>
                         <select name="category_id" id="Category" class="shopname">
@@ -178,7 +190,9 @@
 {!! JsValidator::formRequest('App\Http\Requests\Frontend\ProductRequest','#addProductFrm') !!}
 <script src="{{ asset('assets/js/frontend/product/product.js') }}"></script>
 <script>
+
     $(document).ready(function() {
+
         $('#Category').on('change', function() {
             var category_id = this.value;
             $("#subcategory").html('');

@@ -1,4 +1,4 @@
-<div class="modal fade" id="imageCropperModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="imageCropperModal" aria-hidden="true">
+<div class="modal fade image-cropper" id="imageCropperModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="imageCropperModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div id="image_container">
+                <div id="image_container" class="height">
                     <img alt="image" src="" id="crop_image" class="img-responsive" height="auto" width="100%" />
                 </div>
                 <input type="hidden" id="imageBaseCode">
@@ -19,8 +19,14 @@
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn ripple-effect-dark btn-primary btn-md text-uppercase mr-2" id="cropButton">Save</button>
-                <button type="button" class="btn ripple-effect-dark btn-light btn-md text-uppercase" onclick="closeModal()" data-dismiss="modal">Cancel</button>
+            <div class="col-4 col-sm-2 col-lg-2 col-md-2"></div>
+                <div class="col-6 col-sm-5 col-lg-5 col-md-5">
+                   <button type="button" class="btn ripple-effect-dark save-img-croper btn-primary btn-md text-uppercase mr-2" id="cropButton">Save</button>
+                </div>
+               
+                <div class="col-6 col-sm-5 col-lg-5 col-md-5">
+                <button type="button" class="btn  cancel-img-croper ripple-effect-dark btn-light btn-md text-uppercase" onclick="closeModal()" data-dismiss="modal">Cancel</button>
+               </div>
             </div>
         </div>
     </div>
@@ -39,12 +45,17 @@
         var $imageBaseCode = $("#imageBaseCode").val();
         $imageCover.val();
         var firstimage = document.getElementById("previewImage");
-        if (firstimage == '') {
+
+        if (firstimage.src == '') {
             $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
+            $('#previewImage').attr('height','100px');
+            $('#previewImage').attr('width','100px');
         } else {
             $('#previewImage1').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
+            $('#previewImage1').attr('height','100px');
+            $('#previewImage1').attr('width','100px');
         }
-        $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
+        // $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
         $('#imagedata').val($imageCover.cropper('getCroppedCanvas').toDataURL());
         $("#imageCropperModal").modal("hide");
         return true;
