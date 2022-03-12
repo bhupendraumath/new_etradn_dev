@@ -15,6 +15,7 @@
                     <form id="registrationFrm" method="post" action="{{route('registrationAction')}}" enctype="multipart/form-data">
                         {{csrf_field()}}
 
+
                         <label for="lname" class="label-11">User type*</label>
                         <div class="form-field">
                             <select class="form-control" name="user_type" id="usertype" onchange="showDivuser(this)">
@@ -43,6 +44,12 @@
                             <input type="text" placeholder="Please enter your telephone" required name="phone" />
                         </div>
                         <div id="byseller">
+                            <label for="lname" class="label-11">Upload Logo*</label>
+                            <div class="form-field">
+                                <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg">
+                            </div>
+                            <img id="previewImage" width="100" height="100">
+                            <input type="hidden" name="business_logoo" id="imagedata">
                             <label for="lname" class="label-11">Business Name*</label>
                             <div class="form-field">
                                 <input type="text" placeholder="Please enter your Business Name" required name="business_name" />
@@ -80,7 +87,7 @@
                         </div>
 
                         <div class="form-field">
-                            <button class="btn color-chnage-btn"  type="button" id="registerBtn">REGISTER</button>
+                            <button class="btn color-chnage-btn" type="button" id="registerBtn">REGISTER</button>
                         </div>
 
                         <div class="form-field bottom">
@@ -102,6 +109,7 @@
 
 <!-- partial -->
 
+@include('frontend.common.profile-cropper')
 
 <!-- //login -->
 <a href="#sign-up" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
