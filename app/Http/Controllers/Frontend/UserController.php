@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
+use App\Services\FileService;
 
 class UserController extends Controller
 {
@@ -54,9 +55,19 @@ class UserController extends Controller
     public function registrationAction(UserRequest $request)
     {
         try {
+
+            if ($request->business_logoo) {
+                $fileService = new FileService();
+                $request->business_logo =  $fileService->uploadBaseCodeImage(
+                    'assets/images/business-logo/',
+                    $request->business_logoo
+                );
+            }
+
+
             $result = $this->users->createUser($request);
             if ($result) {
-               
+
                 return response()->json(
                     [
                         'success' => true,
