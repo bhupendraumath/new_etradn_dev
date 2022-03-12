@@ -9,6 +9,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\ProductQuantity;
+use App\Models\ProductReview;
 
 class Product extends Model
 {
@@ -181,5 +182,18 @@ class Product extends Model
         ]);
         return $deleteProduct;
     }
+
+    // public function averageRating($product_id) {
+    //     $total_user_rating = 0;
+    //     $reviewProduct = ProductReview::where('productId',$product_id)->get();
+
+    //     foreach($reviewProduct as $row)
+    //     {
+    //         $total_user_rating = $total_user_rating + $row["rating"];
+    //     }
+    //     return $deleteProduct;
+    // }
+
+
 
 }

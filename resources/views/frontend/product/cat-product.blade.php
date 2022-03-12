@@ -151,7 +151,7 @@
             type: "POST",
             data: {
                 'order': order,
-                'page_limit': 1,
+                'page_limit': page_limit,
                 'brand': brand,
                 'category': category,
                 'page': pageno,

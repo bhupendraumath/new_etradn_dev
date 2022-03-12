@@ -201,7 +201,7 @@ class ProductController extends Controller
 
 
 
-
+//category based list
     public function detailedlist(Request $request)
     {
         if ($request->ajax()) {
@@ -224,12 +224,13 @@ class ProductController extends Controller
                     }
                 }
 
+                // $page_limit
                 $productlist = Product::where($dataArr)
-                    ->orderBy('bid_amount', $sequence)
+                    ->orderBy('id', $sequence)
                     ->paginate($page_limit);
 
 
-
+                // dd($productlist);die;
                 $brand_list = Brand::all();
                 $category_list = Category::all();
 
@@ -296,7 +297,7 @@ class ProductController extends Controller
         }
 
         $list = Product::where($dataArr)
-            ->orderBy('bid_amount', $sequence)
+            ->orderBy('id', $sequence)
             ->paginate($page_limit);
 
         $brand_list = Brand::all();
