@@ -43,9 +43,11 @@
         var $imageCover = $("#crop_image");
         var $type = $("#type").val();
         var $imageBaseCode = $("#imageBaseCode").val();
+
         $imageCover.val();
         var firstimage = document.getElementById("previewImage");
 
+        $value_image=[];
         if (firstimage.src == '') {
             $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
             $('#previewImage').attr('height','100px');
@@ -56,7 +58,9 @@
             $('#previewImage1').attr('width','100px');
         }
         // $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
-        $('#imagedata').val($imageCover.cropper('getCroppedCanvas').toDataURL());
+        $image_data=$('#imagedata').val($imageCover.cropper('getCroppedCanvas').toDataURL());
+
+        // console.log("image data ",$image_data)
         $("#imageCropperModal").modal("hide");
         return true;
     }));

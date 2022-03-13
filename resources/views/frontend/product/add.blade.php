@@ -73,17 +73,20 @@
                              <input id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg" style="visibility:hidden;" type="file">
 
 
-                              <img id="previewImage1"  >
-                              <img id="previewImage" >
+                              <!-- <img id="previewImage1"  >
+                              <img id="previewImage" > -->
+
+                              <img id="previewImage1" >
+                            <img id="previewImage">
 
                             </div>
                         </div>
                         <input type="hidden" name="image_name[]" id="imagedata">
-                        <!-- <div class="images-show">
-                            <img id="previewImage1" width="100" height="100" >
-                            <img id="previewImage"  width="100" height="100">
+                        <!-- <div class="images-show">-->
+                            <!-- <img id="previewImage1" width="100" height="100" >
+                            <img id="previewImage"  width="100" height="100"> -->
 
-                        </div> -->
+                        <!--</div> -->
                         
                         <br />
                         <label class="left-align">Category</label>

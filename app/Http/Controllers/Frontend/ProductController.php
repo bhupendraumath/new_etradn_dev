@@ -368,6 +368,8 @@ class ProductController extends Controller
         try {
             $product = new Product;
             $Product =  $product->storeProduct($request);
+            // print_r($image);die;
+
             foreach ($request->image_name as $imagefile) {
 
                 $fileService = new FileService();
