@@ -6707,6 +6707,12 @@ tr {
     margin-bottom: 2px;
 }
 
+.no-records {
+    text-align: center;
+    color: #ff0000c4;
+    padding-bottom: 38px;
+}
+
 input.checkbox {
     width: 11px;
     float: left;

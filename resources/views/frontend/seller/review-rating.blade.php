@@ -30,46 +30,51 @@
 
 
                 
-         @if($productlist)
-            @foreach($productlist as $list)
+         @if(!empty($productlist))
+                @foreach($productlist as $list)
 
-            @if(!empty($list) && ($list->product!=null))
-                <div class="row ">
-                    <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth  border-bottom">
+                    @if(!empty($list) && ($list->product!=null))
+                        <div class="row ">
+                            <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth  border-bottom">
 
-                        <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xs-12">
-                            <div class="background-gray rating new-size">
-                                <img src="{{url('assets/images/product-images/'.$list->product->image->product_img)}}" alt="" srcset=""/>
-                            </div>
+                                <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xs-12">
+                                    <div class="background-gray rating new-size">
+                                        <img src="{{url('assets/images/product-images/'.$list->product->image->product_img)}}" alt="" srcset=""/>
+                                    </div>
+                                </div>
+                                <div class="col-9 col-md-9 col-sm-9 col-lg-9 col-xl-9 reducewidth col-xs-12 text-left">
+                                    <h3>{{$list->product->product_name}}</h3>
+                                    <p class="rating-paragraph">{{$list->description}}
+                                    </p>
+                                    <br/>
+
+                                    <div class="rating1">                            
+                                    @for($star = 1; $star <= 5; $star++)
+                                        <?php  $class_name = ''; ?>
+                                    @if($list->rating >= $star)
+                                                <?php $class_name = ' text-warning'; ?>
+                                        @else
+                                        <?php $class_name = '-o star-light checked'; ?>
+                                        @endif
+                                    
+                                    <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
+                                    @endfor
+                                    </div>
+                                    <br/>
+                                </div>
+
+                            </div>            
+
+
                         </div>
-                        <div class="col-9 col-md-9 col-sm-9 col-lg-9 col-xl-9 reducewidth col-xs-12 text-left">
-                            <h3>{{$list->product->product_name}}</h3>
-                            <p class="rating-paragraph">{{$list->description}}
-                            </p>
-                            <br/>
-
-                            <div class="rating1">                            
-                            @for($star = 1; $star <= 5; $star++)
-                                <?php  $class_name = ''; ?>
-                               @if($list->rating >= $star)
-                                        <?php $class_name = ' text-warning'; ?>
-                                @else
-                                <?php $class_name = '-o star-light checked'; ?>
-                                @endif
-                            
-                            <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
-                            @endfor
-                            </div>
-                            <br/>
-                        </div>
-
-                    </div>            
-
-
-                </div>
-                @endif
+                    @endif
                 @endforeach
-            @endif
+        @else
+        <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth no-records">
+            <div>No Records Found</div>
+        </div>
+
+        @endif
             <div class="row">
            {{ $productlist->render('frontend.common.pagination') }}
             </div>

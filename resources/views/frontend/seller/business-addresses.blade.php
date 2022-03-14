@@ -37,7 +37,7 @@
 
                 <button class="business-adding" > <a href="{{route('businessInformation')}}" >Add New</a></button>
 
-                @if(isset($list))
+                
                 
                     <table class="table table-striped" id="table" >
                         <thead>
@@ -53,6 +53,8 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                        @if(isset($list))
                             @foreach($list as $user)
                             <tr>
                                 <td>{{$loop->index+1}}</td>
@@ -77,9 +79,20 @@
                             </tr>
                             @endforeach
             
+                        @else
+                        <tr>
+                            <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth no-records">
+                                <div>No Records Found</div>
+                            </div>
+                        </tr>
+                        @endif
+                    
                         </tbody>
                     </table>
-                    {!! $list->render('frontend.common.pagination') !!}@endif
+                    {!! $list->render('frontend.common.pagination') !!}
+
+               
+                    
 
 
                     <!-- <form id="businessFrm" class="businessInformation" method="post">

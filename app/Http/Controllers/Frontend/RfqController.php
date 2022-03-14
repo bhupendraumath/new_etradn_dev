@@ -21,20 +21,23 @@ class RfqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function rfq_list()
+    public function rfq_list ()
     {
         // $list=RfqList::orderBy('rfq_id','asc')->get();
 
         return view('frontend/seller/rfq-list');
+
+
     }
 
-    public function request()
+    public function request ()
     {
-        $cat = Category::where('isActive', 'y')->get();
-        // $list=RfqList::orderBy('rfq_id','asc')->get();
-        return view('frontend/request')->with('category', $cat);
-    }
+        $cat=Category::where('isActive','y')->get();
+        return view('frontend/request')->with('category',$cat);
 
+
+    }
+    
     public function request_action(Request $request)
     {
 
@@ -96,6 +99,55 @@ class RfqController extends Controller
             );
         }
     }
+    public function rfq_list_post (Request $request)
+    {
+        // $list=RfqList::orderBy('rfq_id','asc')->get();
+        // return view('frontend/seller/rfq-list')->with('list',$list);
+
+
+        if ($request->ajax()) {
+            try {
+
+                $rfqlist = RfqList::orderBy('rfq_id','desc')
+                    ->paginate($request->record);
+                $completeSessionView = view(
+                    'frontend/seller/table-list',
+                    compact('rfqlist')
+                )->render();
+
+
+
+                if ($rfqlist->isNotEmpty()) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView 
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' =>$completeSessionView 
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -114,5 +166,6 @@ class RfqController extends Controller
      */
     public function registrationAction(UserRequest $request)
     {
+
     }
 }
