@@ -33,7 +33,6 @@ class RfqController extends Controller
     public function request ()
     {
         $cat=Category::where('isActive','y')->get();
-        // $list=RfqList::orderBy('rfq_id','asc')->get();
         return view('frontend/request')->with('category',$cat);
 
 
@@ -41,6 +40,7 @@ class RfqController extends Controller
     
     public function request_action(Request $request){
 
+        if ($request->ajax()) {
         try {
 
 
@@ -48,7 +48,7 @@ class RfqController extends Controller
                         [
                             'success' => true,
                             'data'=>$request->all(),
-                            'message' => trans('admin.update_profile')
+                            // 'message' => trans('admin.update_profile')
                         ]
                     );
 
@@ -73,6 +73,7 @@ class RfqController extends Controller
                 ['success' => false, 'message' => $e->getMessage()]
             );
         }
+    }
 
     }
 

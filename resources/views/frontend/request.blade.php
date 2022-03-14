@@ -21,8 +21,7 @@
                         <hr/>
                         <form class="rfq-form" id="rfq-form" enctype="multipart/form-data" method="post">
                             <div class="rfq-form">
-                                {{csrf_field()}}
-                                {{--<input type="hidden" name="user_type" value="{{Auth::user()->user_type}}"> --}}
+                                <input type="hidden" name="_token" value=" {{csrf_token()}}">
                                 <div class="row">
                                     <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                         <div class="inner-addon left-addon">
@@ -204,7 +203,7 @@
                                     </div>
                                 </div>
                             
-                                <div class="col-md-12">
+                                <!-- <div class="col-md-12">
                                     <input type="checkbox" class="checkbox" name="agree[]" value="1">
                                     <span class="right-float">I agree to share my Business Card with quoted suppliers.</span>
                                 </div>
@@ -212,7 +211,7 @@
                                 
                                     <input type="checkbox" class="checkbox" name="agree[]" value="2">
                                     <span class="right-float">I have read, understood and agreed to abide by the Buying Request Posting Rules.</span>
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-12">
                                     <input type="hidden" name="rfq" value="rfq">

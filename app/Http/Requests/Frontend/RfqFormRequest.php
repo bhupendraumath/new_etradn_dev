@@ -66,7 +66,7 @@ class RfqFormRequest extends FormRequest
             'country' => 'required',
             'leadtime' => 'required',
             'payment_term' => 'required',
-            'agree' => 'required',
+            // 'agree' => 'required',
         ];
     }
 }
