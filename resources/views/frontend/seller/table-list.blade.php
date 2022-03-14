@@ -1,5 +1,6 @@
 
 
+ @if(!empty($rfqlist))
 
 <table id="customers">
     <tr>
@@ -11,7 +12,6 @@
         <th>ACCEPT</th>
     </tr>
 
-    @if(!empty($rfqlist))
         @foreach($rfqlist as $li)
 
         <tr>
@@ -31,11 +31,16 @@
             </tr>
 
         @endforeach
-    @endif
+   
 
 </table>
 
+@else
+<div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth no-records">
+    <div>No Records Found</div>
+ </div>
 
+@endif
 <div class="row">
     <br/>
     <div class="col-12  right-side-column">

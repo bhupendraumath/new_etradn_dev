@@ -38,19 +38,19 @@ class RfqController extends Controller
 
     }
     
-    public function request_action(Request $request){
+    public function request_action(Request $request)
+    {
 
-        if ($request->ajax()) {
         try {
 
 
             return response()->json(
-                        [
-                            'success' => true,
-                            'data'=>$request->all(),
-                            // 'message' => trans('admin.update_profile')
-                        ]
-                    );
+                [
+                    'success' => true,
+                    'data' => $request->all(),
+                    'message' => trans('admin.update_profile')
+                ]
+            );
 
             // $user = User::updateSellerWeb($request, Auth::user()->id);
             // if (!empty($user)) {
@@ -75,9 +75,12 @@ class RfqController extends Controller
         }
     }
 
+
+    public function rfqListAction(Request $request)
+    {
+        print_r("DDD");
+        die;
     }
-
-
     public function rfq_list_post (Request $request)
     {
         // $list=RfqList::orderBy('rfq_id','asc')->get();

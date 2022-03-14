@@ -161,11 +161,16 @@ Route::get(
 
 
 
+Route::post(
+    'rfq-action',
+    [RfqController::class, 'rfqListAction']
+)->name('rfqListAction');
+
+
 Route::group(
     ['middleware' => 'user:web'],
     function () {
        
-
         // Seller panel start
         Route::get(
             'dashboard',
@@ -262,7 +267,7 @@ Route::group(
         )->name('rfq_list');
 
         Route::post(
-            'rfq-list-post',
+            'rfq-list-list',
             [RfqController::class, 'rfq_list_post']
         )->name('rfq_list_post');
 
