@@ -147,7 +147,7 @@ Route::get(
 Route::get(
     '/product-list/{id}',
     [ProductController::class, 'list']
-)->name('product.list');    
+)->name('product.list');
 //list of product
 Route::post(
     '/getsubCategroy',
@@ -159,12 +159,21 @@ Route::get(
     [LoginController::class, 'logout']
 )->name('logout');
 
+Route::get(
+    'rfq-list',
+    [RfqController::class, 'rfq_list']
+)->name('rfq_list');
+
+Route::post(
+    'rfq-action',
+    [RfqController::class, 'rfqListAction']
+)->name('rfqListAction');
 
 
 Route::group(
     ['middleware' => 'user:web'],
     function () {
-       
+
 
         // Seller panel start
         Route::get(
@@ -256,15 +265,7 @@ Route::group(
         )->name('addProduct');
 
 
-        Route::get(
-            'rfq-list',
-            [RfqController::class, 'rfq_list']
-        )->name('rfq_list');
 
-        Route::post(
-            'rfq-list-post',
-            [RfqController::class, 'rfq_list_post']
-        )->name('rfq_list_post');
 
         Route::get(
             'wallet',

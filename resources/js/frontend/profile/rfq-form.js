@@ -4,10 +4,9 @@ $(window).ready(function() {
         var btn = $('#rfq-btn');
         if (frm.valid()) {
             btn.prop('disabled', true);
-            // console.log("djfgdjgf fdghd success ", );
-            // return false;
+           
             $.ajax({
-                url: process.env.MIX_APP_URL + "/rfq-list-post",
+                url: process.env.MIX_APP_URL + "/rfq-action",
                 type: "POST",
                 data: frm.serialize(),
                 dataType: 'JSON',
@@ -16,8 +15,7 @@ $(window).ready(function() {
 
                     if (response.success) {
                         // toastr.clear();
-                        console.log(response);
-                        return false;
+                        
                         btn.html('Update');
                         toastr.success(response.message, 'Update profile', { timeOut: 2000 });
                         setTimeout(function() {

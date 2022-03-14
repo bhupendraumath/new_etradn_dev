@@ -21,36 +21,33 @@ class RfqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function rfq_list ()
+    public function rfq_list()
     {
         // $list=RfqList::orderBy('rfq_id','asc')->get();
 
         return view('frontend/seller/rfq-list');
-
-
     }
 
-    public function request ()
+    public function request()
     {
-        $cat=Category::where('isActive','y')->get();
+        $cat = Category::where('isActive', 'y')->get();
         // $list=RfqList::orderBy('rfq_id','asc')->get();
-        return view('frontend/request')->with('category',$cat);
-
-
+        return view('frontend/request')->with('category', $cat);
     }
-    
-    public function request_action(Request $request){
+
+    public function request_action(Request $request)
+    {
 
         try {
 
 
             return response()->json(
-                        [
-                            'success' => true,
-                            'data'=>$request->all(),
-                            'message' => trans('admin.update_profile')
-                        ]
-                    );
+                [
+                    'success' => true,
+                    'data' => $request->all(),
+                    'message' => trans('admin.update_profile')
+                ]
+            );
 
             // $user = User::updateSellerWeb($request, Auth::user()->id);
             // if (!empty($user)) {
@@ -73,58 +70,13 @@ class RfqController extends Controller
                 ['success' => false, 'message' => $e->getMessage()]
             );
         }
-
     }
 
 
-    public function rfq_list_post (Request $request)
+    public function rfqListAction(Request $request)
     {
-        // $list=RfqList::orderBy('rfq_id','asc')->get();
-        // return view('frontend/seller/rfq-list')->with('list',$list);
-
-
-        if ($request->ajax()) {
-            try {
-
-                $rfqlist = RfqList::orderBy('rfq_id','desc')
-                    ->paginate($request->record);
-                $completeSessionView = view(
-                    'frontend/seller/table-list',
-                    compact('rfqlist')
-                )->render();
-
-
-
-                if ($rfqlist->isNotEmpty()) {
-                    return response()->json(
-                        [
-                            'success' => true,
-                            'data' =>
-                            [
-                                'completeSessionView' => $completeSessionView 
-                            ]
-                        ]
-                    );
-                }
-                return response()->json(
-                    [
-                        'success' => true, 'data' =>
-                        [
-                            'completeSessionView' =>$completeSessionView 
-                        ]
-                    ]
-                );
-            } catch (\Exception $ex) {
-                return response()->json(
-                    [
-                        'success' => false,
-                        'data' => [],
-                        'error' => ['message' => $ex->getMessage()]
-                    ],
-                    422
-                );
-            }
-        }
+        print_r("DDD");
+        die;
     }
     /**
      * Show the form for creating a new resource.
@@ -144,6 +96,5 @@ class RfqController extends Controller
      */
     public function registrationAction(UserRequest $request)
     {
-
     }
 }
