@@ -314,7 +314,9 @@ class ProductController extends Controller
         ], 200);
     }
 
-
+    public function refund_request(){
+        return view('frontend/product/refund-request');
+    }
     public function list($id)
     {
         $list = Product::whereCatId($id)

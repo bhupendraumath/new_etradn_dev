@@ -113,9 +113,9 @@
                                     <div class="background-gray left-side">
                                         @if(!empty($product->image))                                  
 
-                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" />
+                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="herer" onerror="this.src='{{url('assets/images/default.png')}}';" >
                                         @else
-                                            <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="" srcset="" />
+                                            <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="heere2" srcset="" />
                                         @endif
                                     </div>
                                     <br/>
@@ -208,9 +208,9 @@
 
                                 <div class="images right-side">
                                 @if(!empty($product->image))
-                                <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images"/>
+                                <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images"  onerror="this.src='{{url('assets/images/default.png')}}';"/>
                                 @else
-                                <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
+                                <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" onerror="this.src='{{url('assets/images/default.png')}}';" srcset="" />
                                 @endif
                                     <br/>
                                     <h4>{{$product->product_name}}</h4>
@@ -301,7 +301,7 @@
                         <div class="images image-left">
                                 <div class="background-gray left-side">
                                 @if(!empty($product->image))
-                                <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset=""/>
+                                <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';"/>
                                 @else
                                 <img src="{{url('assets/images/frontend/ciyp-bulk-image1.png')}}" alt="" srcset="" />
                                 @endif
@@ -506,7 +506,7 @@
 
                                         <div class="images right-side">
                                         @if(!empty($product->image))
-                                        <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images"/>
+                                        <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images" onerror="this.src='{{url('assets/images/default.png')}}';"/>
                                         @else
                                         <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
                                         @endif
@@ -628,7 +628,7 @@
                                         <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                             <div class="background-gray new-size">
                                             @if(!empty($product->image))
-                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images"/>
+                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images" onerror="this.src='{{url('assets/images/default.png')}}';"/>
                                             @else
                                                 <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
                                             @endif
@@ -690,7 +690,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" onerror="this.src='{{url('assets/images/default.png')}}';" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -712,7 +712,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" onerror="this.src='{{url('assets/images/default.png')}}';" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
@@ -734,7 +734,7 @@
 
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                         <div class="background-gray new-size">
-                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" alt="" srcset="" />
+                                            <img src="{{url('assets/images/frontend/pngkey.com-surveillance-camera-png-1940678.png')}}" onerror="this.src='{{url('assets/images/default.png')}}';" alt="" srcset="" />
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">

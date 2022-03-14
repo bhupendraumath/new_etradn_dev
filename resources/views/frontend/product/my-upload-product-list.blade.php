@@ -10,7 +10,7 @@
         <div class="images onhover-show-menus">
             <div class="background-gray">
                 @if(!empty($productvalue->image->product_img))
-              <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" />
+              <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
               @else
               <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
               @endif

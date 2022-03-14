@@ -26,7 +26,7 @@
                             @foreach($product_details['image_many'] as $imgList)
                             <li data-thumb="{{url('assets/images/product-images/'.$imgList->product_img)}}">
                                 <div class="thumb-image add-class"> 
-                                <img src="{{url('assets/images/product-images/'.$imgList->product_img)}}" data-imagezoom="true" class="img-responsive">
+                                <img src="{{url('assets/images/product-images/'.$imgList->product_img)}}" data-imagezoom="true" class="img-responsive" onerror="this.src='{{url('assets/images/default.png')}}';">
                                  </div>
                             </li>
                             @endforeach
@@ -35,7 +35,7 @@
 
                         
                         <li data-thumb="{{url('assets/images/product-images/NicePng_rakhi-clipart-png_3611849.png')}}">
-                            <div class="thumb-image add-class"> <img src="{{url('assets/images/product-images/NicePng_rakhi-clipart-png_3611849.png')}}" data-imagezoom="true" class="img-responsive"> </div>
+                            <div class="thumb-image add-class"> <img src="{{url('assets/images/product-images/NicePng_rakhi-clipart-png_3611849.png')}}" onerror="this.src='{{url('assets/images/default.png')}}';" data-imagezoom="true" class="img-responsive"> </div>
                         </li>
                         @endif
                     </ul>

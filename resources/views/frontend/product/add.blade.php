@@ -77,7 +77,7 @@
                               <img id="previewImage" > -->
 
                               <img id="previewImage1" >
-                            <img id="previewImage">
+                              <img id="previewImage">
 
                             </div>
                         </div>

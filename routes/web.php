@@ -9,7 +9,9 @@ use App\Http\Controllers\Frontend\{
     CommonController,
     BuyerController,
     ReviewController,
-    OrderController
+    OrderController,
+    RfqController,
+    WalletController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -49,6 +51,15 @@ Route::get(
     [HomeController::class, 'blogDetails']
 )->name('blog-details');
 
+Route::get(
+    '/request',
+    [RfqController::class, 'request']
+)->name('request');
+
+Route::post(
+    '/request-action',
+    [RfqController::class, 'request_action']
+)->name('request_action');
 
 Route::get(
     '/',
@@ -238,10 +249,35 @@ Route::group(
             'add-business',
             [CommonController::class, 'addBusiness']
         )->name('addBusiness');
+
         Route::post(
             'add-product',
             [ProductController::class, 'addProduct']
         )->name('addProduct');
+
+
+        Route::get(
+            'rfq-list',
+            [RfqController::class, 'rfq_list']
+        )->name('rfq_list');
+
+        Route::post(
+            'rfq-list-post',
+            [RfqController::class, 'rfq_list_post']
+        )->name('rfq_list_post');
+
+        Route::get(
+            'wallet',
+            [WalletController::class, 'wallet']
+        )->name('wallet');
+
+
+        Route::get(
+            'refund_request',
+            [ProductController::class, 'refund_request']
+        )->name('refund-request');
+
+
 
         // Seller panel End 
 

@@ -124,21 +124,21 @@
 
         <a href="{{route('bidsPlaced')}}">
             <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="bids-placed.php">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" >
                     <span><i class="fas fa-gavel margin-leftor-right"></i> <b class="heading-business">BIDS PLACED</b> </span>
                 </div>
             </div>
         </a>
 
-        <a href="#">
+        <a href="{{route('refund-request')}}">
             <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="refund-request.php">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <span><i class="fas fa-hand-holding-usd margin-leftor-right"></i> <b class="heading-business">REFUND REQUEST</b> </span>
                 </div>
             </div>
         </a>
 
-        <a href="#">
+        <a href="{{route('wallet')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="wallet.php">
                     <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">WALLET</b> </span>
@@ -154,9 +154,9 @@
             </div>
         </a>
 
-        <a href="rfq-list.php">
+        <a href="{{route('rfq_list')}}">
             <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="#">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" >
                     <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">RFQ LIST</b> </span>
                 </div>
             </div>
