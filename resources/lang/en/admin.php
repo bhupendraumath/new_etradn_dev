@@ -65,4 +65,5 @@ return [
     'password_changed' => 'Password changed successfully',
     'add_business' => 'Add business information successfully.',
     'add_product' => 'Add product successfully.',
+    'add_rfq'=>'Add RFQ successfully.',
 ];

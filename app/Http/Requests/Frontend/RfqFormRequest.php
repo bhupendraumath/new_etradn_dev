@@ -50,23 +50,35 @@ class RfqFormRequest extends FormRequest
 
         return [
 
-            'product_name' => 'required|min:2|max:25|string',
-            'product_categories' => 'required',
-            'sourcing' => 'required',
-            'purpose' => 'required',
-            'quantity' => 'required',
-            'part' => 'required',
-            'trade' => 'required',
-            'preferred' => 'required',
-            'carrency' => 'required',
-            'details' => 'required',
-            'certifications' => 'required',
-            'other_requirements' => 'required',
-            'shipping' => 'required',
-            'country' => 'required',
-            'leadtime' => 'required',
-            'payment_term' => 'required',
-            'agree' => 'required',
+            'rfq_product_name' => 'required|min:2|max:200|string',
+            'rfq_product_categories' => 'required',
+            'rfq_Sourcing' => 'required',
+            'rfq_sPurpose' => 'required',
+            'rfq_Quantity' => 'required',
+            'rfq_part' => 'required',
+            'rfq_Trade' => 'required',
+            'rfq_Preferred' => 'required',
+            'rfq_carrency' => 'required',
+            'rfq_Details' => 'required',
+            'rfq_Certifications' => 'required',
+            'rfq_otherRequirements' => 'required',
+            'rfq_Shipping' => 'required',
+            'rfq_country' => 'required',
+            'rfq_Leadtime' => 'required',
+            'rfq_Payment_Term' => 'required',
+            'rfq_agree' => 'required',
+        ];
+    }
+
+    /**
+     * Method messages
+     *
+     * @return void
+     */
+    public function messages()
+    {
+        return [
+            'product_name.required' => __('request.rfq_produt_name_required')
         ];
     }
 }

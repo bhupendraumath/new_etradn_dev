@@ -68,26 +68,26 @@
                                 <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg"> -->
 
 
-                             <label for="uploadImage" class="btn"><b>Choose or Drag & Drop
+                                <label for="uploadImage" class="btn"><b>Choose or Drag & Drop
                                         <br /> Your Product Images Here! </b></label>
-                             <input id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg" style="visibility:hidden;" type="file">
+                                <input id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg" style="visibility:hidden;" type="file">
 
 
-                              <!-- <img id="previewImage1"  >
+                                <!-- <img id="previewImage1"  >
                               <img id="previewImage" > -->
 
-                              <img id="previewImage1" >
-                              <img id="previewImage">
+                                <img id="previewImage1">
+                                <img id="previewImage">
 
                             </div>
                         </div>
                         <input type="hidden" name="image_name[]" id="imagedata">
                         <!-- <div class="images-show">-->
-                            <!-- <img id="previewImage1" width="100" height="100" >
+                        <!-- <img id="previewImage1" width="100" height="100" >
                             <img id="previewImage"  width="100" height="100"> -->
 
                         <!--</div> -->
-                        
+
                         <br />
                         <label class="left-align">Category</label>
                         <select name="category_id" id="Category" class="shopname">
@@ -171,11 +171,50 @@
                                     <input type="radio" name="shipping_type" value="new">
                                     <label for="p"><span></span>Paid</label><br /><br /><br />
                                 </div>
+                                <!-- ccc -->
+
+                                <div class="panel panel-default">
+                                    <label for="Existing">PRODUCT VARIANT
+                                    </label>
+
+                                    <div class="panel-body">
+
+                                        <div id="education_fields">
+
+                                        </div>
+                                        <div class="col-sm-3 nopadding">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="Schoolname" name="Schoolname[]" value="" placeholder="School name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 nopadding">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="Major" name="Major[]" value="" placeholder="Major">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 nopadding">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="Degree" name="Degree[]" value="" placeholder="Degree">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-1 nopadding">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-success" type="button" onclick="education_fields();" style='width:40px;'> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+
+                                    </div>
 
 
-                                <div class="buttons">
-                                    <input type="submit" value="ADD PRODUCT" class="save-changes" id="submitbtn">
-                                </div>
+                                    <div class="buttons">
+                                        <input type="submit" value="ADD PRODUCT" class="save-changes" id="submitbtn">
+                                    </div>
                     </form>
 
                 </div>
@@ -193,7 +232,6 @@
 {!! JsValidator::formRequest('App\Http\Requests\Frontend\ProductRequest','#addProductFrm') !!}
 <script src="{{ asset('assets/js/frontend/product/product.js') }}"></script>
 <script>
-
     $(document).ready(function() {
 
         $('#Category').on('change', function() {
@@ -273,6 +311,24 @@
         } else {
             console.log("Your browser does not support File API");
         }
+    }
+
+    var room = 1;
+
+    function education_fields() {
+
+        room++;
+        var objTo = document.getElementById('education_fields')
+        var divtest = document.createElement("div");
+        divtest.setAttribute("class", "form-group removeclass" + room);
+        var rdiv = 'removeclass' + room;
+        divtest.innerHTML = '<div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Schoolname" name="Schoolname[]" value="" placeholder="School name"></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Major" name="Major[]" value="" placeholder="Major"></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Degree" name="Degree[]" value="" placeholder="Degree"></div></div><div class="col-sm-3 nopadding"><div class="form-group"><div class="input-group"> <select class="form-control" id="educationDate" name="educationDate[]"><option value="">Date</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option> </select><div class="input-group-btn"> <button class="btn btn-danger" type="button" style="width:40px;" onclick="remove_education_fields(' + room + ');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div></div><div class="clear"></div>';
+
+        objTo.appendChild(divtest)
+    }
+
+    function remove_education_fields(rid) {
+        $('.removeclass' + rid).remove();
     }
 </script>
 @endpush

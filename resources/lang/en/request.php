@@ -160,4 +160,5 @@ return [
   'product_name_eng_required' => 'Product name  is required',
   'product_description_eng_required' => 'Product Description is required',
   'warranty_description_eng_required' => 'Product warranty is required',
+  'rfq_produt_name_required'=>'Product name  is required',
 ];

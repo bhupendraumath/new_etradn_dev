@@ -27,13 +27,13 @@
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
                                         <label for=""> &nbsp;Product Name</label>
-                                        <input type="text" class="form-control" name="product_name" placeholder="Product Name*" value="" />
+                                        <input type="text" class="form-control" name="rfq_product_name" placeholder="Product Name*" value="" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
                                         <label for=""> &nbsp;Category</label>
-                                        <select class="form-control" name="product_categories">
+                                        <select class="form-control" name="rfq_product_categories">
                                             <option value="">Select Category</option>
                                             @if(!empty($category))
 
@@ -52,7 +52,7 @@
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
                                         <label for=""> &nbsp;Sourcing Type</label>
-                                        <select class="form-control" name="sourcing">
+                                        <select class="form-control" name="rfq_Sourcing">
                                             <option value="">Select Source Type</option>
                                             <option value="Customized Product" selected>Customized Product</option>
                                             <option value="Non-customized Product">Non-customized Product</option>
@@ -65,7 +65,7 @@
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
                                         <label for=""> &nbsp;Sourcing Purpose</label>
-                                        <select class="form-control" name="purpose">
+                                        <select class="form-control" name="rfq_sPurpose">
                                             <option value="">Select Sourcing Purpose</option>
                                             <option value="Wholesale" selected>Wholesale</option>
                                             <option value="Retail">Retail</option>
@@ -76,7 +76,7 @@
                                             <option value="Other">Other</option>
                                         </select>
 
-                                        <select class="form-control rfq" name="part">
+                                        <select class="form-control rfq" name="">
                                             <option value="">Select Sourcing Purpose</option>
                                             <option value="Acres" selected>Acres</option>
                                             <option value="Amperes">Amperes</option>
@@ -90,13 +90,13 @@
                                     <div class="inner-addon left-addon">
                                         <label for=""> &nbsp;Inventory</label>
 
-                                        <input type="text" class="form-control" name="quantity	" placeholder="Inventory*" value="" />
+                                        <input type="text" class="form-control" name="rfq_Quantity" placeholder="Inventory*" value="" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
                                         <label for=""> &nbsp;Trade Terms</label>
-                                        <select class="form-control" name="trade">
+                                        <select class="form-control" name="rfq_Trade">
                                             <option value="FOB" selected>FOB</option>
                                         </select>
                                     </div>
@@ -107,9 +107,9 @@
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
                                         <label for=""> &nbsp;Preferred Unit Price</label>
-                                        <input type="number" name="preferred">
+                                        <input type="number" name="rfq_Preferred">
 
-                                        <select class="form-control" name="carrency">
+                                        <select class="form-control" name="rfq_carrency">
                                             <option value="">Select Currency</option>
                                             <option value="USD" selected>USD</option>
                                             <option value="INR">INR</option>
@@ -128,7 +128,7 @@
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form ">
                                     <div class="inner-addon">
                                         <label for="">Details</label>
-                                        <textarea name="details" placeholder="Description" required="" value=""></textarea>
+                                        <textarea name="rfq_Details" placeholder="Description" required="" value=""></textarea>
                                     </div>
 
                                 </div>
@@ -136,14 +136,14 @@
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
                                         <label for=""> &nbsp;Attachments</label>
-                                        <input type="file" value="upload" class="form-control" name="attachments" />
+                                        <input type="file" value="upload" class="form-control" name="rfq_Attachments" />
                                     </div>
                                 </div>
 
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
                                         <label for=""> &nbsp;Certications</label>
-                                        <select class="form-control" name="certifications">
+                                        <select class="form-control" name="rfq_Certifications">
                                             <option value="">Select Certications</option>
                                             <option value="ISO22000" selected>ISO22000</option>
 
@@ -154,7 +154,7 @@
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
                                         <label for="">Other Requirement</label>
-                                        <textarea name="other_requirements" placeholder="Other Requirement" required="" value=""></textarea>
+                                        <textarea name="rfq_otherRequirements" placeholder="Other Requirement" required="" value=""></textarea>
                                     </div>
                                 </div>
 
@@ -165,7 +165,7 @@
                                             <div class="inner-addon left-addon">
                                                 <label for="">Shipping method</label>
 
-                                                <select class="form-control rfq" name="shipping">
+                                                <select class="form-control rfq" name="rfq_Shipping">
                                                     <option value="">Please select</option>
                                                     <option value="Sea freight" selected>Sea freight</option>
                                                     <option value="Air freight">Air freight</option>
@@ -179,7 +179,7 @@
                                         <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                             <div class="inner-addon left-addon">
                                                 <label for="">Destination</label>
-                                                <select class="form-control" name="country">
+                                                <select class="form-control" name="rfq_country">
                                                     <option value="213">Saudi Arabia</option>
                                                 </select>
 
@@ -189,7 +189,7 @@
                                         <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                             <div class="inner-addon left-addon">
                                                 <label for="">Lead time Ship in</label>
-                                                <input type="number" class="form-control" name="leadtime" placeholder="Product Name" required="">
+                                                <input type="number" class="form-control" name="rfq_Leadtime" placeholder="Product Name" required="">
 
                                             </div>
                                         </div>
@@ -197,7 +197,7 @@
                                         <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                             <div class="inner-addon left-addon">
                                                 <label for="">Payment Term</label>
-                                                <select class="form-control" name="payment_Term">
+                                                <select class="form-control" name="rfq_Payment_Term">
                                                     <option value="TT">TT</option>
                                                     <option value="LC">LC</option>
                                                 </select>
@@ -206,18 +206,16 @@
                             </div>
 
                             <div class="col-md-12">
-                                <input type="checkbox" class="checkbox" name="agree[]" value="1">
+                                <input type="checkbox" class="checkbox" name="rfq_agree" value="1">
                                 <span class="right-float">I agree to share my Business Card with quoted suppliers.</span>
                             </div>
                             <div class="col-md-12">
 
-                                <input type="checkbox" class="checkbox" name="agree[]" value="2">
+                                <input type="checkbox" class="checkbox" name="" value="2">
                                 <span class="right-float">I have read, understood and agreed to abide by the Buying Request Posting Rules.</span>
                             </div>
 
-                            <div class="col-md-12">
-                                <input type="hidden" name="rfq" value="rfq">
-                            </div>
+                            
                             <div class="row">
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <br /><br />

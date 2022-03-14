@@ -72,11 +72,29 @@ class RfqController extends Controller
         }
     }
 
+    /**
+     * RfqListAction 
+     */
 
     public function rfqListAction(Request $request)
     {
-        print_r("DDD");
-        die;
+        try {
+            $request = RfqList::create($request->all());
+            if (!empty($request)) {
+                return response()->json(
+                    [
+                        'success' => true,
+                        'data' => $request->all(),
+                        'message' => trans('admin.add_rfq')
+                    ]
+                );
+            }
+        } catch (\Exception $e) {
+
+            return response()->json(
+                ['success' => false, 'message' => $e->getMessage()]
+            );
+        }
     }
     /**
      * Show the form for creating a new resource.

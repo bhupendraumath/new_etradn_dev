@@ -17,7 +17,7 @@ $(window).ready(function() {
                         // toastr.clear();
                         
                         btn.html('Update');
-                        toastr.success(response.message, 'Update profile', { timeOut: 2000 });
+                        toastr.success(response.message, { timeOut: 2000 });
                         setTimeout(function() {
                             window.location.href = process.env.MIX_APP_URL + "/dashboard";
                         }, 2000);
