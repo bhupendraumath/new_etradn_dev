@@ -12,6 +12,7 @@ use App\Models\ProductReview;
 use App\Services\FileService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use Redirect;
 
 class ProductController extends Controller
 {
@@ -147,10 +148,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function bidsPlaced()
-    {
-        return view('frontend/bid-placed/index');
-    }
+
 
     public function productDetails($productId)
     {
@@ -185,7 +183,36 @@ class ProductController extends Controller
     {
         //
     }
+    public function uploadedEdit($id){
+        // return $id;
 
+        $category = Category::where('isActive', 'y')->get();
+        $brand = Brand::where('isActive', 'y')->get();
+        return view(
+            'frontend/product/add',
+            compact(
+                'category',
+                'brand'
+            )
+        );
+
+    }
+
+
+    public function uploadedDelete($id){
+        // return $id;
+
+        $user_id = Auth::guard('web')->user()->id;
+        $delete=Product::whereId($id)->delete();
+
+        // if($delete){
+        //    $addressList=product::where(['userId'=>$user_id,'address_type'=>'business'])->paginate(10);          
+             
+           return Redirect::back()->with('message', 'Delete Successfully');
+        // }
+
+
+    }
     /**
      * Display the specified resource.
      *
@@ -242,7 +269,7 @@ class ProductController extends Controller
                     'category_list' => $category_list
                 ];
                 $completeSessionView = view(
-                    'frontend/product/my-upload-product-list',
+                    'frontend/product/cat-product-list',
                     compact('productlist')
                 )->render();
 
@@ -317,6 +344,7 @@ class ProductController extends Controller
     public function refund_request(){
         return view('frontend/product/refund-request');
     }
+
     public function list($id)
     {
         $list = Product::whereCatId($id)

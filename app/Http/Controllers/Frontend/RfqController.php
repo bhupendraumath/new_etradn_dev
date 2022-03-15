@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use App\Services\FileService;
 use App\Models\Category;
+use Redirect;
+
 
 class RfqController extends Controller
 {
@@ -36,6 +38,29 @@ class RfqController extends Controller
         return view('frontend/request')->with('category',$cat);
 
 
+    }
+
+    public function requestAcept($id){
+        // RfqList
+
+        $userid=Auth::user()->id;
+        try {
+            $request = RfqList::where('rfq_id',$id)
+            ->update([
+                'rfq_accerpt_userid' => $userid
+             ]);
+
+
+            if ($request) {
+
+                return \Redirect::back();
+            }
+        } catch (\Exception $e) {
+
+            return response()->json(
+                ['success' => false, 'message' => $e->getMessage()]
+            );
+        }
     }
     
     public function request_action(Request $request)
