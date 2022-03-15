@@ -8,7 +8,7 @@
         <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="aloe" data-category="green small medium africa">
 
 
-            <a href="{{url('product-details/'.$productvalue->id)}}">
+            <!-- <a href="{{url('product-details/'.$productvalue->id)}}"> -->
                 <div class="images onhover-show-menus">
                     <div class="background-gray uploaded-image-edited">
                         @if(!empty($productvalue->image->product_img))
@@ -19,9 +19,11 @@
                         
                         <div class="hover-icons"><a href="{{url('uploadedEdit/'.$productvalue->id)}}">
                         
-                        <i class="fa fa-pencil fa-lg color-edit"></i> </a> |
+                        <button><i class="fa fa-pencil fa-lg color-edit"></i> </button></a> |
 
-                        <a href="{{url('uploadedDelete/'.$productvalue->id)}}"><i onclick="return confirm('Are you sure? ')" class="fas fa-trash  color-delete"></i></a>
+                        <a href="{{url('uploadedDelete/'.$productvalue->id)}}">
+                        <button><i onclick="return confirm('Are you sure? ')" class="fas fa-trash  color-delete"></i></button>
+                    </a>
 
 
                         </div>
@@ -32,10 +34,21 @@
                     
                     
                     <h4>{{$productvalue->product_name}}</h4>
-                    <span><strike>$ {{(isset($productvalue->quantity->price)?$productvalue->quantity->price:'')}}</strike> &nbsp; <span> $
-                    {{(isset($productvalue->quantity->price)?$productvalue->quantity->price:'')}}
-                - 
-                    {{(isset($productvalue->quantity->discount)? $productvalue->quantity->discount:'')}} </span></span>
+                    
+                    @if(!empty($productvalue->quantity))
+                    <span>
+                            <strike>
+                               $ {{$productvalue->quantity->price}}
+                            </strike> &nbsp;
+                             <span> $                                 
+                                 {{$productvalue->quantity->price - $productvalue->quantity->discount}}
+                                
+                             </span>
+                    </span>
+                    @else
+                    Price Pending
+                    @endif
+
                     <div class="rating-review-upload">
 
                         <?php
@@ -65,7 +78,7 @@
 
                     </div>
                 </div>
-            </a>
+            <!-- </a> -->
         </div>
     @endforeach
 </div>

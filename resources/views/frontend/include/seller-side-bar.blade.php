@@ -97,13 +97,13 @@
         </a>
 
 
-        <a href="{{route('businessInformation')}}">
+{{--        <a href="{{route('businessInformation')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <span><i class="fas fa-user-alt margin-leftor-right"></i> <b class="heading-business">BUSINESS INFORMATION</b> </span>
                 </div>
             </div>
-        </a>
+        </a> --}}
 
         <a href="{{route('business-address')}}">
             <div class="row border-row-top-border">

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Product;
+use App\Models\User;
 
 
 class Bids extends Model
@@ -14,7 +15,7 @@ class Bids extends Model
     public $timestamps = false;
     use HasFactory;
 
-    public $with=['image'];
+    public $with=['image','quantity_product','product'];
 
     public function image()
     {
@@ -26,10 +27,17 @@ class Bids extends Model
         return $this->hasOne(Product::class,'id', 'product_id');
     }
 
-    public function quantity()
+    public function quantity_product()
     {
         return $this->hasOne(ProductQuantity::class,'id','paqid');
     }
+
+
+    public function user_details()
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
+
 
     /**
      * Get the quantit associated with the product.

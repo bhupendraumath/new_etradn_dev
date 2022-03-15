@@ -5,12 +5,11 @@
     @foreach($bindlist as $productvalue)
 
 
-    {{json_encode($productvalue->quantity)}}
         <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="aloe" data-category="green small medium africa">
 
 
-            <a href="{{url('product-details/'.$productvalue->id)}}">
-                <div class="images onhover-show-menus">
+            <!-- <a href="#"> -->
+                <div class="images onhover-show-menus uploaded-image-edited">
                     <div class="background-gray">
                         @if(!empty($productvalue->image->product_img))
                         <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
@@ -20,16 +19,20 @@
                         
                        
                     </div>
+                    <br/>
+                    
+                    <div class="hover-icons"><a href="{{url('view-details-bids/'.$productvalue->id)}}">
+                        
+                        <button>
+                            <!-- <i class="fa fa-eye color-edit" title="View details"></i> -->
+                            view
+                        </button>  </a>
 
-                    <br />
-                    <br />
-                    
-                    
-                    <h4>{{$productvalue->product_name}}</h4>
-                    <span><strike>$ {{(isset($productvalue->quantity->price)?$productvalue->quantity->price:'')}}</strike> &nbsp; <span> $
-                    {{(isset($productvalue->quantity->price)?$productvalue->quantity->price:'')}}
-                - 
-                    {{(isset($productvalue->quantity->discount)? $productvalue->quantity->discount:'')}} </span></span>
+                    </div>
+                    <h4>{{$productvalue->product->product_name}}</h4>
+                    <span> ${{$productvalue->bid_amount}}<span><br/>
+                    <!-- <span>{{$productvalue->bid_status}}<span> -->
+                   </span>
                     <div class="rating-review-upload">
 
                         <?php
@@ -59,7 +62,7 @@
 
                     </div>
                 </div>
-            </a>
+            <!-- </a> -->
         </div>
     @endforeach
 </div>

@@ -26,6 +26,14 @@ class BidController extends Controller
     }
 
 
+    public function view_details_bids($id){
+
+        $bind = Bids::with(['product','user_details'])->where('id', $id)
+        ->get();
+        return view('frontend/bid-placed/view')->with('details',$bind);
+    }
+
+
     public function BidPlacePost(Request $request)
     {
 

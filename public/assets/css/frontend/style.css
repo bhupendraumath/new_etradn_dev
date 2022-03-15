@@ -6649,7 +6649,7 @@ i.fas.fa-trash.color-delete {
 }
 
 .uploaded-image-edited:hover {
-    background: gray;
+    /* background: gray; */
 }
 
 .hover-icons {
@@ -6723,9 +6723,41 @@ input#submitbtn {
     padding-bottom: 22px !important;
 }
 
+i.fa.fa-eye.color-edit:hover {
+    color: #f2ae3d;
+}
+
+.hover-icons {
+    padding-top: 7px;
+    padding-right: 7px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    padding-top: 6px;
+    text-align: right;
+    background: #0000005e;
+    padding-bottom: 7px;
+    top: 0;
+    display: none;
+}
+
+button.view-more-bids {
+    width: 154px;
+    background: black;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-top: 2px;
+}
+
 tr {
     word-break: break-word;
-    font-size: 14px;
+    font-size: 17px;
+}
+
+i.fa.fa-eye.color-edit {
+    color: #a7a7e8;
+    font-size: 19px;
 }
 
 .card-dashboard.col-12uy.rfq-list-right {

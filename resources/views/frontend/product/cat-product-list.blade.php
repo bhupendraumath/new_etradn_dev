@@ -15,20 +15,26 @@
                         <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
                         @else
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
-                        @endif
-                        
+                        @endif                      
                        
                     </div>
-
-                    <br />
                     <br />
                     
                     
                     <h4>{{$productvalue->product_name}}</h4>
-                    <span><strike>$ {{(isset($productvalue->quantity->price)?$productvalue->quantity->price:'')}}</strike> &nbsp; <span> $
-                    {{(isset($productvalue->quantity->price)?$productvalue->quantity->price:'')}}
-                - 
-                    {{(isset($productvalue->quantity->discount)? $productvalue->quantity->discount:'')}} </span></span>
+                    @if(!empty($productvalue->quantity))
+                    <span>
+                            <strike>
+                               $ {{$productvalue->quantity->price}}
+                            </strike> &nbsp;
+                             <span> $                                 
+                                 {{$productvalue->quantity->price - $productvalue->quantity->discount}}
+                                
+                             </span>
+                    </span>
+                    @else
+                    Price Pending
+                    @endif
                     <div class="rating-review-upload">
 
                         <?php

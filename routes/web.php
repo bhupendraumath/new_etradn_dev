@@ -237,6 +237,14 @@ Route::group(
             [BidController::class, 'BidPlacePost']
         )->name('BidPlacePost');
 
+        
+
+        Route::get(
+            'view-details-bids/{id}',
+            [BidController::class, 'view_details_bids']
+        )->name('view_details_bids');
+
+
         Route::get(
             'bids-placed',
             [BidController::class, 'bidsPlaced']
