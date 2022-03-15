@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\ImageUpload;
+use App\Models\ProductQuantity;
 use App\Models\ProductReview;
 use App\Services\FileService;
 use Illuminate\Contracts\View\View;
@@ -105,7 +107,7 @@ class ProductController extends Controller
                 $category = $request->category;
                 $productlist = Product::where('cat_id', $category)
                     ->paginate($request->record);
-                
+
                 $completeSessionView = view(
                     'frontend/product/my-upload-product-list',
                     compact('productlist')
@@ -228,7 +230,7 @@ class ProductController extends Controller
 
 
 
-//category based list
+    //category based list
     public function detailedlist(Request $request)
     {
         if ($request->ajax()) {
@@ -253,12 +255,12 @@ class ProductController extends Controller
 
                 // $page_limit
                 $productlist = Product::where($dataArr)
-                    ->with(['quantity'=>function($q) use ($sequence){
+                    ->with(['quantity' => function ($q) use ($sequence) {
                         $q->orderBy('tbl_product_attribute_quantity.price', 'ASC');
                     }])
                     ->orderBy('id', $sequence)
                     ->paginate($page_limit);
-                    // ->get();
+                // ->get();
 
                 $brand_list = Brand::all();
                 $category_list = Category::all();
@@ -341,7 +343,8 @@ class ProductController extends Controller
         ], 200);
     }
 
-    public function refund_request(){
+    public function refund_request()
+    {
         return view('frontend/product/refund-request');
     }
 
@@ -393,12 +396,15 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addProduct(Request $request)
+    public function addProduct(ProductRequest $request)
     {
         try {
+
+
+
             $product = new Product;
             $Product =  $product->storeProduct($request);
-            // print_r($image);die;
+
 
             foreach ($request->image_name as $imagefile) {
 
@@ -407,16 +413,28 @@ class ProductController extends Controller
                     'assets/images/product-images/',
                     $imagefile
                 );
-                
+
                 //Save image
-                $upload=new ImageUpload;
+                $upload = new ImageUpload;
                 $upload->saveImageProduct(
                     $Product->id,
                     $image
                 );
             }
 
+            foreach ($request->price as $key => $dataprice) {
+                $data = array(
+                    'product_id' => $Product->id,
+                    'condition_id' =>1,
+                    'quantity' => $request->quantity[$key],
+                    'price' => $request->price[$key],
+                    'discount' => $request->discount[$key],
+                    'createdDate'=>date('d/m/y H:i:s')
+                );
+                ProductQuantity::create($data);
+            }
 
+          
             if (!empty($Product)) {
                 return response()->json(
                     ['success' => true, 'message' => trans('admin.add_product')]
