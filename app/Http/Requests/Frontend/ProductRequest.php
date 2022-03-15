@@ -49,7 +49,7 @@ class ProductRequest extends FormRequest
     {
 
         return [
-
+            'image_name' => 'required',
             'category_id' => 'required',
             'sub_category_id' => 'required',
             'brand_id' => 'required',
@@ -72,7 +72,7 @@ class ProductRequest extends FormRequest
             'product_name_eng.required' => __('request.product_name_eng_required'),
             'product_description_eng.required' => __('request.product_description_eng_required'),
             'warranty_description_eng.required' => __('request.warranty_description_eng_required'),
-
+            'image_name.required'=>'Please add product image'
         ];
     }
 }

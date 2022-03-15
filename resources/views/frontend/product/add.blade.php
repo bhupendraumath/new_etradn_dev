@@ -61,6 +61,7 @@
                         {{csrf_field()}}
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <!-- <input type="file" class="files-class-hide"> -->
+                       
                         <div id="drop_area" class="area">
                             <div>
                                 <!-- <label for="files" class="btn center-drag-drop"><b>Choose or Drag & Drop
@@ -87,7 +88,7 @@
                             <img id="previewImage"  width="100" height="100"> -->
 
                         <!--</div> -->
-
+                        <span id="image_name-error" ></span>
                         <br />
                         <label class="left-align">Category</label>
                         <select name="category_id" id="Category" class="shopname">
@@ -184,17 +185,17 @@
                                         </div>
                                         <div class="col-sm-3 nopadding">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="Schoolname" name="Schoolname[]" value="" placeholder="School name">
+                                                <input type="text" class="form-control" id="Schoolname" name="price[]"  placeholder="Price" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-3 nopadding">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="Major" name="Major[]" value="" placeholder="Major">
+                                                <input type="text" class="form-control" id="Major" name="quantity[]" placeholder="Quantity" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-3 nopadding">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="Degree" name="Degree[]" value="" placeholder="Degree">
+                                                <input type="number" class="form-control" id="Degree" name="discount[]" placeholder="discount" required>
                                             </div>
                                         </div>
 
@@ -322,7 +323,7 @@
         var divtest = document.createElement("div");
         divtest.setAttribute("class", "form-group removeclass" + room);
         var rdiv = 'removeclass' + room;
-        divtest.innerHTML = '<div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Schoolname" name="Schoolname[]" value="" placeholder="School name"></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Major" name="Major[]" value="" placeholder="Major"></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Degree" name="Degree[]" value="" placeholder="Degree"></div></div><div class="col-sm-3 nopadding"><div class="form-group"><div class="input-group"> <select class="form-control" id="educationDate" name="educationDate[]"><option value="">Date</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option> </select><div class="input-group-btn"> <button class="btn btn-danger" type="button" style="width:40px;" onclick="remove_education_fields(' + room + ');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div></div><div class="clear"></div>';
+        divtest.innerHTML = '<input type="hidden" name="multiprice[]"value="' + room + '"><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Schoolname" name="price[]"  placeholder="Price" required></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Major" name="quantity[]"placeholder="Quantity" required></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="Degree" name="discount[]" placeholder="Degree" required></div></div><div class="col-sm-3 nopadding"><div class="form-group"><div class="input-group-btn"> <button class="btn btn-danger" type="button" style="width:40px;" onclick="remove_education_fields(' + room + ');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div></div><div class="clear"></div>';
 
         objTo.appendChild(divtest)
     }
