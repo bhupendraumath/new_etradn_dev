@@ -9,19 +9,15 @@
 
 
             <!-- <a href="#"> -->
-                <div class="images onhover-show-menus uploaded-image-edited">
-                    <div class="background-gray">
+                <div class="images onhover-show-menus">
+                    <div class="background-gray uploaded-image-edited">
                         @if(!empty($productvalue->image->product_img))
                         <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
                         @else
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif
                         
-                       
-                    </div>
-                    <br/>
-                    
-                    <div class="hover-icons"><a href="{{url('view-details-bids/'.$productvalue->id)}}">
+                        <div class="hover-icons"><a href="{{url('view-details-bids/'.$productvalue->id)}}">
                         
                         <button>
                             <!-- <i class="fa fa-eye color-edit" title="View details"></i> -->
@@ -29,6 +25,11 @@
                         </button>  </a>
 
                     </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    
+                   
                     <h4>{{$productvalue->product->product_name}}</h4>
                     <span> ${{$productvalue->bid_amount}}<span><br/>
                     <!-- <span>{{$productvalue->bid_status}}<span> -->

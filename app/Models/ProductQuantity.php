@@ -40,6 +40,7 @@ class ProductQuantity extends Model
         );
         return $createOrUpdatePAQ;
     }
+    
 
 
 }

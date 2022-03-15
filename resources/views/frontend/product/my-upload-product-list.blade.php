@@ -19,7 +19,7 @@
                         
                         <div class="hover-icons"><a href="{{url('uploadedEdit/'.$productvalue->id)}}">
                         
-                        <button><i class="fa fa-pencil fa-lg color-edit"></i> </button></a> |
+                        <button><i class="fa fa-pencil fa-lg color-edit"></i> </button></a> <br/>
 
                         <a href="{{url('uploadedDelete/'.$productvalue->id)}}">
                         <button><i onclick="return confirm('Are you sure? ')" class="fas fa-trash  color-delete"></i></button>
