@@ -10,21 +10,14 @@
 
             <a href="{{url('product-details/'.$productvalue->id)}}">
                 <div class="images onhover-show-menus">
-                    <div class="background-gray uploaded-image-edited">
+                    <div class="background-gray">
                         @if(!empty($productvalue->image->product_img))
                         <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
                         @else
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif
                         
-                        <div class="hover-icons"><a href="{{url('uploadedEdit/'.$productvalue->id)}}">
-                        
-                        <i class="fa fa-pencil fa-lg color-edit"></i> </a> |
-
-                        <a href="{{url('uploadedDelete/'.$productvalue->id)}}"><i onclick="return confirm('Are you sure? ')" class="fas fa-trash  color-delete"></i></a>
-
-
-                        </div>
+                       
                     </div>
 
                     <br />

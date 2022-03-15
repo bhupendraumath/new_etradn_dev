@@ -46,6 +46,40 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* 28-02-22 */
 
+.uploaded-image-edited {
+    position: relative;
+    display: inline-block;
+}
+
+.uploaded-image-edited:hover .hover-icons {
+    display: block;
+}
+
+i.fa.fa-pencil.fa-lg.color-edit {
+    color: blue;
+}
+
+i.fas.fa-trash.color-delete {
+    color: red;
+}
+
+.uploaded-image-edited:hover {
+    background: gray;
+}
+
+.hover-icons {
+    padding-top: 7px;
+    padding-right: 7px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+
+.hover-icons a {
+    color: #000;
+}
+
 .rating-review-upload>.text-warning {
     color: #ffa301;
 }
@@ -120,6 +154,19 @@ tr {
 .col-rqf-form>.inner-addon.left-addon>label {
     font-size: 16px;
     margin-bottom: 2px;
+}
+
+button.aceept-button {
+    background: #f2ae3d;
+    color: white;
+    border: navajowhite;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+button.aceept-button:hover {
+    color: white;
+    background: green;
 }
 
 .no-records {

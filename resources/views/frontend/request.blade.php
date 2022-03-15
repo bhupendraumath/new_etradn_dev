@@ -76,7 +76,7 @@
                                             <option value="Other">Other</option>
                                         </select>
 
-                                        <select class="form-control rfq" name="">
+                                        <select class="form-control rfq" name="rfq_part">
                                             <option value="">Select Sourcing Purpose</option>
                                             <option value="Acres" selected>Acres</option>
                                             <option value="Amperes">Amperes</option>

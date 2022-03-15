@@ -79,4 +79,8 @@ mix.js('resources/js/app.js', 'public/js')
     ], 'public/assets/js/frontend/product/rfq-list.js')
     .js([
         'resources/js/frontend/profile/rfq-form.js'
-    ], 'public/assets/js/frontend/profile/rfq-form.js');
+    ], 'public/assets/js/frontend/profile/rfq-form.js')
+
+.js([
+    'resources/js/frontend/product/bids-list.js'
+], 'public/assets/js/frontend/product/bids-list.js');

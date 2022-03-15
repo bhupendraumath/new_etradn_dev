@@ -11,7 +11,8 @@ use App\Http\Controllers\Frontend\{
     ReviewController,
     OrderController,
     RfqController,
-    WalletController
+    WalletController,
+    BidController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -160,6 +161,8 @@ Route::get(
 )->name('logout');
 
 
+route::get('acept-rfq-request/{id}',[RfqController::class, 'requestAcept']
+)->name('acept-rfq-request');
 
 Route::post(
     'rfq-action',
@@ -217,18 +220,29 @@ Route::group(
             'add-product',
             [ProductController::class, 'index']
         )->name('add-product');
+
         Route::get(
             'my-upload-product',
             [ProductController::class, 'myUploadProduct']
         )->name('myUploadProduct');
+
         Route::post(
             'my-upload-product-list',
             [ProductController::class, 'myUploadProductPost']
         )->name('myUploadProduct.post');
+
+
+        Route::post(
+            'BidPlacePost',
+            [BidController::class, 'BidPlacePost']
+        )->name('BidPlacePost');
+
         Route::get(
             'bids-placed',
-            [ProductController::class, 'bidsPlaced']
+            [BidController::class, 'bidsPlaced']
         )->name('bidsPlaced');
+
+
         Route::get(
             'account-setting',
             [CommonController::class, 'accountSetting']
@@ -259,6 +273,17 @@ Route::group(
             'add-product',
             [ProductController::class, 'addProduct']
         )->name('addProduct');
+
+        Route::get(
+            'uploadedEdit/{id}',
+            [ProductController::class, 'uploadedEdit']
+        )->name('uploadedEdit');
+
+        Route::get(
+            'uploadedDelete/{id}',
+            [ProductController::class, 'uploadedDelete']
+        )->name('uploadedDelete');
+
 
 
         Route::get(

@@ -1,30 +1,24 @@
 <div class="col-12 col-md-12 col-sm-12">
 
-@if(!empty($productlist))
+@if(!empty($bindlist))
 <div class="row">
+    @foreach($bindlist as $productvalue)
 
-    @foreach($productlist as $productvalue)
 
+    {{json_encode($productvalue->quantity)}}
         <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="aloe" data-category="green small medium africa">
 
 
             <a href="{{url('product-details/'.$productvalue->id)}}">
                 <div class="images onhover-show-menus">
-                    <div class="background-gray uploaded-image-edited">
+                    <div class="background-gray">
                         @if(!empty($productvalue->image->product_img))
                         <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
                         @else
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif
                         
-                        <div class="hover-icons"><a href="{{url('uploadedEdit/'.$productvalue->id)}}">
-                        
-                        <i class="fa fa-pencil fa-lg color-edit"></i> </a> |
-
-                        <a href="{{url('uploadedDelete/'.$productvalue->id)}}"><i onclick="return confirm('Are you sure? ')" class="fas fa-trash  color-delete"></i></a>
-
-
-                        </div>
+                       
                     </div>
 
                     <br />
@@ -75,9 +69,9 @@
         </div>
 @endif
 <div class="row">
-@if(!empty($productlist))
+@if(!empty($bindlist))
     <div class="col-12  right-side-column">
-          {{ $productlist->links('frontend.common.pagination') }}
+          {{ $bindlist->links('frontend.common.pagination') }}
     </div>
 @endif
 </div>

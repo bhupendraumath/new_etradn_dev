@@ -24,7 +24,12 @@
             @if($li->rfq_accerpt_userid!="")
                 Accepted
             @else
-                    Accept
+                  
+            <div>
+                <button class="aceept-button" onclick="window.location.href='{{url('acept-rfq-request/'.$li->rfq_id)}}'">
+                     Accept
+                </button>
+            </div>
             @endif
             </td>
             
@@ -47,3 +52,12 @@
           {{ $rfqlist->links('frontend.common.pagination') }}
     </div>
 </div>
+
+
+<script>
+function sent_request(){
+    if(confirm('Are you sure, you want to accept it?'))
+   return window.location.href='{{url('acept-rfq-request/'.$li->rfq_id)}}';
+
+}
+</script>

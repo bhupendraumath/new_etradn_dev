@@ -13,6 +13,7 @@ class ProductReview extends Model
     protected $table = 'tbl_product_review';
     use HasFactory;
     public $timestamps = false;
+    // public $with=['review_average'];
 
     protected $fillable = [
         'buyerId',
