@@ -82,5 +82,11 @@ mix.js('resources/js/app.js', 'public/js')
     ], 'public/assets/js/frontend/profile/rfq-form.js')
 
 .js([
-    'resources/js/frontend/product/bids-list.js'
-], 'public/assets/js/frontend/product/bids-list.js');
+        'resources/js/frontend/product/bids-list.js'
+    ], 'public/assets/js/frontend/product/bids-list.js')
+    .js([
+        'resources/js/frontend/product/refund-request-list.js'
+    ], 'public/assets/js/frontend/product/refund-request-list.js')
+
+
+;
