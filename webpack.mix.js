@@ -87,6 +87,6 @@ mix.js('resources/js/app.js', 'public/js')
     .js([
         'resources/js/frontend/product/refund-request-list.js'
     ], 'public/assets/js/frontend/product/refund-request-list.js')
-
-
-;
+    .js([
+        'resources/js/frontend/product/delivery-areas-list.js'
+    ], 'public/assets/js/frontend/product/delivery-areas-list.js');

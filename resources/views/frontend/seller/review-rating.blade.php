@@ -39,7 +39,7 @@
 
                                 <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xs-12">
                                     <div class="background-gray rating new-size">
-                                        <img src="{{url('assets/images/product-images/'.$list->product->image->product_img)}}" alt="" srcset=""/>
+                                        <img src="{{url('assets/images/product-images/'.$list->product->image->product_img)}}" onerror="this.src='{{url('assets/images/default.png')}}';" alt="" srcset=""/>
                                     </div>
                                 </div>
                                 <div class="col-9 col-md-9 col-sm-9 col-lg-9 col-xl-9 reducewidth col-xs-12 text-left">

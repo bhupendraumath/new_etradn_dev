@@ -6,7 +6,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>BUSINESS INFORMATION</span></h3>
+        <h3>{{$title}}</span></h3>
 
     </div>
 </div>
@@ -20,16 +20,27 @@
         @include('frontend/include/seller-side-bar')
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
             <div class="card-dashboard  col-12uy">
-                <h3>BUSINESS INFORMATION</h3>
+                <h3>{{$title}}</h3>
                 <hr class="business-address" />
                 <div class="form-settings">
                 @if(!empty($details))
 
                 <form id="businessUpdate" action="{{route('addBusiness')}}" class="businessInformation" method="post">
                         @csrf
-                        <input type="hidden" name="address_type" value="business">
+                        
+                        @php
+                        if($title=="Delivery Address"){
+                            $address_type="delivery";
+                        }
+                        else{
+                            $address_type="business";
+                        }
+                        @endphp
+                       
+                        <input type="hidden" name="address_type" value="{{$address_type}}">
                         <input type="hidden" name="userId" value="{{Auth::user()->id}}">
                         <input type="hidden" name="id" value="{{$details[0]->id}}">
+
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12">
                             <label class="left-align">Shop Name</label>
@@ -92,7 +103,18 @@
                 @else
                     <form id="businessFrm" class="businessInformation" method="post">
                         @csrf
-                        <input type="hidden" name="address_type" value="business">
+
+                        
+                        @php
+                        if($title=="Delivery Address"){
+                            $address_type="delivery";
+                        }
+                        else{
+                            $address_type="business";
+                        }
+                        @endphp
+                       
+                        <input type="hidden" name="address_type" value="{{$address_type}}">
                         <input type="hidden" name="userId" value="{{Auth::user()->id}}">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12">
@@ -170,7 +192,7 @@
 <script>
     jQuery(function($) {
         var path = window.location.href;
-        // console.log("pathfdf  ", path)
+        console.log("pathfdf  ", path)
         $('a').each(function() {
             if (path == this.href) {
                 $(this).addClass('left-active');

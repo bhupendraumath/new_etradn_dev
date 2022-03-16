@@ -158,7 +158,9 @@ class CommonController extends Controller
      */
     public function addBusiness(BusinessAddRequest $request)
     {
+
         try {
+
             if($request->id){
                 $existsAdrress = Address::find($request->id);                
                 $address=$existsAdrress->update($request->all());

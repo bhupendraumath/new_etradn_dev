@@ -1,52 +1,50 @@
-@extends('layouts.frontend.app')
-
-@section('content')
-
-<!--/single_page-->
-<!-- /banner_bottom_agile_info -->
-<div class="page-head_agile_info_w3l-seller-dashboard">
-    <div class="container">
-        <h3>Refund Request</h3>
-
-    </div>
-</div>
-
 <div class="col-12 col-md-12 col-sm-12">
 
 @if(!empty($bindlist))
 <div class="row">
     @foreach($bindlist as $productvalue)
 
+    @php
+
+    $refundRequest=new App\Models\RefundRequest;
+    $refundRequestArray=$refundRequest->productWithRepectUser(Auth::user()->id,$productvalue->product_id)
+    ->get();
+    @endphp
+
+    @if(count($refundRequestArray)!=0 )
 
         <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="aloe" data-category="green small medium africa">
 
 
-            <!-- <a href="#"> -->
                 <div class="images onhover-show-menus">
                     <div class="background-gray uploaded-image-edited">
-                        @if(!empty($productvalue->image->product_img))
-                        <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
+                        @if(!empty($refundRequestArray[0]->image->product_img))
+                        <img src="{{url('assets/images/product-images/'.$refundRequestArray[0]->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
                         @else
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif
                         
-                        <div class="hover-icons"><a href="{{url('view-details-bids/'.$productvalue->id)}}">
-                        
-                        <button>
-                            <!-- <i class="fa fa-eye color-edit" title="View details"></i> -->
-                            view
-                        </button>  </a>
 
-                    </div>
+                        <div class="hover-icons">
+
+                           {{-- <select  id="seller_approve" class="seller_status circle-select" title="Status Manage by seller">
+                            <option '<?php if($productvalue->seller_approval_status==0){ echo "selected";}  ?>' >-Status-</option>
+                            <option value="1" <?php if($productvalue->seller_approval_status==1) echo "selected"; ?>>Accepted</option>
+                            <option value="2" <?php if($productvalue->seller_approval_status==2) echo "selected"; ?>>Rejected</option>
+                            </select>--}}
+                            <a href="{{url('edit-details-refund/'.$productvalue->id)}}">                        
+                                <button class="circle"  title="View details"><i class="fa fa-eye color-delete"></i></button>
+                            </a>
+                        </div>
                     </div>
                     <br/>
                     <br/>
                     
                    
-                    <h4>{{$productvalue->product->product_name}}</h4>
-                    <span> ${{$productvalue->bid_amount}}<span><br/>
-                    <!-- <span>{{$productvalue->bid_status}}<span> -->
-                   </span>
+                    <h4>{{$refundRequestArray[0]->product_name}}</h4>
+                        <span>
+                            Total Amount: ${{$productvalue->order_details->total_order_amount}}<span><br/>
+                        </span>
                     <div class="rating-review-upload">
 
                         <?php
@@ -76,8 +74,8 @@
 
                     </div>
                 </div>
-            <!-- </a> -->
-        </div>
+        </div> 
+        @endif
     @endforeach
 </div>
 @else

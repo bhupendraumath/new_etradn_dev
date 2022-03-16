@@ -5,10 +5,10 @@ $(window).load(function() {
     var records = 4;
 
     function getRefundRequest(pageno, records) {
-        console.log("reords -- ", records)
+        // console.log("reords -- ", records)
         var filter_by = 'desc';
         $.ajax({
-            url: process.env.MIX_APP_URL + "/refund_request_list_post",
+            url: process.env.MIX_APP_URL + "/delivery-areas-post",
             type: "POST",
             data: {
                 filter_by: filter_by,
@@ -26,12 +26,12 @@ $(window).load(function() {
             success: function success(response) {
 
 
-                $('#listing-refund').html('');
-                $('#listing-refund').html(response.data.completeSessionView)
+                $('#listing-deivery-areas').html('');
+                $('#listing-deivery-areas').html(response.data.completeSessionView)
 
             },
             error: function error(data) {
-                $('#listing-refund').html('');
+                $('#listing-deivery-areas').html('');
                 if (data.status === 422) {
                     var responseText = $.parseJSON(data.responseText);
                     toastr.error(responseText.error.message);
@@ -64,7 +64,7 @@ function getRefundRequest(pageno, records) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
-        url: process.env.MIX_APP_URL + "/refund_request_list_post",
+        url: process.env.MIX_APP_URL + "/delivery-areas-post",
         type: "POST",
         data: {
             filter_by: filter_by,
@@ -80,12 +80,12 @@ function getRefundRequest(pageno, records) {
         dataType: 'JSON',
         cache: false,
         success: function success(response) {
-            $('#listing-refund').html('');
-            $('#listing-refund').html(response.data.completeSessionView)
+            $('#listing-deivery-areas').html('');
+            $('#listing-deivery-areas').html(response.data.completeSessionView)
 
         },
         error: function error(data) {
-            $('#listing-refund').html('');
+            $('#listing-deivery-areas').html('');
             if (data.status === 422) {
                 var responseText = $.parseJSON(data.responseText);
                 toastr.error(responseText.error.message);

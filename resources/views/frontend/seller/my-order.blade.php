@@ -64,7 +64,7 @@
 
                             <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
                                 <div class="background-gray rating new-size order-image-gary">
-                                    <img src="{{url('assets/images/product-images/'.$image_upload->product_img)}}" alt="" srcset="" class="order-image"/>
+                                    <img src="{{url('assets/images/product-images/'.$image_upload->product_img)}}" alt="" srcset="" class="order-image" onerror="this.src='{{url('assets/images/default.png')}}';"/>
                                 </div>
                             </div>
                             <div class="col-8 col-md-8 col-sm-8 col-lg-8 col-xl-8 reducewidth col-xs-12 text-left">

@@ -6,12 +6,15 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
+use App\Models\OrderItem;
+
 
 class Order extends Model
 {
     protected $table = 'tbl_orders';
     public $timestamps = false;
     use HasFactory;
+    public $with=['buyer_details'];
 
     protected $fillable = [
         'buyer_id',
@@ -42,11 +45,20 @@ class Order extends Model
         return $this->hasMany(OrderItem::class, 'order_number', 'order_number');
     }
 
+
+    public function order_items($ordernumber)
+    {
+        OrderItem::where('order_number',$ordernumber)->get();
+    }
     /**
      * Get the user associated with the order.
      */
     public function user()
     {
+        return $this->hasOne(User::class, 'id', 'buyer_id');
+    }
+
+    public function buyer_details() {
         return $this->hasOne(User::class, 'id', 'buyer_id');
     }
 

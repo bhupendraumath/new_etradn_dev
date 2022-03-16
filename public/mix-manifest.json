@@ -12,6 +12,7 @@
     "/assets/js/frontend/profile/rfq-form.js": "/assets/js/frontend/profile/rfq-form.js",
     "/assets/js/frontend/product/bids-list.js": "/assets/js/frontend/product/bids-list.js",
     "/assets/js/frontend/product/refund-request-list.js": "/assets/js/frontend/product/refund-request-list.js",
+    "/assets/js/frontend/product/delivery-areas-list.js": "/assets/js/frontend/product/delivery-areas-list.js",
     "/css/app.css": "/css/app.css",
     "/assets/js/frontend/main.js": "/assets/js/frontend/main.js",
     "/assets/css/frontend/style.css": "/assets/css/frontend/style.css"

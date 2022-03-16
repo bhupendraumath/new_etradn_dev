@@ -17,15 +17,13 @@
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif
                         
-                        <div class="hover-icons"><a href="{{url('uploadedEdit/'.$productvalue->id)}}">
-                        
-                        <button><i class="fa fa-pencil fa-lg color-edit"></i> </button></a> <br/>
-
-                        <a href="{{url('uploadedDelete/'.$productvalue->id)}}">
-                        <button><i onclick="return confirm('Are you sure? ')" class="fas fa-trash  color-delete"></i></button>
-                    </a>
-
-
+                        <div class="hover-icons">
+                            <a href="{{url('uploadedEdit/'.$productvalue->id)}}">                        
+                                <button class="circle"><i class="fa fa-edit fa-lg color-edit"></i> </button>
+                            </a>
+                            <a href="{{url('uploadedDelete/'.$productvalue->id)}}">                        
+                                <button class="circle" onclick="return confirm('Are you sure? ')"><i class="fa fa-trash-o color-delete"></i> </button>
+                            </a>
                         </div>
                     </div>
 

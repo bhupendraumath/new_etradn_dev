@@ -19,8 +19,6 @@
         @include('frontend/include/seller-side-bar')
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
             <div class="card-dashboard  col-12uy">
-                <!-- <h3>BUSINESS INFORMATION LIST</h3><br/><br/> -->
-                <!-- <hr class="business-address" /> -->
                 @if(session()->has('message'))
                 <div class="alert alert-success">
                 {{ session()->get('message') }}

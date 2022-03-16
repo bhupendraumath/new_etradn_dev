@@ -54,6 +54,7 @@ class ProductReview extends Model
         $product=  Product::where('user_id',$userid);
         return $product;
     }
+    
     public function buyer() {
         return $this->belongsTo(User::class, 'buyerId', 'id');
     }

@@ -183,6 +183,8 @@ class Product extends Model
         return $deleteProduct;
     }
 
+
+    
     // public function averageRating($product_id) {
     //     $total_user_rating = 0;
     //     $reviewProduct = ProductReview::where('productId',$product_id)->get();

@@ -14,24 +14,30 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
 use App\Models\Bids;
-
+use App\Models\RefundRequest;
+use App\Models\OrderItem;
 
 class RefundController extends Controller
 {
    
-    public function bidsPlaced()
-    {
-        
-        return view('frontend/bid-placed/index');
-    }
 
+    
 
-    public function view_details_bids($id){
+    public function edit_details_refund($id){
 
-        $bind = Bids::with(['product','user_details'])->where('id', $id)
+        $refund = RefundRequest::where('id', $id)
         ->get();
-        return view('frontend/bid-placed/view')->with('details',$bind);
+
+        $order_number=$refund[0]->order_details->order_number;
+
+        $order_item_details=OrderItem::where('order_number',$order_number)->get();
+        
+
+        return view('frontend/product/edit-refund')->with(['details'=>$refund,'order_item_details'=>$order_item_details]);
     }
+
+
+  
 
 
     public function refund_request_list_post(Request $request)
@@ -39,12 +45,10 @@ class RefundController extends Controller
 
         if ($request->ajax()) {
             try {
+                $bindlist = RefundRequest::paginate($request->record);                   
 
-                $bindlist = Bids::where('seller_id', Auth::user()->id)
-                ->paginate($request->record);                   
-                    
                 $completeSessionView = view(
-                    'frontend/bid-placed/bid-list',
+                    'frontend/product/refund-list',
                     compact('bindlist')
                 )->render();
 

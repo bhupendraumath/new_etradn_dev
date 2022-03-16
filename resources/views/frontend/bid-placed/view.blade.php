@@ -78,7 +78,7 @@
                         <input type="text" value="{{$details[0]['payment_status']}}"  name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
                         <label class="left-align">Bid Status</label>
-                        <input type="text" name="product_name" value="{{$details[0]['closed']}}"  disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" name="product_name" value="{{$details[0]['bid_status']}}"  disabled placeholder="Product Name in English*" class="60per">
 
                      <!-- <label class="left-align">Status</label>
                         <input type="text" value="{{$details[0]['status']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per"> -->

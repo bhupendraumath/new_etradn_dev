@@ -27,7 +27,7 @@
                                 MY REVIEW AND RATING
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="review-and-rating.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('review-rating')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
@@ -36,7 +36,7 @@
                                 BUSINESS ADDRESS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="business-address.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('business-address')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                 MY UPLOAD PRODUCTS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="upload-product.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('myUploadProduct')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
@@ -57,7 +57,7 @@
                                 BIDS PLACED ON MY <br />LISTED PRODUCT
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="bids-placed.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('bidsPlaced')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                                 MY ORDERS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="orders.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('my-order')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
@@ -89,16 +89,16 @@
                                 REFUND REQUESTS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="refund-request.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('refund-request')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                Account settings
+                                ACCOUNT SETTINGS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="account-settings.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('accountSetting')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                 </div>

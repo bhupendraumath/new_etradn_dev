@@ -13,7 +13,8 @@ use App\Http\Controllers\Frontend\{
     RfqController,
     WalletController,
     BidController,
-    RefundController
+    RefundController,
+    AddressController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -187,9 +188,24 @@ Route::group(
         )->name('personInformation');
 
         Route::get(
+            'delivery-areas',
+            [AddressController::class, 'delivery_areas']
+        )->name('delivery-areas');
+
+        Route::post(
+            'delivery-areas-post',
+            [AddressController::class, 'delivery_areas_post']
+        )->name('delivery-areas-post');
+
+        Route::get(
             'business-information',
             [SellerController::class, 'businessInformation']
         )->name('businessInformation');
+
+        Route::get(
+            'add-delivery-area',
+            [AddressController::class, 'addDeliveryArea']
+        )->name('add-delivery-area');
 
 
         Route::get(
@@ -208,6 +224,12 @@ Route::group(
             [SellerController::class, 'businessAddressEdit']
         )->name('business-address-edit');
 
+
+        Route::get(
+            'delivery-address-edit/{id}',
+            [addressController::class, 'businessAddressEdit']
+        )->name('business-address-edit');
+        
         Route::get(
             'business-address-delete/{id}',
             [SellerController::class, 'businessAddressDelete']
@@ -217,6 +239,14 @@ Route::group(
             'refund_request_list_post',
             [RefundController::class, 'refund_request_list_post']
         )->name('refund_request_list_post');
+
+
+        Route::get(
+            'edit-details-refund/{id}',
+            [RefundController::class, 'edit_details_refund']
+        )->name('edit_details_refund');
+
+
 
         Route::get(
             'add-product',
@@ -356,6 +386,7 @@ Route::group(
             [BuyerController::class, 'delivery_area']
         )->name('buyer.deliveryArea');
 
+        
         Route::get(
             'buyer-account-setting',
             [BuyerController::class, 'buyer_account_setting']

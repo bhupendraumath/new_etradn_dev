@@ -17,13 +17,10 @@
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif
                         
-                        <div class="hover-icons"><a href="{{url('view-details-bids/'.$productvalue->id)}}">
-                        
-                        <button>
-                            <!-- <i class="fa fa-eye color-edit" title="View details"></i> -->
-                            view
-                        </button>  </a>
-
+                        <div class="hover-icons">
+                         <a href="{{url('view-details-bids/'.$productvalue->id)}}">                        
+                                <button class="circle" onclick="return confirm('Are you sure? ')" title="View details"><i class="fa fa-eye color-delete"></i></button>
+                        </a>
                     </div>
                     </div>
                     <br/>

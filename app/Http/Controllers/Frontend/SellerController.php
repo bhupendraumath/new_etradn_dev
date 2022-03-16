@@ -26,7 +26,8 @@ class SellerController extends Controller
      */
     public function businessInformation()
     {
-        return view('frontend/seller/business-information');
+        $title="Business Address";
+        return view('frontend/seller/business-information')->with('title',$title);
     }
 
     
@@ -46,8 +47,9 @@ class SellerController extends Controller
     }
 
     public function businessAddressEdit($id){
+        $title="Business Address";
         $details=Address::whereId($id)->get();
-        return view('frontend/seller/business-information',['details'=>$details]);
+        return view('frontend/seller/business-information',['details'=>$details,'title'=>$title]);
 
     }
 
