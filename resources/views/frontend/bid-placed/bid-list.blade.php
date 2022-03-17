@@ -19,7 +19,7 @@
                         
                         <div class="hover-icons">
                          <a href="{{url('view-details-bids/'.$productvalue->id)}}">                        
-                                <button class="circle" onclick="return confirm('Are you sure? ')" title="View details"><i class="fa fa-eye color-delete"></i></button>
+                                <button class="circle"  title="View details"><i class="fa fa-eye color-delete"></i></button>
                         </a>
                     </div>
                     </div>

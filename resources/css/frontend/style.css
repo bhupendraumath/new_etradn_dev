@@ -46,6 +46,121 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* 28-02-22 */
 
+.tooltip1 {
+    position: relative;
+}
+
+.tooltip1 .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #80808054;
+    box-shadow: 1px 0px 6px 5px #8080804f;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 0%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card.remove-showdow {
+    box-shadow: none;
+}
+
+.card.remove-showdow:hover {
+    box-shadow: none;
+}
+
+.col-12.col-md-12.col-sm-12.col-lg-12.col-xl-12 select.remove-borders {
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 0px;
+}
+
+.col-12.col-md-12.col-sm-12.col-lg-12.col-xl-12 remove-borders:hover {
+    border-bottom: 1px solid blue;
+}
+
+.myBoxBrand {
+    text-transform: capitalize;
+}
+
+hr.hr-width {
+    width: 95%;
+    margin-top: 7px;
+    margin-left: 1%;
+    margin-bottom: 7px;
+}
+
+input.checkboxes {
+    width: 19px;
+    height: 19px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+button.circle.add-favorite {
+    padding-top: 10px;
+}
+
+span.left-buy-it {
+    float: left;
+    padding: 10px;
+    font-weight: 700;
+}
+
+input.price-range-input {
+    width: 87%;
+    padding: -10px;
+    height: 10px;
+    padding: 0px;
+    margin-top: 34px;
+}
+
+.background-gray.uploaded-image-edited.cat-product {
+    margin-bottom: 10px;
+}
+
+.row.margin-top-filter {
+    margin-top: 26px;
+}
+
+.order-information {
+    background: #80808027;
+    color: black;
+    margin-top: -5px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.details-order {
+    text-align: left;
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+.tooltip1 .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip1:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
 .uploaded-image-edited {
     position: relative;
     display: inline-block;
@@ -570,6 +685,72 @@ span.view-more.dashboard.personal-information {
     margin-top: 47px;
     font-size: 19px;
     padding-bottom: 16px;
+}
+
+span.order-number {
+    color: #f2433d;
+    text-transform: uppercase;
+}
+
+b.normal-style {
+    font-weight: 100;
+    /* font-family: 'lato'; */
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+button.failed-transferd {
+    background: #ff00008a;
+    border: none;
+    margin-right: 19px;
+    border-radius: 10px;
+    padding: 6px;
+    margin-top: 13px;
+    text-transform: uppercase;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.col-12.col-xs-12.col-md-12.col-sm-12.col-lg-12.col-xl-12.tooltips-row {
+    background: #f3f8fc;
+    /* margin-right: 3px; */
+    margin-top: -10px;
+    padding-right: -48px;
+    padding: 10px;
+}
+
+button.paid-pending {
+    background: #f4db08;
+    border: none;
+    margin-right: 19px;
+    border-radius: 10px;
+    padding: 6px;
+    margin-top: 13px;
+    text-transform: uppercase;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+button.paid-transferd {
+    background: green;
+    border: none;
+    margin-right: 19px;
+    border-radius: 10px;
+    padding: 6px;
+    margin-top: 13px;
+    text-transform: uppercase;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+button.circle-\? {
+    border-radius: 50%;
+    border: none;
+    color: white;
+    background: #ff00009c;
 }
 
 .card-2.card-personal {
@@ -2903,7 +3084,7 @@ strike {
 
 .background-gray img {
     width: 100%;
-    height: 161px;
+    height: 213px;
     margin-bottom: 40px;
 }
 
