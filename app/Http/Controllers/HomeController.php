@@ -15,12 +15,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        print_r("dhfhdgfdfg");die;
         return view('home');
     }
 
     public function blog()
     {
-        print_r("blog");die;
         return view('frontend/blog');
     }
 }

@@ -13,7 +13,7 @@
 
     @if(count($refundRequestArray)!=0 )
 
-        <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="aloe" data-category="green small medium africa">
+        <div class="product col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4" data-id="aloe" data-category="green small medium africa">
 
 
                 <div class="images onhover-show-menus">

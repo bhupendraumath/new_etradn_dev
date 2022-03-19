@@ -50,6 +50,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     position: relative;
 }
 
+.danger>.alert.alert-success {
+    margin-top: 33px;
+}
+
+.alert-success {
+    margin-top: 28px !important;
+}
+
+.row.margin-top-cat-products {
+    margin-top: 29px;
+}
+
 .tooltip1 .tooltiptext {
     visibility: hidden;
     width: 300px;
@@ -125,6 +137,7 @@ input.price-range-input {
 
 .background-gray.uploaded-image-edited.cat-product {
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .row.margin-top-filter {
@@ -167,6 +180,15 @@ input.price-range-input {
 }
 
 .uploaded-image-edited:hover .hover-icons {
+    display: block;
+}
+
+.favorite-product-hover {
+    position: relative;
+    /* display: inline-block; */
+}
+
+.favorite-product-hover:hover .hover-icons {
     display: block;
 }
 
@@ -251,6 +273,8 @@ input#submitbtn {
 #customers th {
     padding-top: 20px !important;
     padding-bottom: 22px !important;
+    font-size: 12px;
+    color: black;
 }
 
 i.fa.fa-eye.color-edit:hover {
@@ -637,11 +661,42 @@ hr.favorite {
 
 select#subcategory {
     width: 94%;
-    margin-left: 20px;
+    /* margin-left: 20px; */
+}
+
+span.discount-price {
+    color: blue;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.bottom-on-hover {
+    display: grid;
+    text-align: left;
+    /* width: 100%; */
+    margin-top: 10px;
+    margin-left: 10px;
+    /* left: 0px !important; */
+    color: white;
+    /* word-spacing: -1px; */
+}
+
+span.price-original {
+    font-weight: 600;
+}
+
+.cat-bx>span {
+    float: left;
+    font-size: 11px;
 }
 
 .form-control {
     outline: none;
+}
+
+.rating-review-upload>i {
+    font-size: 18px;
+    margin-top: 5px;
 }
 
 input,
@@ -3061,7 +3116,7 @@ body {
 .background-gray.left-side {
     padding-left: \\\\;
     text-align: center;
-    /* padding: 3px; */
+    /* padding-left: 63px; */
     padding-bottom: 19px;
 }
 
@@ -3070,8 +3125,9 @@ strike {
 }
 
 .background-gray.left-side>img {
-    width: 243px;
-    padding: 17px;
+    width: 117px;
+    padding: 0px;
+    height: 117px;
 }
 
 
@@ -3083,9 +3139,12 @@ strike {
 } */
 
 .background-gray img {
-    width: 100%;
+    /* width: 100%;
     height: 213px;
-    margin-bottom: 40px;
+    margin-bottom: 40px; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 i.fa.fa-chevron-circle-left {
@@ -3142,9 +3201,13 @@ i.fa.fa-chevron-circle-left {
 	border-top: none; */
 }
 
+select#page_limit {
+    margin-top: 8px;
+}
+
 p.font-family-change {
     font-weight: 600;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     font-size: 19px;
     /* font-family: monospace; */
 }

@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\ProductQuantity;
 use App\Models\ProductReview;
+use App\Models\FavoriteProduct;
 
 class Product extends Model
 {
@@ -21,7 +22,9 @@ class Product extends Model
     protected $table = 'tbl_product';
     public $timestamps = false;
     use HasFactory;
-    protected $with=['image','review','quantity','image_many','category'];
+
+    protected $with=['image','review','quantity','image_many','category','subCategory','brand'];
+                
     protected $fillable = [
         'user_id',
         'cat_id',
@@ -58,6 +61,16 @@ class Product extends Model
         return $this->hasOne(ImageUpload::class, 'product_id');
     }
 
+    
+    public function favorite_product_details($product_id,$userid)
+    {
+        $details=FavoriteProduct::where(['product_id'=>$product_id,'user_id'=>$userid])
+        ->get();
+        return $details;
+        // return $this->hasOne(FavoriteProduct::class,'product_id','id');
+    }
+
+
     public function image_many()
     {
         return $this->hasMany(ImageUpload::class, 'product_id');
@@ -91,6 +104,11 @@ class Product extends Model
      * Get the quantit associated with the product.
      */
     public function quantity()
+    {
+        return $this->hasOne(ProductQuantity::class, 'product_id');
+    }
+
+    public function quantityRanges()
     {
         return $this->hasOne(ProductQuantity::class, 'product_id');
     }

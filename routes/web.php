@@ -14,7 +14,8 @@ use App\Http\Controllers\Frontend\{
     WalletController,
     BidController,
     RefundController,
-    AddressController
+    AddressController,
+    FavProductController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -150,7 +151,9 @@ Route::get(
 Route::get(
     '/product-list/{id}',
     [ProductController::class, 'list']
-)->name('product.list');    
+)->name('product.list'); 
+
+
 //list of product
 Route::post(
     '/getsubCategroy',
@@ -263,6 +266,25 @@ Route::group(
             [ProductController::class, 'myUploadProductPost']
         )->name('myUploadProduct.post');
 
+        Route::post(
+            'my-fav-product-list',
+            [FavProductController::class, 'myUploadProductPost']
+        )->name('myFavProductList.post');
+        
+        Route::get(
+            'add-in-fav-list/{product_id}/{paqid}',
+            [FavProductController::class, 'addInFavList']
+        )->name('addInFavList');
+
+        Route::get(
+            'delete-favorite/{fav_id}',
+            [FavProductController::class, 'deleteFavorite']
+        )->name('deleteFavorite');
+
+        Route::get(
+            'all-delete-favorite',
+            [FavProductController::class, 'allDeleteFavorite']
+        )->name('allDeleteFavorite');
 
         Route::post(
             'BidPlacePost',
