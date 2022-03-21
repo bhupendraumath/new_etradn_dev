@@ -30,7 +30,7 @@
 
 
                 
-         @if(!empty($productlist))
+         @if(!empty($productlist) && $productlist !="")
                 @foreach($productlist as $list)
 
                     @if(!empty($list) && ($list->product!=null))
