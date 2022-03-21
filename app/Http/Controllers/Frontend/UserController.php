@@ -160,12 +160,14 @@ class UserController extends Controller
     public function updateProfile(UserUpdateRequest $request)
     {
         try {
-            $user = User::updateSellerWeb($request, Auth::user()->id);
+            $usercontroller=new User;
+            $user =$usercontroller->updateSellerWeb($request, Auth::user()->id);
             if (!empty($user)) {
                 return response()->json(
                     [
                         'success' => true,
-                        'message' => trans('admin.update_profile')
+                        'message' => trans('admin.update_profile'),
+                        'data'=>$usercontroller->whereId(Auth::user()->id)->get()
                     ]
                 );
             }

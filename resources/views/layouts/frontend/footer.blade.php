@@ -84,7 +84,7 @@
                 </div>
                 <div class="col-md-3 sign-gd flickr-post">
                     <h3 class="footerclass">Follow us</h3>
-                    <p style="color:white">Keep up with us on Instagram and Facebook for new products, imagery, and events.</p>
+                    <p style="color:white" class="lignmentforfooter">Keep up with us on Instagram and Facebook for new products, imagery, and events.</p>
                     <br />
 
                     <ul class="colorwhite social">

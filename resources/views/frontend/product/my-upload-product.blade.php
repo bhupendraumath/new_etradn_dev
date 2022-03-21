@@ -100,10 +100,6 @@
                         <!-- <p class="no-results">No more results found</p> -->
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                        <!-- <div class="inner-addon left-addon">
-                        <i class="fab fa-paypal glyphicon"></i>
-                        <input type="text" class="form-control 60per lock" name="Current-password" placeholder="Payment gateway ID*" />
-                        </div> -->
                     </div>
                 </div>
 

@@ -63,7 +63,7 @@
         <a href="{{route('favoriteProduct')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-plus margin-leftor-right"></i> <b class="heading-business">
+                    <span><i class="fa fa-heart-o add-to-favorite margin-leftor-right"></i> <b class="heading-business">
                         MY FAVORITE PRODUCT</b> </span>
                 </div>
             </div>

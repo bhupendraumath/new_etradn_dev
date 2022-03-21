@@ -11,6 +11,7 @@ use App\Models\Brand;
 use App\Models\ImageUpload;
 use App\Models\ProductQuantity;
 use App\Models\ProductReview;
+use App\models\ProductCondition;
 use App\Services\FileService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
@@ -238,11 +239,17 @@ class ProductController extends Controller
                 $order = $request->order;
                 $brand = $request->brand;
                 $category = $request->category;
+                $sub_cat = $request->sub_category;
+                $price_range = $request->priceRange;
+                $conditionArr=$request->conditionArr;
                 $page_limit = $request->page_limit != null ? $request->page_limit : 6;
                 $sequence = "asc";
                 $dataArr = ['cat_id' => $category];
-                if ($brand != null) {
-                    $dataArr['brand_id'] = $brand;
+
+                $function_price_range=function(){};
+
+                if ($sub_cat != null || $sub_cat!="") {
+                    $dataArr['sub_cat_id'] = $sub_cat;
                 }
 
                 if ($order != null) {
@@ -252,24 +259,66 @@ class ProductController extends Controller
                         $sequence = 'ASC';
                     }
                 }
+                else{
+                    $sequence = 'desc';
+                }
 
-                // $page_limit
-                $productlist = Product::where($dataArr)
+                $product=new Product;
+                $details_product = $product->where($dataArr);
+
+                if ($brand != null) {
+                    $arr=[1,2];
+                    $details_product->whereIn('brand_id',$brand);
+                    
+                }
+
+                if($price_range!=null || $conditionArr !=null){
+
+                    if($conditionArr==null){
+                        $function_price_range=function ($q) use ($sequence, $price_range) {
+                            $q->whereBetween('price',[0,$price_range])
+                            ->orderBy('tbl_product_attribute_quantity.price', 'ASC');
+                        };
+                    }
+                    else{
+                        $function_price_range=function ($q) use ($sequence, $price_range,$conditionArr) {
+                            $q->whereBetween('price',[0,$price_range])
+                            ->whereIn('condition_id',$conditionArr)
+                            ->orderBy('tbl_product_attribute_quantity.price', 'ASC');
+                        };
+                    }
+                  
+                }
+
+                $productlist = $details_product
+                ->with(['quantity' => $function_price_range ])                
+                ->orderBy('id', $sequence)
+                ->paginate($page_limit);
+               
+
+
+               /* $productlist = Product::where($dataArr)
                     ->with(['quantity' => function ($q) use ($sequence) {
                         $q->orderBy('tbl_product_attribute_quantity.price', 'ASC');
                     }])
                     ->orderBy('id', $sequence)
-                    ->paginate($page_limit);
-                // ->get();
+                    ->paginate($page_limit);*/
+
+
+
 
                 $brand_list = Brand::all();
                 $category_list = Category::all();
+                $condition_list = ProductCondition::where('isActive','y')
+                ->get();
 
                 $result = [
                     'list' => $productlist,
                     'brand_list' => $brand_list,
-                    'category_list' => $category_list
+                    'category_list' => $category_list,
+                    'condition_list'=>$condition_list
                 ];
+
                 $completeSessionView = view(
                     'frontend/product/cat-product-list',
                     compact('productlist')
@@ -307,41 +356,41 @@ class ProductController extends Controller
         }
     }
 
-    public function detailedlist_2(Request $request)
-    {
-        $order = $request->order;
-        $brand = $request->brand;
-        $category = $request->category;
-        $page_limit = $request->page_limit != null ? $request->page_limit : 6;
-        $sequence = "asc";
-        $dataArr = ['cat_id' => $category];
-        if ($brand != null) {
-            $dataArr['brand_id'] = $brand;
-        }
+    // public function detailedlist_2(Request $request)
+    // {
+    //     $order = $request->order;
+    //     $brand = $request->brand;
+    //     $category = $request->category;
+    //     $page_limit = $request->page_limit != null ? $request->page_limit : 6;
+    //     $sequence = "asc";
+    //     $dataArr = ['cat_id' => $category];
+    //     if ($brand != null) {
+    //         $dataArr['brand_id'] = $brand;
+    //     }
 
-        if ($order != null) {
-            if ($order == "higher") {
-                $sequence = 'desc';
-            } elseif ($order == "lower") {
-                $sequence = 'ASC';
-            }
-        }
+    //     if ($order != null) {
+    //         if ($order == "higher") {
+    //             $sequence = 'desc';
+    //         } elseif ($order == "lower") {
+    //             $sequence = 'ASC';
+    //         }
+    //     }
 
-        $list = Product::where($dataArr)
-            ->orderBy('id', $sequence)
-            ->paginate($page_limit);
+    //     $list = Product::where($dataArr)
+    //         ->orderBy('id', $sequence)
+    //         ->paginate($page_limit);
 
-        $brand_list = Brand::all();
-        $category_list = Category::all();
+    //     $brand_list = Brand::all();
+    //     $category_list = Category::all();
 
-        $result = ['list' => $list, 'brand_list' => $brand_list, 'category_list' => $category_list];
+    //     $result = ['list' => $list, 'brand_list' => $brand_list, 'category_list' => $category_list];
 
-        return response()->json([
-            'error' => false,
-            'data' => $result,
-            'message' =>  "sucess",
-        ], 200);
-    }
+    //     return response()->json([
+    //         'error' => false,
+    //         'data' => $result,
+    //         'message' =>  "sucess",
+    //     ], 200);
+    // }
 
     public function refund_request()
     {
@@ -353,16 +402,21 @@ class ProductController extends Controller
         $list = Product::whereCatId($id)
             ->paginate(6);
 
-        $brand_list = Brand::all();
+        $brand_list = Brand::where('isActive','y')->get();
         $category_list = Category::all();
 
         $product = Product::where('cat_id', $id)
             ->paginate(1);
+
+        $condition_list = ProductCondition::where('isActive','y')
+            ->get();
+
         $result = [
             'list' => $list,
             'brand_list' => $brand_list,
             'category_list' => $category_list,
-            'product' => $product
+            'product' => $product,
+            'condition_list'=>$condition_list
         ];
         return view('frontend/product/cat-product', $result);
     }

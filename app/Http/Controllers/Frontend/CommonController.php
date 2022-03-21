@@ -199,7 +199,8 @@ class CommonController extends Controller
     public function getsubCategroy(Request $request)
     {
         try {
-            $category = SubCategory::where('id', $request->category_id)->get();
+            $category = SubCategory::where(['catId'=> $request->category_id,'isActive'=>'y'])
+            ->get();
             if (!empty($category)) {
                 return response()->json(
                     [

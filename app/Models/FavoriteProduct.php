@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
+use App\Models\ProductQuantity;
+use App\Models\ImageUpload;
+use App\Models\User;
+
 
 class FavoriteProduct extends Model
 {
@@ -11,6 +16,9 @@ class FavoriteProduct extends Model
     public $timestamps = false;
 
     use HasFactory;
+    
+    public $with=['product','quantity','userDetails'];
+
     protected $fillable = [
         'user_id',
         'product_id',
@@ -30,7 +38,12 @@ class FavoriteProduct extends Model
      */
     public function quantity()
     {
-        return $this->hasOne(ProductQuantity::class, 'product_id', 'product_id');
+        return $this->hasOne(ProductQuantity::class, 'id', 'paq_id');
+    }
+
+    public function userDetails()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
     /**

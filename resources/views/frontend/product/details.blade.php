@@ -62,7 +62,7 @@
             <span class="item_price"><b>PRICE:</b> &nbsp;<del>- ${{$product_details->quantity->price}} &nbsp;</del> &nbsp;&nbsp;<b>${{$product_details->quantity->price - $product_details->quantity->discount}}</b> </span> </p>
 
              <div class="row">
-                <div class="col-md-2 col-6 col-sm-2 col-xs-12">
+                <div class="col-md-2 col-6 col-sm-2 col-xs-5">
                         <div class="quantity buttons_added">
                         <input type="number" step="1" min="1" max="{{$product_details->quantity->quantity}}" name="quantity" value="1" title="Qty" class="input-text qty text numberofdigits" size="4" pattern="" inputmode="">
                         <input type="button" value="-" class="minus button_minus">
@@ -72,7 +72,7 @@
                 </div>
 
 
-                <div class="col-md-10 col-12 col-sm-12 col-xs-12">
+                <div class="col-md-10 col-12 col-sm-12 col-xs-7">
                     <div class="occasion-cart">
                         <div class="snipcart-details top_brand_home_details item_add single-item button2">
                             <form action="#" method="post">

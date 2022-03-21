@@ -99,7 +99,7 @@
                         </select>
 
                         <label class="left-align">Sub Category</label>
-                        <select name="sub_category_id" id="subcategory" class="shopname form-control">
+                        <select name="sub_category_id" id="subcategory" class="shopname form-control changes-class">
                             <option value=""">--Select sub category-- </option>
                         </select>
 

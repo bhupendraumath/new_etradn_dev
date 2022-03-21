@@ -5,7 +5,7 @@
     @foreach($bindlist as $productvalue)
 
 
-        <div class="product col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3" data-id="aloe" data-category="green small medium africa">
+        <div class="product col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4" data-id="aloe" data-category="green small medium africa">
 
 
             <!-- <a href="#"> -->
@@ -19,7 +19,7 @@
                         
                         <div class="hover-icons">
                          <a href="{{url('view-details-bids/'.$productvalue->id)}}">                        
-                                <button class="circle" onclick="return confirm('Are you sure? ')" title="View details"><i class="fa fa-eye color-delete"></i></button>
+                                <button class="circle"  title="View details"><i class="fa fa-eye color-delete"></i></button>
                         </a>
                     </div>
                     </div>

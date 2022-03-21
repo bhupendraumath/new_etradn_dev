@@ -1,4 +1,7 @@
-<div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12 card-dashboard change-color backgound-remove">
+
+
+
+<div  class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12 card-dashboard change-color backgound-remove">
     <div class="border-round">
 
         <div class="row">
@@ -48,9 +51,54 @@
         </div>
 
     </div>
+    <div class="borderOrStyle" onclick="mysellersidebar()">
+       
+        
 
+        @if(Route::current()->getName()=='seller.dashboard')
+        Dashboard
 
-    <div class="background-gredient">
+        @elseif(Route::current()->getName()=='add-product')
+        Add product
+        
+        @elseif(Route::current()->getName()=='my-order')
+        My order
+
+        @elseif(Route::current()->getName()=='myUploadProduct')
+        My Uploaded Product
+
+        @elseif(Route::current()->getName()=='review-rating')
+        review rating
+
+        @elseif(Route::current()->getName()=='business-address')
+        business address
+
+        @elseif(Route::current()->getName()=='delivery-areas')
+        delivery areas
+
+        @elseif(Route::current()->getName()=='bidsPlaced')
+        bids Placed
+
+        @elseif(Route::current()->getName()=='refund-request')
+        refund request
+
+        @elseif(Route::current()->getName()=='wallet')
+        wallet
+
+        @elseif(Route::current()->getName()=='accountSetting')
+        accountSetting
+
+        @elseif(Route::current()->getName()=='rfq_list')
+        rfq list
+
+        @else
+        {{Route::current()->getName()}}
+        @endif
+        <i style="float:right" class="fas fa-angle-down"></i></i>
+    </div>
+   
+
+    <div id="sellersidebar" class="background-gredient">
         <!-- <hr class="margin-bottom"/> -->
         <a href="{{route('seller.dashboard')}}">
             <div class="row border-row-top-border top-vv">
@@ -180,4 +228,13 @@
 
         })
     })
+
+    function mysellersidebar() {
+    var x = document.getElementById("sellersidebar");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    }
 </script>
