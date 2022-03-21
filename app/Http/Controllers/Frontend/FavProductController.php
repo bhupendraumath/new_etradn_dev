@@ -76,6 +76,8 @@ class FavProductController extends Controller
         try{
             $user_details=Auth::user();
 
+            // $details = Auth::guard('web')->user()->id;
+            //     print_r($details);die;
             if(!empty($user_details)){
                 $user_id=Auth::user()->id;
 

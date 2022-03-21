@@ -123,14 +123,17 @@
 
                                     <b class="normal-style">Purchased Via: </b>
                                     <span >
+                                        @if(!empty($product_detial))
                                             @if($product_detial->want_to_list=="b")
                                             Buy it now
                                             @elseif($product_detial->want_to_list=="a")
                                             Auction
                                             @elseif($product_detial->want_to_list=="bo")
                                                 Both
-                                            @endif                                    
-                                
+                                            @endif 
+                                        @else    
+                                        &nbsp;&nbsp; -                               
+                                        @endif
                                     </span><br/>
 
                                 </div>
@@ -146,19 +149,24 @@
                                 Refund Policy <i class="fa fa-question-circle"></i>
 
                                     <div class="tooltiptext">
-                                        @if($product_detial->refund_request!='n')
-                                                <div class="order-information">
-                                                    <div>
-                                                        <b> {{$product_detial->number_of_days}} Days Replacement Policy</b>
+                                        @if(!empty($product_detial))
+                                            @if($product_detial->refund_request!='n')
+                                                    <div class="order-information">
+                                                        <div>
+                                                            <b> {{$product_detial->number_of_days}} Days Replacement Policy</b>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                
-                                                <div class="details-order">
-                                                {{$product_detial->policy_description}}
-                                                </div>
+                                                    
+                                                    <div class="details-order">
+                                                    {{$product_detial->policy_description}}
+                                                    </div>
+
+                                            @else
+                                            <p>No Refund Policy</p>
+                                            @endif
 
                                         @else
-                                        <p>No Refund Policy</p>
+                                            <p>No Refund Policy</p>
                                         @endif
                                     </div>
 
@@ -171,6 +179,7 @@
                                     Warranty Description <i class="fa fa-angle-up"></i>
 
                                     <div class="tooltiptext">
+                                    @if(!empty($product_detial))
                                         @if($product_detial->refund_request!='n')
                                                 <div class="order-information">
                                                     <div>
@@ -183,8 +192,11 @@
                                                 </div>
 
                                         @else
-                                        <p>No Refund Policy</p>
+                                        <p>No  Warranty Description</p>
                                         @endif
+                                    @else
+                                    <p>No  Warranty Description</p>
+                                    @endif
                                     </div>
 
                                 </span>

@@ -43,7 +43,7 @@ $favoriteProduct=new App\Models\Product;
 
                                             if(!empty($user))
                                             {
-                                                $value= $favoriteProduct->favorite_product_details($product->id,Auth::user()->id);
+                                                $value= $favoriteProduct->favorite_product_details($productvalue->id,Auth::user()->id);
                                                 
                                                 if(count($value)!=0){
                                                     $title= 'Already added in your favorite list';
@@ -164,11 +164,6 @@ $favoriteProduct=new App\Models\Product;
 
 <script>
     function addedFav(product_id,quantity_id){
-        // console.log(process.env.MIX_APP_URL + "/add-in-fav-list/"+product_id+'/'+quantity_id);
-
-        // return false;
-        // var path="/add-in-fav-list/"+product_id+'/'+quantity_id;
-        
         $.ajax({
             url: "{{url('add-in-fav-list')}}"+'/'+product_id+'/'+quantity_id,
             type: "GET",

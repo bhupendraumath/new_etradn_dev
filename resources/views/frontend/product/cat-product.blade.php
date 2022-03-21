@@ -19,7 +19,9 @@
             <div class="card remove-showdow">
                 <div class="row">
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
-                        <p class="font-family-change">FILTER OPTIONS :</p>
+                        <p class="font-family-change">FILTER OPTIONS 
+                            <button class="hidebutton circle" title="show or hide filter list" onclick="myFilterlist()">></button>
+</p>
                         <hr />
                     </div>
                 </div>
@@ -53,6 +55,8 @@
 
                     </div>
                 </div>--}}
+
+                <div id='filterListCat'>
 
                 <div class="row margin-top-filter">
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
@@ -164,6 +168,7 @@
                     </div>
                 </div>--}}
 
+               </div>
               {{--  <div class="row">
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
 
@@ -180,12 +185,12 @@
                             $favoriteProduct=new App\Models\Product;
                             $value= $favoriteProduct->where('cat_id',$route_cat_id)->get();
                         @endphp 
-                        <div class="col-md-10 col-sm-10 col-lg-10 col-xl-10 col-xs-12"><br/<br/>
+                        <div class="col-md-10 col-sm-10 col-lg-10 col-xl-10 col-xs-8">
                             <h3 class="favorite-heading ">PRODUCTS
                                 {{--<span class="color-yellow-number">({{count($value)}})</span>--}}
                             </h3>
                         </div>
-                        <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xs-12 float-right">
+                        <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xs-4 float-right">
                             <select class="sorting-low-high remove-borders margin-top" onchange="showRecords()" id="page_limit">
                                 <option disabled selected>Show records</option>
                                 <option value="6">6</option>
@@ -434,5 +439,15 @@ $(document).ready(function() {
         let newurl = url.substring(url.lastIndexOf('=') + 1);
         filter(newurl);
     });
+
+
+function myFilterlist() {
+  var x = document.getElementById("filterListCat");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 </script>
 @endpush

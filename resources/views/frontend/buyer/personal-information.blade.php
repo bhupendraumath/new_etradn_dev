@@ -61,13 +61,13 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                        <label for="">First Name</label>
                                         <input type="text" class="form-control 60per lock" name="first_name" placeholder="First Name*" value="{{Auth::user()->firstName}}" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                        <label for="">last Name</label>
                                         <input type="text" class="form-control 60per lock" name="last_name" placeholder="Last Name*" value="{{Auth::user()->lastName}}" />
                                     </div>
                                 </div>
@@ -76,13 +76,13 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                        <label for="">Prefered language</label>
                                         <input type="text" class="form-control 60per lock" name="user_language" placeholder="Prefered language*" value="{{Auth::user()->user_language}}" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                        <label for="">Phone Number</label>
                                         <input type="text" class="form-control 60per lock" name="phone_number" placeholder="Phone*" value="{{Auth::user()->phone_number}}" />
                                     </div>
                                 </div>
@@ -91,13 +91,13 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                        <label for="">Business Name</label>
                                         <input type="text" class="form-control 60per lock" name="business_name" placeholder="Business Name*" value="{{Auth::user()->business_name}}" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                        <label for="">Minimum Order</label>
                                         <input type="text" class="form-control 60per lock" name="minimum_order" placeholder="Minimum order*" value="{{Auth::user()->minimum_order}}" />
                                     </div>
                                 </div>
@@ -106,16 +106,17 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                        <label for="">Address</label>
                                         <input type="text" class="form-control 60per lock" name="address" placeholder="Addresss*" value="{{Auth::user()->address}}" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
                                         <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                        <label for="">Business type</label>
 
-                                        <select class="form-control" name="business_type_id" id="category-b">
-                                            <option value="">select Business type</option>
+                                        <select class="form-control width-100-per" name="business_type_id" id="category-b">
+                                            <option value="">Select Business type</option>
                                             @foreach($businesstype as $businesstypevalue)
                                             <option value="{{$businesstypevalue->id}}"
                                             @if(Auth::user()->business_type_id==$businesstypevalue->id)selected @endif
@@ -131,8 +132,8 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                        <select class="form-control" name="category" id="business_type_id">
+                                         <label for="">Business Category</label>
+                                        <select class="form-control width-100-per" name="category" id="business_type_id">
                                             <option value="">select Business Category</option>
                                             @foreach($businessCategory as $businessCategoryvalue)
                                             <option value="{{$businessCategoryvalue->id}}" @if(Auth::user()->category==$businessCategoryvalue->id)selected @endif>{{$businessCategoryvalue->categoryName}}</option>
@@ -141,6 +142,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
+
+                                     <label for="">Business Description</label>
                                     <textarea name="description" placeholder="Business Description" required="" value="{{Auth::user()->description}}">{{Auth::user()->description}}</textarea>
                                 </div>
                             </div>

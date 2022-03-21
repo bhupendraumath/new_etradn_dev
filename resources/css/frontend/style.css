@@ -46,6 +46,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* 28-02-22 */
 
+.hidebutton {
+    display: none;
+}
+
+.borderOrStyle {
+    display: none;
+}
+
 .tooltip1 {
     position: relative;
 }
@@ -101,6 +109,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 .myBoxBrand {
     text-transform: capitalize;
+}
+
+.changes-class {
+    margin-left: 20px;
 }
 
 hr.hr-width {
@@ -215,6 +227,7 @@ i.fas.fa-trash.color-delete {
 
 .hover-icons a {
     color: #000;
+    outline: none;
 }
 
 .rating-review-upload>.text-warning {
@@ -648,8 +661,8 @@ button.filter-button.remove-color-black {
 }
 
 hr.favorite {
-    margin-top: 20px;
-    margin-bottom: -24px;
+    margin-top: 0px;
+    margin-bottom: 0;
     margin-left: -10px;
     border: 0;
     border-top: 1px solid #eee;
@@ -3142,9 +3155,9 @@ strike {
     /* width: 100%;
     height: 213px;
     margin-bottom: 40px; */
-    margin-left: auto;
-    margin-right: auto;
+    margin: 16px auto;
     width: 50%;
+    display: block;
 }
 
 i.fa.fa-chevron-circle-left {
@@ -3201,9 +3214,10 @@ i.fa.fa-chevron-circle-left {
 	border-top: none; */
 }
 
-select#page_limit {
+
+/* select#page_limit {
     margin-top: 8px;
-}
+} */
 
 p.font-family-change {
     font-weight: 600;
@@ -7773,6 +7787,11 @@ h3.agileits-icons-title {
 }
 
 @media (max-width: 480px) {
+    .coupons,
+    .banner-bootom-w3-agileits,
+    .new_arrivals_agile_w3ls_info {
+        padding: 0 !important;
+    }
     select#subcategory {
         width: 94%;
         margin-left: 7px;
@@ -8954,6 +8973,42 @@ h3.agileits-icons-title {
 }
 
 @media (max-width: 384px) {
+    .hidebutton {
+        display: block;
+        float: right;
+    }
+    button.hidebutton.circle {
+        line-height: 1;
+    }
+    #filterListCat {
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 1px #ffa30170;
+        border: 1px solid #80808054;
+        background: #80808040;
+        display: none;
+    }
+    .social-nav {
+        margin: 1.5em 0 0;
+        float: none;
+        text-align: left !important;
+        width: 100%;
+    }
+    .snipcart-details input.button {
+        font-size: 12px;
+        color: #fff;
+        /* background: #2fdab8; */
+        background: #ffa301;
+        text-decoration: none;
+        position: relative;
+        border: none;
+        border-radius: 37px;
+        width: auto;
+        text-transform: uppercase;
+        padding: 14px;
+        outline: none;
+        /* letter-spacing: 1px; */
+        font-weight: 600;
+    }
     select#subcategory {
         width: 94%;
         margin-left: 7px;
@@ -9370,6 +9425,70 @@ h3.agileits-icons-title {
 }
 
 @media (max-width: 375px) {
+    .col-12.col-xs-12.col-md-12.col-sm-12.col-lg-12.col-xl-12.tooltips-row {
+        background: #f3f8fc;
+        /* margin-right: 3px; */
+        margin-bottom: 20px;
+        margin-top: -10px;
+        padding-right: -48px;
+        padding: 10px;
+    }
+    .borderOrStyle {
+        display: block;
+    }
+    .card-dashboard.col-12uy {
+        border: none;
+        box-shadow: none;
+        padding: 0px;
+        padding-top: -21px;
+        margin: -19px;
+        margin-top: -62px;
+    }
+    .area {
+        border: 5px dotted #ccc;
+        padding: 0px;
+        width: 93%;
+        text-align: center;
+        margin-left: 3%;
+    }
+    .borderOrStyle:hover {
+        background: black;
+        cursor: pointer;
+    }
+    i.fas.fa-angle-down {
+        line-height: 1.5;
+        margin-right: 9px;
+        font-size: 19px;
+    }
+    .borderOrStyle {
+        cursor: pointer;
+        margin-left: -10px;
+        padding-left: 10px;
+        margin-top: 14px;
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+        background: #f2ae3d;
+        line-height: 2;
+        color: white;
+        width: 107%;
+        text-transform: uppercase;
+    }
+    #sellersidebar.background-gredient {
+        margin-top: -35px;
+    }
+    i.fas.fa-list-alt {
+        color: black;
+    }
+    i.fas.fa-list-alt:hover {
+        color: #f2ae3d;
+    }
+    #sellersidebar {
+        display: none
+    }
+    b.heading-business {
+        font-weight: 100;
+        font-size: 15px;
+    }
     select#subcategory {
         width: 94%;
         margin-left: 7px;
@@ -9387,10 +9506,38 @@ h3.agileits-icons-title {
         border: 1px solid #80808087;
         border-radius: 9px;
     }
+    p.font-family-change {
+        font-weight: 600;
+        line-height: 2;
+        /* margin-top: 10px; */
+        font-size: 19px;
+        /* font-family: monospace; */
+    }
+    i.slick-prev.fa.fa-chevron-circle-left.hot-left.slick-arrow {
+        top: -69px;
+        font-size: 26px;
+        /* margin-top: 10px; */
+        left: 208px;
+    }
     i.slick-prev.fa.fa-chevron-circle-left.top-left.slick-arrow {
         top: -74px;
-        left: 222px;
+        left: 204px;
         /* color: black; */
+        font-size: 26px;
+    }
+    i.slick-prev.fa.fa-chevron-circle-left.special-left.slick-arrow {
+        top: -60px;
+        font-size: 26px;
+        left: 220px;
+    }
+    .coupons,
+    .banner-bootom-w3-agileits,
+    .new_arrivals_agile_w3ls_info {
+        padding: 0em 0;
+    }
+    i.slick-prev.fa.fa-chevron-circle-left.latest-left.slick-arrow {
+        top: -70px;
+        left: 210px;
         font-size: 26px;
     }
     i.slick-next.fa.fa-chevron-circle-right.top-right.slick-arrow {
@@ -9398,6 +9545,9 @@ h3.agileits-icons-title {
         /* left: 222px; */
         /* color: black; */
         font-size: 26px;
+    }
+    p.lignmentforfooter {
+        margin-left: 80px;
     }
     .col-md-5.col-sm-5.col-lg-5.col-xl-5.col-xs-12.blog-commit>img {
         width: 100%;
@@ -9558,7 +9708,7 @@ h3.agileits-icons-title {
         background: #e8e2e2;
         width: 126px;
         height: 48px;
-        margin-left: 47px;
+        margin-left: 59px;
         margin-top: 24px;
         text-align: center;
         border-radius: 32px;

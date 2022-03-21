@@ -92,7 +92,7 @@ $favoriteProduct=new App\Models\Product;
     <div class="container-fluid  newclass">
 
     <!-- Popular_list -->
-        <div class="col-md-3 col-sm-3 col-lg-3 col-xl-3 col-12">
+        <div class="col-md-3 col-sm-3 col-lg-3 col-xl-3 col-12 col-xs-12">
             <div class="card ">
                 <div class="row">
                     <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
@@ -127,20 +127,22 @@ $favoriteProduct=new App\Models\Product;
                                             <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="heere2" srcset="" />
                                         @endif
                                         <div class="hover-icons">
-                                        <a href="{{url('product-details/'.$product->id)}}" title="product's details">
-                                            <div>
-                                                <span class="left-buy-it" >
-                                                        @if($product->want_to_list=='b')
-                                                        Buy It Now
-                                                        @elseif($product->want_to_list=='a')
-                                                        Auction
-                                                        @else
-                                                        Both
-                                                        @endif
-                                                        
-                                                        <i class="fas fa-angle-double-right"></i>
-                                                </span>
+                                          <div>
+                                                <a href="{{url('product-details/'.$product->id)}}" title="product's details">
 
+                                                    <span class="left-buy-it" >
+                                                            @if($product->want_to_list=='b')
+                                                            Buy It Now
+                                                            @elseif($product->want_to_list=='a')
+                                                            Auction
+                                                            @else
+                                                            Both
+                                                            @endif
+                                                            
+                                                            <i class="fas fa-angle-double-right"></i>
+                                                    </span>
+
+                                                </a>
 
                                                 
                                                 <?php
@@ -166,9 +168,9 @@ $favoriteProduct=new App\Models\Product;
                                                  }
                                                 ?>
 
-                                            <a href="#">
+                                            <!-- <a href="#"> -->
                                                                            
-                                                <button class="circle" title="{{$title}}">
+                                                <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}})">
                                                     @if($color)
                                                     <i class="fas fa-heart" style="color:red"></i>
                                                     @else
@@ -177,9 +179,7 @@ $favoriteProduct=new App\Models\Product;
                                                     @endif
 
                                                 </button>
-                                                </a>
                                             </div>
-                                        </a>
                                             <div class="bottom-on-hover">
                                                     <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
                                                     {{$product->category->categoryName}}</span>
@@ -239,7 +239,7 @@ $favoriteProduct=new App\Models\Product;
                 </div>
             </div>
         </div>
-        <div class="col-md-9 col-sm-9 col-lg-9 col-xl-9 col-12">
+        <div class="col-md-9 col-sm-9 col-lg-9 col-xl-9 col-12 col-xs-12">
             <div class="card">
                 <!-- ghkhfghj	 -->
 
@@ -969,7 +969,27 @@ $favoriteProduct=new App\Models\Product;
 
 @push('scripts')
 
+<script>
+    function addedFav(product_id,quantity_id){
+        $.ajax({
+            url: "{{url('add-in-fav-list')}}"+'/'+product_id+'/'+quantity_id,
+            type: "GET",
+            dataType: 'json',
+            success: function (response) {
+                    if (response.success) {
+                        toastr.clear();
+                        toastr.success(response.message, { timeOut: 2000 });
+                        location.reload();
+                    } else {
+                        toastr.clear();
+                        toastr.error(response.message, { timeOut: 2000 });
+                    }
+                },
+            
+        });
 
+    }
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <script>
     function addedFav(product_id,quantity_id){
