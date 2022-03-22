@@ -15,7 +15,8 @@ use App\Http\Controllers\Frontend\{
     BidController,
     RefundController,
     AddressController,
-    FavProductController
+    FavProductController,
+    PurchaseController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -221,6 +222,11 @@ Route::group(
             'my-order',
             [OrderController::class, 'myorder']
         )->name('my-order');
+
+        Route::get(
+            'my-parchase-history',
+            [PurchaseController::class, 'parchaseHistory']
+        )->name('parchaseHistory');
 
         Route::get(
             'business-address-edit/{id}',

@@ -11,7 +11,7 @@ class OrderItem extends Model
     protected $table = 'tbl_order_items';
     public $timestamps = false;
     use HasFactory;
-    public $with=['getOrder'];
+    public $with=['getOrder','seller_details_in_details'];
 
     protected $fillable = [
         'seller_id',
@@ -55,7 +55,9 @@ class OrderItem extends Model
         return $this->belongsTo(Order::class, 'order_number', 'order_number');
     }
 
-
+    public function seller_details_in_details() {
+        return $this->hasOne(User::class, 'id', 'seller_id');
+    }
 
     public function bid_details()
     {

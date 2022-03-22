@@ -45,6 +45,9 @@ class Order extends Model
         return $this->hasMany(OrderItem::class, 'order_number', 'order_number');
     }
 
+    public function get_order_items(){
+        return $this->hasOne(OrderItem::class, 'order_number', 'order_number');
+    }
 
     public function order_items($ordernumber)
     {
@@ -62,6 +65,14 @@ class Order extends Model
         return $this->hasOne(User::class, 'id', 'buyer_id');
     }
 
+
+    
+    public function seller_details($userid) {
+        // return $this->hasOne(User::class, 'id', 'buyer_id');
+        $details=User::where('id',$userid)->get();
+        return $details;
+    }
+    
     public function orderByBuyerId($id, $type) {
         $orders = Order::where('buyer_id', $id)
             ->with(array('getOrderItems' => function($query) use ($type) {
