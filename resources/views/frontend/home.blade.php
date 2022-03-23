@@ -86,7 +86,6 @@ $favoriteProduct=new App\Models\Product;
 
 {{--{{ $data }}--}} 
 
-
 <!-- //banner -->
 <div class="banner_bottom_agile_info">
     <div class="container-fluid  newclass">

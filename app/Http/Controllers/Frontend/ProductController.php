@@ -60,7 +60,7 @@ class ProductController extends Controller
         if ($request->ajax()) {
             try {
 
-                $productlist = Product::where('user_id', Auth::user()->id)
+                $productlist = Product::where(['user_id'=> Auth::user()->id,'is_delete'=>'n'])
                     ->paginate($request->record);
                 $completeSessionView = view(
                     'frontend/product/my-upload-product-list',
@@ -207,7 +207,9 @@ class ProductController extends Controller
         // return $id;
 
         $user_id = Auth::guard('web')->user()->id;
-        $delete = Product::whereId($id)->delete();
+        $delete = Product::whereId($id)->update([
+            'is_delete'=>'y'
+        ]);
 
         // if($delete){
         //    $addressList=product::where(['userId'=>$user_id,'address_type'=>'business'])->paginate(10);          

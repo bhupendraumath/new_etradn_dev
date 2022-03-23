@@ -16,7 +16,7 @@ $(window).load(function() {
             data: {
                 filter_by: filter_by,
                 page: pageno,
-                record: 4
+                record: 6
             },
             processData: true,
             contentType: false,

@@ -83,7 +83,7 @@
                         <span class="show-pagination sorting-pagination uploaded-product">Show Records :</span>    
                         <select class="sorting-low-high uploaded-product" id="uploaded_product_page">
                             <!-- <option disabled selected >--Show--</option> -->
-                            <option value="4" selected >4</option>
+                            <option value="6" selected >6</option>
                             <option value="12" >12</option>
                             <option value="48">48</option>
                             <option value="60">60</option>

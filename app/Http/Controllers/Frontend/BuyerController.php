@@ -60,7 +60,7 @@ class BuyerController extends Controller
         // $userid=846;
         $productlist = Order::with('get_order_items')->where('buyer_id',$userid)
                     ->orderBy("id",'desc')
-                    ->paginate(2);
+                    ->paginate(4);
 
         return view('frontend/buyer/purchase-history',
         compact(

@@ -37,6 +37,7 @@
             <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth  border-bottom">
                     @php
 
+                        $index=$loop->index;
                         $product_details_1=$list->get_order_items->product_detail_1;
                         $encode=json_encode($product_details_1);
                         $decode=json_decode($encode,true);
@@ -68,7 +69,30 @@
                         $product_id=$id_remove2[0];
                         //end
 
+                      /*  //for refund request
 
+                        $refund=  preg_split ('/"refund_request":/', $my_str_arr[9]);
+                        echo "refund-- ";
+                        print_r($refund);
+
+                        $refund_condition=  preg_split ('/"/', $refund[1]);
+                        $refund_condition_y_n=  $refund_condition[1]; //condition Y and N
+
+
+                        $refund_policy=  preg_split ('/"policy_description":/', $my_str_arr[11]);
+                        $refund_policy_value=  preg_split ('/"/', $refund_policy[1]);
+                        $refund_policy_dec=  $refund_policy_value[1]; //value refund request
+
+                        //end
+
+                        //Warranty_dec
+                        $warranty_desc=  preg_split ('/"warranty_desc":/', $my_str_arr[17]);
+                        $warranty_desc_value=  preg_split ('/"/', $warranty_desc[1]);
+                        $warranty_desc_value_dec=  $warranty_desc_value[1]; //value refund request
+
+                        //end 
+                        
+                        */
                         $upload_image=new App\Models\ImageUpload;
                         $image_upload=$upload_image->imageProductById($product_id);
 

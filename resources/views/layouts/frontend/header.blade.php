@@ -37,16 +37,13 @@
 		</div>
 		<!-- header-bot -->
 		<div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
-		<div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 header-middle">
+		<div class="<?php if(!empty(Auth::user())) { echo 'col-md-5 col-sm-5 col-lg-5 col-xl-5'; }else{echo 'col-md- col-sm-6 col-lg-6 col-xl-6'; }?> header-middle">
 			<form action="#" method="post">
-				<!-- <input type="search" name="search" placeholder="Search here..." required="">
-            <button type="submit" class="searchbutton"><i class="fa fa-search"></i></button> -->
 				<div class="search-input">
 					<a href="" target="_blank" hidden></a>
 					<input type="search" name="search" placeholder="Search here..." required="">
 					<button type="submit" class="searchbutton icon"><i class="fa fa-search"></i></button>
 					<div class="autocom-box">
-						<!-- here list are inserted from javascript -->
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -71,20 +68,18 @@
 			</div>
 
 		</div>
-		@if(empty(Auth::user()))
+		@if(empty(Auth::user()) ||!empty(Auth::user()))
 		<div class="col-md-1 col-sm-1 col-lg-1 col-xl-1 header-middle">
 			<div class="rightpanel-for-mobile">
-				<form action="#" method="post" class="last">
 					<input type="hidden" name="cmd" value="_cart">
 					<input type="hidden" name="display" value="1">
-					<button class="w3view-cart circle left" type="submit" name="submit" value="">
+					<button class="mybutton w3view-cart circle left" type="submit" onclick="showModal()" name="submit" value="">
 						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 					</button>
-					<div class="right">
+					<div class="right" onclick="showModal()">
 						<span>Total</span> <br />
 						<span style="font-weight: bold;">$600.00</span>
 					</div>
-				</form>
 			</div>
 		</div>
 		@endif
@@ -147,6 +142,93 @@
 		<div class="clearfix"></div>
 
 	</div>
+
+	@php
+	//$favoriteProduct=new App\Models\FavoriteProduct;
+    //$value= $favoriteProduct->where('user_id',Auth::user()->id)->get();
+
+	@endphp
+
+			<div class="addtocard">
+				<div class="modal  background-change fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<div class="modal-body">
+					
+					<header id="site-header">
+						<div class="container">
+						<h3>Shopping cart</h3>
+						</div>
+						<hr/>
+					</header>
+
+					<div class="">
+
+						<section id="cart"> 
+							<article class="row">
+								<div class="product-add-to-card col-12 col-md-4 col-sm-4 col-xl-4 col-xs-12">
+									<header>
+										<a class="remove-add-to-card">
+											<img src="http://www.astudio.si/preview/blockedwp/wp-content-add-to-card/uploads/2012/08/1.jpg" alt="">
+
+											<h3>Remove</h3>
+										</a>
+									</header>
+								</div>
+								<div class="col-12 col-md-8 col-sm-8 col-xl-8 col-xs-12">
+										<div class="content-add-to-card">
+
+											<h4>Lorem ipsum</h4>
+											Lorem ipsum dolor sit amet, 
+											consectetur adipisicing elit.
+										</div>
+										<div class="row">
+											<div class="col-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+												<footer class="content-add-to-card">
+													<span class="qt-minus">-</span>
+													<span class="qt">2</span>
+													<span class="qt-plus">+</span>									&nbsp;&nbsp;
+														<span class="price">
+															14.99€
+														</span>
+														<span class="full-price">
+															29.98€
+														</span>
+													
+												</footer>
+											</div>
+										</div>
+
+								</div>
+								
+								
+							</article>
+						</section>						
+					</div>
+				</div>
+				<div class="modal-footer">
+						
+
+				<div class="left margin-left">
+					<h4 class="subtotal">Subtotal: <span>163.96</span>€</h4>
+					<h4 class="tax">Taxes (5%): <span>8.2</span>€</h4>
+					<h4 class="shipping">Shipping: <span>5.00</span>€</h4>
+				</div>
+
+				<div class="right">
+					<h3 class="total">Total: <span>177.16</span>€</h3>
+					<a class="btn">Checkout</a>
+				</div>
+
+				</div>
+				</div>
+			</div>
+</div>
+			
+
 </div>
 <!-- //header-bot -->
 
@@ -221,3 +303,97 @@
 	</div>
 </div>
 <!-- //banner-top -->
+
+
+<script>
+	function showModal() {
+  $('#myModal').modal('show');
+}
+
+
+var check = false;
+
+function changeVal(el) {
+ var qt = parseFloat(el.parent().children(".qt").html());
+ var price = parseFloat(el.parent().children(".price").html());
+ var eq = Math.round(price * qt * 100) / 100;
+ 
+ el.parent().children(".full-price").html( eq + "€" );
+ 
+ changeTotal();      
+}
+
+function changeTotal() {
+ 
+ var price = 0;
+ 
+ $(".full-price").each(function(index){
+   price += parseFloat($(".full-price").eq(index).html());
+ });
+ 
+ price = Math.round(price * 100) / 100;
+ var tax = Math.round(price * 0.05 * 100) / 100
+ var shipping = parseFloat($(".shipping span").html());
+ var fullPrice = Math.round((price + tax + shipping) *100) / 100;
+ 
+ if(price == 0) {
+   fullPrice = 0;
+ }
+ 
+ $(".subtotal span").html(price);
+ $(".tax span").html(tax);
+ $(".total span").html(fullPrice);
+}
+
+$(document).ready(function(){
+ 
+ $(".remove-add-to-card").click(function(){
+   var el = $(this);
+   el.parent().parent().addClass("removed");
+   window.setTimeout(
+	 function(){
+	   el.parent().parent().slideUp('fast', function() { 
+		 el.parent().parent().remove(); 
+		 if($(".product-add-to-card").length == 0) {
+		   if(check) {
+			 $("#cart").html("<h1>The shop does not function, yet!</h1><p>If you liked my shopping cart, please take a second and heart this Pen on <a href='https://codepen.io/ziga-miklic/pen/xhpob'>CodePen</a>. Thank you!</p>");
+		   } else {
+			 $("#cart").html("<h1>No products!</h1>");
+		   }
+		 }
+		 changeTotal(); 
+	   });
+	 }, 200);
+ });
+ 
+ $(".qt-plus").click(function(){
+   $(this).parent().children(".qt").html(parseInt($(this).parent().children(".qt").html()) + 1);
+   
+   $(this).parent().children(".full-price").addClass("added");
+   
+   var el = $(this);
+   window.setTimeout(function(){el.parent().children(".full-price").removeClass("added"); changeVal(el);}, 150);
+ });
+ 
+ $(".qt-minus").click(function(){
+   
+   child = $(this).parent().children(".qt");
+   
+   if(parseInt(child.html()) > 1) {
+	 child.html(parseInt(child.html()) - 1);
+   }
+   
+   $(this).parent().children(".full-price").addClass("minused");
+   
+   var el = $(this);
+   window.setTimeout(function(){el.parent().children(".full-price").removeClass("minused"); changeVal(el);}, 150);
+ });
+ 
+ window.setTimeout(function(){$(".is-open").removeClass("is-open")}, 1200);
+ 
+ $(".btn").click(function(){
+   check = true;
+   $(".remove-add-to-card").click();
+ });
+});
+</script>
