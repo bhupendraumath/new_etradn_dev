@@ -6631,8 +6631,55 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* 28-02-22 */
 
+h3.cart-heading {
+    font-family: 'Sary Soft - Semi Bold';
+    text-transform: uppercase;
+}
+
+button.checkout-address-cart {
+    font-size: 14px;
+    padding: 15px;
+    background: #f2ae3d;
+    color: white;
+    border-radius: 10px;
+    border: #f2ae3d;
+}
+
+button.continue {
+    background: #f2ae3d;
+    border: #f2ae3d;
+    color: white;
+    padding-left: 16px;
+    padding: 12px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    border-radius: 14px;
+}
+
+h4.delivery-address-cart {
+    font-size: 17px;
+    font-family: 'Sary Soft - Semi Bold';
+}
+
+i.orange {
+    color: #f2ae3d;
+    font-size: 20px;
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.del {
+    font-family: 'Sary Soft - light';
+    color: gray;
+}
+
 .hidebutton {
     display: none;
+}
+
+span.item_price {
+    font-family: 'Sary Soft - Semi Bold';
+    font-size: 17px;
 }
 
 .col-12.col-xs-12.col-md-12.col-sm-12.col-lg-12.col-xl-12.tooltips-row {
@@ -6791,6 +6838,18 @@ footer.content-add-to-card {
 .left.margin-left {
     margin-left: 62px;
     margin-top: 10px;
+}
+
+.quantity.buttons_added.cart-added-plus-minus {
+    margin-top: 15px;
+}
+
+h3.blog-heading.cart-heading {
+    text-transform: uppercase;
+}
+
+p.whoareparagraph.cart-add {
+    margin-bottom: 15px;
 }
 
 h3.total {
@@ -8683,6 +8742,14 @@ hr {
     color: #f1f1f1;
 }
 
+.quantity.buttons_added .minus,
+.quantity.buttons_added .plus {
+    /* background-color: #ffffff;
+    border: 1px solid #efefef;
+    cursor: pointer; */
+    color: #f2ae3d;
+}
+
 .close:hover,
 .close:focus {
     color: #f44336;
@@ -9354,7 +9421,7 @@ form.review-contact-us>input {
 }
 
 span.item_price {
-    font-family: 'Lato';
+    /* font-family: 'Lato'; */
     font-size: 17px;
 }
 

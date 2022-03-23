@@ -105,6 +105,11 @@ Route::post(
     [ReviewController::class, 'submit_rating_load']
 )->name('submit_rating_load');
 
+Route::get(
+    '/shopping-cart',function(){
+        return view('frontend/add-to-card');
+    }
+)->name('shopping-cart');
 
 Route::group(
     ['middleware' => 'checkLogin:web'],
