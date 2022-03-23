@@ -73,13 +73,16 @@
 			<div class="rightpanel-for-mobile">
 					<input type="hidden" name="cmd" value="_cart">
 					<input type="hidden" name="display" value="1">
-					<button class="mybutton w3view-cart circle left" type="submit" onclick="showModal()" name="submit" value="">
-						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-					</button>
-					<div class="right" onclick="showModal()">
-						<span>Total</span> <br />
-						<span style="font-weight: bold;">$600.00</span>
-					</div>
+					<a href="{{url('shopping-cart')}}">
+						<button class="mybutton w3view-cart circle left" type="submit"  name="submit" value="">
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+						</button>
+						<div class="right" >
+							<span>Total</span> <br />
+							<span style="font-weight: bold;">$600.00</span>
+						</div>
+					</a>
+					
 			</div>
 		</div>
 		@endif
