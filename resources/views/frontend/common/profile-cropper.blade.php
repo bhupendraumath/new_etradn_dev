@@ -48,20 +48,22 @@
         var firstimage = document.getElementById("previewImage");
 
         $value_image=[];
-        if (firstimage.src == '') {
-            $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
-            $('#previewImage').attr('height','100px');
-            $('#previewImage').attr('width','100px');
-        } else {
-            $('#previewImage1').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
-            $('#previewImage1').attr('height','100px');
-            $('#previewImage1').attr('width','100px');
-        }
+       
+        // if (firstimage.src == '') {
+        //     $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
+        //     $('#previewImage').attr('height','100px');
+        //     $('#previewImage').attr('width','100px');
+        // } else {
+        //     $('#previewImage1').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
+        //     $('#previewImage1').attr('height','100px');
+        //     $('#previewImage1').attr('width','100px');
+        // }
         // $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
         $image_data=$('#imagedata').val($imageCover.cropper('getCroppedCanvas').toDataURL());
 
         // console.log("image data ",$image_data)
         $("#imageCropperModal").modal("hide");
+        $('#previewImage').attr('src', $imageCover.cropper('getCroppedCanvas').toDataURL());
         return true;
     }));
 </script>

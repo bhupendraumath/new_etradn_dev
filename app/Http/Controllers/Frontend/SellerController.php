@@ -26,47 +26,46 @@ class SellerController extends Controller
      */
     public function businessInformation()
     {
-        $title="Business Address";
-        return view('frontend/seller/business-information')->with('title',$title);
+        $title = "Business Address";
+        return view('frontend/seller/business-information')->with('title', $title);
     }
 
-    
+
     public function businessAddress()
     {
-        try{
+        try {
             $id = Auth::guard('web')->user()->id;
-            $addressList=Address::where(['userId'=>$id,'address_type'=>'business'])->paginate(10);
-            
-            return view('frontend/seller/business-addresses',['list'=>$addressList]);
-        }catch (\Exception $e) {
+            $addressList = Address::where(['userId' => $id, 'address_type' => 'business'])->paginate(10);
+
+            return view('frontend/seller/business-addresses', ['list' => $addressList]);
+        } catch (\Exception $e) {
             return response()->json(
                 ['success' => false, 'message' => $e->getMessage()]
             );
         }
-       
     }
 
-    public function businessAddressEdit($id){
-        $title="Business Address";
-        $details=Address::whereId($id)->get();
-        return view('frontend/seller/business-information',['details'=>$details,'title'=>$title]);
-
+    public function businessAddressEdit($id)
+    {
+        $title = "Business Address";
+        $details = Address::whereId($id)->get();
+        return view('frontend/seller/business-information', ['details' => $details, 'title' => $title]);
     }
 
-    public function businessAddressDelete($id){
+    public function businessAddressDelete($id)
+    {
 
-         $user_id = Auth::guard('web')->user()->id;
-         $delete=Address::whereId($id)->delete();
+        $user_id = Auth::guard('web')->user()->id;
+        $delete = Address::whereId($id)->delete();
 
-         if($delete){
-            $addressList=Address::where(['userId'=>$user_id,'address_type'=>'business'])->paginate(10);          
-              
+        if ($delete) {
+            $addressList = Address::where(['userId' => $user_id, 'address_type' => 'business'])->paginate(10);
+
             return Redirect::back()->with('message', 'Delete Successfully');
-         }
-
         }
-    
-    
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

@@ -244,18 +244,21 @@ class User extends Authenticatable
 
     public function updateSellerWeb($request, $id)
     {
-        $updateSeller = User::where('id', $id)->update([
-            //'business_logo' => $request->business_logo,
-            'firstName' => $request->first_name,
-            'lastName' => $request->last_name,
-            'business_name' => $request->business_name,
-            'category' => $request->category,
-            'business_type_id' => $request->business_type_id,
-            'address' => $request->address,
-            'description' => $request->description,
-            'minimum_order' => $request->minimum_order,
-            'phone_number' => $request->phone_number
-        ]);
+        $updateSeller = User::where('id', $id)->update(
+            [
+                //'business_logo' => $request->business_logo,
+                'firstName' => $request->first_name,
+                'lastName' => $request->last_name,
+                'business_name' => $request->business_name,
+                'category' => $request->category,
+                'business_type_id' => $request->business_type_id,
+                'address' => $request->address,
+                'description' => $request->description,
+                'minimum_order' => $request->minimum_order,
+                'phone_number' => $request->phone_number
+            ]
+        );
+        
         return $updateSeller;
     }
 
