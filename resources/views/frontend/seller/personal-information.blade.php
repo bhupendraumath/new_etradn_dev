@@ -50,13 +50,18 @@
             <div class="card-dashboard  col-12uy">
 
 
-                <div class="card-profile">
-                    <img src="{{url('assets/images/frontend/t1.jpg')}}" alt="">
-                </div>
+
                 <div class="form-settings-account">
 
                     <form class="personal-details" id="profile-update-form" enctype="multipart/form-data" method="post">
                         {{csrf_field()}}
+
+                        <div class="card-profile">
+                            <img id="previewImage" src="{{url('assets/images/my-profile')}}/{{Auth::user()->profile_img}}"   onerror="this.src='assets/images/frontend/user3.jpg'">
+                            <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg">
+                        </div>
+
+                        <input type="hidden" name="profile_imgg" id="imagedata">
                         <input type="hidden" name="user_type" value="{{Auth::user()->user_type}}">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
@@ -117,9 +122,8 @@
                                     <select class="form-control" name="business_type_id" id="category-b">
                                         <option value="">select Business type</option>
                                         @foreach($businesstype as $businesstypevalue)
-                                        <option value="{{$businesstypevalue->id}}"
-                                        @if(Auth::user()->business_type_id==$businesstypevalue->id)selected @endif
-                                        >{{$businesstypevalue->typeName}}</option>
+                                        <option value="{{$businesstypevalue->id}}" @if(Auth::user()->business_type_id==$businesstypevalue->id)selected @endif
+                                            >{{$businesstypevalue->typeName}}</option>
                                         @endforeach
                                     </select>
 
@@ -192,7 +196,7 @@
             </div>
         </div>
     </div>
-
+    @include('frontend.common.profile-cropper')
 
     <script>
         function dragHandler(event) {

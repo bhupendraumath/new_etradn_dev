@@ -160,14 +160,26 @@ class UserController extends Controller
     public function updateProfile(UserUpdateRequest $request)
     {
         try {
-            $usercontroller=new User;
-            $user =$usercontroller->updateSellerWeb($request, Auth::user()->id);
+            
+
+            $usercontroller = new User;
+            $user = $usercontroller->updateSellerWeb($request, Auth::user()->id);
+
+            if ($request->profile_imgg) {
+                $fileService = new FileService();
+                $imagedata = [];
+                $imagedata['profile_img'] =  $fileService->uploadBaseCodeImage(
+                    'assets/images/my-profile/',
+                    $request->profile_imgg
+                );
+                User::where('id', Auth::user()->id)->update($imagedata);
+            }
             if (!empty($user)) {
                 return response()->json(
                     [
                         'success' => true,
                         'message' => trans('admin.update_profile'),
-                        'data'=>$usercontroller->whereId(Auth::user()->id)->get()
+                        'data' => $usercontroller->whereId(Auth::user()->id)->get()
                     ]
                 );
             }
