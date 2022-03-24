@@ -16,7 +16,8 @@ use App\Http\Controllers\Frontend\{
     RefundController,
     AddressController,
     FavProductController,
-    PurchaseController
+    PurchaseController,
+    CartController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -106,9 +107,8 @@ Route::post(
 )->name('submit_rating_load');
 
 Route::get(
-    '/shopping-cart',function(){
-        return view('frontend/add-to-card');
-    }
+    'shopping-cart',
+    [CartController::class, 'shoppingcart']
 )->name('shopping-cart');
 
 Route::group(
@@ -276,6 +276,27 @@ Route::group(
             'my-upload-product-list',
             [ProductController::class, 'myUploadProductPost']
         )->name('myUploadProduct.post');
+
+        Route::POST(
+            'cart-listing',
+            [CartController::class, 'cartListing']
+        )->name('cartListing');
+
+
+        Route::POST(
+            'cart-edit',
+            [CartController::class, 'cartEdit']
+        )->name('cartEdit');
+
+        Route::POST(
+            'cart-delete',
+            [CartController::class, 'cartDelete']
+        )->name('cartDelete');
+
+        Route::POST(
+            'cart-add',
+            [CartController::class, 'cartAdd']
+        )->name('cartAdd');
 
         Route::post(
             'my-fav-product-list',

@@ -3,6 +3,10 @@
 @section('content')
 <!--/single_page-->
 <!-- /banner_bottom_agile_info -->
+<?php
+use Carbon\Carbon;
+
+?>
 <head>
     
 </head>
@@ -59,14 +63,18 @@
                 </div>
             </div>
 
-            <span class="item_price"><b>PRICE:</b> &nbsp;<del>- ${{$product_details->quantity->price}} &nbsp;</del> &nbsp;&nbsp;<b>${{$product_details->quantity->price - $product_details->quantity->discount}}</b> </span> </p>
+            <span class="item_price"><b>PRICE:</b> &nbsp;<del>- 
+                ${{$product_details->quantity->price}} &nbsp;</del> &nbsp;&nbsp;
+                    <b id="modify_price">
+                    ${{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}</b> </span> </p>
 
+                    <input type="hidden" id="price_with_discount" value="{{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}">
              <div class="row">
                 <div class="col-md-2 col-6 col-sm-2 col-xs-5">
                         <div class="quantity buttons_added">
-                        <input type="number" step="1" min="1" max="{{$product_details->quantity->quantity}}" name="quantity" value="1" title="Qty" class="input-text qty text numberofdigits" size="4" pattern="" inputmode="">
-                        <input type="button" value="-" class="minus button_minus">
-                        <input type="button" value="+" class="plus button_plus">
+                        <input type="number" step="1" min="1" max="{{$product_details->quantity->quantity}}" name="quantity" value="1" title="Qty" class="input-text qty text numberofdigits" size="4" pattern="" inputmode="" id="selected_qty">
+                        <input type="button" value="-" class="minus button_minus" id="minus">
+                        <input type="button" value="+" class="plus button_plus" id="plus">
                         
                     </div>
                 </div>
@@ -75,20 +83,31 @@
                 <div class="col-md-10 col-12 col-sm-12 col-xs-7">
                     <div class="occasion-cart">
                         <div class="snipcart-details top_brand_home_details item_add single-item button2">
-                            <form action="#" method="post">
+            
+                            <form action="#" id="addCartProductFrm" method="post">
                                 <fieldset>
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="add" value="1">
-                                    <input type="hidden" name="business" value=" ">
-                                    <input type="hidden" name="item_name" value="Wing Sneakers">
-                                    <input type="hidden" name="amount" value="650.00">
-                                    <input type="hidden" name="discount_amount" value="1.00">
-                                    <input type="hidden" name="currency_code" value="USD">
-                                    <input type="hidden" name="return" value=" ">
-                                    <input type="hidden" name="cancel_return" value=" ">
-                                    <input type="submit" name="submit" value="Add to cart" class="button">
+                                    <input type="hidden" name="customer_id" value="{{Auth::user()->id}}">
+                                    <input type="hidden" name="seller_id" value="{{$product_details->user_id}}">
+                                    <input type="hidden" name="product_id" value="{{$product_details->id}}">
+                                    <input type="hidden" name="paq_id" value="{{$product_details->quantity->id}}">
+                                    <input type="hidden" name="attribute_ids" value="{{$product_details->quantity->id}}">
+                                    <input type="hidden" name="attribute_value_ids" value="{{$product_details->quantity->id}}">
+                                    <input type="hidden" name="quantity" value="1" id="hiddenqty">
+                                    <input type="hidden" name="price" value="{{$product_details->quantity->price}}">
+                                    <input type="hidden" name="discount" value="{{$product_details->quantity->discount}}">
+                                    <input type="hidden" name="pro_condition" value="{{$product_details->quantity->condition_id}}">
+                                    <input type="hidden" name="is_checkout" value="n">
+                                    <input type="hidden" name="selling_type" value="{{$product_details->want_to_list}}">
+                                    <input type="hidden" name="is_delete" value="n">
+                                    <input type="hidden" name="action" value="n">
+                                    <input type="hidden" name="product_array" value="{{$product_details}}">
+                                    <input type="hidden" name="ip_address" value="0000">
+                                    <input type="hidden" name="createdDate" value="{{Carbon::now()}}">
+                                    <input type="hidden" name="updatedDate" value="{{Carbon::now()}}">
+                                    <input type="submit" name="submit" id="addCartProduct" value="Add to cart" class="button">
                                 </fieldset>
                             </form>
+
                         </div>
 
                     </div>
@@ -352,6 +371,34 @@
 
  <!-- ---------------------------------------------------------------------- -->
     <script>
+
+    $("#minus").click(function(){
+        var quantity=$("#selected_qty").val();
+        quantity=quantity>1?quantity-1:quantity;
+        updateProductquantity(quantity);
+
+    })
+
+    $("#plus").click(function(){
+        var quantity=$("#selected_qty").val();
+        quantity=parseInt(quantity)+1;
+        updateProductquantity(quantity);
+    })
+
+    function updateProductquantity(quantity){                
+        var qty = document.getElementById("hiddenqty");
+         qty.value = quantity;
+        var price=$("#price_with_discount").val();
+        price=price*quantity;
+
+        $("#modify_price").empty();
+        $("#modify_price").html("$"+price);
+        
+
+        console.log("price ",price)
+        
+    }
+
         $(document).ready(function() {
 
             // var rating_value=$("#rating_value").val();
@@ -634,4 +681,12 @@
     }
     </script>
 
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
+<script src="{{ asset('assets/js/frontend/product/addCardProduct.js') }}"></script>
 @endsection

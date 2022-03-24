@@ -14,6 +14,8 @@
     "/assets/js/frontend/product/refund-request-list.js": "/assets/js/frontend/product/refund-request-list.js",
     "/assets/js/frontend/product/delivery-areas-list.js": "/assets/js/frontend/product/delivery-areas-list.js",
     "/assets/js/frontend/product/my-fav-product-list.js": "/assets/js/frontend/product/my-fav-product-list.js",
+    "/assets/js/frontend/product/cart-list.js": "/assets/js/frontend/product/cart-list.js",
+    "/assets/js/frontend/product/addCardProduct.js": "/assets/js/frontend/product/addCardProduct.js",
     "/css/app.css": "/css/app.css",
     "/assets/js/frontend/main.js": "/assets/js/frontend/main.js",
     "/assets/css/frontend/style.css": "/assets/css/frontend/style.css"

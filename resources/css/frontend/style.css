@@ -51,6 +51,10 @@ h3.cart-heading {
     text-transform: uppercase;
 }
 
+button.checkout-address-cart:hover {
+    background: black;
+}
+
 button.checkout-address-cart {
     font-size: 14px;
     padding: 15px;
@@ -58,6 +62,10 @@ button.checkout-address-cart {
     color: white;
     border-radius: 10px;
     border: #f2ae3d;
+}
+
+button.continue:hover {
+    background: black;
 }
 
 button.continue {
@@ -170,11 +178,11 @@ a {
 }
 
 a:hover {
-    color: #53b5aa;
+    color: black;
 }
 
 #site-header h1 span {
-    color: #53b5aa;
+    color: black;
 }
 
 #site-header h1 span.last-span {
@@ -215,7 +223,7 @@ a:hover {
 }
 
 #cart a {
-    color: #53b5aa;
+    color: black;
     text-decoration: none;
     -webkit-transition: color .2s linear;
     -moz-transition: color .2s linear;
@@ -334,7 +342,7 @@ span.full-price {
 }
 
 .product-add-to-card h1 {
-    color: #53b5aa;
+    color: black;
     font-size: 25px;
     font-weight: 300;
     margin: 17px 0 20px 0;
@@ -358,7 +366,7 @@ span.full-price {
 }
 
 span.price {
-    background: #53b5aa;
+    background: black;
     padding: 10px;
     color: white;
     line-height: 2;
@@ -366,7 +374,7 @@ span.price {
 }
 
 .product-add-to-card footer .full-price {
-    background: #53b5aa;
+    background: black;
     color: #fff;
     float: right;
     font-size: 22px;
@@ -412,7 +420,7 @@ span.price {
 
 .qt-plus:hover,
 .qt-minus:hover {
-    background: #53b5aa;
+    background: black;
     color: #fff;
     cursor: pointer;
 }
@@ -450,6 +458,10 @@ span.price {
     margin: 10px 0 0 0;
 }
 
+span#price-with-respect-quantity {
+    color: #f2ae3d;
+}
+
 #site-footer h3 {
     font-size: 19px;
     font-weight: 300;
@@ -464,8 +476,12 @@ span.price {
     float: right;
 }
 
+button#loginBtn:hover:hover {
+    background: black;
+}
+
 .btn {
-    background: #53b5aa;
+    background: black;
     border: 1px solid #999;
     border-style: none none solid none;
     cursor: pointer;
@@ -3164,11 +3180,21 @@ ul.colorwhite>li {
     line-height: 2.4;
 }
 
+.height-top-bottom {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
 
 /* Slick Slider */
 
+span#price_with_respect_quantity-0 {
+    color: #f2ae3d;
+}
+
 i.fa.yellow {
     color: #f2ae3d;
+    background: transparent;
 }
 
 ul.colorwhite {

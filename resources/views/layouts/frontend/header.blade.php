@@ -79,7 +79,7 @@
 						</button>
 						<div class="right" >
 							<span>Total</span> <br />
-							<span style="font-weight: bold;">$600.00</span>
+							<span style="font-weight: bold;" id="total_header_cart">$00.00</span>
 						</div>
 					</a>
 					
@@ -398,5 +398,13 @@ $(document).ready(function(){
    check = true;
    $(".remove-add-to-card").click();
  });
+});
+</script>
+
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
 });
 </script>

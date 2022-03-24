@@ -92,5 +92,11 @@ mix.js('resources/js/app.js', 'public/js')
     ], 'public/assets/js/frontend/product/delivery-areas-list.js')
 
 .js([
-    'resources/js/frontend/product/my-fav-product-list.js'
-], 'public/assets/js/frontend/product/my-fav-product-list.js');
+        'resources/js/frontend/product/my-fav-product-list.js'
+    ], 'public/assets/js/frontend/product/my-fav-product-list.js')
+    .js([
+        'resources/js/frontend/product/cart-list.js'
+    ], 'public/assets/js/frontend/product/cart-list.js')
+    .js([
+        'resources/js/frontend/product/addCardProduct.js'
+    ], 'public/assets/js/frontend/product/addCardProduct.js');;
