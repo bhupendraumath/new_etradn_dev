@@ -26,9 +26,9 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-   
 
-  
+
+
     /**
      * Load login form frontend
      *
@@ -67,9 +67,9 @@ class LoginController extends Controller
                     401
                 );
             } else {
-               
+
                 if ($this->attemptLogin($request, 'web')) {
-                    return $this->sendLoginResponse($request,$user);
+                    return $this->sendLoginResponse($request, $user);
                 }
             }
         } else {
@@ -88,17 +88,16 @@ class LoginController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function sendLoginResponse(Request $request,$user)
+    protected function sendLoginResponse(Request $request, $user)
     {
 
-        
+
         $request->session()->regenerate();
         $this->clearLoginAttempts($request);
 
-        if($user->user_type=='s'){
-        $redirectionUrl = url('dashboard');
-        }
-        else if($user->user_type=='b'){
+        if ($user->user_type == 's') {
+            $redirectionUrl = url('dashboard');
+        } else if ($user->user_type == 'b') {
             $redirectionUrl = url('buyer-dashboard');
         }
 
@@ -140,7 +139,7 @@ class LoginController extends Controller
                 setcookie("login_password", "");
             }
         }
-      
+
         return $this->guard($guard)
             ->attempt($this->credentials($request), $remember_me);
     }
@@ -157,7 +156,7 @@ class LoginController extends Controller
 
         $credentials = $request->only($this->username(), 'password');
         $credentials['status'] = ['a'];
-       
+
         return $credentials;
     }
 
