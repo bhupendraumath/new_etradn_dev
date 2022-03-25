@@ -374,15 +374,22 @@ use Carbon\Carbon;
 
     $("#minus").click(function(){
         var quantity=$("#selected_qty").val();
+        var max= $('#selected_qty').attr('max');
+       
         quantity=quantity>1?quantity-1:quantity;
-        updateProductquantity(quantity);
+        if(quantity<=max){
+            updateProductquantity(quantity);
+        }
 
     })
 
     $("#plus").click(function(){
         var quantity=$("#selected_qty").val();
+        var max= $('#selected_qty').attr('max');
         quantity=parseInt(quantity)+1;
-        updateProductquantity(quantity);
+        if(quantity<=max){
+            updateProductquantity(quantity);
+        }
     })
 
     function updateProductquantity(quantity){                

@@ -79,7 +79,7 @@
                                         <div class="quantity buttons_added cart-added-plus-minus">
 
                                             <input type="number" step="1" min="1" id="value_quantity-{{$index}}"
-                                                max="{{$detail->productquantity->quantity-1}}" name="quantity" value="{{$detail->quantity}}" title="Qty"
+                                                max="{{$detail->productquantity->quantity}}" name="quantity" value="{{$detail->quantity}}" title="Qty"
                                                 class="input-text qty text numberofdigits" size="{{$detail->productquantity->quantity-1}}" pattern=""
                                                 inputmode="">
 

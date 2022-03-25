@@ -59,8 +59,13 @@ $("[id^='get_value_minus-']").click(function() {
     value_quantity = value > 1 ? value - 1 : value //minus one also
 
     var id = $("#value_id-" + num).val();
-    // return_values(num, value_quantity);
-    update(id, value_quantity);
+    var max = $("#value_quantity-" + num).attr('max');
+
+    if (value_quantity <= max) {
+        console.log("max limit ", max)
+        update(id, value_quantity);
+
+    }
 });
 
 
@@ -70,14 +75,21 @@ $("[id^='get_value_plus-']").click(function() {
     value_quantity = parseInt(value) + 1
 
     var id = $("#value_id-" + num).val();
-    // return_values(num, value_quantity);
-    update(id, value_quantity);
+
+    var max = $("#value_quantity-" + num).attr('max');
+
+    if (value_quantity <= max) {
+        console.log("max limit ", max)
+        update(id, value_quantity);
+
+    }
+
+
 
 });
 
 
 function update(id, quantity_value) {
-
 
     $.ajax({
         url: process.env.MIX_APP_URL + "/cart-edit",
@@ -143,7 +155,6 @@ function return_values(num, value_plus_or_minus) {
 
 function getProductlList() {
 
-    console.log("plus  ")
     $.ajax({
         url: process.env.MIX_APP_URL + "/cart-listing",
         type: "POST",
