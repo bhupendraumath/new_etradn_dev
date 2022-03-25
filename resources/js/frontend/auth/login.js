@@ -13,14 +13,12 @@ $("#loginBtn").on('click', (function (e) {
             data: frm.serialize(),
             success: function (data)
             {
-                // showButtonLoader(btn, showLoader, 'enable');
-                // toastr.success(data.message, 'Login', {timeOut: 2000});
-                // setTimeout(() => {
+                showButtonLoader(btn, showLoader, 'enable');
+                toastr.success(data.message, 'Login', {timeOut: 2000});
+                setTimeout(() => {
                     
-                //    window.location.href = data.data;
-                // }, 3000);
-
-                console.log(data.data);
+                   window.location.href = data.data;
+                }, 3000);
                 
             },
             error: function (data) {
