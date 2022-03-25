@@ -27,7 +27,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/jquery.flexslider.js',
         'resources/js/frontend/jquery.waypoints.min.js',
         'resources/js/frontend/minicart.min.js',
-        'resources/js/frontend/modernizr.custom.js',
+        // 'resources/js/frontend/modernizr.custom.js',
         'resources/js/frontend/move-top.js',
         'resources/js/frontend/responsiveslides.min.js',
 
@@ -45,7 +45,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/frontend/easy-responsive-tabs.css',
         'resources/css/frontend/font-awesome.css',
         'resources/css/frontend/toastr.min.css',
-        'resources/css/frontend/team.css',
+        // 'resources/css/frontend/team.css',
         'resources/css/frontend/cropper.min.css',
 
     ], 'public/assets/css/frontend/style.css')

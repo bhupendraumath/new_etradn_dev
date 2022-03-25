@@ -43,6 +43,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* -------------------------------- */
 
+button.swal-button.swal-button--confirm {
+    background-color: #ffa301;
+    border: none
+}
+
 
 /* 28-02-22 */
 

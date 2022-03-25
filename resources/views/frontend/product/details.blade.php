@@ -86,6 +86,11 @@ use Carbon\Carbon;
             
                             <form action="#" id="addCartProductFrm" method="post">
                                 <fieldset>
+                                    @php
+                                        $user=Auth::user();
+                                    @endphp
+
+                                    @if(!empty($user))
                                     <input type="hidden" name="customer_id" value="{{Auth::user()->id}}">
                                     <input type="hidden" name="seller_id" value="{{$product_details->user_id}}">
                                     <input type="hidden" name="product_id" value="{{$product_details->id}}">
@@ -104,7 +109,12 @@ use Carbon\Carbon;
                                     <input type="hidden" name="ip_address" value="0000">
                                     <input type="hidden" name="createdDate" value="{{Carbon::now()}}">
                                     <input type="hidden" name="updatedDate" value="{{Carbon::now()}}">
+                                   
                                     <input type="submit" name="submit" id="addCartProduct" value="Add to cart" class="button">
+                                    @else
+                                    <input type="button" name="submit" onclick="checkSwal(event)" value="Add to cart" class="button">
+                                    @endif
+
                                 </fieldset>
                             </form>
 
@@ -371,6 +381,30 @@ use Carbon\Carbon;
 
  <!-- ---------------------------------------------------------------------- -->
     <script>
+
+
+function checkSwal(e){
+
+    // e.preventDefault();
+    console.log("calling me...")
+    swal({
+    title: "Your Basket is empty",
+    text: "Shop today’s deals",
+    icon: "warning",
+    buttons: {
+        cancel: true,
+        confirm: "Sign in Your Account",
+    }
+    }).then(
+    function(isConfirm) {
+        if (isConfirm) {
+            window.location.href = "{{url('sign-in')}}";
+        } else {
+            return false;
+        }
+    },
+    );
+}
 
     $("#minus").click(function(){
         var quantity=$("#selected_qty").val();

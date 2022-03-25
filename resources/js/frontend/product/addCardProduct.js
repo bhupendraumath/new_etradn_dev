@@ -1,10 +1,13 @@
 $(window).ready(function() {
     $("#addCartProduct").on('click', (function(e) {
+
         var frm = $('#addCartProductFrm');
         var btn = $('#addCartProduct');
+
+
+
         if (frm.valid()) {
 
-            console.log("frm.serialize()---   ", frm.serialize())
             btn.prop('disabled', true);
 
             $.ajax({
