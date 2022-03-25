@@ -13,21 +13,22 @@ $(window).ready(function() {
                     if (response.success) {
                         toastr.clear();
                         btn.html('Update');
-                        toastr.success(response.message, 'Added Address', { timeOut: 2000 });
-                        setTimeout(function() {
-                            window.location.href = process.env.MIX_APP_URL + "/dashboard";
-                        }, 2000);
-                    } else {
+                        toastr.success('Added Address', { timeOut: 2000 });
                         btn.prop('disabled', false);
+
+                    } else {
+                        // btn.prop('disabled', false);
                         btn.html('Update');
                         toastr.clear();
-                        toastr.error(response.message, 'Update Address', { timeOut: 2000 });
+                        toastr.error('Update Address', { timeOut: 2000 });
+                        btn.prop('disabled', false);
+
                     }
                 },
                 error: function(data) {
                     var obj = jQuery.parseJSON(data.responseText);
                     for (var x in obj) {
-                        btn.prop('disabled', false);
+                        // btn.prop('disabled', false);
                         btn.html('Update');
 
                         $('#' + x + '-error').html(obj[x]);
@@ -55,22 +56,22 @@ $(window).ready(function() {
                     if (response.success) {
                         toastr.clear();
                         btn.html('Update');
-                        toastr.success(response.message, 'Updated Address Details', { timeOut: 2000 });
-                        setTimeout(function() {
-                            window.location.href = process.env.MIX_APP_URL + "/dashboard";
-                        }, 2000);
-                    } else {
+                        toastr.success('Updated Address Details', { timeOut: 2000 });
                         btn.prop('disabled', false);
+
+                    } else {
+                        // btn.prop('disabled', false);
                         btn.html('Update');
                         toastr.clear();
-                        toastr.error(response.message, 'Update profile', { timeOut: 2000 });
+                        toastr.error('Update profile', { timeOut: 2000 });
                     }
                 },
                 error: function(data) {
                     var obj = jQuery.parseJSON(data.responseText);
                     for (var x in obj) {
-                        btn.prop('disabled', false);
+                        // btn.prop('disabled', false);
                         btn.html('Update');
+                        btn.prop('disabled', false);
 
                         $('#' + x + '-error').html(obj[x]);
                         $('#' + x + '-error').parent('.form-group').removeClass('has-success').addClass('has-error');

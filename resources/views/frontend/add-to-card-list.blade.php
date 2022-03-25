@@ -105,11 +105,24 @@
                 <div class="card ">
                     <h4 class="delivery-address-cart"> <i class="fa fa-map-o orange"></i> DELIVERY ADDRESS</h4>
                     <hr />
-                    <button class="checkout-address-cart">
-                        Add a Delivery Address to Checkout
+                    @if(empty($address))
+                    <button class="checkout-address-cart" >
+                    <a href="{{route('add-delivery-area-buyer')}}" > Add a Delivery Address to Checkout</a>
+                       
                     </button>
+                    @else
+                    <div>
+                        Please select Address <span style="color:red">*</span><br/><br/>
+                        @foreach($address as $ads)
+                        <input type="radio" class="radio" id="{{$ads->id}}" name="fav_language" value="{{$ads->id}}">
+                        <label class="label-address" for="{{$ads->id}}">{{$ads->name}},{{$ads->street_name}},{{$ads->address1}} ,{{$ads->city}}                      
+                        </label>
+                        <br>
+                        @endforeach
+                    </div>
+                    @endif
                     <br />
-                    <br />
+
                     <h4 class="delivery-address-cart"> <i class="fa fa-shopping-basket orange"></i> DELIVERY ADDRESS
                     </h4>
                     <hr />
@@ -138,6 +151,9 @@
                     </div>
                     <button class="continue">
                         Continue
+                    </button>
+                    <button class="continue pay">
+                        Pay
                     </button>
                 </div>
             </div>

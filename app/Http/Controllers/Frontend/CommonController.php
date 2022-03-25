@@ -161,12 +161,46 @@ class CommonController extends Controller
 
         try {
 
-            if($request->id){
-                $existsAdrress = Address::find($request->id);                
-                $address=$existsAdrress->update($request->all());
+            if($request->isPrimary=='y'){
+                $primary='y';
             }
             else{
-                $address = Address::create($request->all());
+                $primary='n';
+            }
+            
+
+            // print_r($primary);die;
+            if($request->id){
+                $existsAdrress = Address::find($request->id);                
+                // $address=$existsAdrress->update($request->all());
+                $address=$existsAdrress->update([
+                    'name'=>$request->name,
+                    'address_type'=>$request->address_type,
+                    'userId'=>$request->userId,
+                    'address1'=>$request->address1,
+                    'address2'=>$request->address2,
+                    'city'=>$request->city,
+                    'state'=>$request->state,
+                    'country'=>$request->country,
+                    'zip_code'=>$request->zip_code,
+                    'isPrimary'=>$primary,
+                ]);
+            }
+            else{
+                $address = Address::create(
+                    [
+                        'name'=>$request->name,
+                        'address_type'=>$request->address_type,
+                        'userId'=>$request->userId,
+                        'address1'=>$request->address1,
+                        'address2'=>$request->address2,
+                        'city'=>$request->city,
+                        'state'=>$request->state,
+                        'country'=>$request->country,
+                        'zip_code'=>$request->zip_code,
+                        'isPrimary'=>$primary,
+                    ]
+                );
                
             }
 

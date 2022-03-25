@@ -17,9 +17,10 @@
 <div class="banner-bootom-w3-agileits">
     <div class="container-fluid dashboard-container">
 
-        @include('frontend/include/seller-side-bar')
+    @include('frontend/include/buyer-side-bar')
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
             <div class="card-dashboard  col-12uy">
+            <a href="{{url()->previous()}}" class="back-button">back</a>
                 <h3>{{$title}}</h3>
                 <hr class="business-address" />
                 <div class="form-settings">
@@ -90,7 +91,13 @@
                             </div>
                         </div>
 
-
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 primary-address">
+                               
+                                <input type="checkbox" id="primary" name="isPrimary"  value='y' >  Primary Address
+                                
+                            </div>
+                        </div>
                         <div class="row">
                         <div class="buttons">
                             <input type="submit" value="Save Changes" class="save-changes" id="submitbtn">

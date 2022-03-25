@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\OrderItem;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Address;
 
 class CartController extends Controller
 {
@@ -67,7 +68,8 @@ class CartController extends Controller
                 }
 
                 $total_amount=$with_discount+$shipping_price;
-
+                $address=Address::where(['userId'=>$buyer_id,'isActive'=>'y','address_type'=>'delivery'])
+                ->get();
                 $completeSessionView = view(
                     'frontend/add-to-card-list')
                     ->with([
@@ -75,7 +77,8 @@ class CartController extends Controller
                             'without_discount'=>$without_discount,
                             'shipping_price'=>$shipping_price,
                             'with_discount'=>$with_discount,
-                            'total_amount'=>$total_amount
+                            'total_amount'=>$total_amount,
+                            'address'=>$address
                             ])
                     ->render();
 
