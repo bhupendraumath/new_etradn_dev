@@ -204,19 +204,31 @@ class ProductController extends Controller
 
     public function uploadedDelete($id)
     {
-        // return $id;
+       
 
-        $user_id = Auth::guard('web')->user()->id;
-        $delete = Product::whereId($id)->update([
-            'is_delete'=>'y'
-        ]);
+        try {
 
-        // if($delete){
-        //    $addressList=product::where(['userId'=>$user_id,'address_type'=>'business'])->paginate(10);          
+            $user_id = Auth::guard('web')->user()->id;
+            $delete = Product::whereId($id)->update([
+                'is_delete'=>'y'
+            ]);
 
-        return Redirect::back()->with('message', 'Delete Successfully');
-        // }
-
+            if ($delete) {
+                return response()->json(
+                    ['success' => true, 'message' =>"Delete Successfully"]
+                );
+            }
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => trans('admin.something_went_wrong')
+                ]
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                ['success' => false, 'message' => $e->getMessage()]
+            );
+        }
 
     }
     /**

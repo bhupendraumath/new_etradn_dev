@@ -167,23 +167,52 @@ class FavProductController extends Controller
 
     public function deleteFavorite($fav_id){
 
-        $user_id = Auth::guard('web')->user()->id;
+       try{
+            $user_id = Auth::guard('web')->user()->id;
 
-        $delete=FavoriteProduct::whereId($fav_id)
-        ->delete();
-     
-        return Redirect::back()->with('message', 'Delete Successfully');
+            $delete=FavoriteProduct::whereId($fav_id)
+            ->delete();
+        
+            return response()->json(
+                [
+                    'success' => true, 'message'=>"Delete Successfully"
+                ]
+            );
+        }catch (\Exception $ex) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'data' => [],
+                    'error' => ['message' => $ex->getMessage()]
+                ],
+                422
+            );
+        }
 
     }
 
     public function allDeleteFavorite(){
 
+        try{
         $user_id = Auth::guard('web')->user()->id;
 
         $delete=FavoriteProduct::whereUserId($user_id)
         ->delete();
-     
-        return Redirect::back()->with('message', 'Delete Successfully');
+        return response()->json(
+            [
+                'success' => true, 'message'=>"Delete Successfully"
+            ]
+        );
+    }catch (\Exception $ex) {
+        return response()->json(
+            [
+                'success' => false,
+                'data' => [],
+                'error' => ['message' => $ex->getMessage()]
+            ],
+            422
+        );
+    }
 
     }
 

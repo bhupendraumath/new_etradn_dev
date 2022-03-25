@@ -69,7 +69,7 @@
                                 <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg"> -->
 
 
-                                <label for="uploadImage" class="btn"><b>Choose or Drag & Drop
+                                <label for="uploadImage" class="btn uploadimage-product"><b>Choose or Drag & Drop
                                         <br /> Your Product Images Here! </b></label>
                                 <input id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg" style="visibility:hidden;" type="file">
 
@@ -130,14 +130,14 @@
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input type="radio" name="list_product" value="b" checked>
-                                    <label for="buyitnow"><span></span>Buy it Now</label> &nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="list_product" class="radio" value="b" checked>
+                                    <label for="buyitnow">Buy it Now</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input type="radio" name="list_product" value="a">
-                                    <label for="Auction"><span></span>Auction</label>&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="list_product" class="radio" value="a">
+                                    <label for="Auction">Auction</label>&nbsp;&nbsp;&nbsp;
 
-                                    <input type="radio" name="list_product" value="bo">
-                                    <label for="both"><span></span>Both</label>
+                                    <input type="radio" name="list_product" class="radio" value="bo">
+                                    <label for="both">Both</label>
                                 </div>
                                 <br />
 
@@ -145,32 +145,32 @@
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input type="radio" name="refund_request" value="y" checked>
-                                    <label for="Existing"><span></span>Yes</label> &nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="refund_request" class="radio"  value="y" checked>
+                                    <label for="Existing">Yes</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input type="radio" name="refund_request" value="n">
-                                    <label for="new"><span></span>No</label><br /><br />
+                                    <input type="radio" name="refund_request" class="radio" value="n">
+                                    <label for="new">No</label><br /><br />
                                 </div>
                                 <br />
                                 <h3 class="change-side">SHIPPED ADDRESS FROM PRODUCT</h3>
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input id="Existing" type="radio" name="address" value="Existing" checked>
-                                    <label for="Existing"><span></span>Existing Address</label> &nbsp;&nbsp;&nbsp;
+                                    <input id="Existing" type="radio" class="radio" name="address" value="Existing" checked>
+                                    <label for="Existing">Existing Address</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input id="new" type="radio" name="new" value="new">
-                                    <label for="new"><span></span>New Address</label><br /><br /><br />
+                                    <input id="new" type="radio" class="radio"  name="address" value="new">
+                                    <label for="new">New Address</label><br /><br /><br />
                                 </div>
                                 <h3 class="change-side">SHIPPING TYPE PRODUCT</h3>
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input type="radio" name="shipping_type" value="f" checked>
-                                    <label for="Existing"><span></span>Free</label> &nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="shipping_type" class="radio" value="f" checked>
+                                    <label for="Existing">Free</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input type="radio" name="shipping_type" value="new">
-                                    <label for="p"><span></span>Paid</label><br /><br /><br />
+                                    <input type="radio" name="shipping_type" class="radio" value="new">
+                                    <label for="p">Paid</label><br /><br /><br />
                                 </div>
                                 <!-- ccc -->
 

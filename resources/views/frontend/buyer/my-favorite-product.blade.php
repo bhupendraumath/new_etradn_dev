@@ -35,10 +35,10 @@
                         
 
                         @if(count($value)!=0)
-                        <a href="{{url('all-delete-favorite')}}">
-                            <button class="filter-button remove-color-black" onclick="return confirm('Are you sure, want to delete all? ')"  >REMOVE ALL </button>
+                        <!-- <a href="{{url('all-delete-favorite')}}"> -->
+                            <button class="filter-button remove-color-black" onclick="allremove()"  >REMOVE ALL </button>
                             <br/>
-                        </a>
+                        <!-- </a> -->
                         
                         @endif
 
@@ -196,5 +196,7 @@ $.ajaxSetup({
 
 </script>
 <script src="{{ asset('assets/js/frontend/product/my-fav-product-list.js') }}"></script>
+
+
 @endpush
 @endsection

@@ -53,9 +53,9 @@ $favoriteProduct=new App\Models\Product;
 
                                                 </button>
                                         </a>--}}
-                                        <a href="{{url('delete-favorite/'.$productvalue->id)}}">                        
-                                        <button class="circle"  onclick="return confirm('Are you sure, want to remove it? ')"><i class="fa fa-trash-o color-delete" ></i> </button>
-                                        </a>
+                                        <!-- <a href="{{url('delete-favorite/'.$productvalue->id)}}">                         -->
+                                        <button class="circle"  onclick="favorite_delete_product({{$productvalue->id}})"><i class="fa fa-trash-o color-delete" ></i> </button>
+                                        <!-- </a> -->
                                     </div>
                                     <a href="{{url('product-details/'.$productvalue->product->id)}}" title="product's details">
                                         <div class="bottom-on-hover">
@@ -133,6 +133,7 @@ $favoriteProduct=new App\Models\Product;
     </div>
 @endif
 </div>
+<script src="{{ asset('assets/js/frontend/product/my-fav-product-list.js') }}"></script>
 
 
 </div>

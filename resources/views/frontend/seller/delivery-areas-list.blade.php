@@ -17,9 +17,9 @@
                                 <a href="{{url('delivery-address-edit/'.$productvalue->id)}}">                        
                                     <button class="circle"><i class="fa fa-edit fa-lg color-edit"></i> </button>
                                 </a>
-                                <a href="{{route('business-address-delete',$productvalue->id)}}">                        
-                                    <button class="circle" onclick="return confirm('Are you sure, you want to delete it? ')"><i class="fa fa-trash-o color-delete"></i> </button>
-                                </a>
+                                <!-- <a href="{{route('business-address-delete',$productvalue->id)}}">                         -->
+                                    <button class="circle" onclick="business_address_delete({{$productvalue->id}},'delivery-areas')"><i class="fa fa-trash-o color-delete"></i> </button>
+                                <!-- </a> -->
                         </div>
                     </div>
                     <br/>
@@ -41,5 +41,5 @@
 @endif
 </div>
 
-
+<script src="{{ asset('assets/js/frontend/product/delivery-areas-list.js') }}"></script>
 </div>

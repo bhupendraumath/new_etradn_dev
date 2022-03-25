@@ -123,7 +123,7 @@
                             <input id="Existing" type="radio" name="address" value="Existing">
                             <label for="Existing"><span></span>Existing Address</label> &nbsp;&nbsp;&nbsp;
 
-                            <input id="new" type="radio" name="new" value="new">
+                            <input id="new" type="radio" name="address" value="new">
                             <label for="new"><span></span>New Address</label><br /><br /><br />
                         </div>
 
