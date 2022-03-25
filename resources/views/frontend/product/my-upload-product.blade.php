@@ -124,10 +124,6 @@ $.ajaxSetup({
 });
 
 
-
-
-
-
 </script>
 <script src="{{ asset('assets/js/frontend/product/product-list.js') }}"></script>
 @endpush

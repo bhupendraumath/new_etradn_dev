@@ -42,9 +42,18 @@ class AddressController extends Controller
     public function businessAddressEdit($id){
         $title="Delivery Address";
         $details=Address::whereId($id)->get();
-        return view('frontend/seller/business-information',['details'=>$details,'title'=>$title]);
+        return view('frontend/seller/edit-information',['details'=>$details,'title'=>$title]);
 
     }
+
+    public function businessAddressEditBuyer($id){
+        $title="Delivery Address";
+        $details=Address::whereId($id)->get();
+        return view('frontend/buyer/edit-information',['details'=>$details,'title'=>$title]);
+
+    }
+
+    
 
     /**
      * Display a listing of the resource.
@@ -69,6 +78,13 @@ class AddressController extends Controller
         return view('frontend/seller/business-information')->with('title',$title);
     }
 
+    
+
+    public function addDeliveryAreaBuyer()
+    {
+        $title="Delivery Address";
+        return view('frontend/buyer/business-information')->with('title',$title);
+    }
 
     public function delivery_areas_post(Request $request)
     {
@@ -77,6 +93,8 @@ class AddressController extends Controller
             try {
 
                 $user_id=Auth::user()->id;
+                // print_r($user_id);
+                // die;
                 $address= Address::where(['address_type'=>'delivery','userId'=>$user_id])
                         ->paginate(4);
                 // $bindlist = RefundRequest::paginate($request->record);                   
@@ -118,4 +136,55 @@ class AddressController extends Controller
         }
     }
     
+    
+
+    public function delivery_areas_post_buyer(Request $request)
+    {
+
+        if ($request->ajax()) {
+            try {
+
+                $user_id=Auth::user()->id;
+                // print_r($user_id);
+                // die;
+                $address= Address::where(['address_type'=>'delivery','userId'=>$user_id])
+                        ->paginate(4);
+                // $bindlist = RefundRequest::paginate($request->record);                   
+
+                $completeSessionView = view(
+                    'frontend/buyer/delivery-areas-list',
+                    compact('address')
+                )->render();
+
+                if ($address->isNotEmpty()) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' => $completeSessionView
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
+    }
 }

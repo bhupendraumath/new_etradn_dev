@@ -45,6 +45,13 @@ class SellerController extends Controller
         }
     }
 
+    public function editBusinessAddress($id){
+
+        $title="Delivery Address";
+        $details=Address::whereId($id)->get();
+        return view('frontend/seller/business-information',['details'=>$details,'title'=>$title]);
+
+    }
     public function businessAddressEdit($id)
     {
         $title = "Business Address";

@@ -75,6 +75,11 @@ class Cart extends Model
         return $this->hasOne(ImageUpload::class, 'product_id', 'product_id');
     }
 
+    public function productquantity()
+    {
+        return $this->hasOne(ProductQuantity::class, 'product_id', 'product_id');
+    }
+
     public function myCart($id) {
         $myCart = Cart::where('customer_id', $id)->where('is_checkout', 'n')->with('product', 'image')->orderBy('id', 'DESC')->get();
         return $myCart;

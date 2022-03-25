@@ -27,7 +27,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/jquery.flexslider.js',
         'resources/js/frontend/jquery.waypoints.min.js',
         'resources/js/frontend/minicart.min.js',
-        'resources/js/frontend/modernizr.custom.js',
+        // 'resources/js/frontend/modernizr.custom.js',
         'resources/js/frontend/move-top.js',
         'resources/js/frontend/responsiveslides.min.js',
 
@@ -45,7 +45,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/frontend/easy-responsive-tabs.css',
         'resources/css/frontend/font-awesome.css',
         'resources/css/frontend/toastr.min.css',
-        'resources/css/frontend/team.css',
+        // 'resources/css/frontend/team.css',
         'resources/css/frontend/cropper.min.css',
 
     ], 'public/assets/css/frontend/style.css')
@@ -92,5 +92,16 @@ mix.js('resources/js/app.js', 'public/js')
     ], 'public/assets/js/frontend/product/delivery-areas-list.js')
 
 .js([
-    'resources/js/frontend/product/my-fav-product-list.js'
-], 'public/assets/js/frontend/product/my-fav-product-list.js');
+        'resources/js/frontend/product/my-fav-product-list.js'
+    ], 'public/assets/js/frontend/product/my-fav-product-list.js')
+    .js([
+        'resources/js/frontend/product/cart-list.js'
+    ], 'public/assets/js/frontend/product/cart-list.js')
+    .js([
+        'resources/js/frontend/product/addCardProduct.js'
+    ], 'public/assets/js/frontend/product/addCardProduct.js')
+    .js([
+        'resources/js/frontend/product/delivery-areas-list-buyer.js'
+    ], 'public/assets/js/frontend/product/delivery-areas-list-buyer.js')
+
+;

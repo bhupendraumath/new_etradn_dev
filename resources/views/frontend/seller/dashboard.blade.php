@@ -78,7 +78,7 @@
                                 MY DELIVARY AREAS
                             </h4>
                             <div class="gray-number">0</div><br />
-                            <span class="view-more dashboard"><a href="delivary-area.php">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('delivery-areas')}}">VIEW MORE</a></span>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,13 @@
         <div class="row">
             <div class="col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xs-12">
                 <div class="imageAvt">
-                    <img src="{{url('assets/images/frontend/t1.jpg')}}" alt="" srcset="">
+                    @php
+
+                    $profile_img=Auth::user()->profile_img;
+
+                    @endphp
+
+                    <img  src="{{url('assets/images/my-profile/'. $profile_img)}}"  onerror="this.src='{{url('assets/images/frontend/user3.jpg')}}';" alt="" srcset="">
 
                 </div>
             </div>

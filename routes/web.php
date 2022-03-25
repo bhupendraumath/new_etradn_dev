@@ -16,7 +16,8 @@ use App\Http\Controllers\Frontend\{
     RefundController,
     AddressController,
     FavProductController,
-    PurchaseController
+    PurchaseController,
+    CartController
 };
 use App\Http\Controllers\Auth\{
     LoginController,
@@ -105,6 +106,10 @@ Route::post(
     [ReviewController::class, 'submit_rating_load']
 )->name('submit_rating_load');
 
+Route::get(
+    'shopping-cart',
+    [CartController::class, 'shoppingcart']
+)->name('shopping-cart');
 
 Route::group(
     ['middleware' => 'checkLogin:web'],
@@ -201,6 +206,12 @@ Route::group(
             [AddressController::class, 'delivery_areas_post']
         )->name('delivery-areas-post');
 
+
+        Route::post(
+            'delivery-areas-post-buyer',
+            [AddressController::class, 'delivery_areas_post_buyer']
+        )->name('delivery-areas-post-buyer');
+
         Route::get(
             'business-information',
             [SellerController::class, 'businessInformation']
@@ -211,12 +222,21 @@ Route::group(
             [AddressController::class, 'addDeliveryArea']
         )->name('add-delivery-area');
 
+        Route::get(
+            'add-delivery-area-buyer',
+            [AddressController::class, 'addDeliveryAreaBuyer']
+        )->name('add-delivery-area-buyer');
+
 
         Route::get(
             'business-address',
             [SellerController::class, 'businessAddress']
         )->name('business-address');
 
+        Route::get(
+            'edit-address/{id}',
+            [SellerController::class, 'editBusinessAddress']
+        )->name('edit-address');
 
         Route::get(
             'my-order',
@@ -237,6 +257,12 @@ Route::group(
         Route::get(
             'delivery-address-edit/{id}',
             [addressController::class, 'businessAddressEdit']
+        )->name('business-address-edit');
+
+
+        Route::get(
+            'delivery-address-edit-buyer/{id}',
+            [addressController::class, 'businessAddressEditBuyer']
         )->name('business-address-edit');
         
         Route::get(
@@ -271,6 +297,27 @@ Route::group(
             'my-upload-product-list',
             [ProductController::class, 'myUploadProductPost']
         )->name('myUploadProduct.post');
+
+        Route::POST(
+            'cart-listing',
+            [CartController::class, 'cartListing']
+        )->name('cartListing');
+
+
+        Route::POST(
+            'cart-edit',
+            [CartController::class, 'cartEdit']
+        )->name('cartEdit');
+
+        Route::POST(
+            'cart-delete',
+            [CartController::class, 'cartDelete']
+        )->name('cartDelete');
+
+        Route::POST(
+            'cart-add',
+            [CartController::class, 'cartAdd']
+        )->name('cartAdd');
 
         Route::post(
             'my-fav-product-list',
