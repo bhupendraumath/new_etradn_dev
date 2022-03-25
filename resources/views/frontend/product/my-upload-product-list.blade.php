@@ -22,7 +22,7 @@
                                 <button class="circle"><i class="fa fa-edit fa-lg color-edit"></i> </button>
                             </a>
                             <a href="{{url('uploadedDelete/'.$productvalue->id)}}">                        
-                                <button class="circle" onclick="return confirm('Are you sure? ')"><i class="fa fa-trash-o color-delete"></i> </button>
+                                <button class="circle" onclick="areyousure()"><i class="fa fa-trash-o color-delete"></i> </button>
                             </a>
                         </div>
                     </div>
@@ -93,5 +93,28 @@
 @endif
 </div>
 
+<script>
 
+function areyousure(){
+
+    swal({
+    title: "Delete",
+    text: "Are you sure, want to delete it?",
+    type: "#danger",
+    buttons: {
+    cancel: true,
+    confirm: "Delete",
+    }
+    })
+    // .then(
+    // function(isConfirm) {
+    // if (isConfirm) {
+    //     window.location.href = "{{url('sign-in')}}";
+    // } else {
+    // return false;
+    // }
+    // },
+    // );
+}
+</script>
 </div>

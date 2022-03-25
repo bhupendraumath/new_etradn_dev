@@ -50,10 +50,17 @@ button#add_review {
     background: #ffa301;
     /* padding: 10px; */
     border-radius: 10px;
+    outline: none;
+}
+
+button.checkout-address-cart>a {
+    color: white;
 }
 
 button#add_review:hover {
     background: black;
+    border: none;
+    outline: none;
 }
 
 button.swal-button.swal-button--confirm {
@@ -76,6 +83,7 @@ button.checkout-address-cart:hover {
 button.checkout-address-cart {
     font-size: 14px;
     padding: 15px;
+    margin-bottom: 28px;
     background: #f2ae3d;
     color: white;
     border-radius: 10px;
