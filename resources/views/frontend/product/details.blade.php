@@ -481,10 +481,9 @@ function checkSwal(e){
     $('#add_review').click(function(){
        console.log("user id --- ",user);
 
-    //    if(user!=undefined)
-    // ||( user.length!=0)
         if((user!=undefined )){
 
+            
             $.ajax({
                 url:"{{url('checking_order_existing')}}",
                 method:"POST",
@@ -500,11 +499,9 @@ function checkSwal(e){
                     console.log("order-id",orderId)
 
                     if(orderId==""){                        
-                        // alert("Please order the product....");
                         toastr.error("Please order the product....", { timeOut: 2000 });
                     }
                     else if(res.message=="You are already submitted Review & Rating."){
-                        // alert(res.message);
                         toastr.error(res.message, { timeOut: 2000 });
                     }
                     else{
@@ -519,9 +516,23 @@ function checkSwal(e){
 
         }
         else{
-            if(confirm('Please login before giving your review and rating...')){
-                window.location="{{url('sign-in')}}"
-            }
+                swal({
+                title: "Review this product",
+                text: "Share your thoughts with other customers",
+                type: "#ffa301",
+                buttons: {
+                cancel: true,
+                confirm: "Sign in Your Account",
+                }
+                }).then(
+                function(isConfirm) {
+                if (isConfirm) {
+                    window.location.href = "{{url('sign-in')}}";
+                } else {
+                return false;
+                }
+                },
+                );
         }
     });
 

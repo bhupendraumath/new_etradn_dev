@@ -43,6 +43,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* -------------------------------- */
 
+button#add_review {
+    width: 175px;
+    text-transform: uppercase;
+    border: none;
+    background: #ffa301;
+    /* padding: 10px; */
+    border-radius: 10px;
+}
+
+button#add_review:hover {
+    background: black;
+}
+
 button.swal-button.swal-button--confirm {
     background-color: #ffa301;
     border: none
@@ -990,7 +1003,7 @@ h4.text-center.mt-2.mb-4 {
 }
 
 button#add_review {
-    width: 136px;
+    /* width: 136px; */
     text-transform: uppercase;
     border: none;
 }

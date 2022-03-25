@@ -325,7 +325,7 @@ Route::group(
         )->name('myFavProductList.post');
         
         Route::get(
-            'add-in-fav-list/{product_id}/{paqid}',
+            'add-in-fav-list/{product_id}/{paqid}/{favid}',
             [FavProductController::class, 'addInFavList']
         )->name('addInFavList');
 
