@@ -105,7 +105,7 @@
                 <div class="card ">
                     <h4 class="delivery-address-cart"> <i class="fa fa-map-o orange"></i> DELIVERY ADDRESS</h4>
                     <hr />
-                    @if(empty($address))
+                    @if(empty($address) ||count($address)==0)
                     <button class="checkout-address-cart" >
                     <a href="{{route('add-delivery-area-buyer')}}" > Add a Delivery Address to Checkout</a>
                        
