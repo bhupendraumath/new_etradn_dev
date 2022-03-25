@@ -147,12 +147,16 @@ $favoriteProduct=new App\Models\Product;
                                                 <?php
                                                  $user=Auth::user();
 
+                                                
+
                                                  if(!empty($user))
                                                  {
+                                                   
                                                     $value= $favoriteProduct->favorite_product_details($product->id,Auth::user()->id);
                                                     
+
                                                     if(count($value)!=0){
-                                                        $title= 'Already added in your favorite list';
+                                                        $title= 'Remove in your favorite list';
                                                         $color=1;
                                                        }
                                                        else{
@@ -167,17 +171,19 @@ $favoriteProduct=new App\Models\Product;
                                                  }
                                                 ?>
 
-                                            <!-- <a href="#"> -->
-                                                                           
-                                                <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}})">
+                              
+                                                
                                                     @if($color)
-                                                    <i class="fas fa-heart" style="color:red"></i>
+                                                        <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},{{$value[0]->id}})">
+                                                             <i class="fas fa-heart" style="color:red"></i>
+                                                        </button>
                                                     @else
-                                                    <i class="fa fa-heart-o"></i>
-
+                                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet')">
+                                                            <i class="fa fa-heart-o"></i>
+                                                    </button>
                                                     @endif
 
-                                                </button>
+                                                
                                             </div>
                                             <div class="bottom-on-hover">
                                                     <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
@@ -337,7 +343,7 @@ $favoriteProduct=new App\Models\Product;
                                         @endif
                                         <div class="hover-icons">
                                             <a href="{{url('product-details/'.$product->id)}}" title="product's details">
-                                                <div>
+                                                <!-- <div> -->
                                                     <span class="left-buy-it" >
                                                             @if($product->want_to_list=='b')
                                                             Buy It Now
@@ -350,9 +356,9 @@ $favoriteProduct=new App\Models\Product;
                                                             <i class="fas fa-angle-double-right"></i>
                                                     </span>
 
-
+                                                    </a>
                                                     
-                                                    <?php
+                                                   {{-- <?php
                                                     $user=Auth::user();
 
                                                     if(!empty($user))
@@ -386,9 +392,50 @@ $favoriteProduct=new App\Models\Product;
                                                         @endif
 
                                                     </button>
-                                                    </a>
-                                                </div>
-                                                </a>
+                                                    </a>--}}
+
+
+                                                <?php
+                                                $user=Auth::user();
+                                                 if(!empty($user))
+                                                 {
+                                                   
+                                                    $value= $favoriteProduct->favorite_product_details($product->id,Auth::user()->id);
+                                                    
+
+                                                    if(count($value)!=0){
+                                                        $title= 'Remove in your favorite list';
+                                                        $color=1;
+                                                       }
+                                                       else{
+                                                        $title= 'Add in favorite list';
+                                                        $color=0;
+                                                       }
+                                                 }
+                                                 else{
+                                                    //  $value=[];
+                                                     $title= 'Add in favorite list';
+                                                     $color=0;
+                                                 }
+                                                ?>
+
+                                            @if(!empty($product->quantity->id))
+                                                      @if($color)
+                                                        <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},{{$value[0]->id}})">
+                                                             <i class="fas fa-heart" style="color:red"></i>
+                                                        </button>
+                                                    @else
+                                                        <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet')">
+                                                                <i class="fa fa-heart-o"></i>
+                                                        </button>
+                                                    @endif
+                                            @endif                                
+ 
+ 
+                                                   
+
+                                                <!-- </div> -->
+                                                
                                             <div class="bottom-on-hover">
                                                     <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
                                                     {{$product->category->categoryName}}</span>
@@ -969,9 +1016,11 @@ $favoriteProduct=new App\Models\Product;
 @push('scripts')
 
 <script>
-    function addedFav(product_id,quantity_id){
+    function addedFav(product_id,quantity_id,fav_id){
+        console.log("calling",fav_id)
+        
         $.ajax({
-            url: "{{url('add-in-fav-list')}}"+'/'+product_id+'/'+quantity_id,
+            url: "{{url('add-in-fav-list')}}"+'/'+product_id+'/'+quantity_id+'/'+fav_id,
             type: "GET",
             dataType: 'json',
             success: function (response) {
@@ -991,25 +1040,25 @@ $favoriteProduct=new App\Models\Product;
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <script>
-    function addedFav(product_id,quantity_id){
+    // function addedFav(product_id,quantity_id){
 
-        $.ajax({
-            url: "{{url('add-in-fav-list')}}"+'/'+product_id+'/'+quantity_id,
-            type: "GET",
-            dataType: 'json',
-            success: function (response) {
-                    if (response.success) {
-                        toastr.clear();
-                        toastr.success(response.message, { timeOut: 2000 });
-                        location.reload();
-                    } else {
-                        toastr.clear();
-                        toastr.error(response.message, { timeOut: 2000 });
-                    }
-                },
+    //     $.ajax({
+    //         url: "{{url('add-in-fav-list')}}"+'/'+product_id+'/'+quantity_id,
+    //         type: "GET",
+    //         dataType: 'json',
+    //         success: function (response) {
+    //                 if (response.success) {
+    //                     toastr.clear();
+    //                     toastr.success(response.message, { timeOut: 2000 });
+    //                     location.reload();
+    //                 } else {
+    //                     toastr.clear();
+    //                     toastr.error(response.message, { timeOut: 2000 });
+    //                 }
+    //             },
             
-        });
+    //     });
 
-    }
+    // }
 </script>
 @endpush
