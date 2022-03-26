@@ -67,10 +67,10 @@
                                     <i class="fa fa-pencil-square-o edit" aria-hidden="true"></i>
                                     </a> 
                                     | 
-                                    <a href="{{route('business-address-delete',$user->id)}}" >
+                                    <!-- <a href="{{route('business-address-delete',$user->id)}}" > -->
                                         
-                                        <i class="fa fa-trash-o detele" onclick="return confirm('Are you sure? ')" aria-hidden="true"></i>
-                                    </a>
+                                        <i class="fa fa-trash-o detele" onclick="business_address_delete({{$user->id}},'business-address')" aria-hidden="true"></i>
+                                    <!-- </a> -->
                                    
                                 </td>
                                

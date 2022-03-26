@@ -104,4 +104,14 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/product/delivery-areas-list-buyer.js'
     ], 'public/assets/js/frontend/product/delivery-areas-list-buyer.js')
 
-;
+.js([
+    'resources/js/frontend/product/product-delete.js'
+], 'public/assets/js/frontend/product/product-delete.js')
+
+.js([
+    'resources/js/frontend/product/favorite-delete.js'
+], 'public/assets/js/frontend/product/favorite-delete.js')
+
+.js([
+    'resources/js/frontend/product/cat-product-list.js'
+], 'public/assets/js/frontend/product/cat-product-list.js');

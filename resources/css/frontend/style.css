@@ -76,6 +76,28 @@ h3.cart-heading {
     text-transform: uppercase;
 }
 
+img#previewImage,
+img#previewImage1 {
+    width: 118px;
+}
+
+.panel-default {
+    border-color: #ddd;
+    padding-top: 15px;
+}
+
+label.btn.uploadimage-product {
+    background: transparent;
+    color: black;
+    text-align: center;
+    border: none;
+}
+
+div#drop_area>div {
+    /* text-align: center; */
+    margin-left: 213px;
+}
+
 button.checkout-address-cart:hover {
     background: black;
 }

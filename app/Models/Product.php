@@ -23,8 +23,8 @@ class Product extends Model
     public $timestamps = false;
     use HasFactory;
 
-    protected $with=['image','review','quantity','image_many','category','subCategory','brand'];
-                
+    protected $with = ['image', 'review', 'quantity', 'image_many', 'category', 'subCategory', 'brand'];
+
     protected $fillable = [
         'user_id',
         'cat_id',
@@ -61,11 +61,11 @@ class Product extends Model
         return $this->hasOne(ImageUpload::class, 'product_id');
     }
 
-    
-    public function favorite_product_details($product_id,$userid)
+
+    public function favorite_product_details($product_id, $userid)
     {
-        $details=FavoriteProduct::where(['product_id'=>$product_id,'user_id'=>$userid])
-        ->get();
+        $details = FavoriteProduct::where(['product_id' => $product_id, 'user_id' => $userid])
+            ->get();
         return $details;
         // return $this->hasOne(FavoriteProduct::class,'product_id','id');
     }
@@ -121,42 +121,47 @@ class Product extends Model
         return $this->hasMany(ProductReview::class, 'productId');
     }
 
-    public function productById($id) {
+    public function productById($id)
+    {
         $product = Product::find($id);
         return $product;
     }
 
-    public function storeProduct($request) {
-        $product = Product::create([
-            'user_id' => $request->user_id,
-            'cat_id' => $request->category_id,
-            'sub_cat_id' => $request->sub_category_id,
-            'brand_id' => $request->brand_id,
-            'product_name' => $request->product_name_eng,
-            'product_desc' => $request->product_description_eng ?? '',
-            'warranty_desc' => $request->warranty_description_eng ?? '',
-            'product_nameArabic' => $request->product_name_arb ?? '',
-            'product_descArabic' => $request->product_description_arb ?? '',
-            'warranty_descArabic' => $request->warranty_description_arb ?? '',
-            'want_to_list' => $request->list_product,
-            'bid_amount' => $request->bid_amount ?? 0,
-            'bid_ending_datetime' => $request->bid_ending_date_time ?? Carbon::now(),
-            'refund_request' => $request->refund_request,
-            'number_of_days' => $request->number_of_days ?? 0,
-            'policy_description' => $request->refund_policy_description ?? '',
-            'shipped_address_from' => $request->shipped_address_from,
-            'shipping_type' => $request->shipping_type,
-            'shipping_price' => $request->shipping_price,
-            'admin_product_notification' => 1,
-            'product_formfiledname' => '',
-            'product_formoutput' => '',
-            'productformnamearabic' => '',
-            'createdDate' => Carbon::now()
-        ]);
+    public function storeProduct($request)
+    {
+        $product = Product::create(
+            [
+                'user_id' => $request->user_id,
+                'cat_id' => $request->category_id,
+                'sub_cat_id' => $request->sub_category_id,
+                'brand_id' => $request->brand_id,
+                'product_name' => $request->product_name_eng,
+                'product_desc' => $request->product_description_eng ?? '',
+                'warranty_desc' => $request->warranty_description_eng ?? '',
+                'product_nameArabic' => $request->product_name_arb ?? '',
+                'product_descArabic' => $request->product_description_arb ?? '',
+                'warranty_descArabic' => $request->warranty_description_arb ?? '',
+                'want_to_list' => $request->list_product,
+                'bid_amount' => $request->bid_amount ?? 0,
+                'bid_ending_datetime' => $request->bid_ending_date_time ?? Carbon::now(),
+                'refund_request' => $request->refund_request,
+                'number_of_days' => $request->number_of_days ?? 0,
+                'policy_description' => $request->refund_policy_description ?? '',
+                'shipped_address_from' => $request->shipped_address_from,
+                'shipping_type' => $request->shipping_type,
+                'shipping_price' => $request->shipping_price,
+                'admin_product_notification' => 1,
+                'product_formfiledname' => '',
+                'product_formoutput' => '',
+                'productformnamearabic' => '',
+                'createdDate' => Carbon::now()
+            ]
+        );
         return $product;
     }
 
-    public function updateProduct($request, $id) {
+    public function updateProduct($request, $id)
+    {
         $updateProduct = Product::where('id', $id)->update([
             'user_id' => $request->user_id,
             'cat_id' => $request->category_id,
@@ -186,15 +191,17 @@ class Product extends Model
         return $updateProduct;
     }
 
-    public function subCategoryProducts($id) {
-        $subCategoryProducts = Product::where('sub_cat_id', $id)->with('image' ,'quantity', 'review')
+    public function subCategoryProducts($id)
+    {
+        $subCategoryProducts = Product::where('sub_cat_id', $id)->with('image', 'quantity', 'review')
             ->where('is_delete', 'n')
             ->where('isActive', 'y')
             ->get();
         return $subCategoryProducts;
     }
 
-    public function deleteProduct($id) {
+    public function deleteProduct($id)
+    {
         $deleteProduct = Product::where('id', $id)->update([
             'is_delete' => 'y'
         ]);
@@ -202,7 +209,7 @@ class Product extends Model
     }
 
 
-    
+
     // public function averageRating($product_id) {
     //     $total_user_rating = 0;
     //     $reviewProduct = ProductReview::where('productId',$product_id)->get();

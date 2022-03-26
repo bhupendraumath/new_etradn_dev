@@ -60,19 +60,19 @@
                <!-- -------------------- -->
                 <!-- {{$order_item_details}} -->
                 <div class="form-settings">
-                    @if(!empty($details))
-               <form method="post" enctype="multipart/form-data" >
+                @if(!empty($details[0]) && !empty($order_item_details[0]))
+                    <form method="post" enctype="multipart/form-data" >
 
                         <label class="left-align">Product Name</label>
                         <input type="text" name="product_name" disabled value="{{$details[0]->product->product_name}}" placeholder="Product Name in English*" class="60per">
 
-                             <label class="left-align">Buyer Name</label>
+                        <label class="left-align">Buyer Name</label>
                         <input type="text" name="product_name" disabled placeholder="Product Name in English*" class="60per" value="{{$details[0]->order_details->buyer_details['firstName'] .' '.$details[0]->order_details->buyer_details['lastName']   }}">
 
                          <label class="left-align">Order Number</label>
                         <input type="text" value="{{$details[0]->order_details->order_number}}"  name="product_name" disabled placeholder="Product Name in English*" class="60per">
-
-                          <label class="left-align">Quantity</label>
+                        
+                        <label class="left-align">Quantity</label>
                         <input type="text" value="{{$order_item_details[0]['quantity']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
                         <label class="left-align">Product price</label>
@@ -149,7 +149,6 @@
 
                                
                     </form>
-
                     @endif
                 </div>
 

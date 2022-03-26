@@ -60,7 +60,7 @@ class ProductController extends Controller
         if ($request->ajax()) {
             try {
 
-                $productlist = Product::where(['user_id'=> Auth::user()->id,'is_delete'=>'n'])
+                $productlist = Product::where(['user_id' => Auth::user()->id, 'is_delete' => 'n'])
                     ->paginate($request->record);
                 $completeSessionView = view(
                     'frontend/product/my-upload-product-list',
@@ -190,13 +190,18 @@ class ProductController extends Controller
     {
         // return $id;
 
+
         $category = Category::where('isActive', 'y')->get();
         $brand = Brand::where('isActive', 'y')->get();
+        $product = Product::where('id', $id)->first();
+        $productId = $id;
         return view(
             'frontend/product/add',
             compact(
                 'category',
-                'brand'
+                'brand',
+                'product',
+                'productId'
             )
         );
     }
@@ -204,20 +209,31 @@ class ProductController extends Controller
 
     public function uploadedDelete($id)
     {
-        // return $id;
-
-        $user_id = Auth::guard('web')->user()->id;
-        $delete = Product::whereId($id)->update([
-            'is_delete'=>'y'
-        ]);
-
-        // if($delete){
-        //    $addressList=product::where(['userId'=>$user_id,'address_type'=>'business'])->paginate(10);          
-
-        return Redirect::back()->with('message', 'Delete Successfully');
-        // }
 
 
+        try {
+
+            $user_id = Auth::guard('web')->user()->id;
+            $delete = Product::whereId($id)->update([
+                'is_delete' => 'y'
+            ]);
+
+            if ($delete) {
+                return response()->json(
+                    ['success' => true, 'message' => "Delete Successfully"]
+                );
+            }
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => trans('admin.something_went_wrong')
+                ]
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                ['success' => false, 'message' => $e->getMessage()]
+            );
+        }
     }
     /**
      * Display the specified resource.
@@ -453,45 +469,68 @@ class ProductController extends Controller
     public function addProduct(ProductRequest $request)
     {
         try {
-
-
-
             $product = new Product;
-            $Product =  $product->storeProduct($request);
+            if (!empty($request->id)) {
+                $Product = $product->updateProduct($request, $request->id);
+                foreach ($request->image_name as $imagefile) {
+                    $fileService = new FileService();
+                    $image =  $fileService->uploadBaseCodeImage(
+                        'assets/images/product-images/',
+                        $imagefile
+                    );
 
+                    //Save image
+                    $upload = new ImageUpload;
+                    $upload->saveImageProduct(
+                        $request->id,
+                        $image
+                    );
+                }
 
-            foreach ($request->image_name as $imagefile) {
+                foreach ($request->price as $key => $dataprice) {
+                    $data = array(
+                        'product_id' => $request->id,
+                        'condition_id' => 1,
+                        'quantity' => $request->quantity[$key],
+                        'price' => $request->price[$key],
+                        'discount' => $request->discount[$key],
+                        'createdDate' => date('d/m/y H:i:s')
+                    );
+                    ProductQuantity::create($data);
+                }
+                $msg = trans('admin.update_product');
+            } else {
+                $Product =  $product->storeProduct($request);
+                foreach ($request->image_name as $imagefile) {
+                    $fileService = new FileService();
+                    $image =  $fileService->uploadBaseCodeImage(
+                        'assets/images/product-images/',
+                        $imagefile
+                    );
 
-                $fileService = new FileService();
-                $image =  $fileService->uploadBaseCodeImage(
-                    'assets/images/product-images/',
-                    $imagefile
-                );
-
-                //Save image
-                $upload = new ImageUpload;
-                $upload->saveImageProduct(
-                    $Product->id,
-                    $image
-                );
+                    //Save image
+                    $upload = new ImageUpload;
+                    $upload->saveImageProduct(
+                        $Product->id,
+                        $image
+                    );
+                }
+                foreach ($request->price as $key => $dataprice) {
+                    $data = array(
+                        'product_id' => $Product->id,
+                        'condition_id' => 1,
+                        'quantity' => $request->quantity[$key],
+                        'price' => $request->price[$key],
+                        'discount' => $request->discount[$key],
+                        'createdDate' => date('d/m/y H:i:s')
+                    );
+                    ProductQuantity::create($data);
+                }
+                $msg = trans('admin.add_product');
             }
-
-            foreach ($request->price as $key => $dataprice) {
-                $data = array(
-                    'product_id' => $Product->id,
-                    'condition_id' => 1,
-                    'quantity' => $request->quantity[$key],
-                    'price' => $request->price[$key],
-                    'discount' => $request->discount[$key],
-                    'createdDate' => date('d/m/y H:i:s')
-                );
-                ProductQuantity::create($data);
-            }
-
-
             if (!empty($Product)) {
                 return response()->json(
-                    ['success' => true, 'message' => trans('admin.add_product')]
+                    ['success' => true, 'message' => $msg]
                 );
             }
             return response()->json(

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -34,15 +35,35 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+    //  public function setroute(){
+
+    //  }
+
+    //  public function manageRedirection(){
+
+    //     print_r("hello");die;
+    //     // Session::forget('back_url');
+
+    //     // $redirect = Session::get('back_url');
+
+    //     // Session::forget('redirect');
+    //     // print_r($redirect);die;
+    //     // return response()->json(
+    //     //     [
+    //     //         'success' => true, 'data' => $redirectionUrl,
+    //     //         'message' => "Login is successfull."
+    //     //     ],
+    //     //     200
+    //     // );
+
+    //  }
     public function loginForm()
     {
-
         return view('auth/frontend/login');
     }
     public function loginAction(Request $request)
     {
-
-
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
             $this->sendLockoutResponse($request);
@@ -92,15 +113,29 @@ class LoginController extends Controller
     {
 
 
-        $request->session()->regenerate();
+
+        // $request->session()->regenerate();
         $this->clearLoginAttempts($request);
 
-        if ($user->user_type == 's') {
-            $redirectionUrl = url('dashboard');
-        } else if ($user->user_type == 'b') {
-            $redirectionUrl = url('buyer-dashboard');
-        }
+        // Session::forget('back_url');
 
+        // $redirect = Session::get('back_url');
+
+        // Session::forget('redirect');
+
+
+
+        if (!empty(Session::get('back_url'))) {
+            $redirect = Session::get('back_url');
+            $redirectionUrl = $redirect;
+            Session::forget('back_url');
+        } else {
+            if ($user->user_type == 's') {
+                $redirectionUrl = url('dashboard');
+            } else if ($user->user_type == 'b') {
+                $redirectionUrl = url('buyer-dashboard');
+            }
+        }
 
         return response()->json(
             [

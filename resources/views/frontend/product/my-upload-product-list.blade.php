@@ -21,13 +21,12 @@
                             <a href="{{url('uploadedEdit/'.$productvalue->id)}}">                        
                                 <button class="circle"><i class="fa fa-edit fa-lg color-edit"></i> </button>
                             </a>
-                            <a href="{{url('uploadedDelete/'.$productvalue->id)}}">                        
-                                <button class="circle" onclick="areyousure()"><i class="fa fa-trash-o color-delete"></i> </button>
-                            </a>
+                            <!-- <a href="{{url('uploadedDelete/'.$productvalue->id)}}">                         -->
+                                <button class="circle" onclick="areyousure({{$productvalue->id}})"><i class="fa fa-trash-o color-delete"></i> </button>
+                            <!-- </a> -->
                         </div>
                     </div>
 
-                    <br />
                     <br />
                     
                     
@@ -93,28 +92,12 @@
 @endif
 </div>
 
+<!-- <script src="{{ asset('assets/js/frontend/product/product-delete.js') }}"></script> -->
+
+<script src="{{ asset('assets/js/frontend/product/product-list.js') }}"></script>
+
 <script>
 
-function areyousure(){
 
-    swal({
-    title: "Delete",
-    text: "Are you sure, want to delete it?",
-    type: "#danger",
-    buttons: {
-    cancel: true,
-    confirm: "Delete",
-    }
-    })
-    // .then(
-    // function(isConfirm) {
-    // if (isConfirm) {
-    //     window.location.href = "{{url('sign-in')}}";
-    // } else {
-    // return false;
-    // }
-    // },
-    // );
-}
 </script>
 </div>

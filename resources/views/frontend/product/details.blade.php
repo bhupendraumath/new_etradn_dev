@@ -10,6 +10,10 @@ use Carbon\Carbon;
 <head>
     
 </head>
+
+@php
+Session::put('back_url', URL::full());
+@endphp
 <div class="page-head_agile_info_w3l">
     <div class="container">
         <h3>{{$product_details['product_name']}}</span></h3>

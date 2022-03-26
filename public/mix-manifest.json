@@ -17,6 +17,9 @@
     "/assets/js/frontend/product/cart-list.js": "/assets/js/frontend/product/cart-list.js",
     "/assets/js/frontend/product/addCardProduct.js": "/assets/js/frontend/product/addCardProduct.js",
     "/assets/js/frontend/product/delivery-areas-list-buyer.js": "/assets/js/frontend/product/delivery-areas-list-buyer.js",
+    "/assets/js/frontend/product/product-delete.js": "/assets/js/frontend/product/product-delete.js",
+    "/assets/js/frontend/product/favorite-delete.js": "/assets/js/frontend/product/favorite-delete.js",
+    "/assets/js/frontend/product/cat-product-list.js": "/assets/js/frontend/product/cat-product-list.js",
     "/css/app.css": "/css/app.css",
     "/assets/js/frontend/main.js": "/assets/js/frontend/main.js",
     "/assets/css/frontend/style.css": "/assets/css/frontend/style.css"

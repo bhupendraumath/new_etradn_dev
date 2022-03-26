@@ -61,7 +61,13 @@
                         {{csrf_field()}}
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <!-- <input type="file" class="files-class-hide"> -->
-                       
+                        <?php
+                        if (!empty($productId)) {
+                        ?>
+                            <input type="hidden" name="id" value="{{$productId}}">
+                        <?php
+                        }
+                        ?>
                         <div id="drop_area" class="area">
                             <div>
                                 <!-- <label for="files" class="btn center-drag-drop"><b>Choose or Drag & Drop
@@ -69,7 +75,7 @@
                                 <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg"> -->
 
 
-                                <label for="uploadImage" class="btn"><b>Choose or Drag & Drop
+                                <label for="uploadImage" class="btn uploadimage-product"><b>Choose or Drag & Drop
                                         <br /> Your Product Images Here! </b></label>
                                 <input id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg" style="visibility:hidden;" type="file">
 
@@ -88,7 +94,7 @@
                             <img id="previewImage"  width="100" height="100"> -->
 
                         <!--</div> -->
-                        <span id="image_name-error" ></span>
+                        <span id="image_name-error"></span>
                         <br />
                         <label class="left-align">Category</label>
                         <select name="category_id" id="Category" class="shopname">
@@ -117,27 +123,27 @@
                                 <hr class="business-address" />
 
                                 <label class="left-align">Product Name</label>
-                                <input type="text" name="product_name_eng" placeholder="Product Name in English*" class="60per">
+                                <input type="text" name="product_name_eng" placeholder="Product Name in English*" class="60per" value="{{(isset($product->product_name))?$product->product_name:''}}">
 
                                 <label class="left-align">Product Description</label>
-                                <textarea name="product_description_eng" placeholder="Product Description English*" required=""></textarea>
+                                <textarea name="product_description_eng" placeholder="Product Description English*" value="{{(isset($product->product_desc))?$product->product_desc:''}}">{{(isset($product->product_desc))?$product->product_desc:''}}</textarea>
 
                                 <label class="left-align">Product Warranty</label>
-                                <input type="text" name="warranty_description_eng" placeholder="Product warranty in English*" class="60per">
+                                <input type="text" name="warranty_description_eng" placeholder="Product warranty in English*" class="60per" value="{{(isset($product->warranty_desc))?$product->warranty_desc:''}}">
 
                                 <br /><br />
                                 <h3 class="change-side">LIST PRODUCT*</h3>
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input type="radio" name="list_product" value="b" checked>
-                                    <label for="buyitnow"><span></span>Buy it Now</label> &nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="list_product" class="radio" value="b" {{(isset($product->want_to_list)&&$product->want_to_list=='b')? 'checked':''}}>
+                                    <label for="buyitnow">Buy it Now</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input type="radio" name="list_product" value="a">
-                                    <label for="Auction"><span></span>Auction</label>&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="list_product" class="radio" value="a" {{(isset($product->want_to_list)&&$product->want_to_list=='a')? 'checked':''}}>
+                                    <label for="Auction">Auction</label>&nbsp;&nbsp;&nbsp;
 
-                                    <input type="radio" name="list_product" value="bo">
-                                    <label for="both"><span></span>Both</label>
+                                    <input type="radio" name="list_product" class="radio" value="bo" {{(isset($product->want_to_list)&&$product->want_to_list=='bo')? 'checked':''}}>
+                                    <label for="both">Both</label>
                                 </div>
                                 <br />
 
@@ -145,32 +151,32 @@
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input type="radio" name="refund_request" value="y" checked>
-                                    <label for="Existing"><span></span>Yes</label> &nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="refund_request" class="radio" value="y" {{(isset($product->refund_request)&&$product->refund_request=='y')? 'checked':''}}>
+                                    <label for="Existing">Yes</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input type="radio" name="refund_request" value="n">
-                                    <label for="new"><span></span>No</label><br /><br />
+                                    <input type="radio" name="refund_request" class="radio" value="n" {{(isset($product->refund_request)&&$product->refund_request=='n')? 'checked':''}}>
+                                    <label for="new">No</label><br /><br />
                                 </div>
                                 <br />
                                 <h3 class="change-side">SHIPPED ADDRESS FROM PRODUCT</h3>
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input id="Existing" type="radio" name="address" value="Existing" checked>
-                                    <label for="Existing"><span></span>Existing Address</label> &nbsp;&nbsp;&nbsp;
+                                    <input id="Existing" type="radio" class="radio" name="address" value="Existing">
+                                    <label for="Existing">Existing Address</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input id="new" type="radio" name="new" value="new">
-                                    <label for="new"><span></span>New Address</label><br /><br /><br />
+                                    <input id="new" type="radio" class="radio" name="address" value="new">
+                                    <label for="new">New Address</label><br /><br /><br />
                                 </div>
                                 <h3 class="change-side">SHIPPING TYPE PRODUCT</h3>
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input type="radio" name="shipping_type" value="f" checked>
-                                    <label for="Existing"><span></span>Free</label> &nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="shipping_type" class="radio" value="f" {{(isset($product->shipping_type)&&$product->shipping_type=='f')? 'checked':''}}>
+                                    <label for="Existing">Free</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input type="radio" name="shipping_type" value="new">
-                                    <label for="p"><span></span>Paid</label><br /><br /><br />
+                                    <input type="radio" name="shipping_type" class="radio" value="p" {{(isset($product->shipping_type)&&$product->shipping_type=='p')? 'checked':''}}>
+                                    <label for="p">Paid</label><br /><br /><br />
                                 </div>
                                 <!-- ccc -->
 
@@ -185,7 +191,7 @@
                                         </div>
                                         <div class="col-sm-3 nopadding">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="Schoolname" name="price[]"  placeholder="Price" required>
+                                                <input type="text" class="form-control" id="Schoolname" name="price[]" placeholder="Price" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-3 nopadding">

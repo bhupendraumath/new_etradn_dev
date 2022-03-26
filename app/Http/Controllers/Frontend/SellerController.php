@@ -61,14 +61,22 @@ class SellerController extends Controller
 
     public function businessAddressDelete($id)
     {
+        try{
+            $user_id = Auth::guard('web')->user()->id;
+            $delete = Address::whereId($id)->delete();
 
-        $user_id = Auth::guard('web')->user()->id;
-        $delete = Address::whereId($id)->delete();
+            if ($delete) {
+                $addressList = Address::where(['userId' => $user_id, 'address_type' => 'business'])->paginate(10);
 
-        if ($delete) {
-            $addressList = Address::where(['userId' => $user_id, 'address_type' => 'business'])->paginate(10);
+                return response()->json(
+                    ['success' => true, 'message' => 'Delete Successfully']
+                );
+            }
 
-            return Redirect::back()->with('message', 'Delete Successfully');
+        } catch (\Exception $e) {
+            return response()->json(
+                ['success' => false, 'message' => $e->getMessage()]
+            );
         }
     }
 

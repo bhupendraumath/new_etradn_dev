@@ -66,4 +66,5 @@ return [
     'add_business' => 'Add business information successfully.',
     'add_product' => 'Add product successfully.',
     'add_rfq'=>'Add RFQ successfully.',
+    'update_product'=>'Update product succesfully.'
 ];

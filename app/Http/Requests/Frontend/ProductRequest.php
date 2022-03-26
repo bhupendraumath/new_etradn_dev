@@ -55,7 +55,9 @@ class ProductRequest extends FormRequest
             'brand_id' => 'required',
             'product_name_eng' => 'required',
             'product_description_eng' => 'required',
-            'warranty_description_eng' => 'required',
+            'list_product' => 'required',
+            'refund_request' => 'required',
+            'shipping_type' => 'required'
         ];
     }
     /**
@@ -72,7 +74,8 @@ class ProductRequest extends FormRequest
             'product_name_eng.required' => __('request.product_name_eng_required'),
             'product_description_eng.required' => __('request.product_description_eng_required'),
             'warranty_description_eng.required' => __('request.warranty_description_eng_required'),
-            'image_name.required'=>'Please add product image'
+            'image_name.required' => 'Please add product image'
+
         ];
     }
 }

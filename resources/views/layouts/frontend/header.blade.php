@@ -1,4 +1,6 @@
 <!-- header -->
+
+
 <div class="header" id="home">
 	@if(empty(Auth::user()))
 	<div class="container-fluid">
