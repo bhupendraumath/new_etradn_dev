@@ -97,10 +97,6 @@ function getMyFavProductlList(pageno, records) {
 
 
 function addedFav(product_id, quantity_id) {
-    // console.log(process.env.MIX_APP_URL + "/add-in-fav-list/"+product_id+'/'+quantity_id);
-
-    // return false;
-    // var path="/add-in-fav-list/"+product_id+'/'+quantity_id;
 
     $.ajax({
         url: "{{url('add-in-fav-list')}}" + '/' + product_id + '/' + quantity_id,

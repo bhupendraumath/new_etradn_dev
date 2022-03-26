@@ -38,38 +38,50 @@ $favoriteProduct=new App\Models\Product;
                                         <i class="fas fa-angle-double-right"></i>
                                 </span>
                             </a>
-                                     <?php
-                                            $user=Auth::user();
 
-                                            if(!empty($user))
-                                            {
-                                                $value= $favoriteProduct->favorite_product_details($productvalue->id,Auth::user()->id);
-                                                
-                                                if(count($value)!=0){
-                                                    $title= 'Already added in your favorite list';
-                                                    $color=1;
-                                                }
-                                                else{
-                                                    $title= 'Add in favorite list';
-                                                    $color=0;
-                                                }
-                                            }
-                                            else{
-                                                //  $value=[];
-                                                $title= 'Add in favorite list';
-                                                $color=0;
-                                            }
-                                        ?>                       
-                                <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->quantity->id}})">
-                                    @if( $color)
-                                    <!-- <i class="fa fa-heart-o" style="color:red"></i> -->
-                                    <i class="fas fa-heart" style="color:red"></i>
-                                    @else
-                                    <i class="fa fa-heart-o"></i>
 
-                                    @endif
+                            <?php
+                                $user=Auth::user();                                               
 
-                                </button>
+                                
+                                if(!empty($user))
+                                {
+                                
+                                $value= $favoriteProduct->favorite_product_details($productvalue->id,Auth::user()->id);
+                                
+
+                                     if(count($value)!=0){
+                                        $title= 'Remove in your favorite list';
+                                        $color=1;
+                                    }
+                                    else{
+                                        $title= 'Add in favorite list';
+                                        $color=2;
+                                    }
+                                }
+                                else{                                                     
+                                //  $value=[];
+                                    $title= 'Add in favorite list';
+                                    $color=0;
+                                }
+                            ?>
+
+
+                            
+                                @if($color==1)
+                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->quantity->id}},{{$value[0]->id}},'user_exists')">
+                                        <i class="fas fa-heart" style="color:red"></i>
+                                    </button>
+                                 @elseif($color==2)
+
+                                     <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->quantity->id}},'not__yet','user_empty')">
+                                            <i class="fa fa-heart-o"></i>
+                                    </button>
+                                @else
+                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->quantity->id}},'not__yet','auth_required')">
+                                            <i class="fa fa-heart-o"></i>
+                                    </button>
+                                @endif
                             <!-- </a> -->
                         </div>
                         <a href="{{url('product-details/'.$productvalue->id)}}" title="product's details">
@@ -163,23 +175,27 @@ $favoriteProduct=new App\Models\Product;
 
 
 <script>
-    function addedFav(product_id,quantity_id){
-        $.ajax({
-            url: "{{url('add-in-fav-list')}}"+'/'+product_id+'/'+quantity_id,
-            type: "GET",
-            dataType: 'json',
-            success: function (response) {
-                    if (response.success) {
-                        toastr.clear();
-                        toastr.success(response.message, { timeOut: 2000 });
-                        location.reload();
-                    } else {
-                        toastr.clear();
-                        toastr.error(response.message, { timeOut: 2000 });
-                    }
-                },
+    // function addedFav(product_id,quantity_id){
+    //     $.ajax({
+    //         url: "{{url('add-in-fav-list')}}"+'/'+product_id+'/'+quantity_id,
+    //         type: "GET",
+    //         dataType: 'json',
+    //         success: function (response) {
+    //                 if (response.success) {
+    //                     toastr.clear();
+    //                     toastr.success(response.message, { timeOut: 2000 });
+    //                     location.reload();
+    //                 } else {
+    //                     toastr.clear();
+    //                     toastr.error(response.message, { timeOut: 2000 });
+    //                 }
+    //             },
             
-        });
+    //     });
 
-    }
+    // }
+
+
+
+
 </script>

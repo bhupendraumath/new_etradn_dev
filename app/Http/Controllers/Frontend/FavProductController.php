@@ -74,77 +74,57 @@ class FavProductController extends Controller
     public function addInFavList($product_id,$quantity_id,$fav_id){
 
         try{
+
             $user_details=Auth::user();
 
-            // $details = Auth::guard('web')->user()->id;
-            //     print_r($details);die;
             if(!empty($user_details)){
 
                 $user_id=Auth::user()->id;
 
-            //    if($fav_id !='not__yet') {
-                    $fav_exists=new FavoriteProduct;
-                    $exists=$fav_exists->where(['product_id'=>$product_id,'paq_id'=>$quantity_id,'user_id'=>$user_id])
-                    ->get();
-                    
-                    if(count($exists)==0){
-                        $fav=new FavoriteProduct;
-                        $fav->product_id=$product_id;
-                        $fav->paq_id=$quantity_id;
-                        $fav->user_id=$user_id;
+                $fav_exists=new FavoriteProduct;
+                $exists=$fav_exists->where(['product_id'=>$product_id,'paq_id'=>$quantity_id,'user_id'=>$user_id])
+                ->get();
+                
+                if(count($exists)==0){
+                    $fav=new FavoriteProduct;
+                    $fav->product_id=$product_id;
+                    $fav->paq_id=$quantity_id;
+                    $fav->user_id=$user_id;
 
-                        if($fav->save()){
-                            return response()->json(
-                                [
-                                    'success' => true, 'message' =>"Added in your favorite list."
-                                    
-                                ]
-                            );
-                        }
-                        else{
-                            return response()->json(
-                                [
-                                    'success' => false, 'message'=>"Please Try Again Later .."
-                                ]
-                            );
-                        }
-                    }else{
-                        $find=FavoriteProduct::find($fav_id);                    
-                        if($find->delete()){
-                            return response()->json(
-                                [
-                                    'success' => true, 'message' =>"Removed in your favorite list."
-                                    
-                                ]
-                            );
-                        }
-                        else{
-                            return response()->json(
-                                [
-                                    'success' => false, 'message'=>"Please Try Again Later .."
-                                ]
-                            );
-                        }
-                    }
-                // }
-                // else{
-                //     $find=FavoriteProduct::find($fav_id);                    
-                //     if($find->delete()){
-                //         return response()->json(
-                //             [
-                //                 'success' => true, 'message' =>"Removed in your favorite list."
+                    if($fav->save()){
+                        return response()->json(
+                            [
+                                'success' => true, 'message' =>"Added in your favorite list."
                                 
-                //             ]
-                //         );
-                //     }
-                //     else{
-                //         return response()->json(
-                //             [
-                //                 'success' => false, 'message'=>"Please Try Again Later .."
-                //             ]
-                //         );
-                //     }
-                // }
+                            ]
+                        );
+                    }
+                    else{
+                        return response()->json(
+                            [
+                                'success' => false, 'message'=>"Please Try Again Later .."
+                            ]
+                        );
+                    }
+                }else{
+                    $find=FavoriteProduct::find($fav_id);                    
+                    if($find->delete()){
+                        return response()->json(
+                            [
+                                'success' => true, 'message' =>"Removed in your favorite list."
+                                
+                            ]
+                        );
+                    }
+                    else{
+                        return response()->json(
+                            [
+                                'success' => false, 'message'=>"Please Try Again Later .."
+                            ]
+                        );
+                    }
+                }
+               
             }
             else{
                 return response()->json(
