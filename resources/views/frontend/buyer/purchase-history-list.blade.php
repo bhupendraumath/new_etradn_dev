@@ -194,61 +194,11 @@
                            @php 
                            $index=$loop->index;
                            @endphp
-                        <button id="refundRequestBtn-{{$index}}" class="refundRequestBtn">
+                        <button  onclick="modelOpen('{{$product_id}}','{{$list->get_order_items->cart_id}}','{{$list->id}}')" class="refundRequestBtn">
                             Send Refund Request
                         </button>
 
-                            <!-- The Modal -->
-                        <div id="modelRefundRequest-{{$index}}" class="refundRequestModel">
 
-                            <!-- Modal content -->
-                            <div class="refundRequestModel-content">
-                                <div class="refundRequestModel-header">
-                                    <span class="refundRequestModel-close-{{$index}}   refundRequestModel-close">&times;</span>
-                                    <h2>Send Refund Request</h2>
-                                    <hr/>
-                                </div>
-                                <form method="post" enctype="multipart/form-data" id="refundProductRequest">
-                                    {{csrf_field()}}
-                                <div class="refundRequestModel-body">
-                                    <label>Refund Notes*</label>
-                                    <textarea id="ref_note" name="buyer_desc" rows="2"></textarea>
-                                    <div>
-                                        <label for="files" class="btn refund-request-send"> Upload New Documents</label>
-                                        <input id="files" style="visibility:hidden;" type="file">
-                                    </div>
-                                </div>
-
-                                <input type="hidden" name="cart_id" value="{{$list->get_order_items->cart_id}}">
-
-                                <input type="hidden" name="order_item_id" value="{{$list->id}}">
-
-                                <input type="hidden" name="product_id" value="{{$product_id}}">
-
-                                <input type="hidden" name="seller_desc" value="">
-                                <input type="hidden" name="admin_approval_status" value="0">
-                                <input type="hidden" name="seller_approval_status" value="0">
-                                <input type="hidden" name="payment_status" value="pending">
-                                <input type="hidden" name="status" value="a">
-                                <input type="hidden" name="admin_notification" value="1">
-
-                                
-                                <div class="refundRequestModel-footer">
-                                    <div class="refund-buttons">
-                                        <button class="refund-amount" id="createRefundRequest">
-                                            Refund Amount
-                                        </button>
-
-                                        <button class="refund-amount-close">
-                                            Close
-                                        </button>
-                                    </div>
-                                
-                                </div>
-                                </form>
-                            </div>
-
-                        </div>
                         </span>
 
                     </div>
@@ -291,63 +241,116 @@
 
         @endif
         @endforeach
+
+        
     @endif
 
     <div class="row text-aligin-center">
       {{ $productlist->links('frontend.common.pagination') }}
     </div>
-    <script type="text/javascript">
-    // $.ajaxSetup({
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    // });
 
 
-    </script>
-    {!! JsValidator::formRequest('App\Http\Requests\Frontend\RefundProductRequest','#refundProductRequest') !!}
-    <script src="{{ asset('assets/js/frontend/product/refundRequest.js') }}"></script>
+<!-- The Modal -->
+<div id="modelRefundRequest" class="refundRequestModel">
 
+<!-- Modal content -->
+<div class="refundRequestModel-content">
+    <div class="refundRequestModel-header">
+        <span class="refundRequestModel-close   refundRequestModel-close">&times;</span>
+        <h2>Send Refund Request</h2>
+        <hr/>
+    </div>
+    <form method="post" enctype="multipart/form-data" id="refundProductRequest">
+        {{csrf_field()}}
+    <div class="refundRequestModel-body">
+        <label>Refund Notes*</label>
+        <textarea id="ref_note" name="buyer_desc" rows="2"></textarea>
+        <div>
+            <label for="files" class="btn refund-request-send"> Upload New Documents</label>
+            <input id="files" style="visibility:hidden;" name="image" type="file">
+        </div>
+    </div>
+
+    <input type="hidden" id="cart_id" name="cart_id" value="">
+
+    <input type="hidden" id="order_item_id" name="order_item_id" value="">
+
+    <input type="hidden" id="product_id" name="product_id" value="">
+
+    <input type="hidden" name="seller_desc" value="">
+    <input type="hidden" name="admin_approval_status" value="0">
+    <input type="hidden" name="seller_approval_status" value="0">
+    <input type="hidden" name="payment_status" value="pending">
+    <input type="hidden" name="status" value="a">
+    <input type="hidden" name="admin_notification" value="1">
+
+    
+    <div class="refundRequestModel-footer">
+        <div class="refund-buttons">
+            <button type="submit" class="refund-amount" id="createRefundRequest">
+                Refund Amount
+            </button>
+
+            <button class="refund-amount-close">
+                Close
+            </button>
+        </div>
+    
+    </div>
+    </form>
+</div>
+
+</div>
+
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+
+</script>
+
+{!! JsValidator::formRequest('App\Http\Requests\Frontend\RefundProductRequest','#refundProductRequest') !!}
+<script src="{{ asset('assets/js/frontend/product/purchase-history-list.js') }}"></script>
     <script>
-    // Get the modal
 
-    var model_screen;
-    $("[id^='refundRequestBtn-']").click(function(){
+     function modelOpen(id,cart_id,order_item_id){
 
-    var num = this.id.split('-')[1];
-    var modal = document.getElementById("modelRefundRequest-"+num);
-
-    model_screen=modal;
-    // Get the button that opens the modal
-    var btn = document.getElementById("refundRequestBtn-"+num);
-
-    // Get the <span> element that refundRequestModel-closes the modal
-    var span = document.getElementsByClassName("refundRequestModel-close-"+num)[0];
-
-    // When the user clicks the button, open the modal 
-
-    modal.style.display = "block";
-
-    // When the user clicks on <span> (x), refundRequestModel-close the modal
-    span.onclick = function() {
-    modal.style.display = "none";
-    }
-
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+            $('#cart_id').val(cart_id);
+            $('#order_item_id').val(order_item_id);
+            $('#product_id').val(id);
 
 
-    // When the user clicks anywhere outside of the modal, refundRequestModel-close it
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    }
-    })
+            var modal = document.getElementById("modelRefundRequest");
+
+            model_screen=modal;
+            // Get the button that opens the modal
+            // var btn = document.getElementById("refundRequestBtn");
+
+            // Get the <span> element that refundRequestModel-closes the modal
+            var span = document.getElementsByClassName("refundRequestModel-close")[0];
+
+            // When the user clicks the button, open the modal 
+
+            modal.style.display = "block";
+
+            // When the user clicks on <span> (x), refundRequestModel-close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
 
 
-    $(".refund-amount-close").click(function(){
-        model_screen.style.display = "none";
-      })
+            // When the user clicks anywhere outside of the modal, refundRequestModel-close it
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            }
+      }
 </script>

@@ -44,7 +44,15 @@ class RefundController extends Controller
             try {
 
                 $refundRequest=RefundRequest::create($request->all());
+                // print_r($refundRequest);die;
+                // $fileService = new FileService();
+                // $image =  $fileService->uploadBaseCodeImage(
+                //     'assets/images/product-images/',
+                //     $imagefile
+                // );
 
+
+                // refund_img
                 if($refundRequest){
                     return response()->json(
                         ['success' => true, 'message' => "Refund Request sent succussfully"]

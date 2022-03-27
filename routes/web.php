@@ -251,19 +251,19 @@ Route::group(
         Route::get(
             'business-address-edit/{id}',
             [SellerController::class, 'businessAddressEdit']
-        )->name('business-address-edit');
+        );
 
 
         Route::get(
             'delivery-address-edit/{id}',
             [addressController::class, 'businessAddressEdit']
-        )->name('business-address-edit');
+        );
 
 
         Route::get(
             'delivery-address-edit-buyer/{id}',
             [addressController::class, 'businessAddressEditBuyer']
-        )->name('business-address-edit');
+        );
         
         Route::get(
             'business-address-delete/{id}',

@@ -4,6 +4,7 @@ $(window).load(function() {
     //     e.preventDefault();
     //     getCompleteGroupSession();
     // });
+
     var pageno = 1;
     var records = 4;
 
@@ -65,12 +66,12 @@ function getProductlList(pageno, records) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
-        url: process.env.MIX_APP_URL + "/my-upload-product-list",
+        url: process.env.MIX_APP_URL + "/purchase-history-list-post",
         type: "POST",
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: records
+            record: 6
         },
         processData: true,
         contentType: false,
@@ -152,3 +153,52 @@ window.areyousure = function areyousure(product_id) {
             },
         );
 }
+
+$("#refundProductRequest").on('submit', (function(e) {
+    e.preventDefault();
+
+    //  $("#createRefundRequest").on('click', (function(e) {
+
+    console.log("Hello refund request")
+    var frm = $('#refundProductRequest');
+    var btn = $('#createRefundRequest');
+    if (frm.valid()) {
+
+        console.log("frm.serialize()---   ", frm.serialize());
+        // return false;
+        btn.prop('disabled', true);
+        $.ajax({
+            url: process.env.MIX_APP_URL + "/create-refund-request",
+            type: "POST",
+            data: new FormData(this),
+            dataType: 'JSON',
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+                if (response.success) {
+                    toastr.clear();
+                    // btn.html('Save');
+                    toastr.success(response.message, { timeOut: 1000 });
+                    getProductlList(pageno, records);
+                } else {
+                    btn.prop('disabled', false);
+                    // btn.html('Save');
+                    toastr.clear();
+                    toastr.error(response.message, { timeOut: 1000 });
+                }
+            },
+            error: function(data) {
+                var obj = jQuery.parseJSON(data.responseText);
+                for (var x in obj) {
+                    btn.prop('disabled', false);
+                    btn.html('Update');
+
+                    $('#' + x + '-error').html(obj[x]);
+                    $('#' + x + '-error').parent('.form-group').removeClass('has-success').addClass('has-error');
+                }
+            },
+        });
+    }
+
+}));
