@@ -15,6 +15,29 @@ class RefundRequest extends Model
      *
      * @var string
      */
+    public $timestamps = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'order_item_id',
+        'cart_id',
+        'product_id',
+        'buyer_desc',
+        'seller_desc',
+        'admin_rejection_reason',
+        'admin_approval_status',
+        'seller_approval_status',
+        'payment_status',
+        'status',
+        'admin_notification',
+        
+    ];
+
+
     protected $table = 'tbl_refund_details';
     public $with=['order_details','product','buyer_details'];
 

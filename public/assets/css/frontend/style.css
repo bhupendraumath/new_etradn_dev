@@ -6666,6 +6666,166 @@ img#previewImage1 {
     width: 118px;
 }
 
+
+/* The Modal (background) */
+
+.refundRequestModel {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content */
+
+button.refund-amount {
+    background: black;
+    color: white;
+    padding: 11px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+button.refund-amount:hover {
+    background: #ffa301;
+    border: none;
+}
+
+button.refund-amount-close {
+    background: white;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+button.refund-amount-close:hover {
+    background: black;
+    color: white;
+}
+
+.refund-buttons {
+    text-align: right;
+    /* margin-top: -13px; */
+    border-top: 1px solid #80808045;
+    padding-top: 10px;
+}
+
+.refundRequestModel-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+/* Add Animation */
+
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+
+/* The refundRequestModel-close Button */
+
+.refundRequestModel-close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.refundRequestModel-close:hover,
+.refundRequestModel-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.refundRequestModel-header {
+    padding: 21px 23px;
+    background-color: #ffa20102;
+    color: #ffa301;
+}
+
+.row.text-aligin-center {
+    text-align: end;
+}
+
+button.refundRequestBtn {
+    background: transparent;
+    border: none;
+    color: red;
+}
+
+label.btn.refund-request-send {
+    background: #ffa301;
+    color: white;
+    width: 40%;
+    margin-left: 12px;
+    border: none;
+}
+
+label.btn.refund-request-send:hover {
+    background: black;
+}
+
+button#refundRequestBtn:hover {
+    background: transparent;
+    border: none;
+    color: #f8d293;
+}
+
+.refundRequestModel-body {
+    padding: 2px 16px;
+}
+
+.refundRequestModel-footer {
+    padding: 10px 16px;
+    background-color: #ffa20102;
+    color: black;
+}
+
 .panel-default {
     border-color: #ddd;
     padding-top: 15px;

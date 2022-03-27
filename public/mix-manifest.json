@@ -20,6 +20,8 @@
     "/assets/js/frontend/product/product-delete.js": "/assets/js/frontend/product/product-delete.js",
     "/assets/js/frontend/product/favorite-delete.js": "/assets/js/frontend/product/favorite-delete.js",
     "/assets/js/frontend/product/cat-product-list.js": "/assets/js/frontend/product/cat-product-list.js",
+    "/assets/js/frontend/product/purchase-history-list.js": "/assets/js/frontend/product/purchase-history-list.js",
+    "/assets/js/frontend/product/refundRequest.js": "/assets/js/frontend/product/refundRequest.js",
     "/css/app.css": "/css/app.css",
     "/assets/js/frontend/main.js": "/assets/js/frontend/main.js",
     "/assets/css/frontend/style.css": "/assets/css/frontend/style.css"

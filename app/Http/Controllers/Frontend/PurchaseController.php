@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProductReview;
 use App\Models\OrderItem;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
@@ -22,18 +23,60 @@ class PurchaseController extends Controller
 
     public function parchaseHistory(){
 
+        return view('frontend/seller/my-order');
 
-        $userid=Auth::user()->id;
+    }
 
-        $productlist = OrderItem::where('seller_id',$userid)
-                    ->orderBy("id",'desc')
-                    ->paginate(2);
+    public function purchaseHistoryListPost(Request $request){
+        if ($request->ajax()) {
+            try {
 
-        return view('frontend/seller/my-order',
-        compact(
-            'productlist',
-        ));
+                $userid=Auth::user()->id;
 
+                // $productlist = OrderItem::where('seller_id1',$userid)
+                //             ->orderBy("id",'desc')
+                //             ->paginate(2);
+
+
+                $productlist = Order::where('buyer_id',$userid)
+                            ->orderBy("id",'desc')
+                            ->paginate(2);
+
+                $completeSessionView = view(
+                    'frontend/buyer/purchase-history-list',
+                    compact('productlist')
+                )->render();
+
+                if ($productlist->isNotEmpty()) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' => $completeSessionView
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
     }
     /**
      * Show the form for creating a new resource.

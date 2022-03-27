@@ -37,7 +37,30 @@ class RefundController extends Controller
     }
 
 
-  
+    public function createRequest(Request $request)
+    {
+
+        if ($request->ajax()) {
+            try {
+
+                $refundRequest=RefundRequest::create($request->all());
+
+                if($refundRequest){
+                    return response()->json(
+                        ['success' => true, 'message' => "Refund Request sent succussfully"]
+                    );
+                }
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
+    }
 
 
     public function refund_request_list_post(Request $request)

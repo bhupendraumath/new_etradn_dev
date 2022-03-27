@@ -275,6 +275,11 @@ Route::group(
             [RefundController::class, 'refund_request_list_post']
         )->name('refund_request_list_post');
 
+        Route::post(
+            'create-refund-request',
+            [RefundController::class, 'createRequest']
+        )->name('createRequest');
+
 
         Route::get(
             'edit-details-refund/{id}',
@@ -329,6 +334,12 @@ Route::group(
             [FavProductController::class, 'addInFavList']
         )->name('addInFavList');
 
+        Route::post(
+            'purchase-history-list-post',
+            [PurchaseController::class, 'purchaseHistoryListPost']
+        )->name('purchaseHistoryList');
+
+
         Route::get(
             'delete-favorite/{fav_id}',
             [FavProductController::class, 'deleteFavorite']
@@ -343,9 +354,6 @@ Route::group(
             'BidPlacePost',
             [BidController::class, 'BidPlacePost']
         )->name('BidPlacePost');
-
-
-
 
         Route::get(
             'view-details-bids/{id}',
