@@ -302,7 +302,6 @@
             <div class="col-12 col-md-12 col-sm-12">
                 <div class="shipping-menu" id="shipping_toggle-{{$index}}">
                     
-                {{$list->get_order_items->delivery_status}}
                     <div class="track">
                         <div class="step <?php if($list->get_order_items->delivery_status =='p' || $list->get_order_items->delivery_status =='s'||$list->get_order_items->delivery_status =='d'){echo 'active';} ?>"> 
                             <span class="icon">
@@ -462,8 +461,9 @@ $("[id^='shippingToggleButton-']").click(function(){
     console.log("function calling")
     var num = this.id.split('-')[1];
     var x = document.getElementById("shipping_toggle-"+num);
-    if (x.style.display === "none") {
-    x.style.display = "block";
+    
+    if (x.style.display== "none") {
+        x.style.display = "block";
     } else {
     x.style.display = "none";
     }
