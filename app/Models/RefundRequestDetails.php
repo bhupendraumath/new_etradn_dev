@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
 
-class RefundRequest extends Model
+class RefundRequestDetails extends Model
 {
     /**
      * The table associated with the model.
@@ -22,20 +22,14 @@ class RefundRequest extends Model
      *
      * @var string[]
      */
-    // protected $fillable = [
-    //     'order_item_id',
-    //     'cart_id',
-    //     'product_id',
-    //     'buyer_desc',
-    //     'seller_desc',
-    //     'admin_rejection_reason',
-    //     'admin_approval_status',
-    //     'seller_approval_status',
-    //     'payment_status',
-    //     'status',
-    //     'admin_notification',
+    protected $fillable = [
+        'refund_id',
+        'refund_img',
+        'type',
+        'type_id',
+        'status',
         
-    // ];
+    ];
 
 
     protected $table = 'tbl_refund_proof';

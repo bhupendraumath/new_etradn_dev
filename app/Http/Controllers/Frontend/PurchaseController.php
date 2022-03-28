@@ -32,12 +32,6 @@ class PurchaseController extends Controller
             try {
 
                 $userid=Auth::user()->id;
-
-                // $productlist = OrderItem::where('seller_id1',$userid)
-                //             ->orderBy("id",'desc')
-                //             ->paginate(2);
-
-
                 $productlist = Order::where('buyer_id',$userid)
                             ->orderBy("id",'desc')
                             ->paginate(2);
@@ -78,6 +72,10 @@ class PurchaseController extends Controller
             }
         }
     }
+
+
+
+    
     /**
      * Show the form for creating a new resource.
      *

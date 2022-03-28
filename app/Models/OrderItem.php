@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Bids;
+use App\Models\RefundRequest;
 
 class OrderItem extends Model
 {
     protected $table = 'tbl_order_items';
     public $timestamps = false;
     use HasFactory;
-    public $with=['getOrder','seller_details_in_details'];
+    public $with=['getOrder','seller_details_in_details','refund_request_details'];
 
     protected $fillable = [
         'seller_id',
@@ -57,6 +58,11 @@ class OrderItem extends Model
 
     public function seller_details_in_details() {
         return $this->hasOne(User::class, 'id', 'seller_id');
+    }
+
+
+    public function refund_request_details() {
+        return $this->hasOne(RefundRequest::class, 'order_item_id', 'id');
     }
 
     public function bid_details()

@@ -275,6 +275,12 @@ Route::group(
             [RefundController::class, 'refund_request_list_post']
         )->name('refund_request_list_post');
 
+        
+        Route::post(
+            'change-request',
+            [RefundController::class, 'changeRequest']
+        )->name('change-request');
+        
         Route::post(
             'create-refund-request',
             [RefundController::class, 'createRequest']

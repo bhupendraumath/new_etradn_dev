@@ -104,7 +104,7 @@ function getProductlList(pageno, records) {
 var pageno = 1;
 var records = 4;
 
-window.areyousure = function areyousure(product_id) {
+window.deleteOrder = function deleteOrder(order_id) {
 
     // console.log("here");
     swal({
@@ -119,7 +119,9 @@ window.areyousure = function areyousure(product_id) {
         .then(
             function(isConfirm) {
                 if (isConfirm) {
-                    console.log("product_id  ", product_id);
+                    console.log("order_id  ", order_id);
+
+                    return false;
                     $.ajax({
                         url: process.env.MIX_APP_URL + "/uploadedDelete/" + product_id,
                         type: "GET",

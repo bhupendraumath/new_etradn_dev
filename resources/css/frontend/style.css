@@ -43,6 +43,78 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* -------------------------------- */
 
+.track {
+    position: relative;
+    background-color: #ddd;
+    height: 7px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 60px;
+    margin-top: 50px
+}
+
+.track .step {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    width: 25%;
+    margin-top: -18px;
+    text-align: center;
+    position: relative
+}
+
+.track .step.active:before {
+    background: #FF5722
+}
+
+.track .step::before {
+    height: 7px;
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    top: 18px
+}
+
+.track .step.active .icon {
+    background: #ee5435;
+    color: #fff
+}
+
+.track .icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-radius: 100%;
+    background: #ddd
+}
+
+.track .step.active .text {
+    font-weight: 400;
+    color: #000
+}
+
+.track .text {
+    display: block;
+    margin-top: 7px
+}
+
+button.shipping-toggle {
+    border: none;
+    background: transparent;
+}
+
+button.shipping-toggle:hover {
+    color: #f2ae3d;
+}
+
+.shipping-menu {
+    display: none
+}
+
 button#add_review {
     width: 175px;
     text-transform: uppercase;
@@ -51,6 +123,22 @@ button#add_review {
     /* padding: 10px; */
     border-radius: 10px;
     outline: none;
+}
+
+span.refund-policy-1.tooltip1 {
+    cursor: pointer;
+}
+
+span.refund-policy-1.tooltip1:hover {
+    color: #f2ae3d;
+}
+
+#shipping_toggle {
+    width: 100%;
+    /* padding: 50px 0; */
+    text-align: center;
+    margin-top: 20px;
+    display: none
 }
 
 button.checkout-address-cart>a {
@@ -207,9 +295,43 @@ button.refund-amount-close:hover {
     text-align: end;
 }
 
+span.pending-request {
+    color: #0000ff70;
+}
+
+span.accepted-request {
+    color: green;
+}
+
+span.rejected-request {
+    color: red;
+}
+
+select.seller_status {
+    height: 30px;
+    text-align: center;
+    width: 83px;
+    background: transparent;
+    color: black;
+    /* margin: 0; */
+    border: none;
+    bottom: 0;
+    margin-top: 57px;
+}
+
+.seller_status select option:first-child {
+    color: white;
+}
+
 button.refundRequestBtn {
     background: transparent;
     border: none;
+    color: red;
+}
+
+select.seller_status {
+    height: 30px;
+    text-align: left;
     color: red;
 }
 
@@ -1009,11 +1131,6 @@ i.fa.fa-eye.color-edit:hover {
 button.circle:hover {
     background: #f2ae3d;
     color: white;
-}
-
-select.seller_status {
-    height: 30px;
-    text-align: center;
 }
 
 button.view-more-bids {
