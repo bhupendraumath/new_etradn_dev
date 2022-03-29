@@ -19,6 +19,6 @@ class Category extends Model
 
     public function category_based_product()
     {
-        return $this->hasMany(Product::class, 'cat_id', 'id');
+        return $this->hasMany(Product::class, 'cat_id', 'id')->where("is_delete",'n');
     }
 }

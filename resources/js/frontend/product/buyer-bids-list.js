@@ -7,7 +7,7 @@ $(window).load(function() {
         console.log("reords -- ", records)
         var filter_by = 'desc';
         $.ajax({
-            url: process.env.MIX_APP_URL + "/BidPlacePost",
+            url: process.env.MIX_APP_URL + "/buyerBidPlacePost",
             type: "POST",
             data: {
                 filter_by: filter_by,
@@ -63,7 +63,7 @@ function getBidsList(pageno, records) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
-        url: process.env.MIX_APP_URL + "/BidPlacePost",
+        url: process.env.MIX_APP_URL + "/buyerBidPlacePost",
         type: "POST",
         data: {
             filter_by: filter_by,

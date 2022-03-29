@@ -53,7 +53,18 @@ Session::put('back_url', URL::full());
             </div>
         </div>
         <div class="col-md-6 single-right-left simpleCart_shelfItem">
-            <h3 class="product-details-heading">{{$product_details['product_name']}} </h3>
+            <h3 class="product-details-heading">{{$product_details['product_name']}}  
+                
+            @if($product_details->want_to_list=='bo' ||$product_details->want_to_list=='a')
+
+            <a href="#" data-toggle="modal" title="Place bid" data-target="#newUser" id="openNewUserModal">
+                <span class="bid_hit" title="Place bid"  onclick="bid_hit('{{$product_details->id}}','{{$product_details->bid_amount}}','{{$product_details->bid_ending_datetime}}')"><i class="fa fa-gavel"></i> </span>
+            </a>
+
+           
+            @endif
+        
+        </h3>
             <p class="product-details-page">{{$product_details['product_desc']}}</p>
             <p>            
             {{--<input type="hidden" id="rating_value" value="{{$product_details->review[0]['rating']}}">--}}
@@ -67,8 +78,12 @@ Session::put('back_url', URL::full());
                 </div>
             </div>
 
-            <span class="item_price"><b>PRICE:</b> &nbsp;<del>- 
-                ${{$product_details->quantity->price}} &nbsp;</del> &nbsp;&nbsp;
+            <span class="item_price"><b>PRICE:</b> &nbsp;
+            <del>
+                ${{$product_details->quantity->price}} &nbsp;</del>
+                
+                
+                &nbsp;&nbsp;
                     <b id="modify_price">
                     ${{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}</b> </span> </p>
 
@@ -115,6 +130,7 @@ Session::put('back_url', URL::full());
                                     <input type="hidden" name="updatedDate" value="{{Carbon::now()}}">
                                    
                                     <input type="submit" name="submit" id="addCartProduct" value="Add to cart" class="button">
+                                    
                                     @else
                                     <input type="button" name="submit" onclick="checkSwal(event)" value="Add to cart" class="button">
                                     @endif
@@ -127,6 +143,9 @@ Session::put('back_url', URL::full());
                     </div>
                 </div>
             </div>
+
+            
+
 
             <span class="item_price"><b>SKU:</b> &nbsp; IFF_grapes_186</span> <br />
             <span class="item_price"><b>Category:</b> &nbsp; <span class="uppercase">{{$product_details['category']['categoryName']}}</span></span><br />
@@ -383,32 +402,200 @@ Session::put('back_url', URL::full());
 </div>
 
 
+<div class="modal fade addbitplaced" id="newUser" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Place Bid</h4>
+      </div>
+      <div id="newUserHTMLBody">
+        <form method="post" id="new_user_form">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}" class="nofocus">
+          <div class="modal-body">
+            <div class="tabbable-custom">
+
+              <div class="tab-content">
+                <div class="tab-pane active">
+                  <div class="row">
+
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="form-group form-md-line-input form-md-floating-label input-icon counter-time">
+                        <p class="counter-time" id="demo"></p>                       
+                      </div>
+                    </div>
+
+
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="form-group form-md-line-input form-md-floating-label input-icon">
+                        <label for="mini" class="color-black">
+                          Minimum Bid Amount ($)
+                        </label>
+
+                        <input type="text" value="{{$product_details->bid_amount}}" name="minimum_amount"   class="form-control">
+
+                        <input type="hidden" value="{{$product_details->id}}" name="product_id" >
+
+                        <input type="hidden" name="user_id"  value="{{Auth::user()->id}}" >
+
+
+                        <input type="hidden" name="seller_id"  value="{{$product_details->user_id}}" >
+
+                        <input type="hidden" name="quantity"  value="1"  >
+
+                        <input type="hidden" name="paqid"  value="{{$product_details->quantity->id}}" >
+
+                        <input type="hidden" name="payment_status"  value="pending"   >
+
+                        <input type="hidden" name="bid_status"  value="0"   >
+                        <input type="hidden" name="cart_id"  value="0"   >
+                        <input type="hidden" name="bid_number"  value="bid_{{time()}}"   >
+                        
+                        <input type="hidden" name="is_buyer_late"  value="0">
+
+                        <input type="hidden" name="is_seller_late"  value="1" >
+
+                        <input type="hidden" name="status"  value="0" >
+
+                       
+                       
+                       
+                      </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="form-group form-md-line-input form-md-floating-label input-icon">
+                        <label for="bid_amount" class="color-black">
+                          Bid Amound($)
+                        </label>
+                        <input id="currency"  type="number"  min="{{$product_details->bid_amount}}"   name="bid_amount" class="form-control" >
+                       
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group">
+              <div class="inline-buttons">
+                <a class="btn btn-default" data-dismiss="modal" id="cancel" name="cancel">
+                  Cancel
+                </a>
+                
+                <button type="submit" class="btn btn-primary"  id="newUserButton">
+                   Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
  <!-- ---------------------------------------------------------------------- -->
+
+ @push('scripts')
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+</script>
+<script src="{{ asset('assets/js/frontend/product/add-bid-placed.js') }}"></script>
+<script>
+
+</script>
+@endpush
+
     <script>
 
 
-function checkSwal(e){
 
-    // e.preventDefault();
-    console.log("calling me...")
-    swal({
-    title: "Your Basket is empty",
-    text: "Shop today’s deals",
-    icon: "warning",
-    buttons: {
-        cancel: true,
-        confirm: "Sign in Your Account",
+
+    function bid_hit(id,amount,enddate){
+        // console.log("bide hid ",id,amount,enddate);
+        $('#mini').val(amount);
+        // $('#lastdate').val(enddate);
+        $('#id').val(id);
+
+
+            date_counter(enddate);
+
     }
-    }).then(
-    function(isConfirm) {
-        if (isConfirm) {
-            window.location.href = "{{url('sign-in')}}";
-        } else {
-            return false;
+
+    function date_counter(enddate){
+        // Set the date we're counting down to
+        var countDownDate = new Date(enddate).getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+            
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+            
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+            
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
         }
-    },
-    );
-}
+        }, 1000);
+    }
+
+    $('#currency').change(function() {
+        var min = Globalize.parseFloat($(this).attr("min"));
+        var max = Globalize.parseFloat($(this).attr("max"));
+        var value = Globalize.parseFloat($(this).val());
+        if(value < min) { value = min; }        
+        if(value > max) { value = max; }
+        $(this).val(value);
+        //value = Globalize.format(value,"c");
+        console.log(value);
+        
+    });
+
+    function checkSwal(e){
+
+        // e.preventDefault();
+        console.log("calling me...")
+        swal({
+        title: "Your Basket is empty",
+        text: "Shop today’s deals",
+        icon: "warning",
+        buttons: {
+            cancel: true,
+            confirm: "Sign in Your Account",
+        }
+        }).then(
+        function(isConfirm) {
+            if (isConfirm) {
+                window.location.href = "{{url('sign-in')}}";
+            } else {
+                return false;
+            }
+        },
+        );
+    }
 
     $("#minus").click(function(){
         var quantity=$("#selected_qty").val();
@@ -444,30 +631,30 @@ function checkSwal(e){
         
     }
 
-        $(document).ready(function() {
+    $(document).ready(function() {
 
-            // var rating_value=$("#rating_value").val();
-            // document.getElementById(`rating${rating_value}`).checked = true;
+        // var rating_value=$("#rating_value").val();
+        // document.getElementById(`rating${rating_value}`).checked = true;
 
-            $('#horizontalTab').easyResponsiveTabs({
-                type: 'default', //Types: default, vertical, accordion           
-                width: 'auto', //auto or any width like 600px
-                fit: true, // 100% fit in a container
-                closed: 'accordion', // Start closed if in accordion view
-                activate: function(event) { // Callback function if tab is switched
-                    var $tab = $(this);
-                    var $info = $('#tabInfo');
-                    var $name = $('span', $info);
-                    $name.text($tab.text());
-                    $info.show();
-                }
-            });
-            $('#verticalTab').easyResponsiveTabs({
-                type: 'vertical',
-                width: 'auto',
-                fit: true
-            });
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion           
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#tabInfo');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
         });
+        $('#verticalTab').easyResponsiveTabs({
+            type: 'vertical',
+            width: 'auto',
+            fit: true
+        });
+    });
 
  
 
@@ -735,6 +922,10 @@ function checkSwal(e){
             }
         })
     }
+
+
+
+
     </script>
 
 <script type="text/javascript">

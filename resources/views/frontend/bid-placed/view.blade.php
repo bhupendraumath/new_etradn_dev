@@ -2,41 +2,41 @@
 
 @section('content')
 <style>
-    img.images {
-        width: 102px;
-        height: 103px;
-    }
+img.images {
+    width: 102px;
+    height: 103px;
+}
 
-    .area {
-        border: 5px dotted #ccc;
-        padding: 37px;
-        width: 93%;
-        text-align: center;
-        margin-left: 3%;
-    }
+.area {
+    border: 5px dotted #ccc;
+    padding: 37px;
+    width: 93%;
+    text-align: center;
+    margin-left: 3%;
+}
 
-    .drag {
-        border: 5px dotted green;
-        background-color: #f2ae3d;
-    }
+.drag {
+    border: 5px dotted green;
+    background-color: #f2ae3d;
+}
 
-    #result ul {
-        list-style: none;
-        margin-top: 20px;
-    }
+#result ul {
+    list-style: none;
+    margin-top: 20px;
+}
 
-    #result ul li {
-        border-bottom: 1px solid #ccc;
-        margin-bottom: 10px;
-    }
+#result ul li {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
 
-    ul.inline-css>li {
-        display: inline;
-    }
+ul.inline-css>li {
+    display: inline;
+}
 
-    .modal-backdrop {
-        z-index: 0 !important;
-    }
+.modal-backdrop {
+    z-index: 0 !important;
+}
 </style>
 
 <div class="page-head_agile_info_w3l-seller-dashboard">
@@ -53,43 +53,71 @@
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
 
             <div class="card-dashboard  col-12uy">
-                <h3>BID DETAILS <span style="color:red;font-size:12px">(*view only)</span></h3>
+                <a href="{{url()->previous()}}" class="back-button">back</a>
+                <h3>BIDDING LIST <span style="color:red;font-size:12px">(*Order by bid amount)</span></h3>
                 <hr class="business-address" />
 
                 <div class="form-settings">
-                    <form method="post" enctype="multipart/form-data" >
+                    @if(!empty($details) && count($details)!=0 )
+                        <div>
+                        @foreach($details as $detail)
+                        <div class="card">
 
-                        <label class="left-align">Product Name</label>
-                        <input type="text" name="product_name" disabled value="{{$details[0]['product']['product_name']  }}" placeholder="Product Name in English*" class="60per">
+                            <div class="inline-boxes row">
+                                <div class="col-md-2 col-sm-2 col-lg-42 col-12">
+                                    <div class="imageAvt">
+                                        <img src="{{url('assets/images/my-profile/'.$detail->user_details->profile_img)}}"
+                                            onerror="this.src='{{url('assets/images/frontend/user3.jpg')}}';" alt=""
+                                            srcset="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6 col-12">
+                                    <div class="details">
+                                        Buyer Name :  {{$detail->user_details->firstName .' '.$detail->user_details->lastName}} <br />
 
-                        <label class="left-align">User Name</label>
-                        <input type="text" name="product_name" disabled placeholder="Product Name in English*" class="60per" value="{{$details[0]['user_details']['firstName'] .' '.$details[0]['user_details']['lastName']   }}">
+                                        Buyer Email : {{$detail->user_details->email}} <br />
+                                        Bid Number : {{$detail->bid_number}}<br />
+                                        Quantity : {{$detail->quantity}}<br />
+                                        Bid Amount : <span style="color:#f2ae3d;text-transform: capitalize;">${{$detail->bid_amount}}</span><br />
+                                        Bid Date : {{$detail->createdDate}}
 
-                        <label class="left-align">Bid Number</label>
-                        <input type="text" value="{{$details[0]['bid_number']}}"  name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-lg-4 col-12">
+                                    <div class="status-wonorcloed">
+                                        <select onChange="changestatus('{{$detail->id}}','{{$detail->product->id}}','{{$detail->product->user_id}}')" name="bid_status" id="statuc_bid" class="hideborder">
+                                            <option value="won" <?php if($detail->bid_status==''){echo "selected";} ?>  > -Select-</option>
+                                            <option value="won" <?php if($detail->bid_status=='won'){echo "selected";} ?>  > Won</option>
+                                            <option value="closed" <?php if($detail->bid_status=='closed'){echo "selected";} ?>> Closed</option>
+                                            <option value="closed" <?php if($detail->bid_status=='lost'){echo "selected";} ?>> Lost</option>
+                                            <option value="closed" <?php if($detail->bid_status=='cancelled'){echo "selected";} ?>> Cancelled</option>
+                                        </select>
+                                        <br />
+                                        <div class="payment_status_bid">
+                                            Payment : <span style="color:#f2ae3d;text-transform: capitalize;">{{$detail->payment_status}}</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <label class="left-align">Quantity</label>
-                        <input type="text" value="{{$details[0]['quantity']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
-                        <label class="left-align">Bid Amount </label>
-                        <input type="text" value="{{$details[0]['bid_amount']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                            </div>
 
-                        <label class="left-align">Payment Status</label>
-                        <input type="text" value="{{$details[0]['payment_status']}}"  name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
-                        <label class="left-align">Bid Status</label>
-                        <input type="text" name="product_name" value="{{$details[0]['bid_status']}}"  disabled placeholder="Product Name in English*" class="60per">
+                        </div>
+                        
+                        @endforeach
+                            <div class="row hh">
+                            {{$details->render()}}
+                            </div>
 
-                     <!-- <label class="left-align">Status</label>
-                        <input type="text" value="{{$details[0]['status']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per"> -->
-
-                        <label class="left-align">Created Date & Time</label>
-                        <input type="text" name="product_name" value="{{$details[0]['createdDate']}}" disabled placeholder="Product Name in English*" class="60per">
-
-                    
-
-                               
-                    </form>
+                        </div>                   
+                    @else
+                    <div>
+                        <h1>
+                            No bid Yet
+                        </h1>
+                    </div>
+                    @endif
 
                 </div>
 
@@ -103,7 +131,37 @@
 
 @endsection
 @push('scripts')
+
+
 <script>
 
+function changestatus(id,product_id,seller_id){
+
+    var status_value=$('#statuc_bid').val();
+
+
+    console.log(id," ",product_id,"  ",seller_id)
+
+    $.ajax({
+        url: "{{url('update_status')}}"+'/'+id+'/'+product_id+'/'+seller_id+'/'+status_value,
+        type: "GET",
+        dataType: 'json',
+        success: function (response) {
+                if (response.success) {
+                    console.log("response",response);
+                    toastr.clear();
+                    toastr.success(response.message, { timeOut: 2000 });
+                    location.reload();
+                } else {
+                    toastr.clear();
+                    toastr.error(response.message, { timeOut: 2000 });
+                }
+            },
+        
+    });
+}
+
+
 </script>
+<!-- <script src="{{ asset('assets/js/frontend/product/bids-list.js') }}"></script> -->
 @endpush

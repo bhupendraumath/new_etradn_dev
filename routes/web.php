@@ -280,6 +280,11 @@ Route::group(
             'change-request',
             [RefundController::class, 'changeRequest']
         )->name('change-request');
+
+        Route::post(
+            'add-bid-placed',
+            [BidController::class, 'bidPlaced']
+        );
         
         Route::post(
             'create-refund-request',
@@ -361,11 +366,24 @@ Route::group(
             [BidController::class, 'BidPlacePost']
         )->name('BidPlacePost');
 
+        Route::post(
+            'buyerBidPlacePost',
+            [BidController::class, 'buyerBidPlacePost']
+        )->name('buyerBidPlacePost');
+
+        
         Route::get(
-            'view-details-bids/{id}',
+            'view-details-bids/{product_id}/{seller_id}',
             [BidController::class, 'view_details_bids']
         )->name('view_details_bids');
 
+
+        Route::get(
+            'update_status/{id}/{product_id}/{seller_id}/{status_value}',
+            [BidController::class, 'update_status']
+        )->name('update_status');
+
+        
 
         Route::get(
             'bids-placed',

@@ -117,4 +117,12 @@ mix.js('resources/js/app.js', 'public/js')
     ], 'public/assets/js/frontend/product/cat-product-list.js')
     .js([
         'resources/js/frontend/product/purchase-history-list.js'
-    ], 'public/assets/js/frontend/product/purchase-history-list.js');
+    ], 'public/assets/js/frontend/product/purchase-history-list.js')
+    .js([
+        'resources/js/frontend/product/add-bid-placed.js'
+    ], 'public/assets/js/frontend/product/add-bid-placed.js')
+    .js([
+        'resources/js/frontend/product/buyer-bids-list.js'
+    ], 'public/assets/js/frontend/product/buyer-bids-list.js')
+
+;

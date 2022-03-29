@@ -115,14 +115,139 @@ button.shipping-toggle:hover {
     display: none
 }
 
+label.color-black {
+    color: #333;
+    margin-left: 17px;
+}
+
+span.bid_hit {
+    margin-left: 107px;
+    color: #ffa301;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.modal.addbitplaced {
+    background: #0000006e;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    height: 100%
+}
+
+.inline-boxes {
+    display: flex;
+    /* margin-right: 38px; */
+}
+
+.details {
+    text-align: left;
+}
+
+.status-wonorcloed {
+    text-align: left;
+}
+
+.payment_status_bid {
+    margin-top: 87px;
+}
+
+button.btn.btn-secondary {
+    width: 128px;
+    background: black;
+}
+
+.modal-footer.add-css-changes {
+    display: flex;
+}
+
+label.change_style_family {
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 11px;
+}
+
+.payment-type {
+    border: 1px solid #80808057;
+    border-radius: 10px;
+    padding: 17px;
+}
+
+.modal-title {
+    font-size: 1.1em;
+    color: #212121;
+    font-family: 'Sary Soft - Semi Bold';
+    text-transform: capitalize !important;
+    font-weight: 700;
+    padding-left: 0;
+    letter-spacing: 0 !important;
+}
+
+div#myModalPayment {
+    background: #00000054;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+}
+
+select.hideborder {
+    border: none;
+    border-bottom: 1px solid #f2ae3d;
+    width: 100px;
+}
+
+.form-control[disabled],
+fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background: #8080800f;
+}
+
+a#cancel:hover {
+    border: 2px solid black;
+    color: black;
+}
+
+.inline-buttons {
+    display: inline-flex;
+}
+
+a#cancel:hover {
+    background: white;
+    border: #f3b145;
+    color: black
+}
+
+p#demo {
+    color: #ffa301
+}
+
+.form-group.form-md-line-input.form-md-floating-label.input-icon.counter-time {
+    /* text-align: left; */
+    float: right;
+    margin-right: 14px;
+}
+
+button#newUserButton:hover {
+    background: black;
+}
+
+span.bid_hit:hover {
+    color: black;
+}
+
 button#add_review {
-    width: 175px;
+    width: 140px;
     text-transform: uppercase;
     border: none;
+    font-size: 15px;
     background: #ffa301;
     /* padding: 10px; */
     border-radius: 10px;
     outline: none;
+    font-size: bold;
+    font-weight: bold;
 }
 
 span.refund-policy-1.tooltip1 {

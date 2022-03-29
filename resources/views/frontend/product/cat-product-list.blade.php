@@ -175,27 +175,4 @@ $favoriteProduct=new App\Models\Product;
 
 
 <script>
-    // function addedFav(product_id,quantity_id){
-    //     $.ajax({
-    //         url: "{{url('add-in-fav-list')}}"+'/'+product_id+'/'+quantity_id,
-    //         type: "GET",
-    //         dataType: 'json',
-    //         success: function (response) {
-    //                 if (response.success) {
-    //                     toastr.clear();
-    //                     toastr.success(response.message, { timeOut: 2000 });
-    //                     location.reload();
-    //                 } else {
-    //                     toastr.clear();
-    //                     toastr.error(response.message, { timeOut: 2000 });
-    //                 }
-    //             },
-            
-    //     });
-
-    // }
-
-
-
-
 </script>

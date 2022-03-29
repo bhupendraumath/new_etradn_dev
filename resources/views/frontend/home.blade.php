@@ -210,7 +210,7 @@ Session::put('back_url', URL::full());
 
                                         <h4>{{$product->product_name}}</h4>
                                         @if(!empty($product->quantity))
-                                        <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                        <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
                                         @else
                                         <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                         @endif
@@ -308,7 +308,7 @@ Session::put('back_url', URL::full());
                                     <br/>
                                     <h4>{{$product->product_name}}</h4>
                                     @if(!empty($product->quantity))
-                                    <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                    <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
                                     @else
                                     <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                     @endif
@@ -466,7 +466,7 @@ Session::put('back_url', URL::full());
 
                                         <h4>{{$product->product_name}}</h4>
                                         @if(!empty($product->quantity))
-                                        <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                        <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
                                         @else
                                         <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                         @endif
@@ -562,7 +562,7 @@ Session::put('back_url', URL::full());
                                     <br/>
                                     <h4>{{$product->product_name}}</h4>
                                     @if(!empty($product->quantity))
-                                    <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                    <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
                                     @else
                                     <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                     @endif
@@ -766,7 +766,7 @@ Session::put('back_url', URL::full());
                                             <br/>
                                             <h4>{{$product->product_name}}</h4>
                                             @if(!empty($product->quantity))
-                                            <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                            <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
                                             @else
                                             <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                             @endif
@@ -890,7 +890,7 @@ Session::put('back_url', URL::full());
                                         <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
                                                 <h4>{{$product->product_name}}</h4>
                                                 @if(!empty($product->quantity))
-                                                <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - $product->quantity->discount}}</span></span>
+                                                <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
                                                 @else
                                                 <span><strike>$0</strike> &nbsp; <span> $0</span></span>
                                                 @endif

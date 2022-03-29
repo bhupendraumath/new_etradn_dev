@@ -38,7 +38,7 @@
                                $ {{$productvalue->quantity->price}}
                             </strike> &nbsp;
                              <span> $                                 
-                                 {{$productvalue->quantity->price - $productvalue->quantity->discount}}
+                                 {{$productvalue->quantity->price - ($productvalue->quantity->discount*$productvalue->quantity->price/100)}}
                                 
                              </span>
                     </span>

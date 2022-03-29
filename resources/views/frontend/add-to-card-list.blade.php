@@ -115,7 +115,8 @@
                     <div>
                         Please select Address <span style="color:red">*</span><br/><br/>
                         @foreach($address as $ads)
-                        <input type="radio" class="radio" id="{{$ads->id}}" name="fav_language" value="{{$ads->id}}">
+                        
+                        <input type="radio" <?php if($loop->index==0){ echo 'checked';}?> class="radio" id="{{$ads->id}}" name="fav_language" value="{{$ads->id}}">
                         <label class="label-address" for="{{$ads->id}}">{{$ads->name}},{{$ads->street_name}},{{$ads->address1}} ,{{$ads->city}}                      
                         </label>
                         <br>
@@ -166,7 +167,73 @@
         </div>
         @endif
         
+            <!-- Modal HTML -->
+    <div id="myModalPayment" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Choose a method of payment</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" style="color:black">
+                    <div class="payment-type">
+                        <h3>Payment Type</h3>
+                        <div class="custom-radio">
+                            <input type="radio" class="radio" id="cod" value="cod" name="payment_type">
+                            <label for="cod" class="change_style_family">Wire transfer /Cash on Delivery</label><br/>
+                            <input type="radio" class="radio"  id="bank" value="bank" name="payment_type">
+                            <label for="bank" class="change_style_family">BANK TRANSFER</label>
+                            <br/><br/>
+
+                            <div id="bank_list_div" class="row" style="display:none">
+                                <!--<h3>{AVAILABLE_BANKS}</h3>-->
+                                <h3 style="margin-left: 13px;">Available Banks</h3>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <img style="width: 100%; height: 55px;" src="https://etradn.com/admin-nct/modules-nct/bank-nct/bank_logo/auto-784000_960_720.jpg"> 
+                                    <p id="info_heading">bank Name: &nbsp;&nbsp; Test Bank</p>
+                                    <p id="info_heading">Account Name: &nbsp;&nbsp; Account 1</p>
+                                    <p id="info_heading">Account No: &nbsp;&nbsp; 12345678</p>
+                                    <p id="info_heading">Account Iban: &nbsp;&nbsp; asd23e</p>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <img style="width: 100%; height: 55px;" src="https://etradn.com/admin-nct/modules-nct/bank-nct/bank_logo/436860.jpg"> 
+                                    <p id="info_heading">bank Name: &nbsp;&nbsp; Test Bank</p>
+                                    <p id="info_heading">Account Name: &nbsp;&nbsp; Account 2</p>
+                                    <p id="info_heading">Account No: &nbsp;&nbsp; 1234567890</p>
+                                    <p id="info_heading">Account Iban: &nbsp;&nbsp; TEST123</p>
+                                </div>
+                            </div>
+                            <h3>Total Amount : ${{$total_amount}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer add-css-changes">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script src="{{ asset('assets/js/frontend/product/cart-list.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $(".pay").click(function(){
+            $("#myModalPayment").modal('show');
+        });
+    });
+
+    $('#bank').click(function(){
+        console.log("clickme")
+        $("#bank_list_div").attr("style", "display:block");
+
+    })
+
+    $('#cod').click(function(){
+        console.log("clickme")
+        $("#bank_list_div").attr("style", "display:none");
+
+    })
+    
+</script>
