@@ -27,11 +27,11 @@
                             </h4>
                             <div class="margin-top-padding">
                             <span>
-                            <i class="fas fa-user"></i>&nbsp;  pixer
+                            <i class="fas fa-user"></i>&nbsp;  {{Auth::user()->firstName}}
                             </span>   
                             <br/>                      
                             <span>
-                                <i class="far fa-envelope"></i> &nbsp;Taiba@gmail.com
+                                <i class="far fa-envelope"></i> &nbsp;{{Auth::user()->email}}
                             </span> <br/><br/>                           
 
                             </div>
@@ -45,7 +45,7 @@
                             <h4 class="review-dashbord">
                                MY FAVORITE PRODUCTS
                             </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">{{buyerFavoriteProductCount()}}</div><br />
                             <span class="view-more dashboard"><a href="{{route('favoriteProduct')}}">VIEW MORE</a></span>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                             <h4 class="review-dashbord">
                                 MY PLACED BIDS
                             </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">{{buyerBidPlacedCount()}}</div><br />
                             <span class="view-more dashboard"><a href="{{route('buyer.bidsPlaced')}}">VIEW MORE</a></span>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                             <h4 class="review-dashbord">
                                 MY PURCHASE HISTORY
                             </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">{{buyerOrderCount()}}</div><br />
                             <span class="view-more dashboard"><a href="{{route('buyer.purchaseHistory')}}">VIEW MORE</a></span>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                             <h4 class="review-dashbord">
                                 MY DELIVERY AREAS
                             </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number">{{sellerBusinessAddressCount('delivery')}}</div><br />
                             <span class="view-more dashboard"><a href="{{route('buyer.deliveryArea')}}">VIEW MORE</a></span>
                         </div>
                     </div>
@@ -85,7 +85,8 @@
                             <h4 class="review-dashbord">
                                 ACCOUNT SETTINGS
                             </h4>
-                            <div class="gray-number">0</div><br />
+                            <div class="gray-number"></div>
+                            <br />
                             <span class="view-more dashboard"><a href="{{route('buyer.buyerAccountSetting')}}">VIEW MORE</a></span>
                         </div>
                     </div>                    
