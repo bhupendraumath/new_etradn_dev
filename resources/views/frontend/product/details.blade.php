@@ -20,369 +20,383 @@ Session::put('back_url', URL::full());
 
     </div>
 </div>
+    <!-- banner-bootom-w3-agileits -->
+    <div class="banner-bootom-w3-agileits">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-12 col-sm-2 col-lg-2 col-xs-2">
 
-<!-- banner-bootom-w3-agileits -->
-<div class="banner-bootom-w3-agileits product-details">
-    <div class="container">
-        <div class="col-md-5 single-right-left ">
-            <div class="grid images_3_of_2" style="">
-                <div class="flexslider">
-
-                    <ul class="slides">
-
-                        @if(!empty($product_details))
-                            @foreach($product_details['image_many'] as $imgList)
-                            <li data-thumb="{{url('assets/images/product-images/'.$imgList->product_img)}}">
-                                <div class="thumb-image add-class"> 
-                                <img src="{{url('assets/images/product-images/'.$imgList->product_img)}}" data-imagezoom="true" class="img-responsive" onerror="this.src='{{url('assets/images/default.png')}}';">
-                                 </div>
-                            </li>
-                            @endforeach
-                          
-                        @else
-
-                        
-                        <li data-thumb="{{url('assets/images/product-images/NicePng_rakhi-clipart-png_3611849.png')}}">
-                            <div class="thumb-image add-class"> <img src="{{url('assets/images/product-images/NicePng_rakhi-clipart-png_3611849.png')}}" onerror="this.src='{{url('assets/images/default.png')}}';" data-imagezoom="true" class="img-responsive"> </div>
-                        </li>
-                        @endif
-                    </ul>
-
-                    <div class="clearfix"></div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-6 single-right-left simpleCart_shelfItem">
-            <h3 class="product-details-heading">{{$product_details['product_name']}}  
-                
-            @if($product_details->want_to_list=='bo' ||$product_details->want_to_list=='a')
+                <div class="col-md-4 col-12 col-sm-4 col-lg-4 col-xs-12 single-right-left ">
+                    <div class="grid images_3_of_2" style="">
+                        <div class="flexslider">
 
-            @if(Auth::user())
-            <a href="#" data-toggle="modal" title="Place bid" data-target="#newUser" id="openNewUserModal">
-                <span class="bid_hit" title="Place bid"  onclick="bid_hit('{{$product_details->id}}','{{$product_details->bid_amount}}','{{$product_details->bid_ending_datetime}}')"><i class="fa fa-gavel"></i> </span>
-            </a>
-            @else
-
-            <a href="#" title="Place bid">
-                <span class="bid_hit" title="Place bid"  onclick="swalPopup()"><i class="fa fa-gavel"></i> </span>
-            </a>
-
-            @endif
-           
-            @endif
+                            <ul class="slides">
+								@if(!empty($product_details))
+								@foreach($product_details['image_many'] as $imgList)
+								<li data-thumb="{{url('assets/images/product-images/'.$imgList->product_img)}}">
+									<div class="thumb-image add-class"> 
+									<img src="{{url('assets/images/product-images/'.$imgList->product_img)}}" data-imagezoom="true" class="img-responsive" onerror="this.src='{{url('assets/images/default.png')}}';">
+									</div>
+								</li>
+								@endforeach
+							
+								@else
+							
+								<li data-thumb="{{url('assets/images/product-images/NicePng_rakhi-clipart-png_3611849.png')}}">
+									<div class="thumb-image add-class"> <img src="{{url('assets/images/product-images/NicePng_rakhi-clipart-png_3611849.png')}}" onerror="this.src='{{url('assets/images/default.png')}}';" data-imagezoom="true" class="img-responsive"> </div>
+								</li>
+								@endif
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 col-sm-6 col-lg-6 col-xs-12 single-right-left simpleCart_shelfItem">
+                    <h3 class="product-details-heading">{{$product_details['product_name']}}  
+                    
+                    @if($product_details->want_to_list=='bo' ||$product_details->want_to_list=='a')
         
-        </h3>
-            <p class="product-details-page">{{$product_details['product_desc']}}</p>
-            <p>            
-            {{--<input type="hidden" id="rating_value" value="{{$product_details->review[0]['rating']}}">--}}
-            <div class="rating1">
-                <div class="mb-3">
-                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
-                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
-                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
-                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
-                    <i class="fa fa-star star-light mr-1 main_star_1"></i>
-                </div>
-            </div>
-
-            <span class="item_price"><b>PRICE:</b> &nbsp;
-            <del>
-                ${{$product_details->quantity->price}} &nbsp;</del>
+                    @if(Auth::user())
+                    <a href="#" data-toggle="modal" title="Place bid" data-target="#newUser" id="openNewUserModal">
+                        <span class="bid_hit" title="Place bid"  onclick="bid_hit('{{$product_details->id}}','{{$product_details->bid_amount}}','{{$product_details->bid_ending_datetime}}')"><i class="fa fa-gavel"></i> </span>
+                    </a>
+                    @else
+        
+                    <a href="#" title="Place bid">
+                        <span class="bid_hit" title="Place bid"  onclick="swalPopup()"><i class="fa fa-gavel"></i> </span>
+                    </a>
+        
+                    @endif
                 
+                    @endif
                 
-                &nbsp;&nbsp;
-                    <b id="modify_price">
-                    ${{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}</b> </span> </p>
-
-                    <input type="hidden" id="price_with_discount" value="{{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}">
-             <div class="row">
-                <div class="col-md-2 col-6 col-sm-2 col-xs-5">
-                        <div class="quantity buttons_added">
-                        <input type="number" step="1" min="1" max="{{$product_details->quantity->quantity}}" name="quantity" value="1" title="Qty" class="input-text qty text numberofdigits" size="4" pattern="" inputmode="" id="selected_qty">
-                        <input type="button" value="-" class="minus button_minus" id="minus">
-                        <input type="button" value="+" class="plus button_plus" id="plus">
+                    </h3>
+        
+                    <p class="product-details-page">{{$product_details['product_desc']}}</p>
+                    <p>            
+                    {{--<input type="hidden" id="rating_value" value="{{$product_details->review[0]['rating']}}">--}}
+                    <div class="rating1">
+                        <div class="mb-3">
+                            <i class="fa fa-star star-light mr-1 main_star_1"></i>
+                            <i class="fa fa-star star-light mr-1 main_star_1"></i>
+                            <i class="fa fa-star star-light mr-1 main_star_1"></i>
+                            <i class="fa fa-star star-light mr-1 main_star_1"></i>
+                            <i class="fa fa-star star-light mr-1 main_star_1"></i>
+                        </div>
+                    </div>
+        
+                    <span class="item_price"><b>PRICE:</b> &nbsp;
+                    <del>
+                        ${{$product_details->quantity->price}} &nbsp;</del>
                         
-                    </div>
-                </div>
-
-
-                <div class="col-md-10 col-12 col-sm-12 col-xs-7">
-                    <div class="occasion-cart">
-                        <div class="snipcart-details top_brand_home_details item_add single-item button2">
-            
-                            <form action="#" id="addCartProductFrm" method="post">
-                                <fieldset>
-                                    @php
-                                        $user=Auth::user();
-                                    @endphp
-
-                                    @if(!empty($user))
-                                    <input type="hidden" name="customer_id" value="{{Auth::user()->id}}">
-                                    <input type="hidden" name="seller_id" value="{{$product_details->user_id}}">
-                                    <input type="hidden" name="product_id" value="{{$product_details->id}}">
-                                    <input type="hidden" name="paq_id" value="{{$product_details->quantity->id}}">
-                                    <input type="hidden" name="attribute_ids" value="{{$product_details->quantity->id}}">
-                                    <input type="hidden" name="attribute_value_ids" value="{{$product_details->quantity->id}}">
-                                    <input type="hidden" name="quantity" value="1" id="hiddenqty">
-                                    <input type="hidden" name="price" value="{{$product_details->quantity->price}}">
-                                    <input type="hidden" name="discount" value="{{$product_details->quantity->discount}}">
-                                    <input type="hidden" name="pro_condition" value="{{$product_details->quantity->condition_id}}">
-                                    <input type="hidden" name="is_checkout" value="n">
-                                    <input type="hidden" name="selling_type" value="{{$product_details->want_to_list}}">
-                                    <input type="hidden" name="is_delete" value="n">
-                                    <input type="hidden" name="action" value="n">
-                                    <input type="hidden" name="product_array" value="{{$product_details}}">
-                                    <input type="hidden" name="ip_address" value="0000">
-                                    <input type="hidden" name="createdDate" value="{{Carbon::now()}}">
-                                    <input type="hidden" name="updatedDate" value="{{Carbon::now()}}">
-                                   
-                                    <input type="submit" name="submit" id="addCartProduct" value="Add to cart" class="button">
-                                    
-                                    @else
-                                    <input type="button" name="submit" onclick="checkSwal(event)" value="Add to cart" class="button">
-                                    @endif
-
-                                </fieldset>
-                            </form>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            
-
-
-            <span class="item_price"><b>SKU:</b> &nbsp; IFF_grapes_186</span> <br />
-            <span class="item_price"><b>Category:</b> &nbsp; <span class="uppercase">{{$product_details['category']['categoryName']}}</span></span><br />
-            <!-- <span class="item_price"><b>Tags:</b> &nbsp; Casual, Fashion, Loose, Stylish</span> -->
-                
-            <?php $user=Auth::user(); ?>
-            @if(!empty($user))
-            <input type="hidden" value="{{$user}}" id="user_details">
-            <input type="hidden" value="{{$user->id}}" id="user_id">
-            @endif
-            <input type="hidden" value="{{$product_details->id}}" id="product_id">
-            <input type="hidden" value="{{$product_details->user_id}}" id="seller_id">
-            
-            <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
-                <li class="share">SOCIAL MEDIA SHARE : </li>
-                <li><a href="#">
-                        <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-                        <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-                        <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                        <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-                    </a></li>
-
-            </ul>
-
-        </div>
-        <div class="clearfix"> </div>
-        <!-- /new_arrivals -->
-
-        <div class="container">
-
-            <div class="responsive_tabs_agileits">
-                <div id="horizontalTab">
-                    <ul class="resp-tabs-list">
-                        <li>Description</li>
-                        <li>Reviews</li>
-                        <li>Seller Information</li>
-                    </ul>
-                    <div class="resp-tabs-container">
-                        <!--/tab_one-->
-                        <div class="tab1">
-
-                            <div class="single_page_agile_its_w3ls">
-                                <h3 class="description-policy"> WARRANTY - </h3>
-                                <p>{{$product_details['warranty_desc']}}</p>
-
-                                <br/>
-                                <br/>
-                                <br/>
-
-                                <h3 class="description-policy"> REFUND POLICY - </h3>
-                                <!-- <h6>Lorem ipsum dolor sit amet</h6> -->
-                                @if($product_details['refund_request']=='y')
-                                <div>
-                                    <b>Replacement Day's :</b> {{$product_details['number_of_days']}}
-                                    <br/>
-                                    <p>{{$product_details['policy_description']}}</p>
-                                </div>
-                                @else
-                                <p>Refund Policy Not Available</p>
-                                @endif
-                               
+                        
+                        &nbsp;&nbsp;
+                            <b id="modify_price">
+                            ${{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}</b> </span> </p>
+        
+                            <input type="hidden" id="price_with_discount" value="{{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}">
+                    <div class="row">
+                        <div class="col-md-2 col-6 col-sm-2 col-xs-5">
+                                <div class="quantity buttons_added">
+                                <input type="number" step="1" min="1" max="{{$product_details->quantity->quantity}}" name="quantity" value="1" title="Qty" class="input-text qty text numberofdigits" size="4" pattern="" inputmode="" id="selected_qty">
+                                <input type="button" value="-" class="minus button_minus" id="minus">
+                                <input type="button" value="+" class="plus button_plus" id="plus">
+                                
                             </div>
                         </div>
-                        <!--//tab_one-->
-                        <div class="tab2">
-                            <div class="card">
-                            
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-4 text-center">
-                                            <h1 class="text-warning mt-4 mb-4">
-                                                <b><span id="average_rating">0.0</span> / 5</b>
-                                            </h1>
-                                            <div class="mb-3">
-                                                <i class="fa fa-star star-light mr-1 main_star"></i>
-                                                <i class="fa fa-star star-light mr-1 main_star"></i>
-                                                <i class="fa fa-star star-light mr-1 main_star"></i>
-                                                <i class="fa fa-star star-light mr-1 main_star"></i>
-                                                <i class="fa fa-star star-light mr-1 main_star"></i>
-                                            </div>
-                                            <h3><span id="total_review">0</span> Review</h3>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <p>
-                                                <div class="row">
-                                                    <div class="col-4 col-sm-3 center-text">
-                                                        <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i></div>
-                                                    </div>                                               
-                                                    <div class="col-7 col-sm-7">
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="five_star_progress"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 col-sm-2">
-                                                        <div class="progress-label-right">(<span id="total_five_star_review">0</span>)</div>
-                                                    </div>
-                                                </div>
-                                            </p>
-
-                                            <p>
-                                                <div class="row">
-                                                    <div class="col-4 col-sm-3 center-text">
-                                                        <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i></div>
-                                                    </div>
-                                                    
-                                                    <div class="col-7 col-sm-7">
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="four_star_progress"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 col-sm-2">
-                                                        <div class="progress-label-right">(<span id="total_four_star_review">0</span>)</div>
-                                                    </div>
-                                                </div>
-                                            </p>
-                                            <p>
-                                                <div class="row">
-                                                    <div class="col-4 col-sm-3 center-text">
-                                                        <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i></div>
-                                                    </div>
-                                                    <div class="col-7 col-sm-7">
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="three_star_progress"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 col-sm-2">
-                                                        <div class="progress-label-right">(<span id="total_three_star_review">0</span>)</div>
-                                                    </div>
-                                                </div>
-                                            </p>
-
-                                            <p>
-                                                <div class="row">
-                                                    <div class="col-4 col-sm-3 center-text">
-                                                        <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i></div>
-                                                    </div>
-                                                    <div class="col-7 col-sm-7">
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="two_star_progress"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 col-sm-2">
-                                                        <div class="progress-label-right">(<span id="total_two_star_review">0</span>)</div>
-                                                    </div>
-                                                </div>
-                                            </p>
-
-                                            <p>
-                                                <div class="row">
-                                                    <div class="col-4 col-sm-3 center-text">
-                                                        <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i></div>
-                                                    </div>                                               
-                                                    <div class="col-7 col-sm-7">
-                                                        <div class="progress ">
-                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="one_star_progress"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 col-sm-2">
-                                                        <div class="progress-label-right">(<span id="total_one_star_review">0</span>)</div>
-                                                    </div>
-                                                </div>
-                                            </p>
+        
+        
+                        <div class="col-md-10 col-12 col-sm-12 col-xs-7">
+                            <div class="occasion-cart">
+                                <div class="snipcart-details top_brand_home_details item_add single-item button2">
+                    
+                                    <form action="#" id="addCartProductFrm" method="post">
+                                        <fieldset>
+                                            @php
+                                                $user=Auth::user();
+                                            @endphp
+        
+                                            @if(!empty($user))
+                                            <input type="hidden" name="customer_id" value="{{Auth::user()->id}}">
+                                            <input type="hidden" name="seller_id" value="{{$product_details->user_id}}">
+                                            <input type="hidden" name="product_id" value="{{$product_details->id}}">
+                                            <input type="hidden" name="paq_id" value="{{$product_details->quantity->id}}">
+                                            <input type="hidden" name="attribute_ids" value="{{$product_details->quantity->id}}">
+                                            <input type="hidden" name="attribute_value_ids" value="{{$product_details->quantity->id}}">
+                                            <input type="hidden" name="quantity" value="1" id="hiddenqty">
+                                            <input type="hidden" name="price" value="{{$product_details->quantity->price}}">
+                                            <input type="hidden" name="discount" value="{{$product_details->quantity->discount}}">
+                                            <input type="hidden" name="pro_condition" value="{{$product_details->quantity->condition_id}}">
+                                            <input type="hidden" name="is_checkout" value="n">
+                                            <input type="hidden" name="selling_type" value="{{$product_details->want_to_list}}">
+                                            <input type="hidden" name="is_delete" value="n">
+                                            <input type="hidden" name="action" value="n">
+                                            <input type="hidden" name="product_array" value="{{$product_details}}">
+                                            <input type="hidden" name="ip_address" value="0000">
+                                            <input type="hidden" name="createdDate" value="{{Carbon::now()}}">
+                                            <input type="hidden" name="updatedDate" value="{{Carbon::now()}}">
                                         
-                                        </div>
-                                        <div class="col-sm-4 text-center">
-                                            <!-- <h3 class="mt-4 mb-3">Write Your Review Here</h3> -->
-                                            <?php $user=Auth::user();?>
-                                        {{-- @if(!empty($user))--}}
-                                            <button type="button" name="add_review" id="add_review" class="btn btn-primary">Your Review</button>
-                                        {{-- @else
-                                            <button type="button" name="add_review"  class="btn btn-primary" onclick="confirm('Please login before giving your review and rating...')"><a href="{{route('login')}}">Your Review</a></button>
-                                            @endif --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-5" id="review_content"></div>
-                        </div>
-                        <div class="tab3">
-
-                            <div class="single_page_agile_its_w3ls">
-
-                            <div class="card">
-
-                                <div class="inline-boxes row">
-                                    <div class="col-md-2 col-sm-2 col-lg-42 col-12">
-                                        <div class="imageAvt">
-                                            <img src="{{url('assets/images/logo/'.$product_details->user_information['business_logo'])}}"
-                                                onerror="this.src='{{url('assets/images/logo/bigbasket.png')}}';" alt=""
-                                                srcset="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-lg-6 col-12">
-                                        <div class="details change-font-syle-here">
-                                             Business Name :  {{$product_details->user_information['business_name']}}<br/>
-
-                                            Email :  {{$product_details->user_information['email']}}<br />
-                                            Delivery Areas :- <br />
-                                            <ul class="change-ul-style">
-                                                @foreach($product_details->user_delivery_address as $address)
-                                                <li>{{$address->name}}, {{$address->state}}, {{$address->country}}</li>
-                                                @endforeach
-                                            </ul>
+                                            <input type="submit" name="submit" id="addCartProduct" value="Add to cart" class="button">
                                             
-
-                                        </div>
-                                    </div>
-                                  
-
-
+                                            @else
+                                            <input type="button" name="submit" onclick="checkSwal(event)" value="Add to cart" class="button">
+                                            @endif
+        
+                                        </fieldset>
+                                    </form>
+        
                                 </div>
-
-
-                                </div>
+        
                             </div>
                         </div>
                     </div>
+        
+                    
+        
+        
+                    <span class="item_price"><b>SKU:</b> &nbsp; IFF_grapes_186</span> <br />
+                    <span class="item_price"><b>Category:</b> &nbsp; <span class="uppercase">{{$product_details['category']['categoryName']}}</span></span><br />
+                    <!-- <span class="item_price"><b>Tags:</b> &nbsp; Casual, Fashion, Loose, Stylish</span> -->
+                        
+                    <?php $user=Auth::user(); ?>
+                    @if(!empty($user))
+                    <input type="hidden" value="{{$user}}" id="user_details">
+                    <input type="hidden" value="{{$user->id}}" id="user_id">
+                    @endif
+                    <input type="hidden" value="{{$product_details->id}}" id="product_id">
+                    <input type="hidden" value="{{$product_details->user_id}}" id="seller_id">
+                    
+                    <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
+                        <li class="share">SOCIAL MEDIA SHARE : </li>
+                        <li><a href="#">
+                                <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                            </a></li>
+                        <li><a href="#">
+                                <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                            </a></li>
+                        <li><a href="#">
+                                <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                                <div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+                            </a></li>
+        
+                    </ul>
                 </div>
             </div>
-            <!-- //new_arrivals -->
-            <!--/slider_owl-->
+
+            <div class="clearfix"> </div>
+            <!-- /new_arrivals -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-12 col-xs-12" >
+                        <div class="responsive_tabs_agileits">
+                            <div id="horizontalTab">
+                                <ul class="resp-tabs-list">
+                                    <li>Description</li>
+                                    <li>Reviews</li>
+                                    <li>Seller Information</li>
+                                </ul>
+
+                                <div class="resp-tabs-container">
+                            <!--/tab_one-->
+                            <div class="tab1">
+
+                                <div class="single_page_agile_its_w3ls">
+                                    <h3 class="description-policy"> WARRANTY - </h3>
+                                    <p>{{$product_details['warranty_desc']}}</p>
+
+                                    <br/>
+                                    <br/>
+                                    <br/>
+
+                                    <h3 class="description-policy"> REFUND POLICY - </h3>
+                                    <!-- <h6>Lorem ipsum dolor sit amet</h6> -->
+                                    @if($product_details['refund_request']=='y')
+                                    <div>
+                                        <b>Replacement Day's :</b> {{$product_details['number_of_days']}}
+                                        <br/>
+                                        <p>{{$product_details['policy_description']}}</p>
+                                    </div>
+                                    @else
+                                    <p>Refund Policy Not Available</p>
+                                    @endif
+                                
+                                </div>
+                            </div>
+                            <!--//tab_one-->
+                            <div class="tab2">
+                                <div class="card">
+                                
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center">
+                                                <h1 class="text-warning mt-4 mb-4">
+                                                    <b><span id="average_rating">0.0</span> / 5</b>
+                                                </h1>
+                                                <div class="mb-3">
+                                                    <i class="fa fa-star star-light mr-1 main_star"></i>
+                                                    <i class="fa fa-star star-light mr-1 main_star"></i>
+                                                    <i class="fa fa-star star-light mr-1 main_star"></i>
+                                                    <i class="fa fa-star star-light mr-1 main_star"></i>
+                                                    <i class="fa fa-star star-light mr-1 main_star"></i>
+                                                </div>
+                                                <h3><span id="total_review">0</span> Review</h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <p>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-3 center-text">
+                                                            <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i></div>
+                                                        </div>                                               
+                                                        <div class="col-7 col-sm-7">
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="five_star_progress"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2 col-sm-2">
+                                                            <div class="progress-label-right">(<span id="total_five_star_review">0</span>)</div>
+                                                        </div>
+                                                    </div>
+                                                </p>
+
+                                                <p>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-3 center-text">
+                                                            <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i></div>
+                                                        </div>
+                                                        
+                                                        <div class="col-7 col-sm-7">
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="four_star_progress"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2 col-sm-2">
+                                                            <div class="progress-label-right">(<span id="total_four_star_review">0</span>)</div>
+                                                        </div>
+                                                    </div>
+                                                </p>
+                                                <p>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-3 center-text">
+                                                            <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i></div>
+                                                        </div>
+                                                        <div class="col-7 col-sm-7">
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="three_star_progress"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2 col-sm-2">
+                                                            <div class="progress-label-right">(<span id="total_three_star_review">0</span>)</div>
+                                                        </div>
+                                                    </div>
+                                                </p>
+
+                                                <p>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-3 center-text">
+                                                            <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i></div>
+                                                        </div>
+                                                        <div class="col-7 col-sm-7">
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="two_star_progress"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2 col-sm-2">
+                                                            <div class="progress-label-right">(<span id="total_two_star_review">0</span>)</div>
+                                                        </div>
+                                                    </div>
+                                                </p>
+
+                                                <p>
+                                                    <div class="row">
+                                                        <div class="col-4 col-sm-3 center-text">
+                                                            <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i></div>
+                                                        </div>                                               
+                                                        <div class="col-7 col-sm-7">
+                                                            <div class="progress ">
+                                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="one_star_progress"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2 col-sm-2">
+                                                            <div class="progress-label-right">(<span id="total_one_star_review">0</span>)</div>
+                                                        </div>
+                                                    </div>
+                                                </p>
+                                            
+                                            </div>
+                                            <div class="col-sm-4 text-center">
+                                                <!-- <h3 class="mt-4 mb-3">Write Your Review Here</h3> -->
+                                                <?php $user=Auth::user();?>
+                                            {{-- @if(!empty($user))--}}
+                                                <button type="button" name="add_review" id="add_review" class="btn btn-primary">Your Review</button>
+                                            {{-- @else
+                                                <button type="button" name="add_review"  class="btn btn-primary" onclick="confirm('Please login before giving your review and rating...')"><a href="{{route('login')}}">Your Review</a></button>
+                                                @endif --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-5" id="review_content"></div>
+                            </div>
+                            <div class="tab3">
+
+                                <div class="single_page_agile_its_w3ls">
+
+                                <div class="card">
+
+                                    <div class="inline-boxes row">
+                                        <div class="col-md-2 col-sm-2 col-lg-42 col-12">
+                                            <div class="imageAvt">
+                                                <img src="{{url('assets/images/logo/'.$product_details->user_information['business_logo'])}}"
+                                                    onerror="this.src='{{url('assets/images/logo/bigbasket.png')}}';" alt=""
+                                                    srcset="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-lg-6 col-12">
+                                            <div class="details change-font-syle-here">
+                                                Business Name :  {{$product_details->user_information['business_name']}}<br/>
+
+                                                Email :  {{$product_details->user_information['email']}}<br />
+                                                Delivery Areas :- <br />
+                                                <ul class="change-ul-style">
+                                                    @foreach($product_details->user_delivery_address as $address)
+                                                    <li>{{$address->name}}, {{$address->state}}, {{$address->country}}</li>
+                                                    @endforeach
+                                                </ul>
+                                                
+
+                                            </div>
+                                        </div>
+                                    
+
+
+                                    </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            </div>
+                          
+                        </div>
+                      
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-12 col-xs-12">
+                       
+
+                    </div>
+                </div>
+            </div>
+
         </div>
+        <!--//single_page-->
     </div>
-    
+ <!-- ---------------------------------------------------------------------- -->
  <!-- -------------------------------------------------------------- -->
 <!-- model here -->
 <div id="review_modal" class="modal model-review" tabindex="-1" role="dialog">
@@ -533,6 +547,11 @@ Session::put('back_url', URL::full());
 @endpush
 
     <script>
+
+
+
+
+
 
     function swalPopup(){
 

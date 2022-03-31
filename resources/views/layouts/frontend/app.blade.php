@@ -19,39 +19,7 @@
     @include('layouts/frontend/footer')
     @include('layouts/frontend/script')
     @stack('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script> -->
 </body>
-
-<script>
-    $(function() {
-        var availableTags = [
-            "Mobile Phone Repair",
-            "Sport Fields & Halls Contracting",
-            "Audio Records Trading",
-            "Sunglasses Trading",
-            "Spectacles & Contact Lenses Trading",
-            "Beauty & Personal Care Equipment Trading",
-            "Parties & Entertainments Services",
-            "Art Production Services",
-            "ColdFusion",
-            "Erlang",
-            "Fortran",
-            "Groovy",
-            "Haskell",
-            "Java",
-            "JavaScript",
-            "Lisp",
-            "Perl",
-            "PHP",
-            "Python",
-            "Ruby",
-            "Scala",
-            "Scheme"
-        ];
-        $("#searchProduct").autocomplete({
-            source: availableTags
-        });
-    });
-</script>
 
 </html>
