@@ -44,7 +44,7 @@
                                             <i class="fas fa-angle-double-right"></i>
                                     </span>
 
-                                    @if(Auth::user()->usertype=='s')
+                                    @if(Auth::user()->user_type=='s')
                                     <a href="{{url('view-details-bids/'.$productvalue->product_id.'/'.$user_id)}}">
                                     @else
                                     <a href="{{url('product-details/'.$productvalue->product_id)}}">

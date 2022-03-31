@@ -3,10 +3,15 @@
         @if(!empty($cart_details) && count($cart_details)!=0)
         <div class="row">
             <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
+                @php
+                $arr_cart_id=array();
+                @endphp
                 @foreach($cart_details as $detail)
                 <div class="row">
                     @php
-                    $index=$loop->index;
+                    $index=$loop->index;                   
+                    array_push($arr_cart_id,$detail->id);
+                    
                     @endphp
 
                     <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
@@ -151,9 +156,13 @@
                                     class="uppercase del">${{$total_amount}}</span></span><br />
                         </div>
                     </div>
-                    <button class="continue">
+                    <a href="{{url('/')}}">
+                    <button class="continue" >
+                       
                         Continue
                     </button>
+                    </a>
+
                     <button class="continue pay">
                         Pay
                     </button>
@@ -179,7 +188,7 @@
                     <div class="payment-type">
                         <h3>Payment Type</h3>
                         <div class="custom-radio">
-                            <input type="radio" class="radio" id="cod" value="cod" name="payment_type">
+                            <input type="radio" class="radio" checked id="cod" value="cod" name="payment_type">
                             <label for="cod" class="change_style_family">Wire transfer /Cash on Delivery</label><br/>
                             <input type="radio" class="radio"  id="bank" value="bank" name="payment_type">
                             <label for="bank" class="change_style_family">BANK TRANSFER</label>
@@ -208,8 +217,32 @@
                     </div>
                 </div>
                 <div class="modal-footer add-css-changes">
+                    <!-- <form action="">
+                        <input type="hidden" name="buyer_id" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="txn_id" value="{{'O-'.time()}}">
+                        <input type="hidden" name="txn_fee" value="0.00">
+                        <input type="hidden" name="payer_email" value="{{Auth::user()->email}}">
+                        <input type="hidden" name="receiver_email" value="">
+                        <input type="hidden" name="transaction" value="">
+                        <input type="hidden" name="order_number" value="{{'odr_'.time()}}">
+                        <input type="hidden" name="shipping_address" value="indore">
+                        <input type="hidden" name="admin_commission_per" value="5">
+
+                        <?php
+
+                            $admin_commision=$total_amount*5/100;
+                            $seller_amount=$total_amount-$admin_commision;
+                        ?>
+
+                        <input type="hidden" name="admin_commission" value="{{$admin_commision}}">
+                        <input type="hidden" name="seller_amount" value="{{$seller_amount}}">
+                        <input type="hidden" name="shipping_address" value="indore">
+                    </form> -->
+                    @if(!empty($cart_details) && count($cart_details)!=0)
+                    <input type="hidden" id="arr_value_ids" value="<?php echo json_encode($arr_cart_id); ?>">
+                    @endif
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary" onclick="saveButton()">Place Order</button>
                 </div>
             </div>
         </div>
@@ -224,14 +257,61 @@
         });
     });
 
+    var payment_type="cod";
+    var shipping_address='indore';
+
+    function saveButton(){
+        console.log(" payment_type " ,payment_type)
+        var arr=$('#arr_value_ids').val();
+
+             $.ajax({
+                url: "{{url('order-product')}}",
+                type: "POST",
+                data: {
+                    car_ids_arr: arr,
+                    payment_type:payment_type,
+                    shipping_address:shipping_address
+                },
+                processData: true,
+                contentType: false,
+                headers: {
+                    'X-CSRF-Token': $('meta[name="_token"]').attr('content'),
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                },
+                dataType: 'JSON',
+                cache: false,
+                success: function success(response) {
+                    console.log("response   ",response)
+                    toastr.clear();
+                    // btn.html('Save');
+                    toastr.success(response.message, { timeOut: 1000 });
+                    aftercheckout();
+                    window.location.reload();
+
+
+
+                },
+                error: function error(data) {
+                    toastr.clear();
+                    toastr.error(response.message, { timeOut: 1000 });
+                    aftercheckout();
+                    window.location.reload();
+
+                }
+            });
+    }
+
     $('#bank').click(function(){
         console.log("clickme")
+        payment_type="bank";
         $("#bank_list_div").attr("style", "display:block");
+
 
     })
 
     $('#cod').click(function(){
         console.log("clickme")
+        payment_type="cod";
         $("#bank_list_div").attr("style", "display:none");
 
     })

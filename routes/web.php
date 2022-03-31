@@ -330,6 +330,13 @@ Route::group(
             [CartController::class, 'cartDelete']
         )->name('cartDelete');
 
+
+        Route::POST(
+            'order-product',
+            [CartController::class, 'orderProduct']
+        )->name('orderProduct');
+        
+
         Route::POST(
             'cart-add',
             [CartController::class, 'cartAdd']

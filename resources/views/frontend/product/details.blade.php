@@ -432,7 +432,7 @@ Session::put('back_url', URL::full());
                           Minimum Bid Amount ($)
                         </label>
 
-                        <input type="text" value="{{$product_details->bid_amount}}" name="minimum_amount"   class="form-control">
+                        <input type="text" disabled value="{{$product_details->bid_amount}}" name="minimum_amount"   class="form-control">
 
                         <input type="hidden" value="{{$product_details->id}}" name="product_id" >
 
@@ -485,7 +485,7 @@ Session::put('back_url', URL::full());
                   Cancel
                 </a>
                 
-                <button type="submit" class="btn btn-primary"  id="newUserButton">
+                <button type="submit"  class="btn btn-primary"  id="newUserButton">
                    Save
                 </button>
               </div>
@@ -558,6 +558,8 @@ Session::put('back_url', URL::full());
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("demo").innerHTML = "EXPIRED";
+            $('#newUserButton').prop('disabled', true);
+
         }
         }, 1000);
     }

@@ -89,6 +89,7 @@ class BidController extends Controller
 
                 $bindlist = Bids::where('seller_id', Auth::user()->id)
                 ->groupBy('product_id')
+                ->orderBy('id','desc')
                 ->paginate($request->record);
 
 
@@ -138,6 +139,7 @@ class BidController extends Controller
 
                 $bindlist = Bids::where('user_id', Auth::user()->id)
                 ->groupBy('product_id')
+                ->orderBy('id','desc')
                 ->paginate($request->record);
 
                     

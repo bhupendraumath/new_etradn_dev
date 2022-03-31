@@ -1,13 +1,15 @@
 @if($productlist)
 @foreach($productlist as $list)
 
+
 @if(!empty($list))
 <div class="row ">
 
     @php
 
+
     $index=$loop->index;
-    $product_details_1=$list->get_order_items->product_detail_1;
+    $product_details_1=$list->product_detail_1;
     $encode=json_encode($product_details_1);
     $decode=json_decode($encode,true);
 
@@ -36,7 +38,9 @@
     $image_upload=$upload_image->imageProductById($product_id);
 
     $product_detials=new App\Models\Product;
-    $product_detial=$product_detials->productById($product_id)
+    $product_detial=$product_detials->productById($product_id);
+
+
     @endphp
 
 
@@ -57,14 +61,17 @@
                         <div>
                             <a href="{{url('product-details/'.$product_id)}}" title="Refund request status">
 
-                            @if(!empty($list->get_order_items->refund_request_details))
+
+                            @if(!empty($list->seller_approval_status))
+
+                        
                                 <span class="left-buy-it" >
-                                        @if($list->get_order_items->refund_request_details->seller_approval_status==1)
+                                        @if($list->seller_approval_status==1)
                                        
                                         <span class="accepted-request">
                                             Request Accepted
                                         </span>
-                                        @elseif($list->get_order_items->refund_request_details->seller_approval_status==2)
+                                        @elseif($list->seller_approval_status==2)
                                         <span class="rejected-request">
                                         Request Rejected
                                         </span>
@@ -115,11 +122,11 @@
 
 
             <div class="color-size">
-                <b class="normal-style">Inventory : </b>{{$list->get_order_items->quantity}}
+                <b class="normal-style">Inventory : </b>{{$list->quantity}}
                 <br />
                 <b class="normal-style">ORDER ID : </b>
 
-                <span class="order-number tooltip1">{{$list->get_order_items->order_number}} &nbsp;
+                <span class="order-number tooltip1">{{$list->order_number}} &nbsp;
                     <button class="circle-?">?</button>
                     <div class="tooltiptext">
                         <div class="order-information">
@@ -141,8 +148,8 @@
                 </span><br />
 
                 <b class="normal-style">Seller Name : </b>
-
-                <span>{{$list->get_order_items->seller_details_in_details->firstName.' '.$list->get_order_items->seller_details_in_details->lastName}}
+                
+                <span>{{$list->firstName.' '.$list->lastName}}
                 </span><br />
 
                 <b class="normal-style">Transaction Date: </b>
@@ -150,12 +157,12 @@
 
                 <b class="normal-style">Purchased Via: </b>
                 <span>
-                    @if(!empty($list->get_order_items))
-                    @if($list->get_order_items->selling_type=="b")
+                    @if(!empty($list->selling_type))
+                    @if($list->selling_type=="b")
                     Buy it now
-                    @elseif($list->get_order_items->selling_type=="a")
+                    @elseif($list->selling_type=="a")
                     Auction
-                    @elseif($list->get_order_items->selling_type=="bo")
+                    @elseif($list->selling_type=="bo")
                     Both
                     @endif
                     @else
@@ -235,7 +242,7 @@
                     @php
                     $index=$loop->index;
 
-                        $date = $list->get_order_items->createdDate;
+                        $date = $list->createdDate;
 
                         $replacement_days=$product_detial->number_of_days;
                         $order_date=date('Y-m-d', strtotime($date));
@@ -252,8 +259,15 @@
                         }
                     @endphp
 
-                    @if(empty($list->get_order_items->refund_request_details))
-                        @if($expiry)
+                    
+                    @if(($list->seller_approval_status>=0))
+                       
+                    <button disabled class="refundRequestBtn" style="color:blue">
+                        Sent Refund Request
+                    </button>
+
+                    @else
+                       @if($expiry)
                         <span class="refund-policy-1 tooltip1">
                             Send Refund Request <i class="fa fa-angle-up"></i>
 
@@ -272,18 +286,14 @@
                             </div>
 
                         </span>
+
+                        
                         @else
-                            <button onclick="modelOpen('{{$product_id}}','{{$list->get_order_items->cart_id}}','{{$list->id}}')"
+                            <button onclick="modelOpen('{{$product_id}}','{{$list->cart_id}}','{{$list->id}}')"
                             class="refundRequestBtn">
                             Send Refund Request
                             </button>
                         @endif
-                
-
-                    @else
-                    <button disabled class="refundRequestBtn" style="color:blue">
-                        Sent Refund Request
-                    </button>
                     @endif
 
                 </span>
@@ -303,21 +313,21 @@
                 <div class="shipping-menu" id="shipping_toggle-{{$index}}">
                     
                     <div class="track">
-                        <div class="step <?php if($list->get_order_items->delivery_status =='p' || $list->get_order_items->delivery_status =='s'||$list->get_order_items->delivery_status =='d'){echo 'active';} ?>"> 
+                        <div class="step <?php if($list->delivery_status =='p' || $list->delivery_status =='s'||$list->delivery_status =='d'){echo 'active';} ?>"> 
                             <span class="icon">
                             <i class="fa fa-user"></i> 
                             </span>                             
                             <span class="text">Pending</span>
                         
                         </div>
-                        <div class="step <?php if($list->get_order_items->delivery_status =='s'||$list->get_order_items->delivery_status =='d'){echo 'active';} ?>"> 
+                        <div class="step <?php if($list->delivery_status =='s'||$list->delivery_status =='d'){echo 'active';} ?>"> 
                             <span class="icon"> 
                             <i class="fa fa-check"></i> 
                             </span>
                             <span class="text">Shipped</span>
                         </div>   
                         
-                        <div class="step <?php if($list->get_order_items->delivery_status =='d'){echo 'active';} ?>">
+                        <div class="step <?php if($list->delivery_status =='d'){echo 'active';} ?>">
                             <span class="icon"> <i class="fa fa-truck"></i>
                             </span> <span class="text">Delivered </span>
                         </div>

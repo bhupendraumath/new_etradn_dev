@@ -101,9 +101,15 @@ function getRefundRequest(pageno, records) {
 var pageno = 1;
 var records = 4;
 
-window.changeStatus = function changeStatus(ref_id) {
-    var selected = $("#seller_approve").val();
-    console.log('selected -', selected, 'ref_id -', ref_id);
+//window.changeStatus = function changeStatus(ref_id) {
+//$('#seller_approve').on('change', function() {
+$(document).on('change', "#seller_approve", function(e) {
+
+    var selected = this.value;
+    var ref_id = $(this).find(':selected').attr('data-rid')
+
+
+    console.log("----->", this.value, 'ref_id  ', ref_id)
 
     $.ajax({
         url: process.env.MIX_APP_URL + "/change-request",
@@ -121,18 +127,17 @@ window.changeStatus = function changeStatus(ref_id) {
         dataType: 'JSON',
         cache: false,
         success: function success(response) {
+
             toastr.clear();
-            // btn.html('Save');
             toastr.success(response.message, { timeOut: 1000 });
             getRefundRequest(pageno, records);
-
 
         },
         error: function error(data) {
             toastr.clear();
-            toastr.error(response.message, { timeOut: 1000 });
+            toastr.error(data.message, { timeOut: 1000 });
         }
     });
     // change-request
 
-}
+})

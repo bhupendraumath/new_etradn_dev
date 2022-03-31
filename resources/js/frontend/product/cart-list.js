@@ -108,7 +108,7 @@ function update(id, quantity_value) {
         cache: false,
         success: function success(response) {
             // console.log(response.data.completeSessionView);
-            return getProductlList();
+            return aftercheckout();
 
         },
         error: function error(data) {
@@ -153,7 +153,7 @@ function return_values(num, value_plus_or_minus) {
 }
 
 
-function getProductlList() {
+window.aftercheckout = function getProductlList() {
 
     $.ajax({
         url: process.env.MIX_APP_URL + "/cart-listing",
@@ -217,7 +217,7 @@ window.deleteCartProduct = function deleteCartProduct(id) {
             success: function success(response) {
                 toastr.success('Removed', { timeOut: 1000 });
                 setTimeout(function() {
-                    return getProductlList();
+                    return aftercheckout();
                 }, 1000);
 
 

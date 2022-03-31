@@ -9,8 +9,6 @@
 
 
         <div class="product col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4" data-id="aloe" data-category="green small medium africa">
-{{--
-        {{print_r($productvalue)}}--}}
 
                 <div class="images onhover-show-menus">
                     <div class="background-gray uploaded-image-edited">
@@ -49,10 +47,12 @@
                                         @endif
                                         <span title="Bid" class="hide"><i class="fa fa-gavel"></i>&nbsp;Bid 0</span>
 
-                                        <select  onchange="changeStatus({{$productvalue->ref_id}})" id="seller_approve" class="seller_status circle-select" title="Please accept or reject refund request">
-                                        <option value="0" >Pending</option>
-                                        <option value="1" <?php if($productvalue->seller_approval_status==1) echo "selected"; ?> >Accepted</option>
-                                        <option value="2" <?php if($productvalue->seller_approval_status==2) echo "selected"; ?>>Rejected</option>
+                                        <select  id="seller_approve" class="seller_status circle-select" title="Please accept or reject refund request">
+
+                                        <option value="0" data-rid="{{$productvalue->ref_id}}" <?php if($productvalue->seller_approval_status==0) echo "selected"; ?> >Pending</option>
+                                        <option value="1"  data-rid="{{$productvalue->ref_id}}" <?php if($productvalue->seller_approval_status==1) echo "selected"; ?>>Accepted</option>
+                                        <option value="2" data-rid="{{$productvalue->ref_id}}" <?php if($productvalue->seller_approval_status==2) echo "selected"; ?>>Rejected</option>
+
                                         </select>
                                 </div>                                
                                         
@@ -121,6 +121,9 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+
+
 
 </script>
 <script src="{{ asset('assets/js/frontend/product/refund-request-list.js') }}"></script>
