@@ -38,7 +38,7 @@
                             <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth  border-bottom">
 
                                 <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
-                                    <div class="background-gray rating new-size uploaded-image-edited">
+                                    <div class="background-gray rating seller new-size uploaded-image-edited">
                                         <img src="{{url('assets/images/product-images/'.$list->product->image->product_img)}}" onerror="this.src='{{url('assets/images/default.png')}}';" alt="" srcset=""/>
 
                                         <div class="hover-icons">
@@ -126,5 +126,5 @@
         // document.getElementById(`rating${rating_value}`).checked = true;
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script> -->
 @endsection

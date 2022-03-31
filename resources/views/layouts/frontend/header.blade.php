@@ -299,6 +299,34 @@
 								</ul>
 							</li>
 							<li class=" menu__item"><a class="menu__link" href="contact.html">Sell on</a></li>
+							<li class="menu__item dropdown languag-acoount">
+								<a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
+								<ul class="dropdown-menu agile_short_dropdown">
+									<li><a href="#">English</a></li>
+									<li><a href="#">Arabic</a></li>
+								</ul>
+							</li>
+
+							<!-- //rinky -->
+							<li class="menu__item dropdown languag-acoount">
+								<a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+
+								<ul class="dropdown-menu agile_short_dropdown">
+								@if(!empty(Auth::user()))
+									<li>
+										@if($user->user_type=='s')
+										<a href="{{route('seller.dashboard')}}">Dashboard</a>
+										@elseif($user->user_type=='b')
+										<a href="{{route('buyer.dashboard')}}">Dashboard</a>
+										@endif
+									</li>
+									<li><a href="{{route('logout')}}">Logout</a></li>
+								@else
+								<li><a href="{{route('login')}}">Login</a></li>
+
+								@endif
+								</ul>
+							</li>
 						</ul>
 					</div>
 				</div>

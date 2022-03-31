@@ -1076,6 +1076,7 @@ if(user_exists=='auth_required'){
 
 }
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script> -->
 
+<!-- <script src="{{url('assets/js/frontend/slick.js')}}"></script> -->
 @endpush

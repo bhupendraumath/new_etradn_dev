@@ -19,7 +19,7 @@
     @include('layouts/frontend/footer')
     @include('layouts/frontend/script')
     @stack('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script> -->
 </body>
 
 </html>

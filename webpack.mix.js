@@ -18,7 +18,7 @@ mix.js('resources/js/app.js', 'public/js')
     .scripts([
 
         'resources/js/frontend/jquery-2.1.4.min.js',
-        'resources/js/frontend/jquery-ui.js',
+        // 'resources/js/frontend/jquery-ui.js',
         'resources/js/frontend/bootstrap.js',
         'resources/js/frontend/easy-responsive-tabs.js',
         'resources/js/frontend/imagezoom.js',
@@ -27,11 +27,11 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/jquery.flexslider.js',
         'resources/js/frontend/jquery.waypoints.min.js',
         'resources/js/frontend/minicart.min.js',
-        // 'resources/js/frontend/modernizr.custom.js',
+        'resources/js/frontend/modernizr.custom.js',
         'resources/js/frontend/move-top.js',
         'resources/js/frontend/responsiveslides.min.js',
 
-
+        'resources/js/frontend/slick.js',
         'public/vendor/jsvalidation/js/jsvalidation.min.js',
         'resources/js/frontend/toastr.min.js',
         'resources/js/frontend/cropper.min.js',
@@ -44,6 +44,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/frontend/flexslider.css',
         'resources/css/frontend/easy-responsive-tabs.css',
         'resources/css/frontend/font-awesome.css',
+        // 'resources/css/frontend/all.css',
         'resources/css/frontend/toastr.min.css',
         // 'resources/css/frontend/team.css',
         'resources/css/frontend/cropper.min.css',
@@ -125,7 +126,8 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/product/buyer-bids-list.js'
     ], 'public/assets/js/frontend/product/buyer-bids-list.js')
     .js([
-        'resources/js/frontend/product/order-list.js'
-    ], 'public/assets/js/frontend/product/order-list.js')
-
-;
+        'resources/js/frontend/sweetalert.min.js'
+    ], 'public/assets/js/frontend/sweetalert.min.js')
+    // .js([
+    //     'resources/js/frontend/slick.js'
+    // ], 'public/assets/js/frontend/slick.js');
