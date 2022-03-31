@@ -91,6 +91,7 @@ Session::put('back_url', URL::full());
 
 {{--{{ $data }}--}} 
 
+
 <!-- //banner -->
 <div class="banner_bottom_agile_info">
     <div class="container-fluid  newclass">
@@ -1075,6 +1076,17 @@ if(user_exists=='auth_required'){
 
 
 }
+
+
+$.get("https://ipinfo.io/json", function (response) {
+    $("#ip").html("IP: " + response.ip);
+    $("#addressip").html("Location: " + response.city + ", " + response.region);
+    $("#detailsip").html(JSON.stringify(response, null, 4));
+
+    console.log("ocation  ",JSON.stringify(response, null, 4))
+}, "jsonp");
+
+
 </script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script> -->
 

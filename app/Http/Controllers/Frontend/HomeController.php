@@ -18,6 +18,10 @@ class HomeController extends Controller
     public function index()
     {
 
+        $details = json_decode(file_get_contents("http://ipinfo.io/"));
+        // print_r($details); // city 
+        // die;
+
         $list=Category::with(['category_based_product'])
         ->limit(4)
         ->get();

@@ -79,6 +79,19 @@ class ReviewController extends Controller
                             ]
                         );
                     }
+                    else{
+                        if($i==count($order_item)-1)
+                        return response()->json(
+                            [
+                                'success' => false,
+                                'message'=>'Order id not exist',
+                                'data' =>
+                                ['orderId'=>$order_id]
+                                
+                            ]
+                        );
+                    }
+                    
                    /* if($product_id==$request->productId){
 
                         $order_id=$order_item[$i]['id'];
