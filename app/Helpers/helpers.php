@@ -239,3 +239,21 @@ function buyerOrderCount()
         ]
     )->count();
 }
+
+/**
+ * Method sellerBusinessAddressCount
+ * 
+ * @return void
+ */
+function getSellerAddress()
+{
+    $userId = auth()->user()->id;
+    $address = Address::where(
+        [
+            'userId' => $userId,
+            'address_type' => 'shipping',
+            'isPrimary' => 'y'
+        ]
+    )->first();
+    return $address->address1 . ',' . $address->city . ',' . $address->state . ',' . $address->country . ',' . $address->zip_code;
+}

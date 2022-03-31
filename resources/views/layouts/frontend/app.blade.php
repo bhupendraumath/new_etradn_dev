@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-   
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Etradn') }}</title>
     @include('layouts/frontend/link')
-    
+
 </head>
 
 <body>
