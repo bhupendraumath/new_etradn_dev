@@ -37,6 +37,10 @@
     .modal-backdrop {
         z-index: 0 !important;
     }
+
+    .d-none {
+        display: none;
+    }
 </style>
 
 <div class="page-head_agile_info_w3l-seller-dashboard">
@@ -144,6 +148,17 @@
 
                                     <input type="radio" name="list_product" class="radio" value="bo" {{(isset($product->want_to_list)&&$product->want_to_list=='bo')? 'checked':''}}>
                                     <label for="both">Both</label>
+                                    <br>
+                                    <br>
+                                    <div class="list_productyes {{(isset($product->list_product)&&($product->list_product=='a' ||
+                                        $product->list_product=='bo'))? '':'d-none'}} ">
+                                        <label class="left-align">Min Bid Amount</label>
+                                        <input type="number" name="bid_amount" placeholder="Min Bid Amount" class="60per" value="{{(isset($product->bid_amount))?$product->bid_amount:''}}">
+
+                                        <label class="left-align">Bid Ending Date and Time</label>
+                                        <input type="datetime-local" name="bid_ending_date_time" placeholder="Bid Ending Date and Time" class="60per" value="{{(isset($product->bid_ending_date_time))?$product->bid_ending_date_time:''}}">
+                                    </div>
+
                                 </div>
                                 <br />
 
@@ -157,16 +172,26 @@
                                     <input type="radio" name="refund_request" class="radio" value="n" {{(isset($product->refund_request)&&$product->refund_request=='n')? 'checked':''}}>
                                     <label for="new">No</label><br /><br />
                                 </div>
+                                <div class="refundyes" {{(isset($product->refund_request)&&$product->refund_request=='y')? '':'d-none'}}>
+                                    <label class="left-align">Number of days</label>
+                                    <input type="number" name="number_of_days" placeholder="Number of days" class="60per" value="{{(isset($product->number_of_days))?$product->number_of_days:''}}">
+
+                                    <label class="left-align">Policy description</label>
+                                    <input type="text" name="refund_policy_description" placeholder="Policy description" class="60per" value="{{(isset($product->policy_description))?$product->policy_description:''}}">
+                                </div>
                                 <br />
                                 <h3 class="change-side">SHIPPED ADDRESS FROM PRODUCT</h3>
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input id="Existing" type="radio" class="radio" name="address" value="Existing">
+                                    <input id="Existing" type="radio" class="radio" name="shippingaddress" value="Existing">
                                     <label for="Existing">Existing Address</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input id="new" type="radio" class="radio" name="address" value="new">
-                                    <label for="new">New Address</label><br /><br /><br />
+                                    <input id="new" type="radio" class="radio" value="new" name="shippingaddress">
+                                    <label for="new" >New Address</label><br /><br />
+                                        <label class="left-align">ADDRESS</label>
+                                        <input type="text"  name="address"placeholder="Address" class="60per" value="{{(isset($product->address))?$product->address:getSellerAddress()}}">
+                                    <br />
                                 </div>
                                 <h3 class="change-side">SHIPPING TYPE PRODUCT</h3>
                                 <hr class="business-address" />
@@ -176,7 +201,13 @@
                                     <label for="Existing">Free</label> &nbsp;&nbsp;&nbsp;
 
                                     <input type="radio" name="shipping_type" class="radio" value="p" {{(isset($product->shipping_type)&&$product->shipping_type=='p')? 'checked':''}}>
-                                    <label for="p">Paid</label><br /><br /><br />
+                                    <label for="p">Paid</label>
+                                    <br> <br />
+                                    <div class="shipping_typeyes" {{(isset($product->shipping_type)&&$product->shipping_type=='p')? '':'d-none'}}>
+                                        <label class="left-align">shipping price for one quantity</label>
+                                        <input type="number" name="shipping_price" placeholder="shipping price for one quantity" class="60per" value="{{(isset($product->shipping_price))?$product->shipping_price:''}}">
+                                    </div>
+                                    <br /><br /><br />
                                 </div>
                                 <!-- ccc -->
 
@@ -240,6 +271,31 @@
 <script src="{{ asset('assets/js/frontend/product/product.js') }}"></script>
 <script>
     $(document).ready(function() {
+        $("input[name$='refund_request']").click(function() {
+            var refundyes = $(this).val();
+            if (refundyes == 'y') {
+                $(".refundyes").show();
+            } else {
+                $(".refundyes").hide();
+            }
+        });
+
+        $("input[name$='shipping_type']").click(function() {
+            var shipping_type = $(this).val();
+            if (shipping_type == 'p') {
+                $(".shipping_typeyes").show();
+            } else {
+                $(".shipping_typeyes").hide();
+            }
+        });
+        $("input[name$='list_product']").click(function() {
+            var list_product = $(this).val();
+            if (list_product == 'bo' || list_product == 'a') {
+                $(".list_productyes").show();
+            } else {
+                $(".list_productyes").hide();
+            }
+        });
 
         $('#Category').on('change', function() {
             var category_id = this.value;
