@@ -243,6 +243,11 @@ Route::group(
             [OrderController::class, 'myorder']
         )->name('my-order');
 
+        Route::post(
+            'my-order-post',
+            [OrderController::class, 'myOrderPost']
+        )->name('myOrderPost');
+
         Route::get(
             'my-parchase-history',
             [PurchaseController::class, 'parchaseHistory']

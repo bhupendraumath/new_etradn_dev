@@ -124,5 +124,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js([
         'resources/js/frontend/product/buyer-bids-list.js'
     ], 'public/assets/js/frontend/product/buyer-bids-list.js')
+    .js([
+        'resources/js/frontend/product/order-list.js'
+    ], 'public/assets/js/frontend/product/order-list.js')
 
 ;

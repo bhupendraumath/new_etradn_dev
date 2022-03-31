@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
+
+
 class User extends Authenticatable
 {
     protected $table = 'tbl_users';
@@ -169,6 +171,7 @@ class User extends Authenticatable
         return $code;
     }
 
+    
     public function verifyCode($id, $code)
     {
         $verified = User::where('id', $id)->where('reset_password_code', $code)->first();

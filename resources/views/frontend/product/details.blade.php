@@ -57,10 +57,17 @@ Session::put('back_url', URL::full());
                 
             @if($product_details->want_to_list=='bo' ||$product_details->want_to_list=='a')
 
+            @if(Auth::user())
             <a href="#" data-toggle="modal" title="Place bid" data-target="#newUser" id="openNewUserModal">
                 <span class="bid_hit" title="Place bid"  onclick="bid_hit('{{$product_details->id}}','{{$product_details->bid_amount}}','{{$product_details->bid_ending_datetime}}')"><i class="fa fa-gavel"></i> </span>
             </a>
+            @else
 
+            <a href="#" title="Place bid">
+                <span class="bid_hit" title="Place bid"  onclick="swalPopup()"><i class="fa fa-gavel"></i> </span>
+            </a>
+
+            @endif
            
             @endif
         
@@ -187,177 +194,185 @@ Session::put('back_url', URL::full());
                     <ul class="resp-tabs-list">
                         <li>Description</li>
                         <li>Reviews</li>
-                        <li>Information</li>
+                        <li>Seller Information</li>
                     </ul>
                     <div class="resp-tabs-container">
                         <!--/tab_one-->
                         <div class="tab1">
 
                             <div class="single_page_agile_its_w3ls">
+                                <h3 class="description-policy"> WARRANTY - </h3>
+                                <p>{{$product_details['warranty_desc']}}</p>
+
+                                <br/>
+                                <br/>
+                                <br/>
+
+                                <h3 class="description-policy"> REFUND POLICY - </h3>
                                 <!-- <h6>Lorem ipsum dolor sit amet</h6> -->
-                                <p>{{$product_details['product_desc']}}</p>
+                                @if($product_details['refund_request']=='y')
+                                <div>
+                                    <b>Replacement Day's :</b> {{$product_details['number_of_days']}}
+                                    <br/>
+                                    <p>{{$product_details['policy_description']}}</p>
+                                </div>
+                                @else
+                                <p>Refund Policy Not Available</p>
+                                @endif
                                
                             </div>
                         </div>
                         <!--//tab_one-->
                         <div class="tab2">
-
-
-                        <!-- ----------------------------------- -->
-
-
-                        <div class="card">
-                        
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-4 text-center">
-                                        <h1 class="text-warning mt-4 mb-4">
-                                            <b><span id="average_rating">0.0</span> / 5</b>
-                                        </h1>
-                                        <div class="mb-3">
-                                            <i class="fa fa-star star-light mr-1 main_star"></i>
-                                            <i class="fa fa-star star-light mr-1 main_star"></i>
-                                            <i class="fa fa-star star-light mr-1 main_star"></i>
-                                            <i class="fa fa-star star-light mr-1 main_star"></i>
-                                            <i class="fa fa-star star-light mr-1 main_star"></i>
+                            <div class="card">
+                            
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4 text-center">
+                                            <h1 class="text-warning mt-4 mb-4">
+                                                <b><span id="average_rating">0.0</span> / 5</b>
+                                            </h1>
+                                            <div class="mb-3">
+                                                <i class="fa fa-star star-light mr-1 main_star"></i>
+                                                <i class="fa fa-star star-light mr-1 main_star"></i>
+                                                <i class="fa fa-star star-light mr-1 main_star"></i>
+                                                <i class="fa fa-star star-light mr-1 main_star"></i>
+                                                <i class="fa fa-star star-light mr-1 main_star"></i>
+                                            </div>
+                                            <h3><span id="total_review">0</span> Review</h3>
                                         </div>
-                                        <h3><span id="total_review">0</span> Review</h3>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <p>
-                                            <div class="row">
-                                                <div class="col-4 col-sm-3 center-text">
-                                                    <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i></div>
-                                                </div>                                               
-                                                <div class="col-7 col-sm-7">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="five_star_progress"></div>
+                                        <div class="col-sm-4">
+                                            <p>
+                                                <div class="row">
+                                                    <div class="col-4 col-sm-3 center-text">
+                                                        <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i></div>
+                                                    </div>                                               
+                                                    <div class="col-7 col-sm-7">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="five_star_progress"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 col-sm-2">
+                                                        <div class="progress-label-right">(<span id="total_five_star_review">0</span>)</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2 col-sm-2">
-                                                    <div class="progress-label-right">(<span id="total_five_star_review">0</span>)</div>
-                                                </div>
-                                            </div>
-                                        </p>
+                                            </p>
 
-                                        <p>
-                                            <div class="row">
-                                                <div class="col-4 col-sm-3 center-text">
-                                                    <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i></div>
-                                                </div>
-                                                
-                                                <div class="col-7 col-sm-7">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="four_star_progress"></div>
+                                            <p>
+                                                <div class="row">
+                                                    <div class="col-4 col-sm-3 center-text">
+                                                        <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i></div>
+                                                    </div>
+                                                    
+                                                    <div class="col-7 col-sm-7">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="four_star_progress"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 col-sm-2">
+                                                        <div class="progress-label-right">(<span id="total_four_star_review">0</span>)</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2 col-sm-2">
-                                                    <div class="progress-label-right">(<span id="total_four_star_review">0</span>)</div>
-                                                </div>
-                                            </div>
-                                        </p>
-                                        <p>
-                                            <div class="row">
-                                                <div class="col-4 col-sm-3 center-text">
-                                                    <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i></div>
-                                                </div>
-                                                <div class="col-7 col-sm-7">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="three_star_progress"></div>
+                                            </p>
+                                            <p>
+                                                <div class="row">
+                                                    <div class="col-4 col-sm-3 center-text">
+                                                        <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i></div>
+                                                    </div>
+                                                    <div class="col-7 col-sm-7">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="three_star_progress"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 col-sm-2">
+                                                        <div class="progress-label-right">(<span id="total_three_star_review">0</span>)</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2 col-sm-2">
-                                                    <div class="progress-label-right">(<span id="total_three_star_review">0</span>)</div>
-                                                </div>
-                                            </div>
-                                        </p>
+                                            </p>
 
-                                        <p>
-                                            <div class="row">
-                                                <div class="col-4 col-sm-3 center-text">
-                                                    <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i></div>
-                                                </div>
-                                                <div class="col-7 col-sm-7">
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="two_star_progress"></div>
+                                            <p>
+                                                <div class="row">
+                                                    <div class="col-4 col-sm-3 center-text">
+                                                        <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i></div>
+                                                    </div>
+                                                    <div class="col-7 col-sm-7">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="two_star_progress"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 col-sm-2">
+                                                        <div class="progress-label-right">(<span id="total_two_star_review">0</span>)</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2 col-sm-2">
-                                                    <div class="progress-label-right">(<span id="total_two_star_review">0</span>)</div>
-                                                </div>
-                                            </div>
-                                        </p>
+                                            </p>
 
-                                        <p>
-                                            <div class="row">
-                                                <div class="col-4 col-sm-3 center-text">
-                                                    <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i></div>
-                                                </div>                                               
-                                                <div class="col-7 col-sm-7">
-                                                    <div class="progress ">
-                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="one_star_progress"></div>
+                                            <p>
+                                                <div class="row">
+                                                    <div class="col-4 col-sm-3 center-text">
+                                                        <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i></div>
+                                                    </div>                                               
+                                                    <div class="col-7 col-sm-7">
+                                                        <div class="progress ">
+                                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="one_star_progress"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 col-sm-2">
+                                                        <div class="progress-label-right">(<span id="total_one_star_review">0</span>)</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2 col-sm-2">
-                                                    <div class="progress-label-right">(<span id="total_one_star_review">0</span>)</div>
-                                                </div>
-                                            </div>
-                                        </p>
-                                       
-                                    </div>
-                                    <div class="col-sm-4 text-center">
-                                        <!-- <h3 class="mt-4 mb-3">Write Your Review Here</h3> -->
-                                        <?php $user=Auth::user();?>
-                                       {{-- @if(!empty($user))--}}
-                                        <button type="button" name="add_review" id="add_review" class="btn btn-primary">Your Review</button>
-                                       {{-- @else
-                                        <button type="button" name="add_review"  class="btn btn-primary" onclick="confirm('Please login before giving your review and rating...')"><a href="{{route('login')}}">Your Review</a></button>
-                                        @endif --}}
+                                            </p>
+                                        
+                                        </div>
+                                        <div class="col-sm-4 text-center">
+                                            <!-- <h3 class="mt-4 mb-3">Write Your Review Here</h3> -->
+                                            <?php $user=Auth::user();?>
+                                        {{-- @if(!empty($user))--}}
+                                            <button type="button" name="add_review" id="add_review" class="btn btn-primary">Your Review</button>
+                                        {{-- @else
+                                            <button type="button" name="add_review"  class="btn btn-primary" onclick="confirm('Please login before giving your review and rating...')"><a href="{{route('login')}}">Your Review</a></button>
+                                            @endif --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mt-5" id="review_content"></div>
-
-
-                        <!-- ----------------------------------- -->
-
-                            <!-- <div class="single_page_agile_its_w3ls">
-                                <div class="bootstrap-tab-text-grids">
-                                    <div class="bootstrap-tab-text-grid">
-                                        <div class="bootstrap-tab-text-grid-left">
-                                            <img src="{{url('assets/images/frontend/t1.jpg')}}" alt=" " class="img-responsive">
-                                        </div>
-                                        <div class="bootstrap-tab-text-grid-right">
-                                            <ul>
-                                                <li><a href="#">Admin</a></li>
-                                                <li><a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</a></li>
-                                            </ul>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget.Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-                                                suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
-                                                vel eum iure reprehenderit.</p>
-                                        </div>
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                    <div class="add-review">
-                                        <h4>add a review</h4>
-                                        <form action="#" method="post">
-                                            <input type="text" name="Name" placeholder="Name" required="Name">
-                                            <input type="email" placeholder="Email" name="Email" required="Email">
-                                            <textarea name="Message" placeholder="Message" required=""></textarea>
-                                            <input type="submit" value="SEND">
-                                        </form>
-                                    </div>
-                                </div>
-
-                            </div> -->
+                            <div class="mt-5" id="review_content"></div>
                         </div>
                         <div class="tab3">
 
                             <div class="single_page_agile_its_w3ls">
-                                <h6>Big Wing Sneakers (Navy)</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore magna aliqua.</p>
-                                <p class="w3ls_para">Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore magna aliqua.</p>
+
+                            <div class="card">
+
+                                <div class="inline-boxes row">
+                                    <div class="col-md-2 col-sm-2 col-lg-42 col-12">
+                                        <div class="imageAvt">
+                                            <img src="{{url('assets/images/logo/'.$product_details->user_information['business_logo'])}}"
+                                                onerror="this.src='{{url('assets/images/logo/bigbasket.png')}}';" alt=""
+                                                srcset="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-lg-6 col-12">
+                                        <div class="details change-font-syle-here">
+                                             Business Name :  {{$product_details->user_information['business_name']}}<br/>
+
+                                            Email :  {{$product_details->user_information['email']}}<br />
+                                            Delivery Areas :- <br />
+                                            <ul class="change-ul-style">
+                                                @foreach($product_details->user_delivery_address as $address)
+                                                <li>{{$address->name}}, {{$address->state}}, {{$address->country}}</li>
+                                                @endforeach
+                                            </ul>
+                                            
+
+                                        </div>
+                                    </div>
+                                  
+
+
+                                </div>
+
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -436,9 +451,11 @@ Session::put('back_url', URL::full());
 
                         <input type="hidden" value="{{$product_details->id}}" name="product_id" >
 
+                        @if(Auth::user())
+
                         <input type="hidden" name="user_id"  value="{{Auth::user()->id}}" >
 
-
+                        @endif
                         <input type="hidden" name="seller_id"  value="{{$product_details->user_id}}" >
 
                         <input type="hidden" name="quantity"  value="1"  >
@@ -517,7 +534,26 @@ Session::put('back_url', URL::full());
 
     <script>
 
+    function swalPopup(){
 
+        swal({
+        title: "Your Bid Basket is empty",
+        text: "Want to Place Bid Please Sign-in",
+        icon: "warning",
+        buttons: {
+            cancel: true,
+            confirm: "Sign in Your Account",
+        }
+        }).then(
+        function(isConfirm) {
+            if (isConfirm) {
+                window.location.href = "{{url('sign-in')}}";
+            } else {
+                return false;
+            }
+        },
+        );
+    }
 
 
     function bid_hit(id,amount,enddate){

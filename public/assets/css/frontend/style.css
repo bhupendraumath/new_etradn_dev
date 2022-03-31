@@ -7938,6 +7938,34 @@ button.btn.btn-primary {
     border: none;
 }
 
+.tab1.resp-tab-content.resp-tab-content-active,
+.tab2.resp-tab-content.resp-tab-content-active,
+.tab3.resp-tab-content.resp-tab-content-active {
+    font-family: 'Sary Soft - Semi Bold';
+}
+
+.background-gray.rating.new-size.uploaded-image-edited>img {
+    height: 114px;
+    width: 114px;
+}
+
+.background-gray.rating.new-size {
+    margin: 0px;
+}
+
+h3.description-policy {
+    color: #f2ae3d;
+    margin-bottom: 8px;
+}
+
+ul.change-ul-style {
+    margin-left: 33px;
+}
+
+.details.change-font-syle-here {
+    line-height: 1.53;
+}
+
 .color-size {
     font-size: 14px;
     margin-top: 9px;

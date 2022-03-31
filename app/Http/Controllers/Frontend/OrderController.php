@@ -27,13 +27,60 @@ class OrderController extends Controller
 
         $productlist = OrderItem::where('seller_id',$userid)
                     ->orderBy("id",'desc')
-                    ->paginate(2);
+                    ->paginate(5);
 
         return view('frontend/seller/my-order',
         compact(
             'productlist',
         ));
 
+    }
+
+    public function myOrderPost(Request $request){
+
+        if ($request->ajax()) {
+            try {
+                $userid=Auth::user()->id;
+
+                $productlist = OrderItem::where('seller_id',$userid)
+                            ->orderBy("id",'desc')
+                            ->paginate($request->record);
+
+                $completeSessionView = view(
+                    'frontend/seller/my-order-list',
+                    compact('productlist')
+                )->render();
+
+                if ($productlist->isNotEmpty()) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' => $completeSessionView
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
     }
     /**
      * Show the form for creating a new resource.

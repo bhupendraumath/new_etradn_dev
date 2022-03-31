@@ -11,6 +11,8 @@ use App\Models\SubCategory;
 use App\Models\ProductQuantity;
 use App\Models\ProductReview;
 use App\Models\FavoriteProduct;
+use App\Models\User;
+use App\Models\Address;
 
 class Product extends Model
 {
@@ -23,7 +25,7 @@ class Product extends Model
     public $timestamps = false;
     use HasFactory;
 
-    protected $with = ['image', 'review', 'quantity', 'image_many', 'category', 'subCategory', 'brand'];
+    protected $with = ['image', 'review', 'quantity', 'image_many', 'category', 'subCategory', 'brand','user_information','user_delivery_address'];
 
     protected $fillable = [
         'user_id',
@@ -61,6 +63,16 @@ class Product extends Model
         return $this->hasOne(ImageUpload::class, 'product_id');
     }
 
+
+    public function user_delivery_address()
+    {
+        return $this->hasMany(Address::class,'userId', 'user_id')->where('address_type','delivery');
+    }
+
+    public function user_information()
+    {
+        return $this->hasOne(User::class,'id', 'user_id');
+    }
 
     public function favorite_product_details($product_id, $userid)
     {

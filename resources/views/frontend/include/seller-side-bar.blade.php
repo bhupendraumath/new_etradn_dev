@@ -16,7 +16,6 @@
                 
                     <img  src="{{url('assets/images/my-profile/'. $profile_img)}}"  onerror="this.src='{{url('assets/images/frontend/user3.jpg')}}';" alt="" srcset="">
 
-                    
                 </div>
             </div>
 

@@ -30,19 +30,56 @@
 
 
                 
-         @if(!empty($productlist) && $productlist !="")
+         @if(!empty($productlist) && count($productlist) !=0)
                 @foreach($productlist as $list)
 
                     @if(!empty($list) && ($list->product!=null))
                         <div class="row ">
                             <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth  border-bottom">
 
-                                <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xs-12">
-                                    <div class="background-gray rating new-size">
+                                <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
+                                    <div class="background-gray rating new-size uploaded-image-edited">
                                         <img src="{{url('assets/images/product-images/'.$list->product->image->product_img)}}" onerror="this.src='{{url('assets/images/default.png')}}';" alt="" srcset=""/>
+
+                                        <div class="hover-icons">
+                                            <div>
+                                                <a href="{{url('product-details/'.$list->product->id)}}" title="product's details">
+
+                                                    <span class="left-buy-it" >
+                                                            @if($list->product->want_to_list=='b')
+                                                            Buy It Now
+                                                            @elseif($list->product->want_to_list=='a')
+                                                            Auction
+                                                            @else
+                                                            Both
+                                                            @endif
+                                                            
+                                                            <i class="fas fa-angle-double-right"></i>
+                                                    </span>
+
+                                                </a>                                          
+                                                <a href="{{url('product-details/'.$list->product->id)}}">                        
+                                                <button class="circle"  title="View details"><i class="fa fa-eye color-delete"></i></button>
+                                            </a>
+                                                
+                                            </div>
+                                            <div class="bottom-on-hover">
+                                                    <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
+                                                    {{$list->product->category->categoryName}}</span>
+                                                    <span title="Sub Category"><i class="fa fa-tag"></i>&nbsp;
+                                                    {{$list->product->subCategory->subCategoryName}}</span>
+                                                    @if(!empty($productvalue->brandName))
+                                                    <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$list->product->brand->brandName}}</span>
+                                                    @endif
+                                                                                               
+                                            </div>                                
+                                                    
+                                    </div>
+
+
                                     </div>
                                 </div>
-                                <div class="col-9 col-md-9 col-sm-9 col-lg-9 col-xl-9 reducewidth col-xs-12 text-left">
+                                <div class="col-8 col-md-8 col-sm-8 col-lg-8 col-xl-8 reducewidth col-xs-12 text-left">
                                     <h3>{{$list->product->product_name}}</h3>
                                     <p class="rating-paragraph">{{$list->description}}
                                     </p>

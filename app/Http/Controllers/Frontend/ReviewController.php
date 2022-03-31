@@ -33,6 +33,7 @@ class ReviewController extends Controller
                     
         if(count($product_review)==0){
            
+
             $buyerId=$request->buyerId;
             $order_item=OrderItem::with(['getOrder'=>function($q) use($buyerId){
                 $q->where("buyer_id",$buyerId);
@@ -41,6 +42,8 @@ class ReviewController extends Controller
             ->get();
 
             $order_id='';
+
+
 
             if(!empty($order_item)){
 
@@ -55,9 +58,28 @@ class ReviewController extends Controller
                     $id_convert=preg_split ("/{/", $my_str_arr[0]);
                     $id_remove=  preg_split ('/"id":/', $id_convert[1]);
                     $id_remove2=  preg_split ('/"/', $id_remove[1]);
-                    $product_id=$id_remove2[1];
+                    // $product_id=$id_remove2[1];
+                    if(!empty($id_remove2[0])){
+                        $product_id=$id_remove2[0];
+                        }
+                        else{                            
+                        $product_id=$id_remove2[1];
+                        }
 
                     if($product_id==$request->productId){
+                        $order_id=$order_item[$i]['id'];
+                        // return $order_id;
+                        return response()->json(
+                            [
+                                'success' => true,
+                                'message'=>'Order id exist',
+                                'data' =>
+                                ['orderId'=>$order_id]
+                                
+                            ]
+                        );
+                    }
+                   /* if($product_id==$request->productId){
 
                         $order_id=$order_item[$i]['id'];
                         // return $order_id;
@@ -72,23 +94,22 @@ class ReviewController extends Controller
                         );
 
                     }
-                    else{
-                        // return $order_id;
-                        return response()->json(
-                            [
-                                'success' => false,
-                                'message'=>'Order id not exist',
-                                'data' =>
-                                ['orderId'=>$order_id]
-                                
-                            ]
-                        );
+                   */
                     }
-                    }
-                }
+                }               
 
-               
-
+            }
+            else{
+                // return $order_id;
+                return response()->json(
+                    [
+                        'success' => false,
+                        'message'=>'Order id not exist',
+                        'data' =>
+                        ['orderId'=>$order_id]
+                        
+                    ]
+                );
             }
         }
         else{
