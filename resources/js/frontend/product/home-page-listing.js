@@ -2,9 +2,13 @@ $(window).load(function() {
 
 
     homelistshow();
+    // top_posts();
 
     var pageno = 1;
     var records = 4;
+
+
+
 
     function homelistshow(pageno, records) {
         console.log("reords -- ", records)
@@ -43,8 +47,6 @@ $(window).load(function() {
             }
         });
     }
-
-
 
     $("body").on('click', '.page-link', function() {
         var url = $(this).data('url');
@@ -100,16 +102,11 @@ function homelistshow(pageno, records) {
     });
 }
 
-$('document').ready(function() {
-
-    var cat_id = "all"
-    top_posts(cat_id);
-    special_item(cat_id);
-
-})
 
 var pageno = 1;
 var records = 4;
+
+
 
 
 window.filtering = function filtering(category_id) {
@@ -120,15 +117,95 @@ window.filtering = function filtering(category_id) {
     $('.top-posts-slider').slick("slickAdd")
 }
 
-window.filtering_letest = function filtering_letest(category_id) {
+window.filteringLetest = function filtering(category_id) {
 
-    $('.top-posts-slider').slick("unslick")
-    console.log("inside here", category_id);
-    special_item(category_id);;
-    $('.top-posts-slider').slick("slickAdd")
+    $('.product-latest-slider').slick("unslick")
+    console.log("inside special_item", category_id);
+    special_item(category_id);
+    $('.product-latest-slider').slick("slickAdd")
 }
 
+$('.hot-item-slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: true,
+    dots: false,
+    pauseOnHover: true,
+    prevArrow: '<i class="slick-prev fa fa-chevron-circle-left hot-left"></i>',
+    nextArrow: '<i class="slick-next fa fa-chevron-circle-right hot-right"></i>',
+    responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 3,
+                infinite: false,
+                dots: false
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
 
+    ]
+});
+
+/*
+$('.top-latest-slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: true,
+    dots: false,
+    pauseOnHover: true,
+    prevArrow: '<i class="slick-prev fa fa-chevron-circle-left hot-left"></i>',
+    nextArrow: '<i class="slick-next fa fa-chevron-circle-right hot-right"></i>',
+    responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 3,
+                infinite: false,
+                dots: false
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+
+    ]
+});*/
+
+$('document').ready(function() {
+
+    var cat_id = "all"
+    top_posts(cat_id);
+    special_item(cat_id);
+})
 
 function top_posts(cat_id) {
     var el = $('.top-posts-slider');
@@ -191,12 +268,11 @@ function top_posts(cat_id) {
 
 }
 
+
 function special_item(cat_id) {
+    var el = $('.product-latest-slider');
 
-    console.log("special_item  calling");
-
-    var el = $('.top-latest-slider');
-    var reqUrl = process.env.MIX_APP_URL + "/home-product-listing";
+    var reqUrl = process.env.MIX_APP_URL + "/home-latest-product-listing";
     el.html('<i class="fa fa-circle-o-notch fa-spin fa-fw loader-product" style="padding: 0;"></i>');
     $.ajax({
         url: reqUrl,
@@ -207,7 +283,6 @@ function special_item(cat_id) {
         dataType: 'json'
     }).done(function(response) {
         el.empty();
-
         el.html(response.data.completeSessionView);
 
     }).fail(function(jqXHR, textStatus) {
@@ -256,44 +331,50 @@ function special_item(cat_id) {
 }
 
 
-//hot item 
-$('.hot-item-slider').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    arrows: true,
-    dots: false,
-    pauseOnHover: true,
-    prevArrow: '<i class="slick-prev fa fa-chevron-circle-left hot-left"></i>',
-    nextArrow: '<i class="slick-next fa fa-chevron-circle-right hot-right"></i>',
-    responsive: [{
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 3,
-                infinite: false,
-                dots: false
+window.addedFav = function addedFav(product_id, quantity_id, fav_id, user_exists) {
+
+    if (user_exists == 'auth_required') {
+
+        swal({
+            title: "Your Favorite List is Empty",
+            text: "Add in your favorite list",
+            icon: "warning",
+            buttons: {
+                cancel: true,
+                confirm: "Sign in Your Account",
             }
-        },
-        {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-        }
+        }).then(
+            function(isConfirm) {
+                if (isConfirm) {
+                    window.location.href = "{{url('sign-in')}}";
+                } else {
+                    return false;
+                }
+            },
+        );
 
-    ]
-});
+    } else {
 
 
+        $.ajax({
 
-//special and popular items
+            url: process.env.MIX_APP_URL + '/add-in-fav-list/' + product_id + '/' + quantity_id + '/' + fav_id,
+            type: "GET",
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    toastr.clear();
+                    toastr.success(response.message, { timeOut: 2000 });
+                    homelistshow(pageno, records)
+                } else {
+                    toastr.clear();
+                    toastr.error(response.message, { timeOut: 2000 });
+                }
+            },
+
+        });
+
+    }
+
+
+}

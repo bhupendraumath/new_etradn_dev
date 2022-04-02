@@ -403,7 +403,7 @@ $favoriteProduct=new App\Models\Product;
             <!-- special item end here -->
 
             <!-- start news letter here -->
-            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add">
                 <div class="card ">
                     <div class="row">
                         <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xl-8">
@@ -521,7 +521,7 @@ $favoriteProduct=new App\Models\Product;
                 <!-- adds banner end here -->
 
                 <!-- start latest product -->
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add" >
                     <div class="card">
 
                     <div class="row">
@@ -538,11 +538,11 @@ $favoriteProduct=new App\Models\Product;
                                     <ul class="popular-items tab" >
                                     @if(!empty($category_list))
                                         <li class="active">
-                                            <button class="tablinks" onclick="filtering_letest('all')">All</button>
+                                            <button class="tablinks" onclick="filteringLetest('all')">All</button>
                                         </li>
                                         @foreach ($category_list as $cat)
                                         <li>
-                                            <button class="tablinks" onclick="filtering_letest({{$cat->id}})">{{$cat->categoryName}}</button>
+                                            <button class="tablinks" onclick="filteringLetest({{$cat->id}})">{{$cat->categoryName}}</button>
                                         </li>
                                         @endforeach
                                     @endif
@@ -552,7 +552,7 @@ $favoriteProduct=new App\Models\Product;
 
                         </div>
                         <hr class="margin-top-bottom">
-                        <ul class="row product-show-list top-latest-slider">
+                        <ul class="row product-show-list product-latest-slider">
                         <div class="" id="home-product-latest-product"></div>
                         </ul> 
 
@@ -562,8 +562,8 @@ $favoriteProduct=new App\Models\Product;
                 <!-- end latest product -->
 
 
-
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 adv-right-side">
+                <!-- wholesale start -->
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 adv-right-side margin-top-add">
                     <div class="adv-right">
                         <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-12">
                             <img src="{{url('assets/images/frontend/download (2).png')}}" class="ad-right" alt="">
@@ -580,8 +580,10 @@ $favoriteProduct=new App\Models\Product;
                     </div>
 
                 </div>
+                <!-- wholesale end -->
 
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
+                <!-- featured start here -->
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add">
                     <div class="card">
 
                         <div class="row">
@@ -598,14 +600,14 @@ $favoriteProduct=new App\Models\Product;
                                     <i class="fa fa-chevron-circle-right" style="font-size:24px"></i> -->
                                 </div>
                                 <ul class="popular-items tab">
-
+                                {{--
                                     @if(!empty($feature_list))
                                         @foreach ($feature_list as $cat)
                                             <li>
                                                 <button class="tablinks3"  id="{{$loop->index==0?'defaultOpen3':''}}" onclick="open3(event, '{{$cat->categoryName}}3')">{{$cat->categoryName}}</button>
                                             </li>
                                         @endforeach
-                                    @endif
+                                    @endif --}}
                                   
 
                                 </ul>
@@ -763,6 +765,7 @@ $favoriteProduct=new App\Models\Product;
                     </div>
 
                 </div>
+                <!-- featured end here -->
             </div>
 
 

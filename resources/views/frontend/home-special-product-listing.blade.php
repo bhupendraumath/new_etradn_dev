@@ -159,7 +159,7 @@ $favoriteProduct=new App\Models\Product;
 
 $(function(){
 
-    $(".top-posts-slider").slick({
+    $(".product-latest-slider").slick({
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -168,16 +168,16 @@ $(function(){
         arrows: true,
         dots: false,
         pauseOnHover: true,
-        prevArrow: '<i class="slick-prev fa fa-chevron-circle-left  top-left"></i>',
-        nextArrow: '<i class="slick-next fa fa-chevron-circle-right top-right"></i>',
+        prevArrow: '<i class="slick-prev fa fa-chevron-circle-left latest-left"></i>',
+        nextArrow: '<i class="slick-next fa fa-chevron-circle-right latest-right"></i>',
         responsive: [{
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 4,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true,
                     pauseOnHover: true,
+                    dots: true
                 }
             },
             {
@@ -199,46 +199,7 @@ $(function(){
         ]
 
     });
-
-
-    // $(".top-latest-slider").slick({
-    //     infinite: true,
-    //     slidesToShow: 4,
-    //     slidesToScroll: 1,
-    //     autoplay: true,
-    //     autoplaySpeed: 1500,
-    //     arrows: true,
-    //     dots: false,
-    //     pauseOnHover: true,
-    //     prevArrow: '<i class="slick-prev fa fa-chevron-circle-left  top-left"></i>',
-    //     nextArrow: '<i class="slick-next fa fa-chevron-circle-right top-right"></i>',
-    //     responsive: [{
-    //             breakpoint: 1024,
-    //             settings: {
-    //                 slidesToShow: 4,
-    //                 slidesToScroll: 3,
-    //                 infinite: true,
-    //                 dots: true
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 600,
-    //             settings: {
-    //                 slidesToShow: 2,
-    //                 slidesToScroll: 2
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 480,
-    //             settings: {
-    //                 slidesToShow: 1,
-    //                 slidesToScroll: 1
-    //             }
-    //         }
-    //     ]
-
-    // });
-
+  
 })
 
 

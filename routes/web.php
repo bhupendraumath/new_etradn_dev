@@ -84,6 +84,12 @@ Route::post(
     [HomeController::class, 'homeProductListing']
 )->name('homeProductListing');
 
+
+Route::post(
+    'home-latest-product-listing',
+    [HomeController::class, 'homeLatestProductListing']
+)->name('homeProductListing');
+
 Route::post(
     '/product-list',
     [ProductController::class, 'detailedlist']

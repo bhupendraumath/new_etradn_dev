@@ -56,6 +56,7 @@ class HomeController extends Controller
                 // $details = json_decode(file_get_contents("http://ipinfo.io/"));
                
                 $category_list_popular=Category::limit(4)->get();
+                $category_list_featured=Category::limit(4)->get();
 
                 $list=Category::with(['category_based_product'])
                 ->limit(4)
@@ -66,11 +67,12 @@ class HomeController extends Controller
                 ->get();
 
 
-                $hot_products=Product::get();
-                $special_products=Product::get();
+                $hot_products=Product::limit(5)->get();
+                $special_products=Product::limit(5)->get();
+                $featured_products=Product::limit(6)->get();
 
                 $completeSessionView = view(
-                    'frontend/home-listing',['popular_list'=>$popular_produts,'data'=>$list,'category_list'=>$category_list_popular,'hot_products'=>$hot_products,'special_products'=>$special_products]
+                    'frontend/home-listing',['popular_list'=>$popular_produts,'data'=>$list,'category_list'=>$category_list_popular,'hot_products'=>$hot_products,'special_products'=>$special_products,'featured_products'=>$featured_products]
                 )->render();
 
                 if (!empty($popular_produts)) {
@@ -123,10 +125,70 @@ class HomeController extends Controller
                 }
 
                 $popular_produts_list= $popular_produts
+                ->orderBy('id','DESC')
+                ->limit(5)
                 ->get();
 
                 $completeSessionView = view(
                     'frontend/home-product-listing',['popular_list'=>$popular_produts_list]
+                )->render();
+
+                if (!empty($popular_produts)) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' => $completeSessionView
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
+    }
+
+
+    public function homeLatestProductListing(Request $request){
+        if ($request->ajax()) {
+            try {
+                // $details = json_decode(file_get_contents("http://ipinfo.io/"));
+               
+                // $category_list_popular=Category::limit(4)->get();
+
+                // $list=Category::with(['category_based_product'])
+                // ->limit(4)
+                // ->get();
+
+                $popular_produts=new Product;
+                if($request->id!='all'){
+                    $popular_produts->where('cat_id',1);
+                }
+
+                $popular_produts_list= $popular_produts
+                ->orderBy('id','DESC')
+                ->limit(5)
+                ->get();
+
+                $completeSessionView = view(
+                    'frontend/home-special-product-listing',['popular_list'=>$popular_produts_list]
                 )->render();
 
                 if (!empty($popular_produts)) {
