@@ -18,14 +18,14 @@ $(window).ready(function() {
                 success: function(response) {
                     if (response.success) {
                         toastr.clear();
-                        btn.html('Save');
+                        // btn.html('Save');
                         toastr.success('Added in cart', { timeOut: 2000 });
                         setTimeout(function() {
                             window.location.href = process.env.MIX_APP_URL + "/shopping-cart";
                         }, 2000);
                     } else {
                         btn.prop('disabled', false);
-                        btn.html('Save');
+                        // btn.html('Save');
                         toastr.clear();
                         toastr.error('Added in cart', { timeOut: 2000 });
                     }

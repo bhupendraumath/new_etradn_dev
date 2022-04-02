@@ -63,11 +63,4 @@ $.ajaxSetup({
         
 </script>
 <script src="{{ asset('assets/js/frontend/product/order-list.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        // var rating_value=$("#rating_value").val();
-        // document.getElementById(`rating${rating_value}`).checked = true;
-    });
-</script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script> -->
 @endsection

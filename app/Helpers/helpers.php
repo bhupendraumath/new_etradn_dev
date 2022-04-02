@@ -257,3 +257,24 @@ function getSellerAddress()
     )->first();
     return $address->address1 . ',' . $address->city . ',' . $address->state . ',' . $address->country . ',' . $address->zip_code;
 }
+
+
+
+function idBasedOrderDetails($description)
+{
+    $encode=json_encode($description);
+    $decode=json_decode($encode,true);
+
+    $my_str_arr = preg_split ("/,/", $decode);
+    $id_convert=preg_split ("/{/", $my_str_arr[0]);
+    $id_remove=  preg_split ('/"id":/', $id_convert[1]);
+    $id_remove2=  preg_split ('/"/', $id_remove[1]);
+    if(!empty($id_remove2[0])){
+    $product_id=$id_remove2[0];
+    }
+    else{                            
+    $product_id=$id_remove2[1];
+    }
+
+    return $product_id;
+}

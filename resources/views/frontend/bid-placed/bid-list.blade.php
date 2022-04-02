@@ -1,5 +1,8 @@
 <div class="col-12 col-md-12 col-sm-12">
+<?php
+use Carbon\Carbon;
 
+?>
 @if(!empty($bindlist))
 <div class="row">
     @foreach($bindlist as $productvalue)
@@ -21,6 +24,9 @@
                         $b_count=count($bid_count);                        
                         ?>
                     
+
+
+
                 <div class="images onhover-show-menus">
                     <div class="background-gray uploaded-image-edited">
                         @if(!empty($productvalue->image->product_img))
@@ -44,14 +50,56 @@
                                             <i class="fas fa-angle-double-right"></i>
                                     </span>
 
+                                    <form action="#" id="addCartProductFrm" method="post" class="formhidden">
                                     @if(Auth::user()->user_type=='s')
                                     <a href="{{url('view-details-bids/'.$productvalue->product_id.'/'.$user_id)}}">
+                                        
                                     @else
                                     <a href="{{url('product-details/'.$productvalue->product_id)}}">
                                     @endif                   
                                         <button class="circle"  title="View details"><i class="fa fa-eye color-delete"></i></button>
                                     </a>
+                                    @if(Auth::user()->user_type=='b')
+                                        @if($productvalue->bid_status=="won")
                                     
+
+                                       
+                                                @php
+                                                    $user=Auth::user();
+                                                @endphp
+
+                                                @if(!empty($user))
+                                                <input type="hidden" name="customer_id" value="{{Auth::user()->id}}">
+                                                <input type="hidden" name="seller_id" value="{{$productvalue->product->user_id}}">
+                                                <input type="hidden" name="product_id" value="{{$productvalue->product->id}}">
+                                                <input type="hidden" name="paq_id" value="{{$productvalue->product->quantity->id}}">
+                                                <input type="hidden" name="attribute_ids" value="{{$productvalue->product->quantity->id}}">
+                                                <input type="hidden" name="attribute_value_ids" value="{{$productvalue->product->quantity->id}}">
+                                                <input type="hidden" name="quantity" value="1" id="hiddenqty">
+                                                <input type="hidden" name="price" value="{{$productvalue->product->quantity->price}}">
+                                                <input type="hidden" name="discount" value="{{$productvalue->product->quantity->discount}}">
+                                                <input type="hidden" name="pro_condition" value="{{$productvalue->product->quantity->condition_id}}">
+                                                <input type="hidden" name="is_checkout" value="n">
+                                                <input type="hidden" name="selling_type" value="{{$productvalue->product->want_to_list}}">
+                                                <input type="hidden" name="is_delete" value="n">
+                                                <input type="hidden" name="action" value="n">
+                                                <input type="hidden" name="product_array" value="{{$productvalue->product}}">
+                                                <input type="hidden" name="ip_address" value="0000">
+                                                <input type="hidden" name="createdDate" value="{{Carbon::now()}}">
+                                                <input type="hidden" name="updatedDate" value="{{Carbon::now()}}">
+
+                                                {{--<input type="submit" name="submit" id="addCartProduct" value="Add to cart" class="button">--}}
+
+                                                <button class="circle" type="submit" id="addCartProduct" title="You won this bid, please pay">
+                                                <i class="fab fa-paypal color-delete"></i>
+                                            </button>
+                                                @endif
+
+                                           
+                                        @endif
+                                    @endif
+                                    </form>
+
                                 </div>
 
                                 <div class="bottom-on-hover">
@@ -132,3 +180,12 @@
 
 
 </div>
+
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
+<script src="{{ asset('assets/js/frontend/product/addCardProduct.js') }}"></script>

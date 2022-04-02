@@ -270,13 +270,6 @@ class ReviewController extends Controller
     {
     
             $userid=Auth::user()->id;
-            // $productreview=new ProductReview;
-
-            // $productlist=$productreview->with(['product'=>function($q) use($userid) {
-            //     $q->whereUserId($userid)->get();
-            // }])
-            // ->get();
-            
             $productlist = ProductReview::where('sellerid',$userid)
             ->with('product')
             ->paginate(4);

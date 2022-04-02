@@ -19,7 +19,7 @@ $(window).load(function() {
             dataType: 'JSON',
             cache: false,
             success: function success(response) {
-                console.log("inside-1")
+                // console.log("inside-1")
                 $('#cart-listing').html('');
                 $('#cart-listing').html(response.data.completeSessionView)
 

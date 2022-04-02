@@ -72,6 +72,18 @@ Route::get(
     [HomeController::class, 'index']
 )->name('home');
 
+
+Route::post(
+    'home-listing',
+    [HomeController::class, 'homeListing']
+)->name('homeListing');
+
+
+Route::post(
+    'home-product-listing',
+    [HomeController::class, 'homeProductListing']
+)->name('homeProductListing');
+
 Route::post(
     '/product-list',
     [ProductController::class, 'detailedlist']
@@ -92,7 +104,8 @@ Route::get(
 
 Route::post(
     '/checking_order_existing',
-    [ReviewController::class, 'checking_order_existing']
+    [ReviewController::class, '
+    ']
 )->name('checking_order_existing');
 
 Route::post(

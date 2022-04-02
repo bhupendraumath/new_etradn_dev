@@ -50,7 +50,8 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/frontend/cropper.min.css',
 
     ], 'public/assets/css/frontend/style.css')
-    .js([
+
+.js([
         'resources/js/frontend/auth/login.js'
     ], 'public/assets/js/frontend/auth/login.js')
     .js([
@@ -128,6 +129,6 @@ mix.js('resources/js/app.js', 'public/js')
     .js([
         'resources/js/frontend/sweetalert.min.js'
     ], 'public/assets/js/frontend/sweetalert.min.js')
-    // .js([
-    //     'resources/js/frontend/slick.js'
-    // ], 'public/assets/js/frontend/slick.js');
+    .js([
+        'resources/js/frontend/product/home-page-listing.js'
+    ], 'public/assets/js/frontend/product/home-page-listing.js');

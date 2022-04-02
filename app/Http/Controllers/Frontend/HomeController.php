@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $details = json_decode(file_get_contents("http://ipinfo.io/"));
+        // $details = json_decode(file_get_contents("http://ipinfo.io/"));
         // print_r($details); // city 
         // die;
 
@@ -46,6 +46,119 @@ class HomeController extends Controller
         ->get();
         // dd($list);die;
         return view('frontend/home',['data'=>$list,'popular_list'=>$popular_produts,'special_list'=>$special_produts,'latest_list'=>$latest_produts,'feature_list'=>$feature_produts,'category_list'=>$category_list]);
+    }
+
+
+
+    public function homeListing(Request $request){
+        if ($request->ajax()) {
+            try {
+                // $details = json_decode(file_get_contents("http://ipinfo.io/"));
+               
+                $category_list_popular=Category::limit(4)->get();
+
+                $list=Category::with(['category_based_product'])
+                ->limit(4)
+                ->get();
+
+                $popular_produts=Category::with(['category_based_product'])
+                ->limit(1)
+                ->get();
+
+
+                $hot_products=Product::get();
+                $special_products=Product::get();
+
+                $completeSessionView = view(
+                    'frontend/home-listing',['popular_list'=>$popular_produts,'data'=>$list,'category_list'=>$category_list_popular,'hot_products'=>$hot_products,'special_products'=>$special_products]
+                )->render();
+
+                if (!empty($popular_produts)) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' => $completeSessionView
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
+    }
+
+
+    public function homeProductListing(Request $request){
+        if ($request->ajax()) {
+            try {
+                // $details = json_decode(file_get_contents("http://ipinfo.io/"));
+               
+                // $category_list_popular=Category::limit(4)->get();
+
+                // $list=Category::with(['category_based_product'])
+                // ->limit(4)
+                // ->get();
+
+                $popular_produts=new Product;
+                if($request->id!='all'){
+                    $popular_produts->where('cat_id',1);
+                }
+
+                $popular_produts_list= $popular_produts
+                ->get();
+
+                $completeSessionView = view(
+                    'frontend/home-product-listing',['popular_list'=>$popular_produts_list]
+                )->render();
+
+                if (!empty($popular_produts)) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' => $completeSessionView
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
     }
     /**
      * Display about resource.
