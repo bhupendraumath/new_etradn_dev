@@ -88,7 +88,7 @@ Route::post(
 Route::post(
     'home-latest-product-listing',
     [HomeController::class, 'homeLatestProductListing']
-)->name('homeProductListing');
+)->name('homeLatestProductListing');
 
 Route::post(
     '/product-list',
