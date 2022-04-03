@@ -16,6 +16,7 @@ use App\Services\FileService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
+use DB;
 
 class ProductController extends Controller
 {
@@ -290,12 +291,16 @@ class ProductController extends Controller
                     $sequence = 'desc';
                 }
 
-                $product = new Product;
-                // if(!empty($dataArr)){
+                $product =  DB::table('tbl_product')
+                ->select('tbl_product.*','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity','tbl_product_brand.brandName','tbl_product_brand.id as brand_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_cat.categoryName','tbl_product_cat.id as c_id')
+                ->join('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_product.id')
+                ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_product.id')
+                ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
+                ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
+                ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id');
+                
                 $details_product = $product->where($dataArr);
-                // }
-           
-
+                
 
                 if ($brand != null && $brand[0]!="noav") {
                     $arr = [1, 2];
@@ -305,22 +310,18 @@ class ProductController extends Controller
                 if ($price_range != null || $conditionArr != null) {
 
                     if ($conditionArr == null) {
-                        $function_price_range = function ($q) use ($sequence, $price_range) {
-                            $q->whereBetween('price', [0, $price_range])
+                            $details_product->whereBetween('price', [0, $price_range])
                                 ->orderBy('tbl_product_attribute_quantity.price', 'ASC');
-                        };
                     } else {
-                        $function_price_range = function ($q) use ($sequence, $price_range, $conditionArr) {
-                            $q->whereBetween('price', [0, $price_range])
+                            $details_product->whereBetween('price', [0, $price_range])
                                 ->whereIn('condition_id', $conditionArr)
                                 ->orderBy('tbl_product_attribute_quantity.price', 'ASC');
-                        };
                     }
                 }
 
                 $productlist = $details_product
-                    ->with(['quantity' => $function_price_range])
-                    ->orderBy('id', $sequence)
+                    //->with(['quantity' => $function_price_range])
+                    ->orderBy('tbl_product.id', $sequence)
                     ->paginate($page_limit);
 
                     // print_r($productlist);die;
@@ -333,7 +334,15 @@ class ProductController extends Controller
                     ->orderBy('id', $sequence)
                     ->paginate($page_limit);*/
 
-
+                   /* $ListOfProduct = DB::table('tbl_product')
+                    ->select('tbl_product.*','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity')
+                    ->join('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_product.id')
+                    ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_product.id')
+                    ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
+                    ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
+                    ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id')
+                    ->orderBy('id', $sequence)
+                    ->get();*/
 
 
                 $brand_list = Brand::all();
@@ -385,6 +394,144 @@ class ProductController extends Controller
         }
     }
 
+
+/*
+    //New function 
+    public function detailedlist(Request $request)
+    {
+
+        if ($request->ajax()) {
+            try {
+                $order = $request->order;
+                $brand = $request->brand;
+                $category = $request->category;
+                $sub_cat = $request->sub_category;
+                $price_range = $request->priceRange;
+                $conditionArr = $request->conditionArr;
+                $page_limit = $request->page_limit != null ? $request->page_limit : 6;
+                $sequence = "asc";
+
+                $dataArr=['is_delete'=>"n"];
+
+                if($category!='noav'){
+
+                $dataArr['cat_id']=$category;
+
+                }
+                $function_price_range = function () {
+                };
+
+                if ($sub_cat != null && $sub_cat != "noav") {
+                    $dataArr['sub_cat_id'] = $sub_cat;
+                }
+
+                if ($order != null) {
+                    if ($order == "higher") {
+                        $sequence = 'desc';
+                    } elseif ($order == "lower") {
+                        $sequence = 'ASC';
+                    }
+                } else {
+                    $sequence = 'desc';
+                }
+
+                $product = new Product;
+                // if(!empty($dataArr)){
+                $details_product = $product->where($dataArr);
+                // }
+           
+
+
+                if ($brand != null && $brand[0]!="noav") {
+                    $details_product->whereIn('brand_id', $brand);
+                }
+
+                if ($price_range != null || $conditionArr != null) {
+
+                    if ($conditionArr == null) {
+                        $function_price_range = function ($q) use ($sequence, $price_range) {
+                            $q->whereBetween('price', [0, $price_range])
+                                ->orderBy('tbl_product_attribute_quantity.price', 'ASC');
+                        };
+                    } else {
+                        $function_price_range = function ($q) use ($sequence, $price_range, $conditionArr) {
+                            $q->whereBetween('price', [0, $price_range])
+                                ->whereIn('condition_id', $conditionArr)
+                                ->orderBy('tbl_product_attribute_quantity.price', 'ASC');
+                        };
+                    }
+                }
+
+                $ListOfProduct = DB::table('tbl_product')
+                ->select('tbl_product.*','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity')
+                ->join('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_product.id')
+                ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_product.id')
+                ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
+                ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
+                ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id')
+                ->where('tbl_orders.shipping_address', 'like', '%' . $details->city . '%')
+                ->orderBy('id', $sequence)
+                ->get();
+
+                $productlist = $details_product
+                    ->with(['quantity' => $function_price_range])
+                    ->orderBy('id', $sequence)
+                    ->paginate($page_limit);
+
+                    // print_r($productlist);die;
+
+
+                $brand_list = Brand::all();
+                $category_list = Category::all();
+                $condition_list = ProductCondition::where('isActive', 'y')
+                    ->get();
+
+                $result = [
+                    'list' => $productlist,
+                    'brand_list' => $brand_list,
+                    'category_list' => $category_list,
+                    'condition_list' => $condition_list
+                ];
+
+                $completeSessionView = view(
+                    'frontend/product/cat-product-list',
+                    compact('productlist')
+                )->render();
+
+                if ($productlist->isNotEmpty()) {
+                    return response()->json(
+                        [
+                            'success' => true,
+                            'data' =>
+                            [
+                                'completeSessionView' => $completeSessionView
+                            ]
+                        ]
+                    );
+                }
+                return response()->json(
+                    [
+                        'success' => true, 'data' =>
+                        [
+                            'completeSessionView' => $completeSessionView
+                        ]
+                    ]
+                );
+            } catch (\Exception $ex) {
+                return response()->json(
+                    [
+                        'success' => false,
+                        'data' => [],
+                        'error' => ['message' => $ex->getMessage()]
+                    ],
+                    422
+                );
+            }
+        }
+    }
+
+
+    */
     // public function detailedlist_2(Request $request)
     // {
     //     $order = $request->order;

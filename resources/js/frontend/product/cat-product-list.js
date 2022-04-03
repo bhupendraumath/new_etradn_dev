@@ -226,7 +226,7 @@ window.addedFav = function addedFav(product_id, quantity_id, fav_id, user_exists
 
 }
 
-/*dfunction filter(pageno) {
+function filter(pageno) {
     var order = $('#order').val();
     var page_limit = $('#page_limit').val();
     var brand = $('#brand').val();
@@ -235,7 +235,7 @@ window.addedFav = function addedFav(product_id, quantity_id, fav_id, user_exists
     var url_file = $('#url').val();
 
     $.ajax({
-        url: "{{url('product-list')}}",
+        url: process.env.MIX_APP_URL + "/product-list",
         type: "POST",
         data: {
             'order': order,
@@ -243,7 +243,11 @@ window.addedFav = function addedFav(product_id, quantity_id, fav_id, user_exists
             'brand': brand,
             'category': category,
             'page': pageno,
-            _token: '{{csrf_token()}}'
+            // _token: '{{csrf_token()}}'
+        },
+        headers: {
+            'X-CSRF-Token': $('meta[name="_token"]').attr('content'),
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
         },
         success: function success(response) {
             $('#listing').html('');
@@ -265,7 +269,7 @@ window.addedFav = function addedFav(product_id, quantity_id, fav_id, user_exists
 
 
 
-}*/
+}
 
 $("body").on('click', '.page-link', function() {
     var url = $(this).data('url');
