@@ -71,7 +71,10 @@ Route::get(
     '/',
     [HomeController::class, 'index']
 )->name('home');
-
+Route::get(
+    '/home',
+    [HomeController::class, 'index']
+)->name('homee');
 
 Route::post(
     'home-listing',
@@ -88,7 +91,7 @@ Route::post(
 Route::post(
     'home-latest-product-listing',
     [HomeController::class, 'homeLatestProductListing']
-)->name('homeProductListing');
+)->name('homeLatestProductListing');
 
 Route::post(
     '/product-list',
