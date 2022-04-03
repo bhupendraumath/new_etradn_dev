@@ -618,14 +618,14 @@ $favoriteProduct=new App\Models\Product;
                         <hr class="margin-top-bottom">
 
 
-                        @if(!empty($feature_list))
-                         @foreach ($feature_list as $cat)                    
+                        @if(!empty($featured_products))                   
 
-                            <div id="{{$cat->categoryName}}3" class="tabcontent3">
+                            <div  class="tabcontent3">
                             
-                            @if(!empty($cat->category_based_product))
+                            @if(!empty($featured_products))
                                 <div class="row product-feature_list slider">
-                                @foreach ($cat->category_based_product as $product)
+                                @foreach ($featured_products as $product)
+                                    <a href="{{url('product-details/'.$product->id)}}" title="product's details">
                                     <div class="col-12 col-xs-12 col-md-4 col-sm-4 col-lg-4 col-xl-4 reducewidth slide">
 
                                         <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
@@ -653,7 +653,6 @@ $favoriteProduct=new App\Models\Product;
                                                     $avg_review=$review->review_average($product->id);            
                                                     ?>
 
-
                                                     @for($star = 1; $star <= 5; $star++)
                                                     <?php  $class_name = ''; ?>
                                                 
@@ -674,6 +673,7 @@ $favoriteProduct=new App\Models\Product;
 
 
                                     </div>
+                                    </a>
                                     @endforeach                           
                                 
                                 </div>
@@ -682,11 +682,11 @@ $favoriteProduct=new App\Models\Product;
                             @endif
                             
                             </div>
-                            @endforeach
+                    
                         @endif 
 
 
-                        <div id="Fruits3" class="tabcontent3">
+                        <!-- <div id="Fruits3" class="tabcontent3">
                             <div class="row">
 
                                 <div class="col-12 col-xs-12 col-md-4 col-sm-4 col-lg-4 col-xl-4 reducewidth">
@@ -758,7 +758,7 @@ $favoriteProduct=new App\Models\Product;
                                 
 
                             </div>
-                        </div>
+                        </div>  -->
 
      
 

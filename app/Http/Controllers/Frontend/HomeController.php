@@ -69,7 +69,7 @@ class HomeController extends Controller
 
                 $hot_products=Product::limit(5)->get();
                 $special_products=Product::limit(5)->get();
-                $featured_products=Product::limit(6)->get();
+                $featured_products=Product::limit(6)->orderBy('id','desc')->get();
 
                 $completeSessionView = view(
                     'frontend/home-listing',['popular_list'=>$popular_produts,'data'=>$list,'category_list'=>$category_list_popular,'hot_products'=>$hot_products,'special_products'=>$special_products,'featured_products'=>$featured_products]
@@ -121,13 +121,26 @@ class HomeController extends Controller
 
                 $popular_produts=new Product;
                 if($request->id!='all'){
-                    $popular_produts->where('cat_id',1);
+                    // $popular_produts->where('cat_id',$request->id);
+                    $popular_produts_list= $popular_produts
+                                            ->where('cat_id',$request->id)
+                                            ->orderBy('id','DESC')
+                                            ->limit(5)
+                                            ->get();
+                }else{
+
+                    $popular_produts_list= $popular_produts
+                                            // ->where('cat_id',$request->id)
+                                            ->orderBy('id','DESC')
+                                            ->limit(5)
+                                            ->get();
+
                 }
 
-                $popular_produts_list= $popular_produts
-                ->orderBy('id','DESC')
-                ->limit(5)
-                ->get();
+                // $popular_produts_list= $popular_produts
+                // ->orderBy('id','DESC')
+                // ->limit(5)
+                // ->get();
 
                 $completeSessionView = view(
                     'frontend/home-product-listing',['popular_list'=>$popular_produts_list]
@@ -179,13 +192,21 @@ class HomeController extends Controller
 
                 $popular_produts=new Product;
                 if($request->id!='all'){
-                    $popular_produts->where('cat_id',1);
-                }
+                    // $popular_produts->where('cat_id',$request->id);
+                    $popular_produts_list= $popular_produts
+                                            ->where('cat_id',$request->id)
+                                            ->orderBy('id','DESC')
+                                            ->limit(5)
+                                            ->get();
+                }else{
 
-                $popular_produts_list= $popular_produts
-                ->orderBy('id','DESC')
-                ->limit(5)
-                ->get();
+                    $popular_produts_list= $popular_produts
+                                            // ->where('cat_id',$request->id)
+                                            ->orderBy('id','DESC')
+                                            ->limit(5)
+                                            ->get();
+
+                }
 
                 $completeSessionView = view(
                     'frontend/home-special-product-listing',['popular_list'=>$popular_produts_list]
