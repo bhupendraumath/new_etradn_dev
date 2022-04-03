@@ -252,10 +252,35 @@ function getSellerAddress()
         [
             'userId' => $userId,
             'address_type' => 'shipping',
-            'isPrimary' => 'y'
+            // 'isPrimary' => 'y'
         ]
     )->first();
-    return $address->address1 . ',' . $address->city . ',' . $address->state . ',' . $address->country . ',' . $address->zip_code;
+
+
+    // print_r($address);die;
+    $address1="";
+    $city="";
+    $state="";
+    $country="";
+    $zip_code="";
+
+    if(!empty($address->address1)){
+        $address1=$address->address1;
+    }
+    if(!empty($address->city)){
+        $address=" ";
+    }
+    if(!empty($address->state)){
+        $state=" ";
+    }
+    if(!empty($address->country)){
+        $country=" ";
+    }
+    if(!empty($address->zip_code)){
+        $zip_code=" ";
+    }
+
+    return $address1 . ',' . $city . ',' . $state . ',' . $country . ',' . $zip_code;
 }
 
 
@@ -278,3 +303,30 @@ function idBasedOrderDetails($description)
 
     return $product_id;
 }
+
+
+function getAddressUsingIP()
+{
+   
+    return json_decode(file_get_contents("http://ipinfo.io/"));;
+}
+
+/*
+function popular_items(){
+    $details = getAddressUsingIP();
+               
+    $order_list = DB::table('tbl_orders')
+    ->select('tbl_orders.shipping_address','tbl_orders.order_number', 'tbl_order_items.*')
+    ->join('tbl_order_items','tbl_order_items.order_number','=','tbl_orders.order_number')
+    ->where('tbl_orders.shipping_address', 'like', '%' . $details->city . '%')
+    ->get();
+
+    $idsArr=array(); //for product id
+    foreach($order_list as $order){
+        $getid=idBasedOrderDetails($order->product_detail_1);
+        array_push($idsArr,$getid);
+    }
+
+    return $idsArr;
+}
+*/

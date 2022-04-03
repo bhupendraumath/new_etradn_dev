@@ -31,7 +31,7 @@
                         
                         @php
                         if($title=="Delivery Address"){
-                            $address_type="delivery";
+                            $address_type="shipping";
                         }
                         else{
                             $address_type="business";

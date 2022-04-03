@@ -253,6 +253,8 @@ class ProductController extends Controller
     //category based list
     public function detailedlist(Request $request)
     {
+
+        //print_r($request->all());die;
         if ($request->ajax()) {
             try {
                 $order = $request->order;
@@ -263,12 +265,18 @@ class ProductController extends Controller
                 $conditionArr = $request->conditionArr;
                 $page_limit = $request->page_limit != null ? $request->page_limit : 6;
                 $sequence = "asc";
-                $dataArr = ['cat_id' => $category];
 
+                $dataArr=['is_delete'=>"n"];
+
+                if($category!='noav'){
+
+                $dataArr['cat_id']=$category;
+
+                }
                 $function_price_range = function () {
                 };
 
-                if ($sub_cat != null || $sub_cat != "") {
+                if ($sub_cat != null && $sub_cat != "noav") {
                     $dataArr['sub_cat_id'] = $sub_cat;
                 }
 
@@ -283,9 +291,13 @@ class ProductController extends Controller
                 }
 
                 $product = new Product;
+                // if(!empty($dataArr)){
                 $details_product = $product->where($dataArr);
+                // }
+           
 
-                if ($brand != null) {
+
+                if ($brand != null && $brand[0]!="noav") {
                     $arr = [1, 2];
                     $details_product->whereIn('brand_id', $brand);
                 }
@@ -311,6 +323,7 @@ class ProductController extends Controller
                     ->orderBy('id', $sequence)
                     ->paginate($page_limit);
 
+                    // print_r($productlist);die;
 
 
                 /* $productlist = Product::where($dataArr)
@@ -413,7 +426,7 @@ class ProductController extends Controller
         return view('frontend/product/refund-request');
     }
 
-    public function list($id)
+    public function list($id,$subid,$brandid)
     {
         $list = Product::whereCatId($id)
             ->paginate(6);
@@ -437,6 +450,29 @@ class ProductController extends Controller
         return view('frontend/product/cat-product', $result);
     }
 
+    /*public function list($id)
+    {
+        $list = Product::whereCatId($id)
+            ->paginate(6);
+
+        $brand_list = Brand::where('isActive', 'y')->get();
+        $category_list = Category::all();
+
+        $product = Product::where('cat_id', $id)
+            ->paginate(1);
+
+        $condition_list = ProductCondition::where('isActive', 'y')
+            ->get();
+
+        $result = [
+            'list' => $list,
+            'brand_list' => $brand_list,
+            'category_list' => $category_list,
+            'product' => $product,
+            'condition_list' => $condition_list
+        ];
+        return view('frontend/product/cat-product', $result);
+    }*/
 
     /**
      * Show the form for editing the specified resource.

@@ -66,13 +66,13 @@ Session::put('back_url', URL::full());
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
 
                         @if(!empty($category_list))
-                        <select class="sorting-low-high brand-select remove-borders" onchange="selectedCategory()" id="category">
-                            @php
-                             $route_cat_id=request()->route('id');
+                        <select class="sorting-low-high brand-select remove-borders"  id="category">
+                           @php
+                             $route_cat_id=request()->route('catid');
                             @endphp
 
 
-                            <option value="{{ $route_cat_id }}" selected>Select Category</option>
+                           <option value="{{$route_cat_id}}" selected>Select Category</option>
                             @foreach($category_list as $cat)
                             <option value="{{$cat->id}}">{{$cat->categoryName}}</option>
                             @endforeach
@@ -88,6 +88,10 @@ Session::put('back_url', URL::full());
 
                         
                         <select class="sorting-low-high brand-select remove-borders" onchange="selectedSubCategory()" id="subcategory">
+                            @php
+                            $route_subcat_id=request()->route('subid');
+                            @endphp
+                            <option value="{{ $route_subcat_id }}" selected>Select Category</option>
                             <!-- <option  selected disabled>Select Subcategory</option> -->
 
                         </select>
@@ -104,8 +108,14 @@ Session::put('back_url', URL::full());
                     <hr class="hr-width"/>
                         <div class="myBoxBrand">
                         @if(!empty($brand_list))
+                            @php
+                            $route_brandid=request()->route('brandid');
+                            @endphp
+
+                            <input class="checkboxes" checked type = "hidden"  id="getbrandid" value = "{{$route_brandid}}" />
+
                         @foreach($brand_list as $brand)
-                            <input class="checkboxes" type = "checkbox"  value = "{{$brand->id}}" />{{$brand->brandName}} <br/>
+                            <input class="checkboxes"  type = "checkbox" <?php if($route_brandid==$brand->id){ echo 'checked';}?>  value = "{{$brand->id}}" />{{$brand->brandName}} <br/>
                          @endforeach
                         @endif
                         </div>
