@@ -4,153 +4,155 @@
 $favoriteProduct=new App\Models\Product;
 @endphp
 
-   @if(!empty($popular_list))
              
 
 
-        <!-- <div  class="tabcontent"> -->
-        
-            @if(!empty($popular_list))
-                <!-- <div class="row product-show-list"> -->
-                @foreach ($popular_list as $product)
-                    <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xs-12 slide">
+<!-- <div  class="tabcontent"> -->
 
-                        <div class="images image-left">                                   
+    @if(!empty($popular_list) && count($popular_list)!=0)
+        <!-- <div class="row product-show-list"> -->
+        @foreach ($popular_list as $product)
+            <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xs-12 slide">
 
-                            <div class="background-gray left-side favorite-product-hover">
-                                @if(!empty($product->image))                                  
+                <div class="images image-left">                                   
 
-                                    <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="herer" onerror="this.src='{{url('assets/images/default.png')}}';" >
-                                @else
-                                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="heere2" srcset="" />
-                                @endif
-                                <div class="hover-icons">
-                                    <a href="{{url('product-details/'.$product->id)}}" title="product's details">
-                                            <span class="left-buy-it" >
-                                                    @if($product->want_to_list=='b')
-                                                    Buy It Now
-                                                    @elseif($product->want_to_list=='a')
-                                                    Auction
-                                                    @else
-                                                    Both
-                                                    @endif
-                                                    
-                                                    <i class="fas fa-angle-double-right"></i>
-                                            </span>
+                    <div class="background-gray left-side favorite-product-hover">
+                        @if(!empty($product->image))                                  
 
-                                            </a>
-                                            
-
-                                        <?php
-                                        $user=Auth::user();
-                                        if(!empty($user))
-                                        {
-                                        
-                                            $value= $favoriteProduct->favorite_product_details($product->id,Auth::user()->id);
-                                            
-
-                                            if(count($value)!=0){
-                                                $title= 'Remove in your favorite list';
-                                                $color=1;
-                                            }
-                                            else{
-                                                $title= 'Add in favorite list';
-                                                $color=2;
-                                            }
-                                        }
-                                        else{
-                                            //  $value=[];
-                                            $title= 'Add in favorite list';
-                                            $color=0;
-                                        }
-                                        ?>
-
-                                    @if(!empty($product->quantity->id))
-                                        @if($color==1)
-                                                <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},{{$value[0]->id}},'user_exists')">
-                                                    <i class="fas fa-heart" style="color:red"></i>
-                                                </button>
-                                            @elseif($color==2)
-                                                <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','user_empty')">
-                                                        <i class="fa fa-heart-o"></i>
-                                                </button>
+                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="herer" onerror="this.src='{{url('assets/images/default.png')}}';" >
+                        @else
+                            <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" alt="heere2" srcset="" />
+                        @endif
+                        <div class="hover-icons">
+                            <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+                                    <span class="left-buy-it" >
+                                            @if($product->want_to_list=='b')
+                                            Buy It Now
+                                            @elseif($product->want_to_list=='a')
+                                            Auction
                                             @else
-
-                                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','auth_required')">
-                                                        <i class="fa fa-heart-o"></i>
-                                                </button>
+                                            Both
                                             @endif
-                                    @else
-                                        <button class="circle" title="Quantity id not available" >
+                                            
+                                            <i class="fas fa-angle-double-right"></i>
+                                    </span>
+
+                                    </a>
+                                    
+
+                                <?php
+                                $user=Auth::user();
+                                if(!empty($user))
+                                {
+                                
+                                    $value= $favoriteProduct->favorite_product_details($product->id,Auth::user()->id);
+                                    
+
+                                    if(count($value)!=0){
+                                        $title= 'Remove in your favorite list';
+                                        $color=1;
+                                    }
+                                    else{
+                                        $title= 'Add in favorite list';
+                                        $color=2;
+                                    }
+                                }
+                                else{
+                                    //  $value=[];
+                                    $title= 'Add in favorite list';
+                                    $color=0;
+                                }
+                                ?>
+
+                            @if(!empty($product->quantity->id))
+                                @if($color==1)
+                                        <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},{{$value[0]->id}},'user_exists')">
+                                            <i class="fas fa-heart" style="color:red"></i>
+                                        </button>
+                                    @elseif($color==2)
+                                        <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','user_empty')">
                                                 <i class="fa fa-heart-o"></i>
                                         </button>
-                                    
-                                    @endif                               
+                                    @else
 
-
-                                        
-                                    <!-- <button class="circle" >
+                                            <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','auth_required')">
+                                                <i class="fa fa-heart-o"></i>
+                                        </button>
+                                    @endif
+                            @else
+                                <button class="circle" title="Quantity id not available" >
                                         <i class="fa fa-heart-o"></i>
-                                    </button> -->
-                                        
-                                    <div class="bottom-on-hover">
-                                            <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
-                                            {{$product->category->categoryName}}</span>
-                                            <span title="Sub Category"><i class="fa fa-tag"></i>&nbsp;
-                                            {{$product->subCategory->subCategoryName}}</span>
-                                            @if(!empty($product->brand))
-                                            <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$product->brand->brandName}}</span>
-                                            @endif
-                                            <span title="Bid" class="hide"><i class="fa fa-gavel"></i>&nbsp;Bid 0</span>
-                                    </div>                                
-                                </div>
-                            </div>
-                            <br/>
-                            <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+                                </button>
+                            
+                            @endif                               
 
-                                <h4>{{$product->product_name}}</h4>
-                                @if(!empty($product->quantity))
-                                <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
+
+                                
+                            <!-- <button class="circle" >
+                                <i class="fa fa-heart-o"></i>
+                            </button> -->
+                                
+                            <div class="bottom-on-hover">
+                                    <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
+                                    {{$product->category->categoryName}}</span>
+                                    <span title="Sub Category"><i class="fa fa-tag"></i>&nbsp;
+                                    {{$product->subCategory->subCategoryName}}</span>
+                                    @if(!empty($product->brand))
+                                    <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$product->brand->brandName}}</span>
+                                    @endif
+                                    <span title="Bid" class="hide"><i class="fa fa-gavel"></i>&nbsp;Bid 0</span>
+                            </div>                                
+                        </div>
+                    </div>
+                    <br/>
+                    <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+
+                        <h4>{{$product->product_name}}</h4>
+                        @if(!empty($product->quantity))
+                        <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
+                        @else
+                        <span><strike>$0</strike> &nbsp; <span> $0</span></span>
+                        @endif
+                        
+
+                        <div class="rating-review-upload">
+
+                            <?php
+                            
+                            $review=new App\Models\ProductReview;
+                            $avg_review=$review->review_average($product->id);            
+                            ?>
+
+
+                            @for($star = 1; $star <= 5; $star++)
+                            <?php  $class_name = ''; ?>
+                        
+                                @if($avg_review >= $star)
+                                <?php $class_name = ' text-warning'; ?>
                                 @else
-                                <span><strike>$0</strike> &nbsp; <span> $0</span></span>
+                                <?php $class_name = '-o star-light checked'; ?>
                                 @endif
-                                
+                            
+                            <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
+                            @endfor
 
-                                <div class="rating-review-upload">
+                        
 
-                                    <?php
-                                    
-                                    $review=new App\Models\ProductReview;
-                                    $avg_review=$review->review_average($product->id);            
-                                    ?>
+                        </div>
+                    </a>
+                    </div>
 
-
-                                    @for($star = 1; $star <= 5; $star++)
-                                    <?php  $class_name = ''; ?>
-                                
-                                        @if($avg_review >= $star)
-                                        <?php $class_name = ' text-warning'; ?>
-                                        @else
-                                        <?php $class_name = '-o star-light checked'; ?>
-                                        @endif
-                                    
-                                    <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
-                                    @endfor
-
-                                
-
-                                </div>
-                            </a>
-                            </div>
-
-                    </div>                                
-                @endforeach 
-                <!-- </div> -->
-            @endif
-        
+            </div>                                
+        @endforeach 
         <!-- </div> -->
+    @else
+    <div class="product-not-available">
+        <h4 class="not-avaiable"> Popular items not available for this</h4>
+    </div>
+    @endif
+
+<!-- </div> -->
     
-    @endif 
 
 
 

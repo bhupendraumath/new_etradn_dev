@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Product;
 use App\Models\Category;
-
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -54,7 +54,7 @@ class HomeController extends Controller
         if ($request->ajax()) {
             try {
                 // $details = json_decode(file_get_contents("http://ipinfo.io/"));
-               
+
                 $category_list_popular=Category::limit(4)->get();
                 $category_list_featured=Category::limit(4)->get();
 
@@ -111,36 +111,39 @@ class HomeController extends Controller
     public function homeProductListing(Request $request){
         if ($request->ajax()) {
             try {
-                // $details = json_decode(file_get_contents("http://ipinfo.io/"));
+                $details = json_decode(file_get_contents("http://ipinfo.io/"));
                
-                // $category_list_popular=Category::limit(4)->get();
+                $order_list = DB::table('tbl_orders')
+                ->select('tbl_orders.shipping_address','tbl_orders.order_number', 'tbl_order_items.*')
+                ->join('tbl_order_items','tbl_order_items.order_number','=','tbl_orders.order_number')
+                // ->where('tbl_orders.shipping_address',$userid)
+                ->where('tbl_orders.shipping_address', 'like', '%' . $details->city . '%')
+                // ->whereOr('tbl_orders.shipping_address', 'like', '%' .$details->region . '%')
+                ->get();
 
-                // $list=Category::with(['category_based_product'])
-                // ->limit(4)
-                // ->get();
+                $idsArr=array(); //for product id
+                foreach($order_list as $order){
+                   $getid=idBasedOrderDetails($order->product_detail_1);
+                   array_push($idsArr,$getid);
+                }
+
 
                 $popular_produts=new Product;
                 if($request->id!='all'){
-                    // $popular_produts->where('cat_id',$request->id);
-                    $popular_produts_list= $popular_produts
-                                            ->where('cat_id',$request->id)
-                                            ->orderBy('id','DESC')
-                                            ->limit(5)
-                                            ->get();
+                    $popular_produts_list=Product::whereIn('id',$idsArr)
+                    ->where('cat_id',$request->id)
+                    ->orderBy('id','DESC')
+                    ->limit(5)
+                    ->get();
+                            
                 }else{
 
-                    $popular_produts_list= $popular_produts
-                                            // ->where('cat_id',$request->id)
-                                            ->orderBy('id','DESC')
-                                            ->limit(5)
-                                            ->get();
+                    $popular_produts_list=Product::whereIn('id',$idsArr)
+                    ->orderBy('id','DESC')
+                    ->get();
 
                 }
 
-                // $popular_produts_list= $popular_produts
-                // ->orderBy('id','DESC')
-                // ->limit(5)
-                // ->get();
 
                 $completeSessionView = view(
                     'frontend/home-product-listing',['popular_list'=>$popular_produts_list]
@@ -182,17 +185,10 @@ class HomeController extends Controller
     public function homeLatestProductListing(Request $request){
         if ($request->ajax()) {
             try {
-                // $details = json_decode(file_get_contents("http://ipinfo.io/"));
-               
-                // $category_list_popular=Category::limit(4)->get();
-
-                // $list=Category::with(['category_based_product'])
-                // ->limit(4)
-                // ->get();
 
                 $popular_produts=new Product;
                 if($request->id!='all'){
-                    // $popular_produts->where('cat_id',$request->id);
+
                     $popular_produts_list= $popular_produts
                                             ->where('cat_id',$request->id)
                                             ->orderBy('id','DESC')

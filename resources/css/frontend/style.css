@@ -2024,6 +2024,11 @@ i.slick-next.fa.fa-chevron-circle-right.top-right.slick-arrow {
     right: 26px
 }
 
+.product-not-available {
+    text-align: center;
+    color: #f2ae3d;
+}
+
 .margin-top-add {
     margin-top: 27px;
 }
