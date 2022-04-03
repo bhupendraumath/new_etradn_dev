@@ -68,7 +68,7 @@ $('.myBoxBrand  input:checkbox').change(function() {
 
     var tempValue = '';
     var arr = [];
-
+    brandArr.length = 0;
     tempValue = $('.myBoxBrand  input:checkbox').map(function(n) {
         if (this.checked) {
             arr.push(Number(this.value));
@@ -132,7 +132,11 @@ function filtersByValue(pageno, price_order, show_records, category, sub_categor
     var category_value = $('#category').val();
     var subcategory_value = $('#subcategory').val();
     var order = $('#order').val();
+    if (brandArr.length == 0) {
+        var brand = $('#getbrandid').val();
+        brandArr[0] = brand;
 
+    }
 
     $.ajax({
         url: process.env.MIX_APP_URL + "/product-list",

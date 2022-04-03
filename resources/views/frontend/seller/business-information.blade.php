@@ -31,10 +31,14 @@
                         
                         @php
                         if($title=="Delivery Address"){
-                            $address_type="delivery";
+                            
+                            $address_type="shipping";
+                        }
+                        else if($title=='Business Address'){
+                            $address_type="business";
                         }
                         else{
-                            $address_type="business";
+                            $address_type="delivery";
                         }
                         @endphp
                     
@@ -107,7 +111,7 @@
                         
                         @php
                         if($title=="Delivery Address"){
-                            $address_type="delivery";
+                            $address_type="shipping";
                         }
                         else{
                             $address_type="business";

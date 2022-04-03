@@ -111,17 +111,15 @@ class HomeController extends Controller
     public function homeProductListing(Request $request){
         if ($request->ajax()) {
             try {
-                $details = json_decode(file_get_contents("http://ipinfo.io/"));
+                $details = getAddressUsingIP();
                
                 $order_list = DB::table('tbl_orders')
                 ->select('tbl_orders.shipping_address','tbl_orders.order_number', 'tbl_order_items.*')
                 ->join('tbl_order_items','tbl_order_items.order_number','=','tbl_orders.order_number')
-                // ->where('tbl_orders.shipping_address',$userid)
                 ->where('tbl_orders.shipping_address', 'like', '%' . $details->city . '%')
-                // ->whereOr('tbl_orders.shipping_address', 'like', '%' .$details->region . '%')
                 ->get();
 
-                $idsArr=array(); //for product id
+                $idsArr=array(); //for category id
                 foreach($order_list as $order){
                    $getid=idBasedOrderDetails($order->product_detail_1);
                    array_push($idsArr,$getid);
