@@ -26,7 +26,6 @@ use Carbon\Carbon;
                     
 
 
-
                 <div class="images onhover-show-menus">
                     <div class="background-gray uploaded-image-edited">
                         @if(!empty($productvalue->image->product_img))
@@ -34,6 +33,7 @@ use Carbon\Carbon;
                         @else
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif
+
 
                         <div class="hover-icons">
                                 <div>
@@ -50,7 +50,6 @@ use Carbon\Carbon;
                                             <i class="fas fa-angle-double-right"></i>
                                     </span>
 
-                                    <form action="#" id="addCartProductFrm" method="post" class="formhidden">
                                     @if(Auth::user()->user_type=='s')
                                     <a href="{{url('view-details-bids/'.$productvalue->product_id.'/'.$user_id)}}">
                                         
@@ -60,6 +59,8 @@ use Carbon\Carbon;
                                         <button class="circle"  title="View details"><i class="fa fa-eye color-delete"></i></button>
                                     </a>
                                     @if(Auth::user()->user_type=='b')
+                                    <form id="addCartProductFrm" method="post" class="formhidden">
+
                                         @if($productvalue->bid_status=="won")
                                     
 
@@ -97,8 +98,9 @@ use Carbon\Carbon;
 
                                            
                                         @endif
-                                    @endif
                                     </form>
+                                    
+                                    @endif
 
                                 </div>
 

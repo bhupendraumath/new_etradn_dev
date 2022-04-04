@@ -138,10 +138,13 @@ $('.hot-item-slider').slick({
     responsive: [{
             breakpoint: 1024,
             settings: {
-                slidesToShow: 1,
-                slidesToScroll: 3,
+                slidesToShow: 2,
+                slidesToScroll: 1,
                 infinite: false,
-                dots: false
+                dots: false,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: true,
             }
         },
         {

@@ -83,7 +83,7 @@
         <div class="<?php if (!empty(Auth::user())) {
 						echo 'col-md-5 col-sm-5 col-lg-5 col-xl-5';
 					} else {
-						echo 'col-md- col-sm-6 col-lg-6 col-xl-6';
+						echo 'col-md-6 col-sm-6 col-lg-6 col-xl-6';
 					} ?> header-middle">
             <form action="#" method="post">
                 <div class="search-input">

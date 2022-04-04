@@ -5,7 +5,7 @@ $favoriteProduct=new App\Models\Product;
  <div class="banner_bottom_agile_info">
     <div class="container-fluid  newclass">
 
-        <div class="col-md-3 col-sm-3 col-lg-3 col-xl-3 col-12 col-xs-12">
+        <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 col-12 col-xs-12">
             <div class="card ">
                 <div class="row">
                     <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
@@ -172,7 +172,7 @@ $favoriteProduct=new App\Models\Product;
                 </div>
             </div>
         </div>
-        <div class="col-md-9 col-sm-9 col-lg-9 col-xl-9 col-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-lg-9 col-xl-9 col-12 col-xs-12">
             <div class="card">
 
                 <div class="row">
@@ -230,11 +230,11 @@ $favoriteProduct=new App\Models\Product;
     <div class="container-fluid  newclass">
 
 
-        <div class="col-md-3 col-sm-3 col-lg-3 col-xl-3 col-12">
+        <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 col-12 remove-padding-here">
             <div class="row">
 
             <!-- special item start here -->
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 remove-padding-here">
                     <div class="card ">
                         <div class="row">
                             <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xl-8">
@@ -243,7 +243,7 @@ $favoriteProduct=new App\Models\Product;
 
                             <div class="col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4">
                                 <div class="buttons-left-right">
-                                  
+                                    
                                 </div>
                             </div>
 
@@ -253,10 +253,10 @@ $favoriteProduct=new App\Models\Product;
                         <div class="row hot-item-slider slider">
                     @if(!empty($special_products))
                         
-                          @foreach ($special_products as $product)
-                          @if($product!=null)
+                            @foreach ($special_products as $product)
+                            @if($product!=null)
                         <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide">
-                           {{-- <a href="{{url('product-details/'.$product->id)}}">--}}
+                            {{-- <a href="{{url('product-details/'.$product->id)}}">--}}
 
                             <div class="images image-left">                                   
 
@@ -268,7 +268,7 @@ $favoriteProduct=new App\Models\Product;
                                             <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80"  srcset="" />
                                         @endif
                                         <div class="hover-icons">
-                                          <div>
+                                            <div>
                                                 <a href="{{url('product-details/'.$product->id)}}" title="product's details">
 
                                                     <span class="left-buy-it" >
@@ -287,30 +287,30 @@ $favoriteProduct=new App\Models\Product;
 
                                                 
                                                 <?php
-                                                 $user=Auth::user();                                               
+                                                    $user=Auth::user();                                               
 
-                                                 if(!empty($user))
-                                                 {
-                                                   
+                                                    if(!empty($user))
+                                                    {
+                                                    
                                                     $value= $favoriteProduct->favorite_product_details($product->id,Auth::user()->id);
                                                     
 
                                                     if(count($value)!=0){
                                                         $title= 'Remove in your favorite list';
                                                         $color=1;
-                                                       }
-                                                       else{
+                                                        }
+                                                        else{
                                                         $title= 'Add in favorite list';
                                                         $color=2;
-                                                       }
-                                                 }
-                                                 else{                                                     
+                                                        }
+                                                    }
+                                                    else{                                                     
                                                     //  $value=[];
-                                                     $title= 'Add in favorite list';
-                                                     $color=0;
-                                                 }
+                                                        $title= 'Add in favorite list';
+                                                        $color=0;
+                                                    }
                                                 ?>
-                             
+                                
                                                 
                                                 @if(!empty($product->quantity->id))
                                                     @if($color==1)
@@ -392,8 +392,8 @@ $favoriteProduct=new App\Models\Product;
                             </div>
                             {{--</a>--}}
                         </div>
-                         @endif
-                         @endforeach
+                            @endif
+                            @endforeach
                         
                     @endif
                     </div>
@@ -403,7 +403,7 @@ $favoriteProduct=new App\Models\Product;
             <!-- special item end here -->
 
             <!-- start news letter here -->
-            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add remove-padding-here">
                 <div class="card ">
                     <div class="row">
                         <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xl-8">
@@ -438,7 +438,7 @@ $favoriteProduct=new App\Models\Product;
             </div>
 
             <!-- end news letter here -->
-            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 adv-image-left" style="background: url('assets/images/frontend/Layer_63.png');
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 adv-image-left remove-padding-here" style="background: url('assets/images/frontend/Layer_63.png');
                 margin-left: 15px;
                 background-repeat: no-repeat;
                 ">
@@ -448,10 +448,10 @@ $favoriteProduct=new App\Models\Product;
             </div>
 
         </div>
-        <div class="col-md-9 col-sm-9 col-lg-9 col-xl-9 col-12 reducewidth">
+        <div class="col-md-12 col-sm-12 col-lg-9 col-xl-9 col-12 reducewidth remove-padding-here">
             <div class="row">
                 <!-- adds banner start here -->
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 remove-padding-here">
                     <div class="card">
 
                         <div class="row">
@@ -521,7 +521,7 @@ $favoriteProduct=new App\Models\Product;
                 <!-- adds banner end here -->
 
                 <!-- start latest product -->
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add" >
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add remove-padding-here" >
                     <div class="card">
 
                     <div class="row">

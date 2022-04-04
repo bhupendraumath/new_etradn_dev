@@ -15,8 +15,19 @@ $favoriteProduct=new App\Models\Product;
          {{--   <a href="{{url('product-details/'.$productvalue->id)}}">--}}
                 <div class="images onhover-show-menus">
                     <div class="background-gray uploaded-image-edited cat-product">
-                        @if(!empty($productvalue->image->product_img))
-                        <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
+
+                    
+                        <?php
+
+                        $images_product=new App\Models\ImageUpload;
+                        $image_path_name=$images_product->imageProductById($productvalue->id);    
+                        
+                        // dd($image_path_name);die;
+                        ?>
+
+
+                        @if(!empty($image_path_name))
+                        <img src="{{url('assets/images/product-images/'.$image_path_name->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
                         @else
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif                      
@@ -26,7 +37,7 @@ $favoriteProduct=new App\Models\Product;
 
                         <div>
                             <a href="{{url('product-details/'.$productvalue->id)}}" title="product's details">
-                                <span class="left-buy-it" >
+                                <span class="left-buy-it">
                                         @if($productvalue->want_to_list=='b')
                                         Buy It Now
                                         @elseif($productvalue->want_to_list=='a')
@@ -69,16 +80,16 @@ $favoriteProduct=new App\Models\Product;
 
                             
                                 @if($color==1)
-                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->quantity->id}},{{$value[0]->id}},'user_exists')">
+                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->q_id}},{{$value[0]->id}},'user_exists')">
                                         <i class="fas fa-heart" style="color:red"></i>
                                     </button>
                                  @elseif($color==2)
 
-                                     <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->quantity->id}},'not__yet','user_empty')">
+                                     <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->q_id}},'not__yet','user_empty')">
                                             <i class="fa fa-heart-o"></i>
                                     </button>
                                 @else
-                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->quantity->id}},'not__yet','auth_required')">
+                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$productvalue->id}},{{$productvalue->q_id}},'not__yet','auth_required')">
                                             <i class="fa fa-heart-o"></i>
                                     </button>
                                 @endif
@@ -87,11 +98,11 @@ $favoriteProduct=new App\Models\Product;
                         <a href="{{url('product-details/'.$productvalue->id)}}" title="product's details">
                         <div class="bottom-on-hover">
                                 <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
-                                {{$productvalue->category->categoryName}}</span>
+                                {{$productvalue->categoryName}}</span>
                                 <span title="Sub Category"><i class="fa fa-tag"></i>&nbsp;
-                                {{$productvalue->subCategory->subCategoryName}}</span>
-                                @if(!empty($productvalue->brand))
-                                <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$productvalue->brand->brandName}}</span>
+                                {{$productvalue->subCategoryName}}</span>
+                                @if(!empty($productvalue->brand_id))
+                                <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$productvalue->brandName}}</span>
                                 @endif
                                 <span title="Bid" class="hide"><i class="fa fa-gavel"></i>&nbsp;Bid 0</span>
                         </div>
@@ -103,13 +114,13 @@ $favoriteProduct=new App\Models\Product;
                     <a href="{{url('product-details/'.$productvalue->id)}}">
 
                         <h4>{{$productvalue->product_name}}</h4>
-                        @if(!empty($productvalue->quantity))
+                        @if(!empty($productvalue->q_id))
                         <span>
                                 <strike>
-                                $ {{$productvalue->quantity->price}}
+                                $ {{$productvalue->price}}
                                 </strike> &nbsp;
                                 <span class="price-original"> $                                 
-                                    {{$productvalue->quantity->price-($productvalue->quantity->price * $productvalue->quantity->discount/100)}}           
+                                    {{$productvalue->price-($productvalue->price * $productvalue->discount/100)}}           
                                 </span>
                                {{-- <span class="discount-price">
                                     &nbsp;

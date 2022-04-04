@@ -12,7 +12,7 @@ $favoriteProduct=new App\Models\Product;
     @if(!empty($popular_list) && count($popular_list)!=0)
         <!-- <div class="row product-show-list"> -->
         @foreach ($popular_list as $product)
-            <div class="col-12 col-md-3 col-sm-3 col-lg-3 col-xl-3 col-xs-12 slide">
+            <div class="col-12 col-md-12 col-sm-12 col-lg-3 col-xl-3 col-xs-12 slide">
 
                 <div class="images image-left">                                   
 
@@ -175,21 +175,34 @@ $(function(){
         responsive: [{
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 3,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 1500,
+                    arrows: true,
+                    dots: false,
+                    pauseOnHover: true,
+                }
+            },
+            {
+                breakpoint: 720,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                     infinite: true,
                     dots: true,
                     pauseOnHover: true,
                 }
             },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    pauseOnHover: true,
-                }
-            },
+            // {
+            //     breakpoint: 600,
+            //     settings: {
+            //         slidesToShow: 2,
+            //         slidesToScroll: 2,
+            //         pauseOnHover: true,
+            //     }
+            // },
             {
                 breakpoint: 480,
                 settings: {

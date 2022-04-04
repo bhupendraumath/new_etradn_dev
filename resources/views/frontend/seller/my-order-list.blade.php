@@ -38,7 +38,7 @@
                         $product_detial=$product_detials->productById($product_id);
 
                     @endphp
-                    <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
+                    <div class="col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12 order-seller">
 
                         <div class="background-gray rating new-size order-image-gary">
                             <img src="{{url('assets/images/product-images/'.$image_upload->product_img)}}" alt="" srcset="" class="order-image" onerror="this.src='{{url('assets/images/default.png')}}';"/>
