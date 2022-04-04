@@ -1,4 +1,7 @@
 /* image cropper functions*/
+
+
+
 window.setImage = function setImage(input, img_type) {
     console.log("here");
     document.getElementById('image-logo-uploaded').style.display = "block"
