@@ -1,5 +1,7 @@
 /* image cropper functions*/
 window.setImage = function setImage(input, img_type) {
+    console.log("here");
+    document.getElementById('image-logo-uploaded').style.display = "block"
     $('.validation').empty();
     var fileTypes = ['jpg', 'jpeg', 'png']; //acceptable file types
     $('#crop_image').attr('src', '');
@@ -86,10 +88,15 @@ $(document).ready(function() {
         responsive: [{
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 3,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
                     infinite: false,
-                    dots: false
+                    autoplay: true,
+                    autoplaySpeed: 1500,
+                    arrows: true,
+                    dots: false,
+                    pauseOnHover: true,
+
                 }
             },
             {

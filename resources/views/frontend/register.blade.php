@@ -46,9 +46,12 @@
                         <div id="byseller">
                             <label for="lname" class="label-11">Upload Logo*</label>
                             <div class="form-field">
-                                <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg">
+                                <input type="file" class="upload-logo" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg">
                             </div>
-                            <img id="previewImage" width="100" height="100">
+                            
+                            <div class="image-logo-uploaded" id="image-logo-uploaded" style="display:none">
+                                 <img id="previewImage" width="100" height="100">
+                            </div>
                             <input type="hidden" name="business_logoo" id="imagedata">
                             <label for="lname" class="label-11">Business Name*</label>
                             <div class="form-field">
