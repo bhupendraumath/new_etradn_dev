@@ -11618,6 +11618,12 @@ i.fa.fa-shopping-bag.top_logo_agile_bag {
     text-transform: uppercase;
 }
 
+.navbar-default .navbar-nav>li>a {
+    color: white;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
 .navbar-nav>li>a {
     padding: 19px 16px;
 }
