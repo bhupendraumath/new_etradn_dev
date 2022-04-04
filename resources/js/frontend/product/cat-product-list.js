@@ -113,7 +113,7 @@ $('#price-range').change(function() {
     var price_range = $('#price-range').val();
     document.getElementById("min-price").innerHTML = '$' + price_range;
     priceRange = price_range;
-    console.log("---------------------", priceRange, discountArr, conditionArr, brandArr)
+    // console.log("---------------------", priceRange, discountArr, conditionArr, brandArr)
     filtersByValue(pageno, price_order, show_records, category, sub_category, brandArr, conditionArr, discountArr, priceRange)
 
 })
@@ -237,6 +237,7 @@ function filter(pageno) {
     var brand = $('#brand').val();
     var category = $('#category').val();
     var path = $('#pathimage').val();
+    var popular_list = $('#popular_list').val();
     var url_file = $('#url').val();
 
     $.ajax({
