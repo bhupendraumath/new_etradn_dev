@@ -255,9 +255,10 @@ class ProductController extends Controller
     public function detailedlist(Request $request)
     {
 
-        //print_r($request->all());die;
         if ($request->ajax()) {
             try {
+
+                $popular_list=$request->popular_list;
                 $order = $request->order;
                 $brand = $request->brand;
                 $category = $request->category;
@@ -291,13 +292,50 @@ class ProductController extends Controller
                     $sequence = 'desc';
                 }
 
-                $product =  DB::table('tbl_product')
+                if($popular_list=='noav'){
+                    $product =  DB::table('tbl_product')
+                    ->select('tbl_product.*','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity','tbl_product_brand.brandName','tbl_product_brand.id as brand_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_cat.categoryName','tbl_product_cat.id as c_id')
+                    ->join('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_product.id')
+                    ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_product.id')
+                    ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
+                    ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
+                    ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id');
+
+                }
+                else if($popular_list=='popular'){
+
+                    $details = getAddressUsingIP();
+
+                    $order_list = DB::table('tbl_orders')
+                    ->select('tbl_orders.shipping_address','tbl_orders.order_number', 'tbl_order_items.*')
+                    ->join('tbl_order_items','tbl_order_items.order_number','=','tbl_orders.order_number')
+                    ->where('tbl_orders.shipping_address', 'like', '%' . $details->city . '%')
+                    ->get();
+                
+                    $idsArr=array(); //for category id
+                    foreach($order_list as $order){
+                        $getid=idBasedOrderDetails($order->product_detail_1);
+                        array_push($idsArr,$getid);
+                    }
+                
+               
+                    $product =  DB::table('tbl_product')
+                    ->select('tbl_product.*','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity','tbl_product_brand.brandName','tbl_product_brand.id as brand_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_cat.categoryName','tbl_product_cat.id as c_id')
+                    ->join('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_product.id')
+                    ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_product.id')
+                    ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
+                    ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
+                    ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id')
+                    ->whereIn('tbl_product.id',$idsArr);
+
+                }
+                /*$product =  DB::table('tbl_product')
                 ->select('tbl_product.*','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity','tbl_product_brand.brandName','tbl_product_brand.id as brand_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_cat.categoryName','tbl_product_cat.id as c_id')
                 ->join('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_product.id')
                 ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_product.id')
                 ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
                 ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
-                ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id');
+                ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id');*/
                 
                 $details_product = $product->where($dataArr);
                 
@@ -573,7 +611,7 @@ class ProductController extends Controller
         return view('frontend/product/refund-request');
     }
 
-    public function list($id,$subid,$brandid)
+    public function list($id,$subid,$brandid,$popularList)
     {
         $list = Product::whereCatId($id)
             ->paginate(6);

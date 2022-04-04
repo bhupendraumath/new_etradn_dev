@@ -317,7 +317,7 @@
 										<a class="test" tabindex="-1">{{$cat->categoryName}} <span class="caret menus"></span></a>
 										<ul class="dropdown-menu" id="sub_ul-{{$loop->index}}">
 										@foreach($cat->sub_category as $subcat)
-										<li><a tabindex="-1"  href="{{url('product-list/noav/'.$subcat->id.'/noav')}}">{{$subcat->subCategoryName}}</a></li>
+										<li><a tabindex="-1"  href="{{url('product-list/noav/'.$subcat->id.'/noav/noav')}}">{{$subcat->subCategoryName}}</a></li>
 										@endforeach
 										</ul>
 									</li>
@@ -363,7 +363,7 @@
                                     <ul class="dropdown-menu agile_short_dropdown">
 										@if(!empty($brands))
 										@foreach($brands as $brand)
-                                       		<li><a href="{{url('product-list/noav/noav/'.$brand->id)}}">
+                                       		<li><a href="{{url('product-list/noav/noav/'.$brand->id.'/noav')}}">
 												{{$brand->brandName}}
 											</a></li>
 										@endforeach
@@ -372,7 +372,7 @@
                                 </li>
 
                                 <li class="dropdown menu__item">
-                                    <a href="#" class="menu__link">Popular products</a>
+                                <a href="{{url('product-list/noav/noav/noav/popular')}}">Popular products</a>
 
                                 </li>
 
@@ -384,7 +384,7 @@
                                     <ul class="dropdown-menu agile_short_dropdown">
 									@if(!empty($popular_category))
 										@foreach($popular_category as $category)
-                                        <li><a href="{{url('product-list/'.$category->id.'/noav/noav/')}}">{{$category->categoryName}}</a></li>
+                                        <li><a href="{{url('product-list/'.$category->id.'/noav/noav/noav')}}">{{$category->categoryName}}</a></li>
 										@endforeach
 									@endif
                                     </ul>
