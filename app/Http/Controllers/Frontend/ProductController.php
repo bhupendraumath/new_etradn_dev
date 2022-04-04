@@ -292,17 +292,8 @@ class ProductController extends Controller
                     $sequence = 'desc';
                 }
 
-                if($popular_list=='noav'){
-                    $product =  DB::table('tbl_product')
-                    ->select('tbl_product.*','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity','tbl_product_brand.brandName','tbl_product_brand.id as brand_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_cat.categoryName','tbl_product_cat.id as c_id')
-                    ->join('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_product.id')
-                    ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_product.id')
-                    ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
-                    ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
-                    ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id');
-
-                }
-                else if($popular_list=='popular'){
+               
+                if($popular_list=='popular'){
 
                     $details = getAddressUsingIP();
 
@@ -327,6 +318,15 @@ class ProductController extends Controller
                     ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
                     ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id')
                     ->whereIn('tbl_product.id',$idsArr);
+
+                }else{
+                    $product =  DB::table('tbl_product')
+                    ->select('tbl_product.*','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity','tbl_product_brand.brandName','tbl_product_brand.id as brand_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_cat.categoryName','tbl_product_cat.id as c_id')
+                    ->join('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_product.id')
+                    ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_product.id')
+                    ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
+                    ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
+                    ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id');
 
                 }
                 /*$product =  DB::table('tbl_product')
