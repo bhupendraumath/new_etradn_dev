@@ -29,6 +29,12 @@ Session::put('back_url', URL::full());
                         <hr />
                     </div>
                 </div>
+
+                             @php
+                             $popularList=request()->route('popularList');
+                            @endphp
+
+                            <input type="hidden" id="popular_list" value="{{$popularList}}">
               {{--  <div class="row">
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
                         <input type="hidden" id="pathimage" value="{{url('assets/images/product-images/')}}">

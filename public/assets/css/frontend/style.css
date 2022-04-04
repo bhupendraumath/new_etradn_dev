@@ -6639,6 +6639,17 @@ body {
 
 /* --------------------------------------- */
 
+.subchild-menus-over {
+    height: 100px;
+    overflow: auto;
+    width: 300px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+    font-size: 12px;
+}
+
 ul.popular-items {
     margin-right: 0px !important;
     line-height: 2;
@@ -11613,14 +11624,21 @@ i.fa.fa-shopping-bag.top_logo_agile_bag {
     text-transform: uppercase;
 }
 
+.navbar-default .navbar-nav>li>a {
+    color: white;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
 .navbar-nav>li>a {
     padding: 19px 16px;
 }
 
-.navbar-default .navbar-nav>li>a {
+
+/* .navbar-default .navbar-nav>li>a {
     color: #777;
     font-size: 12px;
-}
+} */
 
 .navbar-collapse {
     padding-right: 0;

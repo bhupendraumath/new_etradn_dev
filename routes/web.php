@@ -177,7 +177,7 @@ Route::get(
 )->name('review-rating');
 //list of product
 Route::get(
-    '/product-list/{catid}/{subid}/{brandid}',
+    '/product-list/{catid}/{subid}/{brandid}/{popularList}',
     [ProductController::class, 'list']
 )->name('product.list'); 
 

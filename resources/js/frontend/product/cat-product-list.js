@@ -132,6 +132,10 @@ function filtersByValue(pageno, price_order, show_records, category, sub_categor
     var category_value = $('#category').val();
     var subcategory_value = $('#subcategory').val();
     var order = $('#order').val();
+    var popular_list = $('#popular_list').val();
+
+    console.log("popular_list ", popular_list);
+
     if (brandArr.length == 0) {
         var brand = $('#getbrandid').val();
         brandArr[0] = brand;
@@ -151,7 +155,8 @@ function filtersByValue(pageno, price_order, show_records, category, sub_categor
             'discountArr': discountArr,
             'priceRange': priceRange,
             'page': pageno,
-            // _token: '{{csrf_token()}}'
+            'popular_list': popular_list
+                // _token: '{{csrf_token()}}'
         },
         success: function success(response) {
             $('#listing').html('');

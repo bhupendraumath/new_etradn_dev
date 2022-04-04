@@ -311,17 +311,23 @@
 								</a>
 
 								<ul class="dropdown-menu agile_short_dropdown">
-								@if(!empty($categories))
+								@if(!empty($categories) && count($categories)!=0)
 									@foreach($categories as $cat)
 									<li class="dropdown-submenu subchildmenus" id="cat_li-{{$loop->index}}">
 										<a class="test" tabindex="-1">{{$cat->categoryName}} <span class="caret menus"></span></a>
-										<ul class="dropdown-menu" id="sub_ul-{{$loop->index}}">
-										@foreach($cat->sub_category as $subcat)
-										<li><a tabindex="-1"  href="{{url('product-list/noav/'.$subcat->id.'/noav')}}">{{$subcat->subCategoryName}}</a></li>
-										@endforeach
+										<ul class="dropdown-menu subchild-menus-over" id="sub_ul-{{$loop->index}}">
+                                        @if(!empty($cat->sub_category) && count($cat->sub_category)!=0)
+                                            @foreach($cat->sub_category as $subcat)
+                                            <li><a tabindex="-1"  href="{{url('product-list/noav/'.$subcat->id.'/noav/noav')}}">{{$subcat->subCategoryName}}</a></li>
+                                            @endforeach
+                                        @else
+                                        <li>&nbsp;&nbsp;Subcategories Not Available</li>
+                                        @endif
 										</ul>
 									</li>
 									@endforeach
+                                @else
+                                    <li>&nbsp;&nbsp;Categories Not Available</li>
 								@endif
 								
 								</ul>
@@ -361,18 +367,21 @@
 								<li class="menu__item dropdown">
                                     <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Products By brand </a>
                                     <ul class="dropdown-menu agile_short_dropdown">
-										@if(!empty($brands))
+										@if(!empty($brands) && count($brands)!=0)
 										@foreach($brands as $brand)
-                                       		<li><a href="{{url('product-list/noav/noav/'.$brand->id)}}">
+                                       		<li><a href="{{url('product-list/noav/noav/'.$brand->id.'/noav')}}">
 												{{$brand->brandName}}
 											</a></li>
 										@endforeach
-										@endif
+                                        @else
+                                        <li>&nbsp;&nbsp;Brands Not Available</li>
+                                        @endif
+										
                                     </ul>
                                 </li>
 
                                 <li class="dropdown menu__item">
-                                    <a href="#" class="menu__link">Popular products</a>
+                                <a href="{{url('product-list/noav/noav/noav/popular')}}">Popular products</a>
 
                                 </li>
 
@@ -382,11 +391,13 @@
 								<li class="menu__item dropdown">
                                     <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Popular category<b class="caret"></b></a>
                                     <ul class="dropdown-menu agile_short_dropdown">
-									@if(!empty($popular_category))
+									@if(!empty($popular_category) && count($popular_category)!=0)
 										@foreach($popular_category as $category)
-                                        <li><a href="{{url('product-list/'.$category->id.'/noav/noav/')}}">{{$category->categoryName}}</a></li>
+                                        <li><a href="{{url('product-list/'.$category->id.'/noav/noav/noav')}}">{{$category->categoryName}}</a></li>
 										@endforeach
-									@endif
+                                        @else
+                                        <li>&nbsp;&nbsp;Popular category Not Available</li>
+                                        @endif
                                     </ul>
                                 </li>
 
