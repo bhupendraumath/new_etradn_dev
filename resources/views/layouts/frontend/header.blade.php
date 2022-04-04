@@ -444,6 +444,8 @@
 
 
     <script type="text/javascript">
+// define a new console
+
 
 	$(document).ready(function(){
 		$("[id^='cat_li-']").on("click", function(e){

@@ -113,8 +113,7 @@ Route::get(
 
 Route::post(
     '/checking_order_existing',
-    [ReviewController::class, '
-    ']
+    [ReviewController::class, 'checking_order_existing']
 )->name('checking_order_existing');
 
 Route::post(
