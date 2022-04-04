@@ -16,24 +16,24 @@ use App\Services\FileService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
-use App\models\FavoriteProduct;
+use App\Models\FavoriteProduct;
 
 
 
 class FavProductController extends Controller
 {
-    
+
     public function myUploadProductPost(Request $request)
     {
 
         if ($request->ajax()) {
             try {
 
-                
+
                 $productlist = FavoriteProduct::where('user_id', Auth::user()->id)
                     ->paginate($request->record);
 
-                    
+
                 $completeSessionView = view(
                     'frontend/buyer/my-favoute-product-list',
                     compact('productlist')
@@ -71,69 +71,66 @@ class FavProductController extends Controller
         }
     }
 
-    public function addInFavList($product_id,$quantity_id,$fav_id){
+    public function addInFavList($product_id, $quantity_id, $fav_id)
+    {
 
-        try{
+        try {
 
-            $user_details=Auth::user();
+            $user_details = Auth::user();
 
-            if(!empty($user_details)){
+            if (!empty($user_details)) {
 
-                $user_id=Auth::user()->id;
+                $user_id = Auth::user()->id;
 
-                $fav_exists=new FavoriteProduct;
-                $exists=$fav_exists->where(['product_id'=>$product_id,'paq_id'=>$quantity_id,'user_id'=>$user_id])
-                ->get();
-                
-                if(count($exists)==0){
-                    $fav=new FavoriteProduct;
-                    $fav->product_id=$product_id;
-                    $fav->paq_id=$quantity_id;
-                    $fav->user_id=$user_id;
+                $fav_exists = new FavoriteProduct();
+                $exists = $fav_exists->where(['product_id' => $product_id, 'paq_id' => $quantity_id, 'user_id' => $user_id])
+                    ->get();
 
-                    if($fav->save()){
+                if (count($exists) == 0) {
+                    $fav = new FavoriteProduct;
+                    $fav->product_id = $product_id;
+                    $fav->paq_id = $quantity_id;
+                    $fav->user_id = $user_id;
+
+                    if ($fav->save()) {
                         return response()->json(
                             [
-                                'success' => true, 'message' =>"Added in your favorite list."
-                                
+                                'success' => true, 'message' => "Added in your favorite list."
+
+                            ]
+                        );
+                    } else {
+                        return response()->json(
+                            [
+                                'success' => false, 'message' => "Please Try Again Later .."
                             ]
                         );
                     }
-                    else{
+                } else {
+                    $find = FavoriteProduct::find($fav_id);
+                    if ($find->delete()) {
                         return response()->json(
                             [
-                                'success' => false, 'message'=>"Please Try Again Later .."
+                                'success' => true, 'message' => "Removed in your favorite list."
+
                             ]
                         );
-                    }
-                }else{
-                    $find=FavoriteProduct::find($fav_id);                    
-                    if($find->delete()){
+                    } else {
                         return response()->json(
                             [
-                                'success' => true, 'message' =>"Removed in your favorite list."
-                                
-                            ]
-                        );
-                    }
-                    else{
-                        return response()->json(
-                            [
-                                'success' => false, 'message'=>"Please Try Again Later .."
+                                'success' => false, 'message' => "Please Try Again Later .."
                             ]
                         );
                     }
                 }
-               
-            }
-            else{
+            } else {
                 return response()->json(
                     [
-                        'success' => false, 'message'=>"Please Login first..."
+                        'success' => false, 'message' => "Please Login first..."
                     ]
                 );
             }
-        }catch (\Exception $ex) {
+        } catch (\Exception $ex) {
             return response()->json(
                 [
                     'success' => false,
@@ -145,20 +142,21 @@ class FavProductController extends Controller
         }
     }
 
-    public function deleteFavorite($fav_id){
+    public function deleteFavorite($fav_id)
+    {
 
-       try{
+        try {
             $user_id = Auth::guard('web')->user()->id;
 
-            $delete=FavoriteProduct::whereId($fav_id)
-            ->delete();
-        
+            $delete = FavoriteProduct::whereId($fav_id)
+                ->delete();
+
             return response()->json(
                 [
-                    'success' => true, 'message'=>"Delete Successfully"
+                    'success' => true, 'message' => "Delete Successfully"
                 ]
             );
-        }catch (\Exception $ex) {
+        } catch (\Exception $ex) {
             return response()->json(
                 [
                     'success' => false,
@@ -168,33 +166,30 @@ class FavProductController extends Controller
                 422
             );
         }
-
     }
 
-    public function allDeleteFavorite(){
+    public function allDeleteFavorite()
+    {
 
-        try{
-        $user_id = Auth::guard('web')->user()->id;
+        try {
+            $user_id = Auth::guard('web')->user()->id;
 
-        $delete=FavoriteProduct::whereUserId($user_id)
-        ->delete();
-        return response()->json(
-            [
-                'success' => true, 'message'=>"Delete Successfully"
-            ]
-        );
-    }catch (\Exception $ex) {
-        return response()->json(
-            [
-                'success' => false,
-                'data' => [],
-                'error' => ['message' => $ex->getMessage()]
-            ],
-            422
-        );
+            $delete = FavoriteProduct::whereUserId($user_id)
+                ->delete();
+            return response()->json(
+                [
+                    'success' => true, 'message' => "Delete Successfully"
+                ]
+            );
+        } catch (\Exception $ex) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'data' => [],
+                    'error' => ['message' => $ex->getMessage()]
+                ],
+                422
+            );
+        }
     }
-
-    }
-
-    
 }

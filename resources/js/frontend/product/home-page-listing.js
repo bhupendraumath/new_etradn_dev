@@ -349,7 +349,7 @@ window.addedFav = function addedFav(product_id, quantity_id, fav_id, user_exists
         }).then(
             function(isConfirm) {
                 if (isConfirm) {
-                    window.location.href = "{{url('sign-in')}}";
+                    window.location.href = process.env.MIX_APP_URL + "/sign-in";
                 } else {
                     return false;
                 }
