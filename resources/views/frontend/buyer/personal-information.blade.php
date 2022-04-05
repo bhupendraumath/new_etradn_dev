@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-
+<!--
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                       
                                         <label for="">Business type</label>
 
                                         <select class="form-control width-100-per businesstype-personal" name="business_type_id" id="">
@@ -148,25 +148,14 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="row">
-                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                <div class="inner-addon left-addon">
-                                <i class="glyphicon glyphicon-lock"></i>
-                                <input type="text" class="form-control" name="Confirm-password" placeholder="Confirm Password*"/>
-                                </div>
-                            </div>
-                            
-                        </div> -->
 
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
-                                    <!-- *(Only Jpg, PDF, DOC files allowed) -->
                                     <div id="drop_area" class="area fields drag-area">
                                         <div>
 
                                             <label for="files" class="btn btnforupload" >Upload Ducuments.
                                             </label>
-                                            <!-- <div class="drop-drag-imgaes-or-files">DROP FILES</div> -->
                                             <input id="files" style="visibility:hidden;" type="file">
                                         </div>
                                     </div>
@@ -176,7 +165,7 @@
                                     <br />
                                 </div>
                             </div>
-
+-->
 
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">

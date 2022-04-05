@@ -35,7 +35,7 @@ Session::put('back_url', URL::full());
                         First Purchase
                     </span>
                     <br />
-                    <a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+                    <a class="hvr-outline-out button2" href="{{url('product-list/noav/noav/noav/popular')}}">Shop Now </a>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@ Session::put('back_url', URL::full());
 
                     <h3>New products </h3>
                     <p class="paraghraph">Apple Hand Pipe, Zig-zag original rolling tips</p>
-                    <a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+                    <a class="hvr-outline-out button2" href="{{url('product-list/noav/noav/noav/popular')}}">Shop Now </a>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@ Session::put('back_url', URL::full());
                 <div class="carousel-caption">
                     <h3>Summer <span>Collection</span></h3>
                     <p>New Arrivals On Sale</p>
-                    <a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+                    <a class="hvr-outline-out button2" href="{{url('product-list/noav/noav/noav/popular')}}">Shop Now </a>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@ Session::put('back_url', URL::full());
                 <div class="carousel-caption">
                     <h3>The Biggest <span>Sale</span></h3>
                     <p>Special for today</p>
-                    <a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+                    <a class="hvr-outline-out button2" href="{{url('product-list/noav/noav/noav/popular')}}">Shop Now </a>
                 </div>
             </div>
         </div>

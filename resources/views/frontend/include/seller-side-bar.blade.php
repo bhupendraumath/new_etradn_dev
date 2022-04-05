@@ -93,7 +93,7 @@
         wallet
 
         @elseif(Route::current()->getName()=='accountSetting')
-        accountSetting
+        Account Setting
 
         @elseif(Route::current()->getName()=='rfq_list')
         rfq list

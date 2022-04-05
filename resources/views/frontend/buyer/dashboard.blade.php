@@ -17,11 +17,11 @@
     <div class="container-fluid dashboard-container">
      {{--   @include('frontend/include/buyer-side-bar') --}}
         
-        <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
+        <!-- <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12"> -->
             <div class="  col-12uy">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
-                        <div class="card-2 card-personal">
+                <!-- <div class="row"> -->
+                    <div class="col-md-6 col-sm-6 col-lg-4 col-xl-4 col-xs-12">
+                        <div class="card-2 buyerDashboard card-personal">
                             <h4 class="review-dashbord personal-information">
                                 MY PERSONAL INFORMATION
                             </h4>
@@ -40,8 +40,8 @@
                                 <a href="{{route('buyerPersonalDetails')}}">Edit></a></span><br/>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
-                        <div class="card-2">
+                    <div class="col-md-6 col-sm-6 col-lg-4 col-xl-4 col-xs-12">
+                        <div class="card-2 buyerDashboard">
                             <h4 class="review-dashbord">
                                MY FAVORITE PRODUCTS
                             </h4>
@@ -49,8 +49,8 @@
                             <span class="view-more dashboard"><a href="{{route('favoriteProduct')}}">VIEW MORE</a></span>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
-                        <div class="card-2">
+                    <div class="col-md-6 col-sm-6 col-lg-4 col-xl-4 col-xs-12">
+                        <div class="card-2 buyerDashboard">
                             <h4 class="review-dashbord">
                                 MY PLACED BIDS
                             </h4>
@@ -58,12 +58,12 @@
                             <span class="view-more dashboard"><a href="{{route('buyer.bidsPlaced')}}">VIEW MORE</a></span>
                         </div>
                     </div>
-                </div>
+                <!-- </div>
                 <br/>
 
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
-                        <div class="card-2">
+                <div class="row"> -->
+                    <div class="col-md-6 col-sm-6 col-lg-4 col-xl-4 col-xs-12">
+                        <div class="card-2 buyerDashboard">
                             <h4 class="review-dashbord">
                                 MY PURCHASE HISTORY
                             </h4>
@@ -71,8 +71,8 @@
                             <span class="view-more dashboard"><a href="{{route('buyer.purchaseHistory')}}">VIEW MORE</a></span>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
-                        <div class="card-2">
+                    <div class="col-md-6 col-sm-6 col-lg-4 col-xl-4 col-xs-12">
+                        <div class="card-2 buyerDashboard">
                             <h4 class="review-dashbord">
                                 MY DELIVERY AREAS
                             </h4>
@@ -80,8 +80,8 @@
                             <span class="view-more dashboard"><a href="{{route('buyer.deliveryArea')}}">VIEW MORE</a></span>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
-                        <div class="card-2">
+                    <div class="col-md-6 col-sm-6 col-lg-4 col-xl-4 col-xs-12">
+                        <div class="card-2 buyerDashboard">
                             <h4 class="review-dashbord">
                                 ACCOUNT SETTINGS
                             </h4>
@@ -90,12 +90,12 @@
                             <span class="view-more dashboard"><a href="{{route('buyer.buyerAccountSetting')}}">VIEW MORE</a></span>
                         </div>
                     </div>                    
-                </div>
+                <!-- </div>
                 <div class="row">
-                    <br/><br/><br/>
-                </div>
+                    <br/><br/><br/> -->
+                <!-- </div> -->
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 </div>
 

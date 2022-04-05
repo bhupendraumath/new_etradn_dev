@@ -43,20 +43,45 @@
                         </a>
                     </div>
                 </div>
-
-
-                <!-- <h4 class="Heading-h4-button">EDIT></h4>
-                        <button class="view-more-button">
-                            VIEW MORE
-                        </button> -->
-                <!-- <h4 class="Heading-yellow-h4">3128804060</h4> -->
             </div>
         </div>
 
     </div>
 
 
-    <div class="background-gredient">
+    <div class="borderOrStyle" onclick="mybuyersidebar()">
+       
+
+       @if(Route::current()->getName()=='seller.dashboard')
+       Dashboard
+
+       @elseif(Route::current()->getName()=='favoriteProduct')
+       Favorite Product
+       
+       @elseif(Route::current()->getName()=='buyer.bidsPlaced')
+        My Placed Bid
+
+       @elseif(Route::current()->getName()=='buyer.purchaseHistory')
+       My Purchase History
+
+       @elseif(Route::current()->getName()=='buyer.deliveryArea')
+       Delivery Area
+
+       @elseif(Route::current()->getName()=='buyer.buyerAccountSetting')
+       Account Setting
+
+       @elseif(Route::current()->getName()=='delivery-areas')
+       delivery areas
+
+       @elseif(Route::current()->getName()=='bidsPlaced')
+       bids Placed
+       @else
+       {{Route::current()->getName()}}
+       @endif
+       <i style="float:right" class="fas fa-angle-down"></i></i>
+   </div>
+
+    <div id="sellersidebar" class="background-gredient">
         <!-- <hr class="margin-bottom"/> -->
         <a href="{{route('buyer.dashboard')}}">
             <div class="row border-row-top-border top-vv">
@@ -136,4 +161,13 @@
 
         })
     })
+
+    function mybuyersidebar() {
+    var x = document.getElementById("sellersidebar");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    }
 </script>

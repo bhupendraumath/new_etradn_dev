@@ -255,15 +255,15 @@ Session::put('back_url', URL::full());
                                             <div class="col-sm-4">
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-4 col-xs-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>                                               
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-7 col-xs-7 col-sm-7">
                                                             <div class="progress">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="five_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-2 col-xs-2 col-sm-2">
                                                             <div class="progress-label-right">(<span id="total_five_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
@@ -271,31 +271,31 @@ Session::put('back_url', URL::full());
 
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-4 col-xs-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>
                                                         
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-7 col-xs-7 col-sm-7">
                                                             <div class="progress">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="four_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-2 col-sm-2 col-xs-2">
                                                             <div class="progress-label-right">(<span id="total_four_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
                                                 </p>
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-xs-4 col-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-xs-7 col-7 col-sm-7">
                                                             <div class="progress">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="three_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-2 col-xs-2 col-sm-2">
                                                             <div class="progress-label-right">(<span id="total_three_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
@@ -303,15 +303,15 @@ Session::put('back_url', URL::full());
 
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-4 col-xs-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-7 col-xs-7 col-sm-7">
                                                             <div class="progress">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="two_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-xs-2 col-2 col-sm-2">
                                                             <div class="progress-label-right">(<span id="total_two_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
@@ -319,15 +319,15 @@ Session::put('back_url', URL::full());
 
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-4 col-xs-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>                                               
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-7 col-xs-7 col-sm-7">
                                                             <div class="progress ">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="one_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-2 col-sm-2 col-xs-2">
                                                             <div class="progress-label-right">(<span id="total_one_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
@@ -355,14 +355,14 @@ Session::put('back_url', URL::full());
                                 <div class="card">
 
                                     <div class="inline-boxes row">
-                                        <div class="col-md-2 col-sm-2 col-lg-42 col-12">
+                                        <div class="col-md-2 col-xs-12 col-sm-2 col-lg-2 col-12">
                                             <div class="imageAvt">
                                                 <img src="{{url('assets/images/logo/'.$product_details->user_information['business_logo'])}}"
                                                     onerror="this.src='{{url('assets/images/logo/bigbasket.png')}}';" alt=""
                                                     srcset="">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-lg-6 col-12">
+                                        <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-12">
                                             <div class="details change-font-syle-here">
                                                 Business Name :  {{$product_details->user_information['business_name']}}<br/>
 

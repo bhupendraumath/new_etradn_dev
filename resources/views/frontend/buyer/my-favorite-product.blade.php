@@ -26,11 +26,11 @@
                             $favoriteProduct=new App\Models\FavoriteProduct;
                             $value= $favoriteProduct->where('user_id',Auth::user()->id)->get();
                         @endphp 
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-lg-9 col-xl-9 col-xs-7">
 
                     <h3 class="favorite-heading">MY FAVORITES <span class="color-yellow-number">({{count($value)}})</span></h3>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12 float-right">
+                    <div class="col-md-6 col-sm-6 col-lg-3 col-xl-3 col-xs-5 float-right" >
                         <!-- filter section    -->
                         
 
@@ -47,13 +47,12 @@
                 </div>
                 <hr class="favorite"/>
                 
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                        <!-- <p class="no-results">No more results found</p> -->
-                    </div>
+               <!-- <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                     </div>
-                </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                    </div>
+                </div>-->
                 <div class="row">
                     <div class="col-12 col-md-12 col-sm-12 danger">
                     <br/>
