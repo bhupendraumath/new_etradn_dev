@@ -11,7 +11,7 @@ use App\Models\Brand;
 use App\Models\ImageUpload;
 use App\Models\ProductQuantity;
 use App\Models\ProductReview;
-use App\models\ProductCondition;
+use App\Models\ProductCondition;
 use App\Services\FileService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;

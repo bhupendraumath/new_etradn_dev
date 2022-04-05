@@ -16,8 +16,8 @@ class FavoriteProduct extends Model
     public $timestamps = false;
 
     use HasFactory;
-    
-    public $with=['product','quantity','userDetails'];
+
+    public $with = ['product', 'quantity', 'userDetails'];
 
     protected $fillable = [
         'user_id',
@@ -54,26 +54,30 @@ class FavoriteProduct extends Model
         return $this->hasOne(ImageUpload::class, 'product_id', 'product_id');
     }
 
-    public function saveWishList($request) {
+    public function saveWishList($request)
+    {
         $saveWishList = FavoriteProduct::create([
             'user_id' => $request->user_id,
-            'product_id'=> $request->product_id,
+            'product_id' => $request->product_id,
             'paq_id' => $request->paq_id
         ]);
         return $saveWishList;
     }
 
-    public function getWishlistById($id){
+    public function getWishlistById($id)
+    {
         $wishList = FavoriteProduct::where('user_id', $id)->with('product', 'image', 'quantity')->orderBy('id', 'DESC')->get();
         return $wishList;
     }
 
-    public function getWishlistProductById($id){
+    public function getWishlistProductById($id)
+    {
         $wishListProduct = FavoriteProduct::where('id', $id)->first();
         return $wishListProduct;
     }
 
-    public function getWishlistProductByIdProductId($useId, $productId){
+    public function getWishlistProductByIdProductId($useId, $productId)
+    {
         $wishListProductFromDescription = FavoriteProduct::where('user_id', $useId)->where('product_id', $productId)->first();
         return $wishListProductFromDescription;
     }
