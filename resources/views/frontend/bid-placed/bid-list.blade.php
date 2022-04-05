@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 
 ?>
-@if(!empty($bindlist))
+@if(!empty($bindlist) && count($bindlist)!=0)
 <div class="row">
     @foreach($bindlist as $productvalue)
 
@@ -37,7 +37,7 @@ use Carbon\Carbon;
 
                         <div class="hover-icons">
                                 <div>
-
+                                     
                                     <span class="left-buy-it" >
                                             @if($productvalue->product->want_to_list=='b')
                                             Buy It Now
@@ -58,13 +58,11 @@ use Carbon\Carbon;
                                     @endif                   
                                         <button class="circle"  title="View details"><i class="fa fa-eye color-delete"></i></button>
                                     </a>
+
                                     @if(Auth::user()->user_type=='b')
-                                    <form id="addCartProductFrm" method="post" class="formhidden">
+                                    <form id="addCartProductFrm" class="position-chnages-pay"method="post" class="formhidden">
 
                                         @if($productvalue->bid_status=="won")
-                                    
-
-                                       
                                                 @php
                                                     $user=Auth::user();
                                                 @endphp
@@ -101,7 +99,7 @@ use Carbon\Carbon;
                                     </form>
                                     
                                     @endif
-
+                                    
                                 </div>
 
                                 <div class="bottom-on-hover">
@@ -168,9 +166,9 @@ use Carbon\Carbon;
     @endforeach
 </div>
 @else
-        <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth no-records">
-            <div>No Records Found</div>
-        </div>
+    <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth no-records">
+        <div>No Records Found</div>
+    </div>
 @endif
 <div class="row">
 @if(!empty($bindlist))

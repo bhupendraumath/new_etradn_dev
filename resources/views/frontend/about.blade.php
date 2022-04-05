@@ -41,7 +41,10 @@
             </p>
 
             <button class="contact-us">
+                <a style="color:white" href="{{url('contact-us')}}">
                 Contact
+
+                </a>
             </button>
 
         </div>

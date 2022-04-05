@@ -286,7 +286,7 @@
                     // btn.html('Save');
                     toastr.success(response.message, { timeOut: 1000 });
                     aftercheckout();
-                    window.location.reload();
+                    window.location.href="{{url('/purchase_history')}}"
 
 
 

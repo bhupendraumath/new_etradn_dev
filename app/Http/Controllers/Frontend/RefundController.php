@@ -27,15 +27,25 @@ class RefundController extends Controller
 
     public function edit_details_refund($id){
 
-        $refund = RefundRequest::where('id', $id)
+        $order_item_details=DB::table('tbl_refund_details')
+        ->select('tbl_refund_details.order_item_id','tbl_refund_details.buyer_desc','tbl_refund_details.admin_approval_status as refund_admin_approval_status','tbl_refund_details.seller_approval_status as refund_seller_approval_status','tbl_refund_details.product_id','tbl_order_items.*','tbl_product.product_name','tbl_orders.buyer_id','tbl_users.firstName','tbl_users.lastName')
+        ->join('tbl_order_items','tbl_order_items.id','tbl_refund_details.order_item_id')
+        ->join('tbl_product','tbl_product.id','tbl_refund_details.product_id')
+        ->join('tbl_orders','tbl_orders.order_number','tbl_order_items.order_number')
+        ->join('tbl_users','tbl_users.id','tbl_orders.buyer_id')
+        ->where('tbl_refund_details.id',$id)
         ->get();
 
-        $order_number=$refund[0]->order_details->order_number;
+        // dd($order_item_details);die;
+        // $refund = RefundRequest::where('id', $id)
+        // ->get();
 
-        $order_item_details=OrderItem::where('order_number',$order_number)->get();
+        // $order_item_id=$refund[0]->order_item_id;
+
+        // $order_item_details=OrderItem::where('id',$order_item_id)->get();
         
 
-        return view('frontend/product/edit-refund')->with(['details'=>$refund,'order_item_details'=>$order_item_details]);
+        return view('frontend/product/edit-refund')->with(['order_item_details'=>$order_item_details[0]]);
     }
 
 

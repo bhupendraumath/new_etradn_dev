@@ -573,7 +573,11 @@ $favoriteProduct=new App\Models\Product;
                             <div class="right-adv">
                                 <h1 class="wholesale">WHOLESALE PRODUCTS</h1>
                                 <h1 class="readytosell">READY TO SELL NOW 50% OFF!</h1>
+                                <a href="{{url('product-list/noav/noav/noav/popular')}}">
+
                                 <button class="colorBlack">SHOP NOW</button>
+                                </a>
+                               
                             </div>
                         </div>
 

@@ -52,7 +52,7 @@ Session::put('back_url', URL::full());
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-12 col-sm-6 col-lg-6 col-xs-12 single-right-left simpleCart_shelfItem">
+                <div class="col-md-6 col-12 col-sm-6 col-lg-5 col-xs-12 single-right-left simpleCart_shelfItem">
                     <h3 class="product-details-heading">{{$product_details['product_name']}}  
                     
                     @if($product_details->want_to_list=='bo' ||$product_details->want_to_list=='a')
@@ -106,8 +106,8 @@ Session::put('back_url', URL::full());
                         <div class="col-md-2 col-6 col-sm-2 col-xs-5">
                                 <div class="quantity buttons_added">
                                 <input type="number" step="1" min="1" max="{{$product_details->quantity->quantity}}" name="quantity" value="1" title="Qty" class="input-text qty text numberofdigits" size="4" pattern="" inputmode="" id="selected_qty">
-                                <input type="button" value="-" class="minus button_minus" id="minus">
-                                <input type="button" value="+" class="plus button_plus" id="plus">
+                                <input type="button" value="-" <?php if($product_details->quantity->quantity==0){echo 'disabled';}?> class="minus button_minus" id="minus">
+                                <input type="button" value="+" <?php if($product_details->quantity->quantity==0){echo 'disabled';}?> class="plus button_plus" id="plus">
                                 
                             </div>
                         </div>
@@ -122,33 +122,39 @@ Session::put('back_url', URL::full());
                                             @php
                                                 $user=Auth::user();
                                             @endphp
-        
-                                            @if(!empty($user))
-                                            <input type="hidden" name="customer_id" value="{{Auth::user()->id}}">
-                                            <input type="hidden" name="seller_id" value="{{$product_details->user_id}}">
-                                            <input type="hidden" name="product_id" value="{{$product_details->id}}">
-                                            <input type="hidden" name="paq_id" value="{{$product_details->quantity->id}}">
-                                            <input type="hidden" name="attribute_ids" value="{{$product_details->quantity->id}}">
-                                            <input type="hidden" name="attribute_value_ids" value="{{$product_details->quantity->id}}">
-                                            <input type="hidden" name="quantity" value="1" id="hiddenqty">
-                                            <input type="hidden" name="price" value="{{$product_details->quantity->price}}">
-                                            <input type="hidden" name="discount" value="{{$product_details->quantity->discount}}">
-                                            <input type="hidden" name="pro_condition" value="{{$product_details->quantity->condition_id}}">
-                                            <input type="hidden" name="is_checkout" value="n">
-                                            <input type="hidden" name="selling_type" value="{{$product_details->want_to_list}}">
-                                            <input type="hidden" name="is_delete" value="n">
-                                            <input type="hidden" name="action" value="n">
-                                            <input type="hidden" name="product_array" value="{{$product_details}}">
-                                            <input type="hidden" name="ip_address" value="0000">
-                                            <input type="hidden" name="createdDate" value="{{Carbon::now()}}">
-                                            <input type="hidden" name="updatedDate" value="{{Carbon::now()}}">
-                                        
-                                            <input type="submit" name="submit" id="addCartProduct" value="Add to cart" class="button">
-                                            
+                                            @if($product_details->quantity->quantity==0)
+                                                <h2 style="color:red"> Out of stock</h2><br/>
                                             @else
-                                            <input type="button" name="submit" onclick="checkSwal(event)" value="Add to cart" class="button">
+                                                @if(!empty($user))
+                                                
+                                                
+                                                <input type="hidden" name="customer_id" value="{{Auth::user()->id}}">
+                                                <input type="hidden" name="seller_id" value="{{$product_details->user_id}}">
+                                                <input type="hidden" name="product_id" value="{{$product_details->id}}">
+                                                <input type="hidden" name="paq_id" value="{{$product_details->quantity->id}}">
+                                                <input type="hidden" name="attribute_ids" value="{{$product_details->quantity->id}}">
+                                                <input type="hidden" name="attribute_value_ids" value="{{$product_details->quantity->id}}">
+                                                <input type="hidden" name="quantity" value="1" id="hiddenqty">
+                                                <input type="hidden" name="price" value="{{$product_details->quantity->price}}">
+                                                <input type="hidden" name="discount" value="{{$product_details->quantity->discount}}">
+                                                <input type="hidden" name="pro_condition" value="{{$product_details->quantity->condition_id}}">
+                                                <input type="hidden" name="is_checkout" value="n">
+                                                <input type="hidden" name="selling_type" value="{{$product_details->want_to_list}}">
+                                                <input type="hidden" name="is_delete" value="n">
+                                                <input type="hidden" name="action" value="n">
+                                                <input type="hidden" name="product_array" value="{{$product_details}}">
+                                                <input type="hidden" name="ip_address" value="0000">
+                                                <input type="hidden" name="createdDate" value="{{Carbon::now()}}">
+                                                <input type="hidden" name="updatedDate" value="{{Carbon::now()}}">
+
+                                                <input type="submit" name="submit" <?php if($product_details->quantity->quantity==0){echo 'disabled';}?> id="addCartProduct" value="Add to cart" class="button">
+
+
+                                                
+                                                @else
+                                                <input type="button" <?php if($product_details->quantity->quantity==0){echo 'disabled';}?> name="submit" onclick="checkSwal(event)" value="Add to cart" class="button">
+                                                @endif
                                             @endif
-        
                                         </fieldset>
                                     </form>
         
@@ -160,12 +166,12 @@ Session::put('back_url', URL::full());
                     </div>
         
                     
-        
+                  
         
                     <span class="item_price"><b>SKU:</b> &nbsp; IFF_grapes_186</span> <br />
                     <span class="item_price"><b>Category:</b> &nbsp; <span class="uppercase">{{$product_details['category']['categoryName']}}</span></span><br />
                     <!-- <span class="item_price"><b>Tags:</b> &nbsp; Casual, Fashion, Loose, Stylish</span> -->
-                        
+                    
                     <?php $user=Auth::user(); ?>
                     @if(!empty($user))
                     <input type="hidden" value="{{$user}}" id="user_details">
@@ -173,7 +179,8 @@ Session::put('back_url', URL::full());
                     @endif
                     <input type="hidden" value="{{$product_details->id}}" id="product_id">
                     <input type="hidden" value="{{$product_details->user_id}}" id="seller_id">
-                    
+                   
+                   
                     <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
                         <li class="share">SOCIAL MEDIA SHARE : </li>
                         <li><a href="#">
@@ -255,15 +262,15 @@ Session::put('back_url', URL::full());
                                             <div class="col-sm-4">
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-4 col-xs-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>5</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>                                               
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-7 col-xs-7 col-sm-7">
                                                             <div class="progress">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="five_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-2 col-xs-2 col-sm-2">
                                                             <div class="progress-label-right">(<span id="total_five_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
@@ -271,31 +278,31 @@ Session::put('back_url', URL::full());
 
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-4 col-xs-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>4</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>
                                                         
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-7 col-xs-7 col-sm-7">
                                                             <div class="progress">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="four_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-2 col-sm-2 col-xs-2">
                                                             <div class="progress-label-right">(<span id="total_four_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
                                                 </p>
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-xs-4 col-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>3</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-xs-7 col-7 col-sm-7">
                                                             <div class="progress">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="three_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-2 col-xs-2 col-sm-2">
                                                             <div class="progress-label-right">(<span id="total_three_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
@@ -303,15 +310,15 @@ Session::put('back_url', URL::full());
 
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-4 col-xs-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>2</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-7 col-xs-7 col-sm-7">
                                                             <div class="progress">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="two_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-xs-2 col-2 col-sm-2">
                                                             <div class="progress-label-right">(<span id="total_two_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
@@ -319,15 +326,15 @@ Session::put('back_url', URL::full());
 
                                                 <p>
                                                     <div class="row">
-                                                        <div class="col-4 col-sm-3 center-text">
+                                                        <div class="col-4 col-xs-4 col-sm-3 center-text">
                                                             <div class="progress-label-left"><b>1</b> <i class="fas fa-star text-warning"></i></div>
                                                         </div>                                               
-                                                        <div class="col-7 col-sm-7">
+                                                        <div class="col-7 col-xs-7 col-sm-7">
                                                             <div class="progress ">
                                                                 <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="one_star_progress"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2 col-sm-2">
+                                                        <div class="col-2 col-sm-2 col-xs-2">
                                                             <div class="progress-label-right">(<span id="total_one_star_review">0</span>)</div>
                                                         </div>
                                                     </div>
@@ -355,14 +362,14 @@ Session::put('back_url', URL::full());
                                 <div class="card">
 
                                     <div class="inline-boxes row">
-                                        <div class="col-md-2 col-sm-2 col-lg-42 col-12">
+                                        <div class="col-md-2 col-xs-12 col-sm-2 col-lg-2 col-12">
                                             <div class="imageAvt">
                                                 <img src="{{url('assets/images/logo/'.$product_details->user_information['business_logo'])}}"
                                                     onerror="this.src='{{url('assets/images/logo/bigbasket.png')}}';" alt=""
                                                     srcset="">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-lg-6 col-12">
+                                        <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-12">
                                             <div class="details change-font-syle-here">
                                                 Business Name :  {{$product_details->user_information['business_name']}}<br/>
 

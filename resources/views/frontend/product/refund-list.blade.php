@@ -1,6 +1,6 @@
 <div class="col-12 col-md-12 col-sm-12">
 
-@if(!empty($bindlist))
+@if(!empty($bindlist) && count($bindlist)!=0)
 
 
 <div class="row">
@@ -17,7 +17,7 @@
                         
                         <div class="hover-icons">
                                 <div>
-                                    <a href="{{url('product-details/'.$productvalue->id)}}" title="product's details">
+                                    <a href="{{url('product-details/'.$productvalue->product_id)}}" title="product's details">
 
                                         <span class="left-buy-it" >
                                                 @if($productvalue->want_to_list=='b')

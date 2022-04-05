@@ -15,7 +15,7 @@
     <div class="container-fluid dashboard-container">
 
         @include('frontend/include/buyer-side-bar')
-        <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-lg-8 col-xl-8 col-xs-12">
 
 <div class="card-dashboard  col-12uy">
     <div class="row">

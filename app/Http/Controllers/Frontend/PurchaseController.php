@@ -41,7 +41,7 @@ class PurchaseController extends Controller
 
 
                 $productlist = DB::table('tbl_order_items')
-                ->select('tbl_order_items.*', 'tbl_orders.buyer_id','tbl_orders.total_order_amount','tbl_orders.payment_type','tbl_orders.txn_id','tbl_orders.order_number','tbl_refund_details.seller_approval_status','tbl_refund_details.admin_approval_status','tbl_users.firstName','tbl_users.lastName' )
+                ->select('tbl_order_items.*', 'tbl_orders.buyer_id','tbl_orders.total_order_amount','tbl_orders.payment_type','tbl_orders.txn_id','tbl_orders.order_number','tbl_refund_details.seller_approval_status','tbl_refund_details.admin_approval_status as tbl_refund_details_record ','tbl_users.firstName','tbl_users.lastName' )
                 ->join('tbl_orders','tbl_order_items.order_number','=','tbl_orders.order_number')
                 ->leftJoin('tbl_refund_details','tbl_refund_details.order_item_id','tbl_order_items.id')
                 ->join('tbl_users','tbl_users.id','tbl_order_items.seller_id')

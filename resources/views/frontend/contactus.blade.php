@@ -71,11 +71,34 @@
     <div class="add-review">
         <h2>GET IN TOUCH</h2>
         <form action="#" method="post" class="review-contact-us">
-            <input type="text" name="Name" placeholder="Name" required="Name">&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" name="Phone" placeholder="Phone" required="Phone">&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="email" placeholder="Email" name="Email" required="Email">
-            <textarea name="Message" placeholder="Message" required=""></textarea>
-            <input type="submit" class="buttonsubmit" value="SEND">
+            <div class="row">
+                <div class="col-12 col-md-6 col-sm-6 col-xl-12 col-xs-12">
+                     <input type="text" name="Name" placeholder="Name" required="Name">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-6 col-xl-12 col-xs-12">
+                    <input type="text" name="Phone" placeholder="Phone" required="Phone">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-6 col-xl-12 col-xs-12">
+                    <input type="text" name="Phone" placeholder="Phone" required="Phone">
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-6 col-xl-12 col-xs-12">
+                     <input type="email" placeholder="Email" name="Email" required="Email">
+                </div>
+
+                <div class="col-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+                    <textarea name="Message" placeholder="Message" required=""></textarea>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+                    <input type="submit" class="buttonsubmit" value="SEND">
+                </div>
+
+            </div>
         </form>
     </div>
 </div>
