@@ -88,15 +88,21 @@ Session::put('back_url', URL::full());
         
                     <span class="item_price"><b>PRICE:</b> &nbsp;
                     <del>
+                        @if(!empty($product_details->quantity->price))
                         ${{$product_details->quantity->price}} &nbsp;</del>
-                        
+                       
                         
                         &nbsp;&nbsp;
                             <b id="modify_price">
                             ${{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}</b> </span> </p>
         
                             <input type="hidden" id="price_with_discount" value="{{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}">
+
+                            @else
+                            $ 
+                        @endif
                     <div class="row">
+                    @if(!empty($product_details->quantity))
                         <div class="col-md-2 col-6 col-sm-2 col-xs-5">
                                 <div class="quantity buttons_added">
                                 <input type="number" step="1" min="1" max="{{$product_details->quantity->quantity}}" name="quantity" value="1" title="Qty" class="input-text qty text numberofdigits" size="4" pattern="" inputmode="" id="selected_qty">
@@ -150,6 +156,7 @@ Session::put('back_url', URL::full());
         
                             </div>
                         </div>
+                       @endif
                     </div>
         
                     
@@ -746,11 +753,21 @@ Session::put('back_url', URL::full());
                     orderId=res.data.orderId;
                     console.log("order-id",orderId)
 
-                    if(orderId==""){                        
-                        toastr.error("Please order the product....", { timeOut: 2000 });
+                    if(orderId==""){   
+                        
+                        swal({
+                        title: "You did not ordered",
+                        text: "Please order this item first",
+                        icon: "warning",
+                        })
                     }
                     else if(res.message=="You are already submitted Review & Rating."){
-                        toastr.error(res.message, { timeOut: 2000 });
+                        swal({
+                        title: "Already Submitted",
+                        text: "You are already submitted Review & Rating",
+                        icon: "warning",
+                        })
+                        // toastr.error(res.message, { timeOut: 2000 });
                     }
                     else{
                         console.log("order exist")

@@ -47,6 +47,10 @@ Route::get(
     }
 );
 
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
+
 Route::get(
     '/blog',
     [HomeController::class, 'blog']

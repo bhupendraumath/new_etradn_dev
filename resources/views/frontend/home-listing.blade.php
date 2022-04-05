@@ -5,7 +5,7 @@ $favoriteProduct=new App\Models\Product;
  <div class="banner_bottom_agile_info">
     <div class="container-fluid  newclass">
 
-        <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 col-12 col-xs-12">
+        <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 col-12 col-xs-12 remove-padding-here" >
             <div class="card ">
                 <div class="row">
                     <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
@@ -172,7 +172,7 @@ $favoriteProduct=new App\Models\Product;
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-sm-12 col-lg-9 col-xl-9 col-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-lg-9 col-xl-9 col-12 col-xs-12 remove-padding-here">
             <div class="card">
 
                 <div class="row">

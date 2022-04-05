@@ -197,45 +197,96 @@ window.aftercheckout = function getProductlList() {
 window.deleteCartProduct = function deleteCartProduct(id) {
 
     // cart-delete
-    if (confirm('Are you sure,want to remove?')) {
-        console.log("yes", id);
 
-        $.ajax({
-            url: process.env.MIX_APP_URL + "/cart-delete",
-            type: "POST",
-            data: {
-                id: id,
-            },
-            processData: true,
-            contentType: false,
-            headers: {
-                'X-CSRF-Token': $('meta[name="_token"]').attr('content'),
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            },
-            dataType: 'JSON',
-            cache: false,
-            success: function success(response) {
-                toastr.success('Removed', { timeOut: 1000 });
-                setTimeout(function() {
-                    return aftercheckout();
-                }, 1000);
+    swal({
+        title: "Delete",
+        text: "Are you sure, want to delete it?",
+        icon: "warning",
+        buttons: {
+            cancel: true,
+            confirm: "Delete",
+        }
+    }).then(
+        function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url: process.env.MIX_APP_URL + "/cart-delete",
+                    type: "POST",
+                    data: {
+                        id: id,
+                    },
+                    processData: true,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="_token"]').attr('content'),
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    },
+                    dataType: 'JSON',
+                    cache: false,
+                    success: function success(response) {
+                        toastr.success('Removed', { timeOut: 1000 });
+                        setTimeout(function() {
+                            return aftercheckout();
+                        }, 1000);
 
-
-
-            },
-            error: function error(data) {
-                $('#cart-listing').html('');
-                if (data.status === 422) {
-                    var responseText = $.parseJSON(data.responseText);
-                    toastr.error(responseText.error.message);
-                }
-                if (data.status === 400) {
-                    var responseText = $.parseJSON(data.responseText);
-                    toastr.error(responseText.message);
-                }
+                    },
+                    error: function error(data) {
+                        $('#cart-listing').html('');
+                        if (data.status === 422) {
+                            var responseText = $.parseJSON(data.responseText);
+                            toastr.error(responseText.error.message);
+                        }
+                        if (data.status === 400) {
+                            var responseText = $.parseJSON(data.responseText);
+                            toastr.error(responseText.message);
+                        }
+                    }
+                });
+            } else {
+                return false;
             }
-        });
-    }
+        },
+    );
+
+    // if (confirm('Are you sure,want to remove?')) {
+    //     console.log("yes", id);
+
+    //     $.ajax({
+    //         url: process.env.MIX_APP_URL + "/cart-delete",
+    //         type: "POST",
+    //         data: {
+    //             id: id,
+    //         },
+    //         processData: true,
+    //         contentType: false,
+    //         headers: {
+    //             'X-CSRF-Token': $('meta[name="_token"]').attr('content'),
+    //             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    //         },
+    //         dataType: 'JSON',
+    //         cache: false,
+    //         success: function success(response) {
+    //             toastr.success('Removed', { timeOut: 1000 });
+    //             setTimeout(function() {
+    //                 return aftercheckout();
+    //             }, 1000);
+
+
+
+    //         },
+    //         error: function error(data) {
+    //             $('#cart-listing').html('');
+    //             if (data.status === 422) {
+    //                 var responseText = $.parseJSON(data.responseText);
+    //                 toastr.error(responseText.error.message);
+    //             }
+    //             if (data.status === 400) {
+    //                 var responseText = $.parseJSON(data.responseText);
+    //                 toastr.error(responseText.message);
+    //             }
+    //         }
+    //     });
+    // }
 }
 
 
