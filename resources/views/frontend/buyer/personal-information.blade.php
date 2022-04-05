@@ -42,161 +42,77 @@
 
 
 
-    <!-- banner-bootom-w3-agileits -->
-    <div class="banner-bootom-w3-agileits">
-        <div class="container-fluid dashboard-container">
+<!-- banner-bootom-w3-agileits -->
+<div class="banner-bootom-w3-agileits">
+    <div class="container-fluid dashboard-container">
 
-            <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12 col-sm-offset-2 col-md-2">
-                <div class="card-dashboard  col-12uy">
-                <a href="{{url()->previous()}}" class="back-button">back</a>
-
-                    <div class="card-profile">
-                        <img src="{{url('assets/images/frontend/t1.jpg')}}" alt="">
-                    </div>
-                    <div class="form-settings-account">
-
-                        <form class="personal-details" id="profile-update-form" enctype="multipart/form-data" method="post">
-                            {{csrf_field()}}
-                            <input type="hidden" name="user_type" value="{{Auth::user()->user_type}}">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                    <div class="inner-addon left-addon">
-                                        <label for="">First Name</label>
-                                        <input type="text" class="form-control 60per lock" name="first_name" placeholder="First Name*" value="{{Auth::user()->firstName}}" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                    <div class="inner-addon left-addon">
-                                        <label for="">last Name</label>
-                                        <input type="text" class="form-control 60per lock" name="last_name" placeholder="Last Name*" value="{{Auth::user()->lastName}}" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                    <div class="inner-addon left-addon">
-                                        <label for="">Prefered language</label>
-                                        <input type="text" class="form-control 60per lock" name="user_language" placeholder="Prefered language*" value="{{Auth::user()->user_language}}" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                    <div class="inner-addon left-addon">
-                                        <label for="">Phone Number</label>
-                                        <input type="text" class="form-control 60per lock" name="phone_number" placeholder="Phone*" value="{{Auth::user()->phone_number}}" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                    <div class="inner-addon left-addon">
-                                        <label for="">Business Name</label>
-                                        <input type="text" class="form-control 60per lock" name="business_name" placeholder="Business Name*" value="{{Auth::user()->business_name}}" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                    <div class="inner-addon left-addon">
-                                        <label for="">Minimum Order</label>
-                                        <input type="text" class="form-control 60per lock" name="minimum_order" placeholder="Minimum order*" value="{{Auth::user()->minimum_order}}" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                    <div class="inner-addon left-addon">
-                                        <label for="">Address</label>
-                                        <input type="text" class="form-control 60per lock" name="address" placeholder="Addresss*" value="{{Auth::user()->address}}" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                    <div class="inner-addon left-addon">
-                                        <!-- <i class="glyphicon glyphicon-lock"></i> -->
-                                        <label for="">Business type</label>
-
-                                        <select class="form-control width-100-per businesstype-personal" name="business_type_id" id="">
-                                            <option value="">Select Business type</option>
-                                            @foreach($businesstype as $businesstypevalue)
-                                            <option value="{{$businesstypevalue->id}}"
-                                            @if(Auth::user()->business_type_id==$businesstypevalue->id)selected @endif
-                                            >{{$businesstypevalue->typeName}}</option>
-                                            @endforeach
-                                        </select>
-
-                                    </div>
-                                </div>
-                            </div>
+        <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12 col-sm-offset-2 col-md-2">
+            <div class="card-dashboard  col-12uy">
 
 
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
-                                    <div class="inner-addon left-addon">
-                                         <label for="">Business Category</label>
-                                        <select class="form-control width-100-per businesstype-personal" name="category">
-                                            <option value="">select Business Category</option>
-                                            @foreach($businessCategory as $businessCategoryvalue)
-                                            <option value="{{$businessCategoryvalue->id}}" @if(Auth::user()->category==$businessCategoryvalue->id)selected @endif>{{$businessCategoryvalue->categoryName}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
 
-                                     <label for="">Business Description</label>
-                                    <textarea name="description" placeholder="Business Description" required="" value="{{Auth::user()->description}}">{{Auth::user()->description}}</textarea>
-                                </div>
-                            </div>
+                <div class="form-settings-account">
 
-                            <!-- <div class="row">
+                    <form class="personal-details" id="profile-update-form" enctype="multipart/form-data" method="post">
+                        {{csrf_field()}}
+
+                        <div class="card-profile">
+                            <img id="previewImage" src="{{url('assets/images/my-profile')}}/{{Auth::user()->profile_img}}"   onerror="this.src='assets/images/frontend/user3.jpg'">
+                            <input type="file" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg">
+                        </div>
+
+                        <input type="hidden" name="profile_imgg" id="imagedata">
+                        <input type="hidden" name="user_type" value="{{Auth::user()->user_type}}">
+                        <div class="row">
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="inner-addon left-addon">
-                                <i class="glyphicon glyphicon-lock"></i>
-                                <input type="text" class="form-control" name="Confirm-password" placeholder="Confirm Password*"/>
+                                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                    <input type="text" class="form-control 60per lock" name="first_name" placeholder="First Name*" value="{{Auth::user()->firstName}}" />
                                 </div>
                             </div>
-                            
-                        </div> -->
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                                <div class="inner-addon left-addon">
+                                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                    <input type="text" class="form-control 60per lock" name="last_name" placeholder="Last Name*" value="{{Auth::user()->lastName}}" />
+                                </div>
+                            </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
-                                    <!-- *(Only Jpg, PDF, DOC files allowed) -->
-                                    <div id="drop_area" class="area fields drag-area">
-                                        <div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                                <div class="inner-addon left-addon">
+                                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                    <input type="text" class="form-control 60per lock" name="user_language" placeholder="Prefered language*" value="{{Auth::user()->user_language}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                                <div class="inner-addon left-addon">
+                                    <!-- <i class="glyphicon glyphicon-lock"></i> -->
+                                    <input type="text" class="form-control 60per lock" name="phone_number" placeholder="Phone*" value="{{Auth::user()->phone_number}}" />
+                                </div>
+                            </div>
+                        </div>
 
-                                            <label for="files" class="btn btnforupload" >Upload Ducuments.
-                                            </label>
-                                            <!-- <div class="drop-drag-imgaes-or-files">DROP FILES</div> -->
-                                            <input id="files" style="visibility:hidden;" type="file">
-                                        </div>
-                                    </div>
 
-                                    <div id="result"></div>
-                                    <br />
-                                    <br />
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
+                                <div class="buttonsnew-fsd">
+                                    <input type="submit" value="Save Changes" class="save-changes" id="profile-btn">
+                                    <a href="{{url('dashboard')}}"><input type="button" value="Cancel" class="cancel" id="profile-btn">
+                                    </a>
                                 </div>
                             </div>
 
-
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                                    <div class="buttonsnew-fsd">
-                                        <input type="submit" value="Save Changes" class="save-changes" id="profile-btn">
-                                        <a href="{{route('buyer.dashboard')}}"><input type="button" value="Cancel" class="cancel" id="profile-btn">
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </form>
-                    </div>
-
-
+                        </div>
+                    </form>
                 </div>
+
+
             </div>
         </div>
-
     </div>
+    @include('frontend.common.profile-cropper')
+
     <script>
         function dragHandler(event) {
             event.stopPropagation();

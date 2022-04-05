@@ -171,7 +171,7 @@ class User extends Authenticatable
         return $code;
     }
 
-    
+
     public function verifyCode($id, $code)
     {
         $verified = User::where('id', $id)->where('reset_password_code', $code)->first();
@@ -258,10 +258,11 @@ class User extends Authenticatable
                 'address' => $request->address,
                 'description' => $request->description,
                 'minimum_order' => $request->minimum_order,
-                'phone_number' => $request->phone_number
+                'phone_number' => $request->phone_number,
+                'update_at' => Carbon::now(),
             ]
         );
-        
+
         return $updateSeller;
     }
 
