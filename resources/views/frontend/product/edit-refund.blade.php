@@ -58,43 +58,43 @@
                 
                 
                <!-- -------------------- -->
-                <!-- {{$order_item_details}} -->
                 <div class="form-settings">
-                @if(!empty($details[0]) && !empty($order_item_details[0]))
+                @if(!empty($order_item_details))
                     <form method="post" enctype="multipart/form-data" >
 
                         <label class="left-align">Product Name</label>
-                        <input type="text" name="product_name" disabled value="{{$details[0]->product->product_name}}" placeholder="Product Name in English*" class="60per">
+                        <input type="text" name="product_name" disabled value="{{$order_item_details->product_name}}" placeholder="Product Name in English*" class="60per">
+
 
                         <label class="left-align">Buyer Name</label>
-                        <input type="text" name="product_name" disabled placeholder="Product Name in English*" class="60per" value="{{$details[0]->order_details->buyer_details['firstName'] .' '.$details[0]->order_details->buyer_details['lastName']   }}">
+                        <input type="text" name="product_name" disabled placeholder="Product Name in English*" class="60per" value="{{$order_item_details->firstName .' '.$order_item_details->lastName   }}">
 
                          <label class="left-align">Order Number</label>
-                        <input type="text" value="{{$details[0]->order_details->order_number}}"  name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" value="{{$order_item_details->order_number}}"  name="product_name" disabled placeholder="Product Name in English*" class="60per">
                         
                         <label class="left-align">Quantity</label>
-                        <input type="text" value="{{$order_item_details[0]['quantity']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" value="{{$order_item_details->quantity}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
                         <label class="left-align">Product price</label>
-                        <input type="text" value="{{$order_item_details[0]['product_price']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" value="{{$order_item_details->product_price}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
 
                         <label class="left-align">Shipping Amount</label>
-                        <input type="text" value="{{$order_item_details[0]['shipping_amount']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" value="{{$order_item_details->shipping_amount}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
 
                         <label class="left-align">Total Amount</label>
-                        <input type="text" value="{{$order_item_details[0]['sub_total']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" value="{{$order_item_details->sub_total}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
 
                         @php
-                            if($order_item_details[0]['delivery_status']=='p')
+                            if($order_item_details->delivery_status=='p')
                             $delivery_status='Pending';
 
-                            else if($order_item_details[0]['delivery_status']=='c')
+                            else if($order_item_details->delivery_status=='c')
                             $delivery_status='Cencelled';
 
-                            else if($order_item_details[0]['delivery_status']=='r')
+                            else if($order_item_details->delivery_status=='r')
                             $delivery_status='Rejected';
 
                             else
@@ -106,24 +106,24 @@
 
 
                         <label class="left-align">Payment Status</label>
-                        <input type="text" value="{{$order_item_details[0]['payment_status']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" value="{{$order_item_details->payment_status}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
 
                         <label class="left-align">Is delivered</label>
-                        <input type="text" value="{{$order_item_details[0]['is_delivered']=='n'?'NO':'YES'}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" value="{{$order_item_details->is_delivered=='n'?'NO':'YES'}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
                         <label class="left-align">Selling Type</label>
-                        <input type="text" value="{{$order_item_details[0]['selling_type']=='a'?'Auction':'Buy it now'}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" value="{{$order_item_details->selling_type=='a'?'Auction':'Buy it now'}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
                         <label class="left-align">Buyer description</label>
-                        <input type="text" value="{{$details[0]['buyer_desc']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
+                        <input type="text" value="{{$order_item_details->buyer_desc}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
                         @php
 
-                        if($details[0]['seller_approval_status']=='0')
+                        if($order_item_details->refund_seller_approval_status=='0')
                         $approval_status='Pending';
 
-                        else if($details[0]['seller_approval_status']=='1')
+                        else if($order_item_details->refund_seller_approval_status=='1')
                         $approval_status='Accepted';
                         else
                         $approval_status='Rejected';
@@ -133,19 +133,7 @@
                         <label class="left-align">Approval Status by Seller</label>
                         <input type="text" value="{{$approval_status}}" name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
-                        {{-- <label class="left-align">Payment Status</label>
-                        <input type="text" value="{{$details[0]['seller_approval_status']=='0'?'Pending':($details[0]['seller_approval_status']=='1':'Accepted'?'Rejected')}}"  name="product_name" disabled placeholder="Product Name in English*" class="60per">
 
-                        <label class="left-align">Bid Status</label>
-                        <input type="text" name="product_name" value="{{$details[0]['bid_status']}}"  disabled placeholder="Product Name in English*" class="60per">
-
-                     <!-- <label class="left-align">Status</label>
-                        <input type="text" value="{{$details[0]['status']}}" name="product_name" disabled placeholder="Product Name in English*" class="60per"> -->
-
-                        <label class="left-align">Created Date & Time</label>
-                        <input type="text" name="product_name" value="{{$details[0]['createdDate']}}" disabled placeholder="Product Name in English*" class="60per">
-
-                        --}}
 
                                
                     </form>

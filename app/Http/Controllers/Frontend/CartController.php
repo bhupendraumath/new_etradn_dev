@@ -11,7 +11,7 @@ use App\Models\Order;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Address;
-
+use DB;
 class CartController extends Controller
 {
     /**
@@ -158,9 +158,7 @@ class CartController extends Controller
             
             try {
 
-                $carts=Cart::whereIn('id',json_decode($request->car_ids_arr))->get();
-
-               
+                $carts=Cart::whereIn('id',json_decode($request->car_ids_arr))->get();              
 
                 $order_number="odr_".time();
                 $admin_commision=5;
@@ -177,7 +175,7 @@ class CartController extends Controller
                 }
     
                 $records=array();
-    
+ 
                 //For order items
                 foreach($carts as $cart){
     
@@ -229,10 +227,18 @@ class CartController extends Controller
                     $record['add_signature']=' ';
     
                     array_push($records,$record);
+
+
+                    //Logic for minus quantity
+                    DB::table('tbl_product_attribute_quantity')->where('product_id',$cart->product_id)->decrement('quantity', $cart->quantity);
     
                 }
     
-                $orderItem=OrderItem::insert($records);
+                // dd($records);die;
+                $orderItem=DB::table('tbl_order_items')->insert($records);
+                // $orderItem=OrderItem::insert($records);
+
+                // dd($orderItem);die;
             
                 if($orderItem){
     

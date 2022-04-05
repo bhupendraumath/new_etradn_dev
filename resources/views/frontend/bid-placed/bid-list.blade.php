@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 
 ?>
-@if(!empty($bindlist))
+@if(!empty($bindlist) && count($bindlist)!=0)
 <div class="row">
     @foreach($bindlist as $productvalue)
 
@@ -166,9 +166,9 @@ use Carbon\Carbon;
     @endforeach
 </div>
 @else
-        <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth no-records">
-            <div>No Records Found</div>
-        </div>
+    <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth no-records">
+        <div>No Records Found</div>
+    </div>
 @endif
 <div class="row">
 @if(!empty($bindlist))

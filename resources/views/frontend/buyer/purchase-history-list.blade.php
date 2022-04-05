@@ -1,354 +1,359 @@
-@if($productlist)
-@foreach($productlist as $list)
 
 
-@if(!empty($list))
-<div class="row ">
+@if(!empty($productlist) && count($productlist)!=0)
+    @foreach($productlist as $list)
 
-    @php
+    @if(!empty($list))
+    <div class="row ">
 
-
-    $index=$loop->index;
-    $product_details_1=$list->product_detail_1;
-    $encode=json_encode($product_details_1);
-    $decode=json_decode($encode,true);
-
-    // for product name
-    $my_str_arr = preg_split ("/,/", $decode);
-    $my_str_arr_name = preg_split ('/"product_name":/', $my_str_arr[5]);
-    $product_name = preg_split ('/"/',$my_str_arr_name[1]);
-    $pro_name=$product_name[1];
-    // end
-
-    //For product Id
-    $id_convert=preg_split ("/{/", $my_str_arr[0]);
-    $id_remove= preg_split ('/"id":/', $id_convert[1]);
-    $id_remove2= preg_split ('/"/', $id_remove[1]);
-
-    if(!empty($id_remove2[0])){
-    $product_id=$id_remove2[0];
-    }
-    else{
-    $product_id=$id_remove2[1];
-
-    }
-    //end
-
-    $upload_image=new App\Models\ImageUpload;
-    $image_upload=$upload_image->imageProductById($product_id);
-
-    $product_detials=new App\Models\Product;
-    $product_detial=$product_detials->productById($product_id);
+        @php
 
 
-    @endphp
+        $index=$loop->index;
+        $product_details_1=$list->product_detail_1;
+        $encode=json_encode($product_details_1);
+        $decode=json_decode($encode,true);
+
+        // for product name
+        $my_str_arr = preg_split ("/,/", $decode);
+        $my_str_arr_name = preg_split ('/"product_name":/', $my_str_arr[5]);
+        $product_name = preg_split ('/"/',$my_str_arr_name[1]);
+        $pro_name=$product_name[1];
+        // end
+
+        //For product Id
+        $id_convert=preg_split ("/{/", $my_str_arr[0]);
+        $id_remove= preg_split ('/"id":/', $id_convert[1]);
+        $id_remove2= preg_split ('/"/', $id_remove[1]);
+
+        if(!empty($id_remove2[0])){
+        $product_id=$id_remove2[0];
+        }
+        else{
+        $product_id=$id_remove2[1];
+
+        }
+        //end
+
+        $upload_image=new App\Models\ImageUpload;
+        $image_upload=$upload_image->imageProductById($product_id);
+
+        $product_detials=new App\Models\Product;
+        $product_detial=$product_detials->productById($product_id);
 
 
-    <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth  border-bottom">
-
-        <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
-
-            <div class="background-gray rating new-size order-image-gary  uploaded-image-edited">
-                @if($image_upload)
-                <img src="{{url('assets/images/product-images/'.$image_upload->product_img)}}" alt="" srcset=""
-                    class="order-image" onerror="this.src='{{url('assets/images/default.png')}}';" />
-                @else
-                <img src="{{url('assets/images/default.png')}}" alt="" srcset="" class="order-image"
-                    onerror="this.src='{{url('assets/images/default.png')}}';" />
-                @endif
-
-                <div class="hover-icons">
-                        <div>
-                            <a href="{{url('product-details/'.$product_id)}}" title="Refund request status">
+        @endphp
 
 
-                            @if(!empty($list->seller_approval_status))
+        <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth  border-bottom">
 
-                        
-                                <span class="left-buy-it" >
-                                        @if($list->seller_approval_status==1)
-                                       
-                                        <span class="accepted-request">
-                                            Request Accepted
-                                        </span>
-                                        @elseif($list->seller_approval_status==2)
-                                        <span class="rejected-request">
-                                        Request Rejected
-                                        </span>
-                                        
-                                        @else
-                                        <span class="pending-request">
-                                        Request Pending
-                                        </span>
-                                        @endif
-                                        
-                                </span>
-                            @endif
-                               
+            <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
 
-                            </a>                                        
-                           {{-- <button class="circle" onclick="deleteOrder({{$list->id}})"><i class="fa fa-trash-o color-delete"></i> </button>--}}
-                                
-                        </div>
-                                    
-                    </div>
-
-
-
-
-            </div>
-        </div>
-        <div class="col-8 col-md-8 col-sm-8 col-lg-8 col-xl-8 reducewidth col-xs-12 text-left">
-
-            <h3> {{$pro_name}}</h3>
-
-            <div class="order-date">
-                <b class="orderd-date-time">
-                    SAR {{$list->total_order_amount}}
-                </b>
-                <br />
-
-                @if($list->payment_status=='failed')
-                <button class="failed-transferd" disabled> Failed</button>
-
-                @elseif($list->payment_status=='paid')
-
-                <button class="paid-transferd" disabled> Transferred</button>
-                @else
-
-                <button class="paid-pending" disabled> Pending</button>
-                @endif
-            </div>
-
-
-            <div class="color-size">
-                <b class="normal-style">Inventory : </b>{{$list->quantity}}
-                <br />
-                <b class="normal-style">ORDER ID : </b>
-
-                <span class="order-number tooltip1">{{$list->order_number}} &nbsp;
-                    <button class="circle-?">?</button>
-                    <div class="tooltiptext">
-                        <div class="order-information">
-                            <div>
-                                <b>Order Information</b>
-                            </div>
-                        </div>
-
-                        <div class="details-order">
-                            Payment status : {{$list->payment_status}}<br>
-                            Order Number : {{$list->order_number}}<br>
-                            Payment Type : {{$list->payment_type}}<br>
-                            Transaction Id :{{$list->txn_id}} <br>
-                            Transaction Date : {{$list->createdDate}}<br>
-                        </div>
-
-                    </div>
-
-                </span><br />
-
-                <b class="normal-style">Seller Name : </b>
-                
-                <span>{{$list->firstName.' '.$list->lastName}}
-                </span><br />
-
-                <b class="normal-style">Transaction Date: </b>
-                <span>{{$list->createdDate}} </span><br />
-
-                <b class="normal-style">Purchased Via: </b>
-                <span>
-                    @if(!empty($list->selling_type))
-                    @if($list->selling_type=="b")
-                    Buy it now
-                    @elseif($list->selling_type=="a")
-                    Auction
-                    @elseif($list->selling_type=="bo")
-                    Both
-                    @endif
+                <div class="background-gray rating new-size order-image-gary  uploaded-image-edited">
+                    @if($image_upload)
+                    <img src="{{url('assets/images/product-images/'.$image_upload->product_img)}}" alt="" srcset=""
+                        class="order-image" onerror="this.src='{{url('assets/images/default.png')}}';" />
                     @else
-                    &nbsp;&nbsp; -
+                    <img src="{{url('assets/images/default.png')}}" alt="" srcset="" class="order-image"
+                        onerror="this.src='{{url('assets/images/default.png')}}';" />
                     @endif
-                </span><br />
 
-            </div>
-            <br />
-        </div>
-
-    </div>
-    <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 tooltips-row">
-        <div class="row">
-            <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 bottom-shipping">
-                <span class="refund-policy-1 tooltip1">
-                    Refund Policy <i class="fa fa-question-circle"></i>
-
-                    <div class="tooltiptext">
-                        @if(!empty($product_detial))
-                        @if($product_detial->refund_request!='n')
-                        <div class="order-information">
+                    <div class="hover-icons">
                             <div>
-                                <b> {{$product_detial->number_of_days}} Days Replacement Policy</b>
-                            </div>
-                        </div>
+                                <a href="{{url('product-details/'.$product_id)}}" title="Refund request status">
 
-                        <div class="details-order">
-                            {{$product_detial->policy_description}}
-                        </div>
 
-                        @else
-                        <p>No Refund Policy</p>
-                        @endif
+                                @if(!empty($list->seller_approval_status))
 
-                        @else
-                        <p>No Refund Policy</p>
-                        @endif
-                    </div>
-
-                </span>
-
-            </div>
-
-            <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 bottom-shipping">
-                <span class="refund-policy-1 tooltip1">
-                    Warranty Description <i class="fa fa-angle-up"></i>
-
-                    <div class="tooltiptext">
-                        @if(!empty($product_detial))
-                        @if($product_detial->refund_request!='n')
-                        <div class="order-information">
-                            <div>
-                                <b> Warranty Description</b>
-                            </div>
-                        </div>
-
-                        <div class="details-order">
-                            {{$product_detial->warranty_desc}}
-                        </div>
-
-                        @else
-                        <p>No Warranty Description</p>
-                        @endif
-                        @else
-                        <p>No Warranty Description</p>
-                        @endif
-                    </div>
-
-                </span>
-
-            </div>
-
-            @if($product_detial->refund_request=='y')
-            <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 bottom-shipping">
-                <span class="refund-policy-1">
-                    @php
-                    $index=$loop->index;
-
-                        $date = $list->createdDate;
-
-                        $replacement_days=$product_detial->number_of_days;
-                        $order_date=date('Y-m-d', strtotime($date));
-                        $after_replacement=date('Y-m-d', strtotime($order_date.  + $replacement_days .' days'));
-
-                        $date1 = strtotime(str_replace("_", "-",$after_replacement));
-                        $date2 = strtotime(str_replace("_", "-",date('Y-m-d')));
-
-                        //compare the dates
-                        if($date1 < $date2){
-                            $expiry=1;
-                        }else{
-                            $expiry=0;
-                        }
-                    @endphp
-
-                    
-                    @if(($list->seller_approval_status>=0))
-                       
-                    <button disabled class="refundRequestBtn" style="color:blue">
-                        Sent Refund Request
-                    </button>
-
-                    @else
-                       @if($expiry)
-                        <span class="refund-policy-1 tooltip1">
-                            Send Refund Request <i class="fa fa-angle-up"></i>
-
-                            <div class="tooltiptext">
-                                @if(!empty($product_detial))
-                                    <div class="order-information">
-                                        <div>
-                                            <b> Refund Request</b>
-                                        </div>
-                                    </div>
-
-                                    <div class="details-order">
-                                    Replcement day's expired
-                                    </div>
+                            
+                                    <span class="left-buy-it" >
+                                            @if($list->seller_approval_status==1)
+                                        
+                                            <span class="accepted-request">
+                                                Request Accepted
+                                            </span>
+                                            @elseif($list->seller_approval_status==2)
+                                            <span class="rejected-request">
+                                            Request Rejected
+                                            </span>
+                                            
+                                            @else
+                                            <span class="pending-request">
+                                            Request Pending
+                                            </span>
+                                            @endif
+                                            
+                                    </span>
                                 @endif
+                                
+
+                                </a>                                        
+                            {{-- <button class="circle" onclick="deleteOrder({{$list->id}})"><i class="fa fa-trash-o color-delete"></i> </button>--}}
+                                    
                             </div>
-
-                        </span>
-
-                        
-                        @else
-                            <button onclick="modelOpen('{{$product_id}}','{{$list->cart_id}}','{{$list->id}}')"
-                            class="refundRequestBtn">
-                            Send Refund Request
-                            </button>
-                        @endif
-                    @endif
-
-                </span>
-
-            </div>
-            @endif
-
-            <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 bottom-shipping">
-                    <button class="shipping-toggle" id="shippingToggleButton-{{$index}}">
-                        Shipping Status 
-                    </button>
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-12 col-sm-12">
-                <div class="shipping-menu" id="shipping_toggle-{{$index}}">
-                    
-                    <div class="track">
-                        <div class="step <?php if($list->delivery_status =='p' || $list->delivery_status =='s'||$list->delivery_status =='d'){echo 'active';} ?>"> 
-                            <span class="icon">
-                            <i class="fa fa-user"></i> 
-                            </span>                             
-                            <span class="text">Pending</span>
-                        
+                                        
                         </div>
-                        <div class="step <?php if($list->delivery_status =='s'||$list->delivery_status =='d'){echo 'active';} ?>"> 
-                            <span class="icon"> 
-                            <i class="fa fa-check"></i> 
-                            </span>
-                            <span class="text">Shipped</span>
-                        </div>   
-                        
-                        <div class="step <?php if($list->delivery_status =='d'){echo 'active';} ?>">
-                            <span class="icon"> <i class="fa fa-truck"></i>
-                            </span> <span class="text">Delivered </span>
-                        </div>
-                        
-                    </div>
+
+
+
 
                 </div>
             </div>
+            <div class="col-8 col-md-8 col-sm-8 col-lg-8 col-xl-8 reducewidth col-xs-12 text-left">
+
+                <h3> {{$pro_name}}</h3>
+
+                <div class="order-date">
+                    <b class="orderd-date-time">
+                        SAR {{$list->total_order_amount}}
+                    </b>
+                    <br />
+
+                    @if($list->payment_status=='failed')
+                    <button class="failed-transferd" disabled> Failed</button>
+
+                    @elseif($list->payment_status=='paid')
+
+                    <button class="paid-transferd" disabled> Transferred</button>
+                    @else
+
+                    <button class="paid-pending" disabled> Pending</button>
+                    @endif
+                </div>
+
+
+                <div class="color-size">
+                    <b class="normal-style">Inventory : </b>{{$list->quantity}}
+                    <br />
+                    <b class="normal-style">ORDER ID : </b>
+
+                    <span class="order-number tooltip1">{{$list->order_number}} &nbsp;
+                        <button class="circle-?">?</button>
+                        <div class="tooltiptext">
+                            <div class="order-information">
+                                <div>
+                                    <b>Order Information</b>
+                                </div>
+                            </div>
+
+                            <div class="details-order">
+                                Payment status : {{$list->payment_status}}<br>
+                                Order Number : {{$list->order_number}}<br>
+                                Payment Type : {{$list->payment_type}}<br>
+                                Transaction Id :{{$list->txn_id}} <br>
+                                Transaction Date : {{$list->createdDate}}<br>
+                            </div>
+
+                        </div>
+
+                    </span><br />
+
+                    <b class="normal-style">Seller Name : </b>
+                    
+                    <span>{{$list->firstName.' '.$list->lastName}}
+                    </span><br />
+
+                    <b class="normal-style">Transaction Date: </b>
+                    <span>{{$list->createdDate}} </span><br />
+
+                    <b class="normal-style">Purchased Via: </b>
+                    <span>
+                        @if(!empty($list->selling_type))
+                        @if($list->selling_type=="b")
+                        Buy it now
+                        @elseif($list->selling_type=="a")
+                        Auction
+                        @elseif($list->selling_type=="bo")
+                        Both
+                        @endif
+                        @else
+                        &nbsp;&nbsp; -
+                        @endif
+                    </span><br />
+
+                </div>
+                <br />
+            </div>
+
         </div>
+        <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 tooltips-row">
+            <div class="row">
+                <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 bottom-shipping">
+                    <span class="refund-policy-1 tooltip1">
+                        Refund Policy <i class="fa fa-question-circle"></i>
+
+                        <div class="tooltiptext">
+                            @if(!empty($product_detial))
+                            @if($product_detial->refund_request!='n')
+                            <div class="order-information">
+                                <div>
+                                    <b> {{$product_detial->number_of_days}} Days Replacement Policy</b>
+                                </div>
+                            </div>
+
+                            <div class="details-order">
+                                {{$product_detial->policy_description}}
+                            </div>
+
+                            @else
+                            <p>No Refund Policy</p>
+                            @endif
+
+                            @else
+                            <p>No Refund Policy</p>
+                            @endif
+                        </div>
+
+                    </span>
+
+                </div>
+
+                <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 bottom-shipping">
+                    <span class="refund-policy-1 tooltip1">
+                        Warranty Description <i class="fa fa-angle-up"></i>
+
+                        <div class="tooltiptext">
+                            @if(!empty($product_detial))
+                            @if($product_detial->refund_request!='n')
+                            <div class="order-information">
+                                <div>
+                                    <b> Warranty Description</b>
+                                </div>
+                            </div>
+
+                            <div class="details-order">
+                                {{$product_detial->warranty_desc}}
+                            </div>
+
+                            @else
+                            <p>No Warranty Description</p>
+                            @endif
+                            @else
+                            <p>No Warranty Description</p>
+                            @endif
+                        </div>
+
+                    </span>
+
+                </div>
+
+                @if($product_detial->refund_request=='y')
+                <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 bottom-shipping">
+                    <span class="refund-policy-1">
+                        @php
+                        $index=$loop->index;
+
+                            $date = $list->createdDate;
+
+                            $replacement_days=$product_detial->number_of_days;
+                            $order_date=date('Y-m-d', strtotime($date));
+                            $after_replacement=date('Y-m-d', strtotime($order_date.  + $replacement_days .' days'));
+
+                            $date1 = strtotime(str_replace("_", "-",$after_replacement));
+                            $date2 = strtotime(str_replace("_", "-",date('Y-m-d')));
+
+                            //compare the dates
+                            if($date1 < $date2){
+                                $expiry=1;
+                            }else{
+                                $expiry=0;
+                            }
+                        @endphp
+
+
+                        <!-- here for refund request manage -->
+                       @if(!empty($list->tbl_refund_details) && count($list->tbl_refund_details)!=0)
+                        
+                        <button disabled class="refundRequestBtn" style="color:blue">
+                            Sent Refund Request
+                        </button>
+
+                        @else
+                        @if($expiry)
+                            <span class="refund-policy-1 tooltip1">
+                                Send Refund Request <i class="fa fa-angle-up"></i>
+
+                                <div class="tooltiptext">
+                                    @if(!empty($product_detial))
+                                        <div class="order-information">
+                                            <div>
+                                                <b> Refund Request</b>
+                                            </div>
+                                        </div>
+
+                                        <div class="details-order">
+                                        Replcement day's expired
+                                        </div>
+                                    @endif
+                                </div>
+
+                            </span>
+
+                            
+                            @else
+                                <button onclick="modelOpen('{{$product_id}}','{{$list->cart_id}}','{{$list->id}}')"
+                                class="refundRequestBtn">
+                                Send Refund Request
+                                </button>
+                            @endif
+                       @endif
+
+                    </span>
+
+                </div>
+                @endif
+
+                <div class="col-12 col-xs-12 col-sm-3 col-md-3 col-lg-3 bottom-shipping">
+                        <button class="shipping-toggle" id="shippingToggleButton-{{$index}}">
+                            Shipping Status 
+                        </button>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-sm-12">
+                    <div class="shipping-menu" id="shipping_toggle-{{$index}}">
+                        
+                        <div class="track">
+                            <div class="step <?php if($list->delivery_status =='p' || $list->delivery_status =='s'||$list->delivery_status =='d'){echo 'active';} ?>"> 
+                                <span class="icon">
+                                <i class="fa fa-user"></i> 
+                                </span>                             
+                                <span class="text">Pending</span>
+                            
+                            </div>
+                            <div class="step <?php if($list->delivery_status =='s'||$list->delivery_status =='d'){echo 'active';} ?>"> 
+                                <span class="icon"> 
+                                <i class="fa fa-check"></i> 
+                                </span>
+                                <span class="text">Shipped</span>
+                            </div>   
+                            
+                            <div class="step <?php if($list->delivery_status =='d'){echo 'active';} ?>">
+                                <span class="icon"> <i class="fa fa-truck"></i>
+                                </span> <span class="text">Delivered </span>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @else
+    <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth  border-bottom no-records">
+        <div>No Records Found</div>
     </div>
 
-</div>
+    @endif
+    @endforeach
+
 @else
-<div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth  border-bottom no-records">
-    <div>No Records Found</div>
-</div>
-
-@endif
-@endforeach
-
-
+    <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth no-records">
+        <div>No Records Found</div>
+    </div>
 @endif
 
 <div class="row text-aligin-center">
