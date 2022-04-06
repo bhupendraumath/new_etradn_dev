@@ -3,8 +3,12 @@
 
 
 window.setImage = function setImage(input, img_type) {
-    console.log("here");
-    // document.getElementById('image-logo-uploaded').style.display = "block"
+
+    var pathname = window.location.pathname,
+        part = pathname.substr(pathname.lastIndexOf('/') + 1);
+    if (part == 'sign-up') {
+        document.getElementById('image-logo-uploaded').style.display = "block"
+    }
     $('.validation').empty();
     var fileTypes = ['jpg', 'jpeg', 'png']; //acceptable file types
     $('#crop_image').attr('src', '');

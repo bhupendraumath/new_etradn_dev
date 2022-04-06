@@ -85,6 +85,12 @@ ul.inline-css>li {
 
                             </div>
                         </div>
+
+                        @if(isset($product->image) && $product->image->product_img !=null)
+                            <input type="hidden" id="img_already" value="{{url('assets/images/product-images/'.$product->image->product_img)}}" >
+                        @endif
+
+                        
                         <input type="hidden" name="image_name[]" id="imagedata">
                         <!-- <div class="images-show">-->
                         <!-- <img id="previewImage1" width="100" height="100" >
@@ -97,13 +103,28 @@ ul.inline-css>li {
                         <select name="category_id" id="Category" class="shopname">
                             <option value=""">--Select Category-- </option>
                             @foreach($category as $category_value)
-                            <option value=" {{$category_value->id}}">{{$category_value->categoryName}}</option>
+                            <option value="{{$category_value->id}}" <?php                             
+                            if(isset($product->cat_id) &&( $product->cat_id==$category_value->id)){ echo 'selected'; }?> >{{$category_value->categoryName}}</option>
                             @endforeach
                         </select>
 
+                       
                         <label class="left-align">Sub Category</label>
                         <select name="sub_category_id" id="subcategory" class="shopname form-control changes-class">
-                            <option value=""">--Select sub category-- </option>
+                            <?php                             
+                            if(isset($product->sub_cat_id) &&($product->sub_cat_id)){
+                                ?>
+
+                                <option value="{{$product->sub_cat_id}}">{{$product->subCategory->subCategoryName}} </option>                               
+
+                             <?php   
+                            } 
+                            else{
+                                ?>
+                                <option value="">--Select sub category-- </option>
+                                <?php
+                            }                           
+                            ?>
                         </select>
 
                         <label class=" left-align">Brand</label>
@@ -111,7 +132,8 @@ ul.inline-css>li {
                                 <select name="brand_id" id="60per" class="shopname">
                                     <option value="">--Select Brand-- </option>
                                     @foreach($brand as $brand_value)
-                                    <option value=" {{$brand_value->id}}">{{$brand_value->brandName}}</option>
+                                    <option value=" {{$brand_value->id}}" <?php                             
+                            if(isset($product->brand_id) &&( $product->brand_id==$brand_value->id)){ echo 'selected'; }?> >{{$brand_value->brandName}}</option>
                                     @endforeach
                                 </select>
 
@@ -133,7 +155,7 @@ ul.inline-css>li {
                                     value="{{(isset($product->warranty_desc))?$product->warranty_desc:''}}">
 
                                 <br /><br />
-                                <h3 class="change-side">LIST PRODUCT*</h3>
+                                <h3 class="change-side">LIST PRODUCT<span style="color:red">*</span></h3>
                                 <hr class="business-address" />
 
                                 <div class="change-position">
@@ -149,6 +171,12 @@ ul.inline-css>li {
                                     <input type="radio" name="list_product" class="radio" value="bo"
                                         {{(isset($product->want_to_list)&&$product->want_to_list=='bo')? 'checked':''}}>
                                     <label for="both">Both</label>
+
+
+                                        @if(isset($product->want_to_list) && $product->want_to_list!='b')
+                                        <input type="hidden" id="bid_auction" value="{{$product->want_to_list}}" >
+                                        @endif
+
                                     <br>
                                     <br>
                                     <div class="list_productyes {{(isset($product->list_product)&&($product->list_product=='a' ||
@@ -179,6 +207,11 @@ ul.inline-css>li {
                                         {{(!isset($product->refund_request) || isset($product->refund_request)&&$product->refund_request=='n')? 'checked':''}}>
                                     <label for="new">No</label><br /><br />
                                 </div>
+
+
+                                @if(isset($product->refund_request) && $product->refund_request=='y')
+                                <input type="hidden" id="refund_y" value="{{$product->refund_request}}" >
+                                @endif
                                 <div class="refundyes"
                                     {{(isset($product->refund_request)&&$product->refund_request=='y')? '':'d-none'}}>
                                     <label class="left-align">Number of days</label>
@@ -203,6 +236,8 @@ ul.inline-css>li {
                                     <input id="new" type="radio" class="radio address_check" value="new" name="shippingaddress">
                                     <label for="new">New Address</label><br /><br />
 
+
+
                                     <div class="exting-address">
                                         <label class="left-align">ADDRESS</label>
                                         <input type="text" name="address" placeholder="Address" class="60per"
@@ -211,6 +246,10 @@ ul.inline-css>li {
                                     
                                     <br />
                                 </div>
+
+                                @if(isset($product->shipping_type) && $product->shipping_type=='p')
+                                        <input type="hidden" id="shipping_condtion" value="{{$product->shipping_type}}" >
+                                @endif
                                 <h3 class="change-side">SHIPPING TYPE PRODUCT</h3>
                                 <hr class="business-address" />
 
@@ -247,7 +286,7 @@ ul.inline-css>li {
                                             <div class="form-group changes-label">
                                                 <label for="">Price <span style="color:red">* </span></label>
                                                 <input type="text" class="form-control" id="Schoolname" name="price[]"
-                                                    placeholder="Price" required>
+                                                    placeholder="Price" value="{{isset($product->quantity)?$product->quantity->price :''}}" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-3 nopadding">
@@ -255,7 +294,7 @@ ul.inline-css>li {
                                                 <label for="">Quantity<span style="color:red">* </span></label>
 
                                                 <input type="text" class="form-control" id="Major" name="quantity[]"
-                                                    placeholder="Quantity" value="1" required>
+                                                    placeholder="Quantity" value="{{isset($product->quantity)?$product->quantity->quantity :'1'}}" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-3 nopadding">
@@ -263,7 +302,7 @@ ul.inline-css>li {
                                                 <label for="">Discount<span style="color:red">* </span></label>
 
                                                 <input type="number" class="form-control" id="Degree" name="discount[]"
-                                                    placeholder="discount" value="0" min="0" required>
+                                                    placeholder="discount"  value="{{isset($product->quantity)?$product->quantity->discount :'0'}}" min="0" required>
                                             </div>
                                         </div>
 
@@ -304,8 +343,13 @@ ul.inline-css>li {
 {!! JsValidator::formRequest('App\Http\Requests\Frontend\ProductRequest','#addProductFrm') !!}
 <script src="{{ asset('assets/js/frontend/product/product.js') }}"></script>
 <script>
+
+
+
+
 $(document).ready(function() {
 
+   var img= $('#img_already').val();
 
     $(".exting-address").hide();
     $("input[name$='shippingaddress']").click(function() {
@@ -318,17 +362,37 @@ $(document).ready(function() {
         }
     });
 
-    $(".refundyes").hide();
+   var refund_y= $("#refund_y").val();
+   {
+       if(refund_y=='y')
+       $(".refundyes").show();
+       else
+         $(".refundyes").hide();
+
+
+   }
+   
+    // $(".refundyes").hide();
     $("input[name$='refund_request']").click(function() {
         var refundyes = $(this).val();
-        if (refundyes == 'new') {
+        if (refundyes == 'y') {
             $(".refundyes").show();
-        } else if('existing'){
+        } else if(refundyes == 'n'){
             $(".refundyes").hide();
         }
     });
 
-    $(".shipping_typeyes").hide();
+    var shipping_condtion= $("#shipping_condtion").val();
+   {
+       if(shipping_condtion=='p')
+       $(".shipping_typeyes").show();
+       else
+         $(".shipping_typeyes").hide();
+
+
+   }
+
+    // $(".shipping_typeyes").hide();
     $("input[name$='shipping_type']").click(function() {
         var shipping_type = $(this).val();
         if (shipping_type == 'p') {
@@ -337,6 +401,21 @@ $(document).ready(function() {
             $(".shipping_typeyes").hide();
         }
     });
+
+
+    var bid_auction= $("#bid_auction").val();
+   {
+       if(bid_auction=='a' || bid_auction=='bo')
+       $(".list_productyes").show();
+       else
+         $(".list_productyes").hide();
+
+
+   }
+
+
+
+   
     $("input[name$='list_product']").click(function() {
         var list_product = $(this).val();
         if (list_product == 'bo' || list_product == 'a') {

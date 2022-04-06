@@ -123,7 +123,7 @@ Session::put('back_url', URL::full());
                                                 $user=Auth::user();
                                             @endphp
                                             @if($product_details->quantity->quantity==0)
-                                                <h2 style="color:red"> Out of stock</h2><br/>
+                                                <h3 style="color:red"> Out of stock</h3><br/>
                                             @else
                                                 @if(!empty($user))
                                                 

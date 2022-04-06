@@ -160,7 +160,7 @@ class UserController extends Controller
     public function updateProfile(UserUpdateRequest $request)
     {
         try {
-            
+
 
             $usercontroller = new User;
             $user = $usercontroller->updateSellerWeb($request, Auth::user()->id);

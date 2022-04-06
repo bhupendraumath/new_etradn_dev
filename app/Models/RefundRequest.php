@@ -47,6 +47,10 @@ class RefundRequest extends Model
     //     return $this->belongsTo(User::class, 'buyerId', 'id');
     // }
 
+    function refund_request_exist($id){
+        $value=RefundRequest::where('cart_id',$id)->get();
+        return $value;
+    }
     public function product() {
         return $this->hasOne(Product::class, 'id', 'product_id');
     }

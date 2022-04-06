@@ -62,6 +62,7 @@ class ProductController extends Controller
             try {
 
                 $productlist = Product::where(['user_id' => Auth::user()->id, 'is_delete' => 'n'])
+                ->orderBy('id','Desc')
                     ->paginate($request->record);
                 $completeSessionView = view(
                     'frontend/product/my-upload-product-list',

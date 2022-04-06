@@ -34,7 +34,8 @@ class BuyerController extends Controller
     }
 
 
-    public function buyer_personal_details(){
+    public function buyer_personal_details()
+    {
         $businesstype = BusinessType::where('isActive', '=', 'y')->get();
         $businessCategory = BusinessCategory::where('isActive', '=', 'y')->get();
 
@@ -45,42 +46,49 @@ class BuyerController extends Controller
     }
 
 
-    public function favorite_product(){
+    public function favorite_product()
+    {
         return view('frontend/buyer/my-favorite-product');
     }
 
-    public function buyer_bids_placed(){
+    public function buyer_bids_placed()
+    {
         return view('frontend/buyer/bids-places');
     }
-    
 
-    public function purchase_history(){
 
-        $userid=Auth::user()->id;
+    public function purchase_history()
+    {
+
+        $userid = Auth::user()->id;
         // $userid=846;
-        $productlist = Order::with('get_order_items')->where('buyer_id',$userid)
-                    ->orderBy("id",'desc')
-                    ->paginate(4);
+        $productlist = Order::with('get_order_items')->where('buyer_id', $userid)
+            ->orderBy("id", 'desc')
+            ->paginate(4);
 
-        return view('frontend/buyer/purchase-history',
-        compact(
-            'productlist',
-        ));
+        return view(
+            'frontend/buyer/purchase-history',
+            compact(
+                'productlist',
+            )
+        );
 
         // return view('frontend/buyer/purchase-history');
     }
 
-    public function delivery_area(){
+    public function delivery_area()
+    {
         return view('frontend/buyer/delivery-areas');
     }
 
-    public function buyer_account_setting(){
+    public function buyer_account_setting()
+    {
         return view('frontend/buyer/account-settings');
     }
 
-    
 
-    
+
+
     /**
      * Show the form for creating a new resource.
      *
