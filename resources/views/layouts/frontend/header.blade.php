@@ -148,12 +148,8 @@
 
                         <div class="dropdown-content">
 
-                            @if($user->user_type=='s')
-                            <a href="{{route('seller.dashboard')}}">Dashboard</a>
-                            @elseif($user->user_type=='b')
-                            <a href="{{route('buyer.dashboard')}}">Dashboard</a>
-                            @endif
-                            <a href="{{route('logout')}}">Logout</a>
+                            <a href="{{route('dashboard')}}">Dashboard</a>
+                            <a href="{{route('logout-user')}}">Logout</a>
 
                         </div>
                     </div>
@@ -257,11 +253,9 @@
                                     <ul class="dropdown-menu agile_short_dropdown">
                                         @if(!empty(Auth::user()))
                                         <li>
-                                            @if($user->user_type=='s')
-                                            <a href="{{route('seller.dashboard')}}">Dashboard</a>
-                                            @elseif($user->user_type=='b')
-                                            <a href="{{route('buyer.dashboard')}}">Dashboard</a>
-                                            @endif
+                                            
+                                            <a href="{{route('dashboard')}}">Dashboard</a>
+                                           
                                         </li>
                                         <li><a href="{{route('logout')}}">Logout</a></li>
                                         @else
@@ -417,11 +411,7 @@
                                     <ul class="dropdown-menu agile_short_dropdown">
                                         @if(!empty(Auth::user()))
                                         <li>
-                                            @if($user->user_type=='s')
-                                            <a href="{{route('seller.dashboard')}}">Dashboard</a>
-                                            @elseif($user->user_type=='b')
-                                            <a href="{{route('buyer.dashboard')}}">Dashboard</a>
-                                            @endif
+                                            <a href="{{route('dashboard')}}">Dashboard</a>
                                         </li>
                                         <li><a href="{{route('logout')}}">Logout</a></li>
                                         @else

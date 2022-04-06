@@ -24,6 +24,7 @@ class CheckLogin
     public function handle(Request $request, Closure $next, string $guard)
     {
         if (Auth::guard($guard)->check()) {
+           
             return redirect('/dashboard');
         }
         $response = $next($request);
@@ -32,5 +33,3 @@ class CheckLogin
             ->header('Expires', '0');
     }
 }
-
-

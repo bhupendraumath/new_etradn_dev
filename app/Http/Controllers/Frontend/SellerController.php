@@ -17,7 +17,14 @@ class SellerController extends Controller
      */
     public function dashboard()
     {
-        return view('frontend/seller/dashboard');
+        if (Auth::user()->user_type == 's') {
+            return view('frontend/seller/dashboard');
+        } elseif (Auth::user()->user_type == 'b') {
+            return view('frontend/buyer/dashboard');
+        } else {
+            echo "not permisssion";
+            die;
+        }
     }
     /**
      * Display a listing of the resource.
@@ -45,12 +52,12 @@ class SellerController extends Controller
         }
     }
 
-    public function editBusinessAddress($id){
+    public function editBusinessAddress($id)
+    {
 
-        $title="Delivery Address";
-        $details=Address::whereId($id)->get();
-        return view('frontend/seller/business-information',['details'=>$details,'title'=>$title]);
-
+        $title = "Delivery Address";
+        $details = Address::whereId($id)->get();
+        return view('frontend/seller/business-information', ['details' => $details, 'title' => $title]);
     }
     public function businessAddressEdit($id)
     {
@@ -61,7 +68,7 @@ class SellerController extends Controller
 
     public function businessAddressDelete($id)
     {
-        try{
+        try {
             $user_id = Auth::guard('web')->user()->id;
             $delete = Address::whereId($id)->delete();
 
@@ -72,7 +79,6 @@ class SellerController extends Controller
                     ['success' => true, 'message' => 'Delete Successfully']
                 );
             }
-
         } catch (\Exception $e) {
             return response()->json(
                 ['success' => false, 'message' => $e->getMessage()]

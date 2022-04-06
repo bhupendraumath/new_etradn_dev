@@ -52,7 +52,7 @@
     <div class="borderOrStyle" onclick="mybuyersidebar()">
        
 
-       @if(Route::current()->getName()=='seller.dashboard')
+       @if(Route::current()->getName()=='dashboard')
        Dashboard
 
        @elseif(Route::current()->getName()=='favoriteProduct')
