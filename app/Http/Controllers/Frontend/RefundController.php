@@ -16,8 +16,10 @@ use Redirect;
 use App\Models\Bids;
 use App\Models\RefundRequest;
 use App\Models\OrderItem;
+use App\Models\Cart;
 use App\Models\RefundRequestDetails;
 use DB;
+use App\Models\ProductQuantity;
 
 class RefundController extends Controller
 {
@@ -177,20 +179,53 @@ class RefundController extends Controller
             try {
 
                 $refundRequest=RefundRequest::find($request->id);
-                $refundRequest->seller_approval_status=$request->status;
-                
-                if($refundRequest->save()){
-                   
+
+                if($refundRequest->seller_approval_status==1 || $refundRequest->seller_approval_status==2)
+                {    
                     return response()->json(
-                        ['success' => true, 'message' => 'Updated refund request status']
+                        ['success' => false, 'message' => 'Already Manage the status']
                     );
                 }
                 else{
-                    return response()->json(
-                        ['success' => false, 'message' => 'Failed refund request status']
-                    );
+
+                    $refundRequest->seller_approval_status=$request->status;
+                    if($refundRequest->save()){
+                    
+                        if($request->status==1){
+                            $cart_id=$refundRequest->cart_id;
+                            $product_id=$refundRequest->product_id;
+                            $cart_details=Cart::find($cart_id);   
+
+                            $increament= ProductQuantity::where('product_id',$product_id)
+                            ->get();
+
+                            $update_Quantity= ProductQuantity::find($increament[0]->id);
+                            $update_Quantity->quantity=$increament[0]->quantity+$cart_details->quantity;
+                            $update_Quantity->save();
+
+                            if(!empty($increament)){
+                                return response()->json(
+                                    ['success' => true, 'message' => 'Updated refund request status']
+                                );
+                            }
+                            else{
+                                return response()->json(
+                                    ['success' => false, 'message' => 'Failed refund request status']
+                                );
+                            }
+                        }
+
+                        // return response()->json(
+                        //     ['success' => true, 'message' => 'Updated refund request status']
+                        // );
+                    }
+                    else{
+                        return response()->json(
+                            ['success' => false, 'message' => 'Failed refund request status']
+                        );
+                    }
+                   
                 }
-                
             } catch (\Exception $ex) {
                 return response()->json(
                     [
