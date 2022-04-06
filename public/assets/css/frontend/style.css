@@ -6655,6 +6655,10 @@ ul.popular-items {
     line-height: 2;
 }
 
+.modal-footer.add-css-changes>button.btn.btn-primary {
+    font-size: 16px !important;
+}
+
 button.btn.btn-primary {
     width: 136px;
     font-size: 20px !important;
