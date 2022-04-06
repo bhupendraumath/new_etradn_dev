@@ -57,7 +57,7 @@ class ProductRequest extends FormRequest
             'product_description_eng' => 'required',
             'list_product' => 'required',
             'refund_request' => 'required',
-            'shipping_type' => 'required'
+            'shipping_type' => 'required',
         ];
     }
     /**

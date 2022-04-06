@@ -4,7 +4,7 @@
 
 window.setImage = function setImage(input, img_type) {
     console.log("here");
-    document.getElementById('image-logo-uploaded').style.display = "block"
+    // document.getElementById('image-logo-uploaded').style.display = "block"
     $('.validation').empty();
     var fileTypes = ['jpg', 'jpeg', 'png']; //acceptable file types
     $('#crop_image').attr('src', '');

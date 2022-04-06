@@ -262,13 +262,13 @@
 
 
                         <!-- here for refund request manage -->
-                       @if(!empty($list->tbl_refund_details) && count($list->tbl_refund_details)!=0)
+                       {{--@if(!empty($list->tbl_refund_details) && count($list->tbl_refund_details)!=0)
                         
                         <button disabled class="refundRequestBtn" style="color:blue">
                             Sent Refund Request
                         </button>
 
-                        @else
+                        @else--}}
                         @if($expiry)
                             <span class="refund-policy-1 tooltip1">
                                 Send Refund Request <i class="fa fa-angle-up"></i>
@@ -296,7 +296,7 @@
                                 Send Refund Request
                                 </button>
                             @endif
-                       @endif
+                      {{-- @endif--}}
 
                     </span>
 

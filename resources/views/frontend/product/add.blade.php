@@ -137,8 +137,9 @@ ul.inline-css>li {
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input type="radio" name="list_product" class="radio" value="b"
-                                        {{(isset($product->want_to_list)&&$product->want_to_list=='b')? 'checked':''}}>
+                                    <input type="radio" name="list_product" class="radio" value="b" 
+
+                                    {{(!isset($product->want_to_list) || isset($product->want_to_list)&& $product->want_to_list=='b')? 'checked':''}}>
                                     <label for="buyitnow">Buy it Now</label> &nbsp;&nbsp;&nbsp;
 
                                     <input type="radio" name="list_product" class="radio" value="a"
@@ -175,7 +176,7 @@ ul.inline-css>li {
                                     <label for="Existing">Yes</label> &nbsp;&nbsp;&nbsp;
 
                                     <input type="radio" name="refund_request" class="radio" value="n"
-                                        {{(isset($product->refund_request)&&$product->refund_request=='n')? 'checked':''}}>
+                                        {{(!isset($product->refund_request) || isset($product->refund_request)&&$product->refund_request=='n')? 'checked':''}}>
                                     <label for="new">No</label><br /><br />
                                 </div>
                                 <div class="refundyes"
@@ -195,15 +196,19 @@ ul.inline-css>li {
                                 <hr class="business-address" />
 
                                 <div class="change-position">
-                                    <input id="Existing" type="radio" class="radio" name="shippingaddress"
-                                        value="Existing">
+                                    <input id="Existing" checked type="radio" class="radio address_check" name="shippingaddress"
+                                        value="existing">
                                     <label for="Existing">Existing Address</label> &nbsp;&nbsp;&nbsp;
 
-                                    <input id="new" type="radio" class="radio" value="new" name="shippingaddress">
+                                    <input id="new" type="radio" class="radio address_check" value="new" name="shippingaddress">
                                     <label for="new">New Address</label><br /><br />
-                                    <label class="left-align">ADDRESS</label>
-                                    <input type="text" name="address" placeholder="Address" class="60per"
-                                        value="{{(isset($product->address))?$product->address:getSellerAddress()}}">
+
+                                    <div class="exting-address">
+                                        <label class="left-align">ADDRESS</label>
+                                        <input type="text" name="address" placeholder="Address" class="60per"
+                                            value="Please enter Address new Address">
+                                    </div>
+                                    
                                     <br />
                                 </div>
                                 <h3 class="change-side">SHIPPING TYPE PRODUCT</h3>
@@ -211,7 +216,7 @@ ul.inline-css>li {
 
                                 <div class="change-position">
                                     <input type="radio" name="shipping_type" class="radio" value="f"
-                                        {{(isset($product->shipping_type)&&$product->shipping_type=='f')? 'checked':''}}>
+                                        {{(!isset($product->shipping_type)||isset($product->shipping_type)&&$product->shipping_type=='f')? 'checked':''}}>
                                     <label for="Existing">Free</label> &nbsp;&nbsp;&nbsp;
 
                                     <input type="radio" name="shipping_type" class="radio" value="p"
@@ -239,21 +244,26 @@ ul.inline-css>li {
 
                                         </div>
                                         <div class="col-sm-3 nopadding">
-                                            <div class="form-group">
+                                            <div class="form-group changes-label">
+                                                <label for="">Price <span style="color:red">* </span></label>
                                                 <input type="text" class="form-control" id="Schoolname" name="price[]"
                                                     placeholder="Price" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-3 nopadding">
-                                            <div class="form-group">
+                                            <div class="form-group changes-label">
+                                                <label for="">Quantity<span style="color:red">* </span></label>
+
                                                 <input type="text" class="form-control" id="Major" name="quantity[]"
-                                                    placeholder="Quantity" required>
+                                                    placeholder="Quantity" value="1" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-3 nopadding">
-                                            <div class="form-group">
+                                            <div class="form-group changes-label">
+                                                <label for="">Discount<span style="color:red">* </span></label>
+
                                                 <input type="number" class="form-control" id="Degree" name="discount[]"
-                                                    placeholder="discount" required>
+                                                    placeholder="discount" value="0" min="0" required>
                                             </div>
                                         </div>
 
@@ -295,15 +305,30 @@ ul.inline-css>li {
 <script src="{{ asset('assets/js/frontend/product/product.js') }}"></script>
 <script>
 $(document).ready(function() {
+
+
+    $(".exting-address").hide();
+    $("input[name$='shippingaddress']").click(function() {
+        console.log("conssdjfdhfg adddress")
+        var address = $(this).val();
+        if (address == 'new') {
+            $(".exting-address").show();
+        } else if(address=='existing'){
+            $(".exting-address").hide();
+        }
+    });
+
+    $(".refundyes").hide();
     $("input[name$='refund_request']").click(function() {
         var refundyes = $(this).val();
-        if (refundyes == 'y') {
+        if (refundyes == 'new') {
             $(".refundyes").show();
-        } else {
+        } else if('existing'){
             $(".refundyes").hide();
         }
     });
 
+    $(".shipping_typeyes").hide();
     $("input[name$='shipping_type']").click(function() {
         var shipping_type = $(this).val();
         if (shipping_type == 'p') {
