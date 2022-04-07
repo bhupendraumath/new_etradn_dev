@@ -334,12 +334,6 @@ Route::group(
             [ProductController::class, 'index']
         )->name('add-product');
 
-
-        Route::get(
-            'add-product-page',
-            [ProductController::class, 'index']
-            )->name('add-product-page');
-
         Route::get(
             'my-upload-product',
             [ProductController::class, 'myUploadProduct']

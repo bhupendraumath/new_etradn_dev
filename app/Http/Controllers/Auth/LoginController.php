@@ -257,11 +257,10 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::logout();
-    //     if (Auth::guard('web')->check()) {
-    //         $this->guard('web')->logout();
-    //     }
-    //     $request->session()->flush();
+        if (Auth::guard('web')->check()) {
+            $this->guard('web')->logout();
+        }
+        $request->session()->flush();
         // $request->session()->regenerate();
         return redirect('sign-in')
             ->with('message', 'You are now signed out')
