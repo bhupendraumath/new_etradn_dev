@@ -62,7 +62,7 @@
        
         
 
-        @if(Route::current()->getName()=='seller.dashboard')
+        @if(Route::current()->getName()=='dashboard')
         Dashboard
 
         @elseif(Route::current()->getName()=='add-product')
@@ -107,7 +107,7 @@
 
     <div id="sellersidebar" class="background-gredient">
         <!-- <hr class="margin-bottom"/> -->
-        <a href="{{route('seller.dashboard')}}">
+        <a href="{{route('dashboard')}}">
             <div class="row border-row-top-border top-vv">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <span><i class="fas fa-list margin-leftor-right"></i> <b class="heading-business">DASHBOARD</b> </span>

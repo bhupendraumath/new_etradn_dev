@@ -142,7 +142,7 @@ Route::group(
         Route::get(
             'sign-in',
             [LoginController::class, 'loginForm']
-        )->name('login');
+        )->name('loginn');
         Route::post(
             'loginAction',
             [LoginController::class, 'loginAction']
@@ -182,7 +182,7 @@ Route::get(
 Route::get(
     '/product-list/{catid}/{subid}/{brandid}/{popularList}',
     [ProductController::class, 'list']
-)->name('product.list'); 
+)->name('product.list');
 
 
 //list of product
@@ -191,13 +191,11 @@ Route::post(
     [CommonController::class, 'getsubCategroy']
 )->name('getsubCategroy');
 
-Route::get(
-    '/logout',
-    [LoginController::class, 'logout']
-)->name('logout');
 
 
-route::get('acept-rfq-request/{id}',[RfqController::class, 'requestAcept']
+route::get(
+    'acept-rfq-request/{id}',
+    [RfqController::class, 'requestAcept']
 )->name('acept-rfq-request');
 
 Route::post(
@@ -209,12 +207,16 @@ Route::post(
 Route::group(
     ['middleware' => 'user:web'],
     function () {
-       
+        Route::get(
+            '/logout-user',
+            [LoginController::class, 'logout']
+        )->name('logout-user');
+
         // Seller panel start
         Route::get(
             'dashboard',
             [SellerController::class, 'dashboard']
-        )->name('seller.dashboard');
+        )->name('dashboard');
 
         Route::get(
             'person-information',
@@ -294,7 +296,7 @@ Route::group(
             'delivery-address-edit-buyer/{id}',
             [addressController::class, 'businessAddressEditBuyer']
         );
-        
+
         Route::get(
             'business-address-delete/{id}',
             [SellerController::class, 'businessAddressDelete']
@@ -305,7 +307,7 @@ Route::group(
             [RefundController::class, 'refund_request_list_post']
         )->name('refund_request_list_post');
 
-        
+
         Route::post(
             'change-request',
             [RefundController::class, 'changeRequest']
@@ -315,7 +317,7 @@ Route::group(
             'add-bid-placed',
             [BidController::class, 'bidPlaced']
         );
-        
+
         Route::post(
             'create-refund-request',
             [RefundController::class, 'createRequest']
@@ -333,6 +335,12 @@ Route::group(
             'add-product',
             [ProductController::class, 'index']
         )->name('add-product');
+
+
+        Route::get(
+            'add-product-page',
+            [ProductController::class, 'index']
+        )->name('add-product-page');
 
         Route::get(
             'my-upload-product',
@@ -365,7 +373,7 @@ Route::group(
             'order-product',
             [CartController::class, 'orderProduct']
         )->name('orderProduct');
-        
+
 
         Route::POST(
             'cart-add',
@@ -376,7 +384,7 @@ Route::group(
             'my-fav-product-list',
             [FavProductController::class, 'myUploadProductPost']
         )->name('myFavProductList.post');
-        
+
         Route::get(
             'add-in-fav-list/{product_id}/{paqid}/{favid}',
             [FavProductController::class, 'addInFavList']
@@ -408,7 +416,7 @@ Route::group(
             [BidController::class, 'buyerBidPlacePost']
         )->name('buyerBidPlacePost');
 
-        
+
         Route::get(
             'view-details-bids/{product_id}/{seller_id}',
             [BidController::class, 'view_details_bids']
@@ -420,7 +428,7 @@ Route::group(
             [BidController::class, 'update_status']
         )->name('update_status');
 
-        
+
 
         Route::get(
             'bids-placed',
@@ -530,7 +538,7 @@ Route::group(
             [BuyerController::class, 'delivery_area']
         )->name('buyer.deliveryArea');
 
-        
+
         Route::get(
             'buyer-account-setting',
             [BuyerController::class, 'buyer_account_setting']
@@ -540,3 +548,5 @@ Route::group(
 
     }
 );
+
+Auth::routes();
