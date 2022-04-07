@@ -92,7 +92,7 @@
 
 
                    
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" id="loginFrm" action="{{ route('login') }}">
                         {{csrf_field()}}
                         <label for="email" class="label-11">Phone Number or Email*</label>
                         <div class="form-field">
@@ -120,6 +120,7 @@
         </div>
     </div>
 </div>
+{!! JsValidator::formRequest('App\Http\Requests\Frontend\LoginRequest','#loginFrm') !!}
 <!-- partial -->
 <a href="#sign-in" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 @endsection
