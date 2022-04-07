@@ -40,7 +40,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    /**
+      /**
      * Method logout
      * 
      * @param Request $request 
@@ -49,18 +49,27 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        if (Auth::guard('web')->check()) {
-            $this->guard('web')->logout();
-        }
-        $request->session()->flush();
-        $request->session()->regenerate();
-        $msg = trans('admin.admin_logout');
-        if (!empty($_GET['status'])) {
-            $msg = 'Your account is deactivated by Admin. Please contact to Admin.';
-        }
-        return redirect('/')
-            ->with('success', $msg)
-            ->with('status', 'success')
-            ->withInput();
+            Auth::logout();
+            return redirect('/login');
+        
+        // dd("dfsdkhdkfg");die;
+    //     if (Auth::guard('web')->check()) {
+    //         $this->guard('web')->logout();
+    //     }
+        
+    //     $request->session()->flush();
+    //     $request->session()->regenerate();
+    //     $msg = trans('admin.admin_logout');
+    //     if (!empty($_GET['status'])) {
+    //         $msg = 'Your account is deactivated by Admin. Please contact to Admin.';
+    //     }
+        
+        
+    //     return redirect('/home')
+    //         ->with('success', $msg)
+    //         ->with('status', 'success')
+    //         ->withInput();
     }
+
+    
 }

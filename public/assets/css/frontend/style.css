@@ -20276,6 +20276,27 @@ p.w3ls_para {
 }
 
 @media (max-width: 375px) {
+    h3.cart-heading {
+        margin-top: 10px;
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto 15% auto;
+        border: 1px solid #888;
+        width: 100%;
+    }
+    div#myModalPayment {
+        background: #00000054;
+        width: 100%;
+        left: 0;
+        padding: 0px;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+    }
+    .card {
+        padding: 11px !important;
+    }
     form.position-chnages-pay {
         width: 0px;
         position: absolute;
@@ -20334,6 +20355,8 @@ p.w3ls_para {
         font-family: 'Lato';
         color: #3d3d3d;
         font-size: 17px;
+        padding-right: 0;
+        padding-left: 0px;
         /* border: 1px solid #ddd; */
         /* font-family: 'Lato'; */
     }

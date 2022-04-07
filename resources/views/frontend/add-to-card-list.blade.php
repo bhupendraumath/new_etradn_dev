@@ -2,7 +2,7 @@
     <div class="container">
         @if(!empty($cart_details) && count($cart_details)!=0)
         <div class="row">
-            <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
+            <div class="col-md-7 col-sm-7 col-lg-8 col-xl-8 col-xs-12">
                 @php
                 $arr_cart_id=array();
                 @endphp
@@ -106,7 +106,7 @@
                 @endforeach
             </div>
 
-            <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
+            <div class="col-md-5 col-sm-5 col-lg-4 col-xl-4 col-xs-12">
                 <div class="card ">
                     <h4 class="delivery-address-cart"> <i class="fa fa-map-o orange"></i> DELIVERY ADDRESS</h4>
                     <hr />
@@ -134,7 +134,7 @@
                     </h4>
                     <hr />
 
-                    <div class="row">
+                    <!-- <div class="row"> -->
                         <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
                             <span class="item_price">
                                 <b>PRICE:</b>
@@ -155,7 +155,7 @@
                             <span class="item_price"><b>Sub total:</b> &nbsp; <span
                                     class="uppercase del">${{$total_amount}}</span></span><br />
                         </div>
-                    </div>
+                    <!-- </div> -->
                     <a href="{{url('/')}}">
                     <button class="continue" >
                        

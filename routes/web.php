@@ -45,7 +45,7 @@ Route::get(
         echo "Cache clear successfully";
         // dd();
     }
-);
+)->name('clear-cache');
 
 Route::get('/foo', function () {
     Artisan::call('storage:link');
@@ -74,11 +74,11 @@ Route::post(
 Route::get(
     '/',
     [HomeController::class, 'index']
-)->name('home');
+);
 Route::get(
     '/home',
     [HomeController::class, 'index']
-)->name('homee');
+)->name('home');
 
 Route::post(
     'home-listing',
@@ -143,6 +143,8 @@ Route::group(
             'sign-in',
             [LoginController::class, 'loginForm']
         )->name('loginn');
+        
+        
         Route::post(
             'loginAction',
             [LoginController::class, 'loginAction']
@@ -207,10 +209,13 @@ Route::post(
 Route::group(
     ['middleware' => 'user:web'],
     function () {
-        Route::get(
+     /*Route::get(
             '/logout-user',
             [LoginController::class, 'logout']
-        )->name('logout-user');
+        )->name('logout-user');*/
+        
+            Route::post('logout',[LoginController::class, 'logout'])->name('logout');
+
 
         // Seller panel start
         Route::get(
