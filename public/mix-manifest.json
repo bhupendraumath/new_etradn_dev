@@ -20,6 +20,7 @@
     "/assets/js/frontend/product/product-delete.js": "/assets/js/frontend/product/product-delete.js",
     "/assets/js/frontend/product/favorite-delete.js": "/assets/js/frontend/product/favorite-delete.js",
     "/assets/js/frontend/product/cat-product-list.js": "/assets/js/frontend/product/cat-product-list.js",
+    "/assets/js/frontend/product/order-list.js": "/assets/js/frontend/product/order-list.js",
     "/assets/js/frontend/product/purchase-history-list.js": "/assets/js/frontend/product/purchase-history-list.js",
     "/assets/js/frontend/product/add-bid-placed.js": "/assets/js/frontend/product/add-bid-placed.js",
     "/assets/js/frontend/product/buyer-bids-list.js": "/assets/js/frontend/product/buyer-bids-list.js",
