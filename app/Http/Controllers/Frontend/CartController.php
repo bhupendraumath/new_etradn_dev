@@ -33,7 +33,7 @@ class CartController extends Controller
             // return view('frontend/add-to-card',['cart_details'=>$cart_details]);
         }
         else{
-            return redirect('sign-in');
+            return redirect('login');
         }
         
     }
