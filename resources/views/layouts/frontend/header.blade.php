@@ -1,10 +1,10 @@
 <!-- header -->
 <style>
-#autocomplete {
+/* #autocomplete {
     width: 300px;
     padding: 7px;
     text-align: left;
-}
+} */
 
 .autocomplete-suggestions {
     text-align: left;

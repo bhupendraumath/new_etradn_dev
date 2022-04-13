@@ -281,12 +281,21 @@
                 dataType: 'JSON',
                 cache: false,
                 success: function success(response) {
+                    // aftercheckout();
                     console.log("response   ",response)
                     toastr.clear();
                     // btn.html('Save');
-                    toastr.success(response.message, { timeOut: 1000 });
-                    aftercheckout();
-                    window.location.href="{{url('/purchase_history')}}"
+                    swal({
+                    title: "Successfully",
+                    text: "Order Placed successfully",
+                    icon: "success",
+                    })
+                    .then(
+                        window.location.href="{{url('/purchase_history')}}"
+                        );
+                        
+                    // toastr.success(response.message, { timeOut: 2000 });
+                    
 
 
 

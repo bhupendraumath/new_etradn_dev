@@ -541,6 +541,7 @@ Session::put('back_url', URL::full());
     </div>
   </div>
 </div>
+{!! JsValidator::formRequest('App\Http\Requests\Frontend\BidRequest','#new_user_form') !!}
 
  <!-- ---------------------------------------------------------------------- -->
 
@@ -555,6 +556,7 @@ Session::put('back_url', URL::full());
 
 </script>
 <script src="{{ asset('assets/js/frontend/product/add-bid-placed.js') }}"></script>
+
 <script>
 
 </script>
@@ -571,7 +573,7 @@ Session::put('back_url', URL::full());
 
         swal({
         title: "Your Bid Basket is empty",
-        text: "Want to Place Bid Please Sign-in",
+        text: "Want to Place Bid Please login",
         icon: "warning",
         buttons: {
             cancel: true,
@@ -580,7 +582,7 @@ Session::put('back_url', URL::full());
         }).then(
         function(isConfirm) {
             if (isConfirm) {
-                window.location.href = "{{url('sign-in')}}";
+                window.location.href = "{{url('login')}}";
             } else {
                 return false;
             }
@@ -660,7 +662,7 @@ Session::put('back_url', URL::full());
         }).then(
         function(isConfirm) {
             if (isConfirm) {
-                window.location.href = "{{url('sign-in')}}";
+                window.location.href = "{{url('login')}}";
             } else {
                 return false;
             }
@@ -799,7 +801,7 @@ Session::put('back_url', URL::full());
                 }).then(
                 function(isConfirm) {
                 if (isConfirm) {
-                    window.location.href = "{{url('sign-in')}}";
+                    window.location.href = "{{url('login')}}";
                 } else {
                 return false;
                 }

@@ -101,9 +101,9 @@ function getRefundRequest(pageno, records) {
 var pageno = 1;
 var records = 4;
 
-//window.changeStatus = function changeStatus(ref_id) {
-//$('#seller_approve').on('change', function() {
-$(document).on('change', "#seller_approve", function(e) {
+
+// $(document).on('change', "#seller_approve", function(e) {
+$('#seller_approve').change(function() {
 
     var selected = this.value;
     var ref_id = $(this).find(':selected').attr('data-rid')

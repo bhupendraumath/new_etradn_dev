@@ -1,15 +1,15 @@
 const mix = require('laravel-mix');
 
 /*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
- | file for the application as well as bundling up all the JS files.
- |
- */
+|--------------------------------------------------------------------------
+| Mix Asset Management
+|--------------------------------------------------------------------------
+|
+| Mix provides a clean, fluent API for defining some Webpack build steps
+| for your Laravel applications. By default, we are compiling the CSS
+| file for the application as well as bundling up all the JS files.
+|
+*/
 
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
@@ -51,7 +51,7 @@ mix.js('resources/js/app.js', 'public/js')
 
     ], 'public/assets/css/frontend/style.css')
 
-.js([
+    .js([
         'resources/js/frontend/auth/login.js'
     ], 'public/assets/js/frontend/auth/login.js')
     .js([
@@ -76,14 +76,14 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/product/product-list.js'
     ], 'public/assets/js/frontend/product/product-list.js')
 
-.js([
+    .js([
         'resources/js/frontend/product/rfq-list.js'
     ], 'public/assets/js/frontend/product/rfq-list.js')
     .js([
         'resources/js/frontend/profile/rfq-form.js'
     ], 'public/assets/js/frontend/profile/rfq-form.js')
 
-.js([
+    .js([
         'resources/js/frontend/product/bids-list.js'
     ], 'public/assets/js/frontend/product/bids-list.js')
     .js([
@@ -93,7 +93,7 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/product/delivery-areas-list.js'
     ], 'public/assets/js/frontend/product/delivery-areas-list.js')
 
-.js([
+    .js([
         'resources/js/frontend/product/my-fav-product-list.js'
     ], 'public/assets/js/frontend/product/my-fav-product-list.js')
     .js([
@@ -106,23 +106,23 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/js/frontend/product/delivery-areas-list-buyer.js'
     ], 'public/assets/js/frontend/product/delivery-areas-list-buyer.js')
 
-.js([
-    'resources/js/frontend/product/product-delete.js'
-], 'public/assets/js/frontend/product/product-delete.js')
+    .js([
+        'resources/js/frontend/product/product-delete.js'
+    ], 'public/assets/js/frontend/product/product-delete.js')
 
-.js([
-    'resources/js/frontend/product/favorite-delete.js'
-], 'public/assets/js/frontend/product/favorite-delete.js')
+    .js([
+        'resources/js/frontend/product/favorite-delete.js'
+    ], 'public/assets/js/frontend/product/favorite-delete.js')
 
-.js([
-    'resources/js/frontend/product/cat-product-list.js'
-], 'public/assets/js/frontend/product/cat-product-list.js')
+    .js([
+        'resources/js/frontend/product/cat-product-list.js'
+    ], 'public/assets/js/frontend/product/cat-product-list.js')
 
-.js([
-    'resources/js/frontend/product/order-list.js'
-], 'public/assets/js/frontend/product/order-list.js')
+    .js([
+        'resources/js/frontend/product/order-list.js'
+    ], 'public/assets/js/frontend/product/order-list.js')
 
-.js([
+    .js([
         'resources/js/frontend/product/purchase-history-list.js'
     ], 'public/assets/js/frontend/product/purchase-history-list.js')
     .js([

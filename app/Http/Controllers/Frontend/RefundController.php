@@ -183,7 +183,7 @@ class RefundController extends Controller
                 if($refundRequest->seller_approval_status==1 || $refundRequest->seller_approval_status==2)
                 {    
                     return response()->json(
-                        ['success' => false, 'message' => 'Already Manage the status']
+                        ['success' => false, 'message' => 'Already Managed']
                     );
                 }
                 else{
@@ -205,14 +205,18 @@ class RefundController extends Controller
 
                             if(!empty($increament)){
                                 return response()->json(
-                                    ['success' => true, 'message' => 'Updated refund request status']
+                                    ['success' => true, 'message' => 'Acepted refund request']
                                 );
                             }
                             else{
                                 return response()->json(
-                                    ['success' => false, 'message' => 'Failed refund request status']
+                                    ['success' => false, 'message' => 'Please try again']
                                 );
                             }
+                        }else if($request->status==2){
+                            return response()->json(
+                                ['success' => true, 'message' => 'Rejected refund request.']
+                            );
                         }
 
                         // return response()->json(
