@@ -115,9 +115,14 @@ mix.js('resources/js/app.js', 'public/js')
 ], 'public/assets/js/frontend/product/favorite-delete.js')
 
 .js([
-        'resources/js/frontend/product/cat-product-list.js'
-    ], 'public/assets/js/frontend/product/cat-product-list.js')
-    .js([
+    'resources/js/frontend/product/cat-product-list.js'
+], 'public/assets/js/frontend/product/cat-product-list.js')
+
+.js([
+    'resources/js/frontend/product/order-list.js'
+], 'public/assets/js/frontend/product/order-list.js')
+
+.js([
         'resources/js/frontend/product/purchase-history-list.js'
     ], 'public/assets/js/frontend/product/purchase-history-list.js')
     .js([

@@ -7,7 +7,7 @@ $("#loginBtn").on('click', (function(e) {
         var showLoader = 'Processing...';
         showButtonLoader(btn, showLoader, 'disabled');
         $.ajax({
-            url: process.env.MIX_APP_URL + "/loginAction",
+            url: process.env.MIX_APP_URL + "/login",
             type: "POST",
             data: frm.serialize(),
             success: function(data) {
@@ -17,7 +17,7 @@ $("#loginBtn").on('click', (function(e) {
                 toastr.success(data.message, 'Login', { timeOut: 2000 });
                 setTimeout(() => {
                     
-                   window.location.href = data.data;
+                   window.location.href = process.env.MIX_APP_URL + "/dashboard";
                 }, 3000);
 
             },

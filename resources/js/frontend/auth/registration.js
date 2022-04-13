@@ -15,7 +15,7 @@ $("#registerBtn").on('click', (function (e) {
                 showButtonLoader(btn, showLoader, 'enable');
                 toastr.success(data.message, 'Registration', { timeOut: 2000 });
                 setTimeout(() => {
-                    window.location.href = process.env.MIX_APP_URL + "/sign-in";
+                    window.location.href = process.env.MIX_APP_URL + "/login";
                 }, 3000);
 
             },

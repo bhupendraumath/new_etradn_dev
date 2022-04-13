@@ -76,7 +76,7 @@
     <div class="header-bot_inner_wthreeinfo_header_mid">
 
         <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2 logo_agile">
-            <a href="{{route('home')}}"> <img src="{{url('assets/images/frontend/logo.png')}}" alt="" srcset=""></a>
+            <a href="{{url('/')}}"> <img src="{{url('assets/images/frontend/logo.png')}}" alt="" srcset=""></a>
         </div>
 
         <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
