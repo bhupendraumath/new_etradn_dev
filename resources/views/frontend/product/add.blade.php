@@ -64,7 +64,6 @@ ul.inline-css>li {
                     <form method="post" enctype="multipart/form-data" id="addProductFrm">
                         {{csrf_field()}}
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                        <!-- <input type="file" class="files-class-hide"> -->
                         <?php
                         if (!empty($productId)) {
                         ?>

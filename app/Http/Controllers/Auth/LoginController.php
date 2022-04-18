@@ -50,6 +50,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
             Auth::logout();
+            \Artisan::call('view:clear');
             return redirect('/login');
         
         // dd("dfsdkhdkfg");die;

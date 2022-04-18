@@ -94,7 +94,7 @@ Session::put('back_url', URL::full());
                         
                         &nbsp;&nbsp;
                             <b id="modify_price">
-                            ${{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}</b> </span> </p>
+                            ${{round($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100),2)}}</b> </span> </p>
         
                             <input type="hidden" id="price_with_discount" value="{{($product_details->quantity->price - ($product_details->quantity->price*$product_details->quantity->discount/100))}}">
 
@@ -103,6 +103,7 @@ Session::put('back_url', URL::full());
                         @endif
                     <div class="row">
                     @if(!empty($product_details->quantity))
+                    @if($product_details->quantity->quantity!=0)
                         <div class="col-md-2 col-6 col-sm-2 col-xs-5">
                                 <div class="quantity buttons_added">
                                 <input type="number" step="1" min="1" max="{{$product_details->quantity->quantity}}" name="quantity" value="1" title="Qty" class="input-text qty text numberofdigits" size="4" pattern="" inputmode="" id="selected_qty">
@@ -111,7 +112,11 @@ Session::put('back_url', URL::full());
                                 
                             </div>
                         </div>
-        
+                        @elseif($product_details->quantity->quantity==0)
+                        <div class="col-md-4 col-6 col-sm-2 col-xs-5">
+                                <h3 style="color:red"> Out of stock</h3><br/>
+                        </div>
+                        @endif
         
                         <div class="col-md-10 col-12 col-sm-12 col-xs-7">
                             <div class="occasion-cart">
@@ -122,9 +127,9 @@ Session::put('back_url', URL::full());
                                             @php
                                                 $user=Auth::user();
                                             @endphp
-                                            @if($product_details->quantity->quantity==0)
-                                                <h3 style="color:red"> Out of stock</h3><br/>
-                                            @else
+                                            @if($product_details->quantity->quantity!=0)
+                                                {{-- <h3 style="color:red"> Out of stock</h3><br/>
+                                            @else--}}
                                                 @if(!empty($user))
                                                 
                                                 
