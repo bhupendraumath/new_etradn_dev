@@ -162,10 +162,22 @@
                         Continue
                     </button>
                     </a>
-
+<!-- 
                     <button class="continue pay">
                         Pay
-                    </button>
+                    </button> -->
+               
+                       {{-- @include('frontend.common.transaction')   href="{{ url('process-transaction/1/2/3') }}--}}
+
+                    <a class="btn btn-primary m-3" id="myHref" ">Pay $1000</a>
+                    @if(\Session::has('error'))
+                    <div class="alert alert-danger">{{ \Session::get('error') }}</div>
+                    {{ \Session::forget('error') }}
+                    @endif
+                    @if(\Session::has('success'))
+                    <div class="alert alert-success">{{ \Session::get('success') }}</div>
+                    {{ \Session::forget('success') }}
+                    @endif
                 </div>
             </div>
         </div>
@@ -259,6 +271,62 @@
 
     var payment_type="cod";
     var shipping_address='indore';
+    var arr=$('#arr_value_ids').val();
+
+$("#myHref").on('click', function() {
+alert("inside onclick");
+window.location = "{{ url('process-transaction') }}"+'/'+arr+'/'+payment_type+'/'+shipping_address;
+});
+        
+    function payment(){
+        console.log(" payment_type " ,payment_type)
+        var arr=$('#arr_value_ids').val();
+
+             $.ajax({
+                url: "{{url('order-product')}}",
+                type: "POST",
+                data: {
+                    car_ids_arr: arr,
+                    payment_type:payment_type,
+                    shipping_address:shipping_address
+                },
+                processData: true,
+                contentType: false,
+                headers: {
+                    'X-CSRF-Token': $('meta[name="_token"]').attr('content'),
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                },
+                dataType: 'JSON',
+                cache: false,
+                success: function success(response) {
+                    // aftercheckout();
+                    console.log("response   ",response)
+                    toastr.clear();
+                    // btn.html('Save');
+                    swal({
+                    title: "Successfully",
+                    text: "Order Placed successfully",
+                    icon: "success",
+                    })
+                    .then(
+                        window.location.href="{{url('/purchase_history')}}"
+                        );
+                        
+                    // toastr.success(response.message, { timeOut: 2000 });
+                    
+
+
+
+                },
+                error: function error(data) {
+                    toastr.clear();
+                    toastr.error(response.message, { timeOut: 1000 });
+                    aftercheckout();
+                    window.location.reload();
+
+                }
+            });
+    }
 
     function saveButton(){
         console.log(" payment_type " ,payment_type)

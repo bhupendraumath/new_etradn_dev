@@ -97,6 +97,38 @@ $('#autocomplete').autocomplete({
         $('#selction-ajax').html('You selected: none');
     }
 });
+
 </script>
 
+
+<script>
+    @if(Session::has('success_message'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.success("{{ session('success_message') }}");
+    @endif
+    @if(Session::has('error_message'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.error("{{ session('error_message') }}");
+    @endif
+    @if(Session::has('info'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.info("{{ session('info') }}");
+    @endif
+    @if(Session::has('warning'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.warning("{{ session('warning') }}");
+    @endif
+</script>
 </html>

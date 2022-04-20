@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <!--/single_page-->
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
