@@ -258,26 +258,26 @@ function getSellerAddress()
 
 
     // print_r($address);die;
-    $address1="";
-    $city="";
-    $state="";
-    $country="";
-    $zip_code="";
+    $address1 = "";
+    $city = "";
+    $state = "";
+    $country = "";
+    $zip_code = "";
 
-    if(!empty($address->address1)){
-        $address1=$address->address1;
+    if (!empty($address->address1)) {
+        $address1 = $address->address1;
     }
-    if(!empty($address->city)){
-        $address=" ";
+    if (!empty($address->city)) {
+        $address = " ";
     }
-    if(!empty($address->state)){
-        $state=" ";
+    if (!empty($address->state)) {
+        $state = " ";
     }
-    if(!empty($address->country)){
-        $country=" ";
+    if (!empty($address->country)) {
+        $country = " ";
     }
-    if(!empty($address->zip_code)){
-        $zip_code=" ";
+    if (!empty($address->zip_code)) {
+        $zip_code = " ";
     }
 
     return $address1 . ',' . $city . ',' . $state . ',' . $country . ',' . $zip_code;
@@ -287,18 +287,17 @@ function getSellerAddress()
 
 function idBasedOrderDetails($description)
 {
-    $encode=json_encode($description);
-    $decode=json_decode($encode,true);
+    $encode = json_encode($description);
+    $decode = json_decode($encode, true);
 
-    $my_str_arr = preg_split ("/,/", $decode);
-    $id_convert=preg_split ("/{/", $my_str_arr[0]);
-    $id_remove=  preg_split ('/"id":/', $id_convert[1]);
-    $id_remove2=  preg_split ('/"/', $id_remove[1]);
-    if(!empty($id_remove2[0])){
-    $product_id=$id_remove2[0];
-    }
-    else{                            
-    $product_id=$id_remove2[1];
+    $my_str_arr = preg_split("/,/", $decode);
+    $id_convert = preg_split("/{/", $my_str_arr[0]);
+    $id_remove =  preg_split('/"id":/', $id_convert[1]);
+    $id_remove2 =  preg_split('/"/', $id_remove[1]);
+    if (!empty($id_remove2[0])) {
+        $product_id = $id_remove2[0];
+    } else {
+        $product_id = $id_remove2[1];
     }
 
     return $product_id;
@@ -307,7 +306,7 @@ function idBasedOrderDetails($description)
 
 function getAddressUsingIP()
 {
-   
+
     return json_decode(file_get_contents("http://ipinfo.io/"));;
 }
 
@@ -330,3 +329,15 @@ function popular_items(){
     return $idsArr;
 }
 */
+
+function lang($lang_key)
+{
+    $lang = Session::get('locale');
+    if ($lang == 'ar') {
+        $result = \App\Models\ConstantLanguage::select('value_5')->where('constantName', $lang_key)->first();
+        return  $result->value_5;
+    } else {
+        $result = \App\Models\ConstantLanguage::select('value')->where('constantName', $lang_key)->first();
+        return  $result->value;
+    }
+}
