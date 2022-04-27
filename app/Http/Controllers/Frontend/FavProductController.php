@@ -17,7 +17,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
 use App\Models\FavoriteProduct;
-
+use DB;
 
 
 class FavProductController extends Controller
@@ -26,10 +26,26 @@ class FavProductController extends Controller
     public function myUploadProductPost(Request $request)
     {
 
+
         if ($request->ajax()) {
             try {
 
 
+                
+                // $product =  DB::table('tbl_favorite_products')
+                // ->select('tbl_favorite_products.*','tbl_product_attribute_quantity.quantity',
+                // 'tbl_product.id','tbl_product.cat_id','tbl_product.sub_cat_id','tbl_product.brand_id',
+                // 'tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity','tbl_product_brand.brandName','tbl_product_brand.id as brand_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_cat.categoryName','tbl_product_cat.id as c_id')
+                // ->join('tbl_product','tbl_product.id','tbl_favorite_products.product_id')
+                // ->leftJoin('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_product.id')
+                // ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_product.id')
+                // ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
+                // ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
+                // ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id')
+                // ->where('tbl_favorite_products.user_id', Auth::user()->id)
+                // ->paginate($request->record);
+
+                // dd($product);die;
                 $productlist = FavoriteProduct::where('user_id', Auth::user()->id)
                     ->paginate($request->record);
 

@@ -60,7 +60,15 @@ $("#bids_product_page").change(function() {
 });
 
 
-function getRefundRequest(pageno, records) {
+$("#searching_buyer").keypress(function() {
+    var searching = $("#searching_buyer").val();
+    // var number_records = $("#searching_buyer").val();
+    // var page = 1;
+
+    getRefundRequest(pageno, records, searching)
+});
+
+function getRefundRequest(pageno, records, searching) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
@@ -69,7 +77,8 @@ function getRefundRequest(pageno, records) {
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: records
+            record: records,
+            searching: searching
         },
         processData: true,
         contentType: false,

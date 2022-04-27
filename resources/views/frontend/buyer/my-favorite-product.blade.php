@@ -31,28 +31,28 @@
                     <h3 class="favorite-heading">MY FAVORITES <span class="color-yellow-number">({{count($value)}})</span></h3>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-3 col-xl-3 col-xs-5 float-right" >
-                        <!-- filter section    -->
-                        
-
+                    <!-- filter section    -->
                         @if(count($value)!=0)
-                        <!-- <a href="{{url('all-delete-favorite')}}"> -->
-                            <button class="filter-button remove-color-black" onclick="allremove()"  >REMOVE ALL </button>
-                            <br/>
-                        <!-- </a> -->
-                        
+                        <button class="filter-button remove-color-black" onclick="allremove()"  >REMOVE ALL </button>
+                        <br/>
                         @endif
-
-
                     </div>
+
+                    <!-- <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12 float-right">                   
+
+
+                       <span class="show-pagination sorting-pagination uploaded-product">listed  :</span>    
+                       <select class="sorting-low-high uploaded-product" id="both_auctions">
+                           <option value="all" selected >All</option>
+                           <option value="b" >Buy now </option>
+                           <option value="a">Auction </option>
+                           <option value="bo">Both</option>
+                       </select> 
+                   </div> -->
+
                 </div>
                 <hr class="favorite"/>
-                
-               <!-- <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
-                    </div>
-                </div>-->
+
                 <div class="row">
                     <div class="col-12 col-md-12 col-sm-12 danger">
                     <br/>
@@ -75,19 +75,6 @@
     </div>
 </div>
 <script>
-    // jQuery(function($) {
-    //     var path = window.location.href;
-    //     console.log("pathfdf  ", path)
-    //     $('a').each(function() {
-    //         if (path == this.href) {
-
-    //             console.log("added...")
-    //             $(this).addClass('left-active');
-    //         }
-
-    //     })
-    // })
-
 
     
 </script>

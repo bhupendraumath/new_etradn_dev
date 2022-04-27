@@ -58,8 +58,16 @@ $("#bids_product_page").change(function() {
     getBidsList(page, number_records);
 });
 
+$("#bids_product_searching").keypress(function() {
+    var searching = $("#bids_product_searching").val();
+    var page = 1;
+    var records = 6;
+    getBidsList(page, records, searching);
+});
 
-function getBidsList(pageno, records) {
+
+
+function getBidsList(pageno, records, searching) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
@@ -68,7 +76,8 @@ function getBidsList(pageno, records) {
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: records
+            record: records,
+            searching: searching
         },
         processData: true,
         contentType: false,

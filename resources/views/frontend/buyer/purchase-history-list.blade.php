@@ -59,11 +59,6 @@
                 <div class="hover-icons">
                     <div>
                         <a href="{{url('product-details/'.$product_id)}}" title="Refund request status">
-
-
-
-
-
                         </a>
                         {{-- <button class="circle" onclick="deleteOrder({{$list->id}})"><i
                             class="fa fa-trash-o color-delete"></i> </button>--}}

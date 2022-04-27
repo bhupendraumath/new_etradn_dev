@@ -33,6 +33,13 @@ class FavoriteProduct extends Model
         return $this->hasOne(Product::class, 'id', 'product_id');
     }
 
+
+    public function product_list_wantlist($list)
+    {
+       $data= Product::where('want_to_list',$list)->get();
+        return $this->$data;
+    }
+
     /**
      * Get the quantit associated with the product.
      */

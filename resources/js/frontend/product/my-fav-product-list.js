@@ -1,10 +1,10 @@
 $(window).load(function() {
     getMyFavProductlList();
     var pageno = 1;
-    var records = 4;
+    var want_to_list = 'all';
 
-    function getMyFavProductlList(pageno, records) {
-        console.log("reords -- ", records)
+    function getMyFavProductlList(pageno, want_to_list = "all") {
+        console.log("want_to_list -- ", want_to_list)
         var filter_by = 'desc';
         $.ajax({
             url: process.env.MIX_APP_URL + "/my-fav-product-list",
@@ -12,7 +12,8 @@ $(window).load(function() {
             data: {
                 filter_by: filter_by,
                 page: pageno,
-                record: 4
+                want_to_list: want_to_list,
+                records: 4
             },
             processData: true,
             contentType: false,
@@ -56,8 +57,16 @@ $("#uploaded_product_page").change(function() {
     getMyFavProductlList(page, number_records);
 });
 
+$("#both_auctions").change(function() {
+    var want_to_list = $("#both_auctions").val();
+    // console.log(want_to_list);
+    // return false;
+    var page = 1;
+    getMyFavProductlList(page, want_to_list);
+});
 
-function getMyFavProductlList(pageno, records) {
+
+function getMyFavProductlList(pageno, want_to_list) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
@@ -66,7 +75,8 @@ function getMyFavProductlList(pageno, records) {
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: records
+            want_to_list: want_to_list,
+            records: 4
         },
         processData: true,
         contentType: false,

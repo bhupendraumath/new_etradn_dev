@@ -43,6 +43,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /* -------------------------------- */
 
+.card-profile>img:hover {
+    border: 1px solid #8080808f;
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+}
+
 #autocomplete {
     width: 92%;
     padding: 7px;
@@ -1612,10 +1619,11 @@ button.btn.btn-primary {
     font-family: 'Sary Soft - Semi Bold';
 }
 
-.background-gray.rating.new-size.uploaded-image-edited>img {
+
+/* .background-gray.rating.new-size.uploaded-image-edited>img {
     height: 114px;
     width: 114px;
-}
+} */
 
 .background-gray.rating.new-size {
     margin: 0px;
@@ -2814,11 +2822,12 @@ textarea {
     margin-top: 27px;
 }
 
-.card-profile>img:hover {
+
+/* .card-profile>img:hover {
     border: 10px solid black;
     width: 200px;
     height: 210px;
-}
+} */
 
 .card-profile {
     text-align: center;
@@ -4480,9 +4489,6 @@ strike {
 } */
 
 .background-gray img {
-    /* width: 100%;
-    height: 213px;
-    margin-bottom: 40px; */
     margin: 5px auto;
     margin-bottom: 10px;
     width: 65%;
