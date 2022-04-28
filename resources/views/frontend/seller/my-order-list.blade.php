@@ -79,6 +79,7 @@
                                         </div>
                                     </div>
                                     
+
                                     <div class="details-order">
                                     Payment status : {{$list->payment_status}}<br>
                                     Order Number : {{$list->order_number}}<br>
@@ -92,7 +93,8 @@
                             </span><br/>
 
                             <b class="normal-style">Buyer Name : </b>
-                            <span>{{$list->getOrder->buyer_details->firstName.' '.$list->getOrder->buyer_details->lastName}} </span><br/>
+                            <span>{{$list->firstName.' '.$list->lastName}} </span><br/>
+
 
                             <b class="normal-style">Transaction Date: </b>
                             <span >{{$list->createdDate}} </span><br/>
