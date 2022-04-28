@@ -48,9 +48,12 @@ Route::get(
     }
 )->name('clear-cache');
 
-Route::get('/foo', function () {
-    Artisan::call('storage:link');
-});
+Route::get(
+    '/foo',
+    function () {
+        Artisan::call('storage:link');
+    }
+);
 
 Route::get(
     '/blog',
@@ -67,6 +70,10 @@ Route::get(
     [RfqController::class, 'request']
 )->name('request');
 
+Route::get(
+    '/set-language',
+    [HomeController::class, 'setLanguage']
+)->name('set-language');
 Route::post(
     '/request-action',
     [RfqController::class, 'request_action']
@@ -144,8 +151,8 @@ Route::group(
             'sign-in',
             [LoginController::class, 'loginForm']
         )->name('loginn');
-        
-        
+
+
         Route::post(
             'loginAction',
             [LoginController::class, 'loginAction']
@@ -214,12 +221,12 @@ Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])
 Route::group(
     ['middleware' => 'user:web'],
     function () {
-     /*Route::get(
+        /*Route::get(
             '/logout-user',
             [LoginController::class, 'logout']
         )->name('logout-user');*/
-        
-            Route::post('logout',[LoginController::class, 'logout'])->name('logout');
+
+        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
         // Seller panel start

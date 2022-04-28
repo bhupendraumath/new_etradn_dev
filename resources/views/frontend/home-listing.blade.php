@@ -1,11 +1,10 @@
-
 @php
 $favoriteProduct=new App\Models\Product;
 @endphp
- <div class="banner_bottom_agile_info">
+<div class="banner_bottom_agile_info">
     <div class="container-fluid  newclass">
 
-        <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 col-12 col-xs-12 remove-padding-here" >
+        <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 col-12 col-xs-12 remove-padding-here">
             <div class="card ">
                 <div class="row">
                     <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
@@ -15,7 +14,7 @@ $favoriteProduct=new App\Models\Product;
 
                     <div class="col-12 col-md-5 col-sm-5 col-lg-5 col-xl-5">
                         <div class="buttons-left-right">
-                            
+
                         </div>
                     </div>
 
@@ -23,151 +22,145 @@ $favoriteProduct=new App\Models\Product;
                 <hr class="margin-top-bottom">
                 <div>
                     <div class="row hot-item-slider slider">
-                    @if(!empty($hot_products))
-                        
-                          @foreach ($hot_products as $product)
-                          @if($product!=null)
+                        @if(!empty($hot_products))
+
+                        @foreach ($hot_products as $product)
+                        @if($product!=null)
                         <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide">
-                           {{-- <a href="{{url('product-details/'.$product->id)}}">--}}
+                            {{-- <a href="{{url('product-details/'.$product->id)}}">--}}
 
-                            <div class="images image-left">                                   
+                            <div class="images image-left">
 
-                                    <div class="background-gray left-side favorite-product-hover">
-                                        @if(!empty($product->image))                                  
+                                <div class="background-gray left-side favorite-product-hover">
+                                    @if(!empty($product->image))
 
-                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="herer" onerror="this.src='{{url('assets/images/default.png')}}';" >
-                                        @else
-                                            <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80"  srcset="" />
-                                        @endif
-                                        <div class="hover-icons">
-                                          <div>
-                                                <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+                                    <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="herer" onerror="this.src='{{url('assets/images/default.png')}}';">
+                                    @else
+                                    <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" srcset="" />
+                                    @endif
+                                    <div class="hover-icons">
+                                        <div>
+                                            <a href="{{url('product-details/'.$product->id)}}" title="product's details">
 
-                                                    <span class="left-buy-it" >
-                                                            @if($product->want_to_list=='b')
-                                                            Buy It Now
-                                                            @elseif($product->want_to_list=='a')
-                                                            Auction
-                                                            @else
-                                                            Both
-                                                            @endif
-                                                            
-                                                            <i class="fas fa-angle-double-right"></i>
-                                                    </span>
-
-                                                </a>
-
-                                                
-                                                <?php
-                                                 $user=Auth::user();                                               
-
-                                                 if(!empty($user))
-                                                 {
-                                                   
-                                                    $value= $favoriteProduct->favorite_product_details($product->id,Auth::user()->id);
-                                                    
-
-                                                    if(count($value)!=0){
-                                                        $title= 'Remove in your favorite list';
-                                                        $color=1;
-                                                       }
-                                                       else{
-                                                        $title= 'Add in favorite list';
-                                                        $color=2;
-                                                       }
-                                                 }
-                                                 else{                                                     
-                                                    //  $value=[];
-                                                     $title= 'Add in favorite list';
-                                                     $color=0;
-                                                 }
-                                                ?>
-                             
-                                                
-                                                @if(!empty($product->quantity->id))
-                                                    @if($color==1)
-                                                            <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},{{$value[0]->id}},'user_exists')">
-                                                                <i class="fas fa-heart" style="color:red"></i>
-                                                            </button>
-                                                        @elseif($color==2)
-                                                            <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','user_empty')">
-                                                                    <i class="fa fa-heart-o"></i>
-                                                            </button>
-                                                        @else
-
-                                                                <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','auth_required')">
-                                                                    <i class="fa fa-heart-o"></i>
-                                                            </button>
-                                                        @endif
-                                                @else
-                                                    <button class="circle" title="Quantity id not available" >
-                                                            <i class="fa fa-heart-o"></i>
-                                                    </button>
-                                                
-                                                @endif  
-
-                                                            
-                                            </div>
-                                            <div class="bottom-on-hover">
-                                                    
-                                                    @if(!empty($product->category->categoryName))
-                                                    <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
-                                                    {{$product->category->categoryName}}</span>
+                                                <span class="left-buy-it">
+                                                    @if($product->want_to_list=='b')
+                                                    Buy It Now
+                                                    @elseif($product->want_to_list=='a')
+                                                    Auction
+                                                    @else
+                                                    Both
                                                     @endif
-                                                    @if(!empty($product->subCategory->subCategoryName))
-                                                    <span title="Sub Category"><i class="fa fa-tag"></i>&nbsp;
-                                                    {{$product->subCategory->subCategoryName}}</span>
-                                                    @endif
-                                                    @if(!empty($product->brand))
-                                                    <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$product->brand->brandName}}</span>
-                                                    @endif
-                                                    <span title="Bid" class="hide"><i class="fa fa-gavel"></i>&nbsp;Bid 0</span>
-                                            </div>                                
-                                        </div>
-                                    </div>
-                                    <br/>
-                                    <a href="{{url('product-details/'.$product->id)}}" title="product's details">
 
-                                        <h4>{{$product->product_name}}</h4>
-                                        @if(!empty($product->quantity))
-                                        <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
-                                        @else
-                                        <span><strike>$0</strike> &nbsp; <span> $0</span></span>
-                                        @endif
-                                        
+                                                    <i class="fas fa-angle-double-right"></i>
+                                                </span>
 
-                                        <div class="rating-review-upload">
+                                            </a>
+
 
                                             <?php
-                                            
-                                            $review=new App\Models\ProductReview;
-                                            $avg_review=$review->review_average($product->id);            
+                                            $user = Auth::user();
+
+                                            if (!empty($user)) {
+
+                                                $value = $favoriteProduct->favorite_product_details($product->id, Auth::user()->id);
+
+
+                                                if (count($value) != 0) {
+                                                    $title = 'Remove in your favorite list';
+                                                    $color = 1;
+                                                } else {
+                                                    $title = 'Add in favorite list';
+                                                    $color = 2;
+                                                }
+                                            } else {
+                                                //  $value=[];
+                                                $title = 'Add in favorite list';
+                                                $color = 0;
+                                            }
                                             ?>
 
 
-                                            @for($star = 1; $star <= 5; $star++)
-                                            <?php  $class_name = ''; ?>
-                                        
-                                                @if($avg_review >= $star)
-                                                <?php $class_name = ' text-warning'; ?>
-                                                @else
-                                                <?php $class_name = '-o star-light checked'; ?>
-                                                @endif
-                                            
+                                            @if(!empty($product->quantity->id))
+                                            @if($color==1)
+                                            <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},{{$value[0]->id}},'user_exists')">
+                                                <i class="fas fa-heart" style="color:red"></i>
+                                            </button>
+                                            @elseif($color==2)
+                                            <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','user_empty')">
+                                                <i class="fa fa-heart-o"></i>
+                                            </button>
+                                            @else
+
+                                            <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','auth_required')">
+                                                <i class="fa fa-heart-o"></i>
+                                            </button>
+                                            @endif
+                                            @else
+                                            <button class="circle" title="Quantity id not available">
+                                                <i class="fa fa-heart-o"></i>
+                                            </button>
+
+                                            @endif
+
+
+                                        </div>
+                                        <div class="bottom-on-hover">
+
+                                            @if(!empty($product->category->categoryName))
+                                            <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
+                                                {{$product->category->categoryName}}</span>
+                                            @endif
+                                            @if(!empty($product->subCategory->subCategoryName))
+                                            <span title="Sub Category"><i class="fa fa-tag"></i>&nbsp;
+                                                {{$product->subCategory->subCategoryName}}</span>
+                                            @endif
+                                            @if(!empty($product->brand))
+                                            <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$product->brand->brandName}}</span>
+                                            @endif
+                                            <span title="Bid" class="hide"><i class="fa fa-gavel"></i>&nbsp;Bid 0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+
+                                    <h4>{{$product->product_name}}</h4>
+                                    @if(!empty($product->quantity))
+                                    <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
+                                    @else
+                                    <span><strike>$0</strike> &nbsp; <span> $0</span></span>
+                                    @endif
+
+
+                                    <div class="rating-review-upload">
+
+                                        <?php
+
+                                        $review = new App\Models\ProductReview;
+                                        $avg_review = $review->review_average($product->id);
+                                        ?>
+
+
+                                        @for($star = 1; $star <= 5; $star++) <?php $class_name = ''; ?> @if($avg_review>= $star)
+                                            <?php $class_name = ' text-warning'; ?>
+                                            @else
+                                            <?php $class_name = '-o star-light checked'; ?>
+                                            @endif
+
                                             <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
                                             @endfor
 
-                                        
 
-                                        </div>
-                                    </a>
+
+                                    </div>
+                                </a>
                             </div>
                             {{--</a>--}}
                         </div>
-                         @endif
-                         @endforeach
-                        
-                    @endif
+                        @endif
+                        @endforeach
+
+                        @endif
                     </div>
                 </div>
             </div>
@@ -185,24 +178,24 @@ $favoriteProduct=new App\Models\Product;
                     <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
 
 
-                  
-                  <div class="buttons-left-right">
-                        </div>
-                            <div id="popular_id_acive">
 
-                                <ul class="popular-items tab" >
+                        <div class="buttons-left-right">
+                        </div>
+                        <div id="popular_id_acive">
+
+                            <ul class="popular-items tab">
                                 @if(!empty($category_list))
-                                    <li class="active">
-                                        <button class="tablinks" onclick="filtering('all')">All</button>
-                                    </li>
-                                    @foreach ($category_list as $cat)
-                                    <li>
-                                        <button class="tablinks" onclick="filtering({{$cat->id}})">{{$cat->categoryName}}</button>
-                                    </li>
-                                    @endforeach
+                                <li class="active">
+                                    <button class="tablinks" onclick="filtering('all')">All</button>
+                                </li>
+                                @foreach ($category_list as $cat)
+                                <li>
+                                    <button class="tablinks" onclick="filtering({{$cat->id}})">{{$cat->categoryName}}</button>
+                                </li>
+                                @endforeach
                                 @endif
-                                </ul>
-                            </div>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
@@ -211,8 +204,8 @@ $favoriteProduct=new App\Models\Product;
 
                 <ul class="row product-show-list top-posts-slider">
                     <div class="" id="home-product-popular-product"></div>
-                </ul>            
- 
+                </ul>
+
 
 
 
@@ -220,7 +213,7 @@ $favoriteProduct=new App\Models\Product;
 
         </div>
     </div>
-</div> 
+</div>
 
 
 <!-- //special and adspaners -->
@@ -233,7 +226,7 @@ $favoriteProduct=new App\Models\Product;
         <div class="col-md-3 col-sm-12 col-lg-3 col-xl-3 col-12 remove-padding-here">
             <div class="row">
 
-            <!-- special item start here -->
+                <!-- special item start here -->
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 remove-padding-here">
                     <div class="card ">
                         <div class="row">
@@ -243,35 +236,35 @@ $favoriteProduct=new App\Models\Product;
 
                             <div class="col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4">
                                 <div class="buttons-left-right">
-                                    
+
                                 </div>
                             </div>
 
                         </div>
                         <hr class="margin-top-bottom">
                         <div>
-                        <div class="row hot-item-slider slider">
-                    @if(!empty($special_products))
-                        
-                            @foreach ($special_products as $product)
-                            @if($product!=null)
-                        <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide">
-                            {{-- <a href="{{url('product-details/'.$product->id)}}">--}}
+                            <div class="row hot-item-slider slider">
+                                @if(!empty($special_products))
 
-                            <div class="images image-left">                                   
+                                @foreach ($special_products as $product)
+                                @if($product!=null)
+                                <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 slide">
+                                    {{-- <a href="{{url('product-details/'.$product->id)}}">--}}
 
-                                    <div class="background-gray left-side favorite-product-hover">
-                                        @if(!empty($product->image))                                  
+                                    <div class="images image-left">
 
-                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="herer" onerror="this.src='{{url('assets/images/default.png')}}';" >
-                                        @else
-                                            <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80"  srcset="" />
-                                        @endif
-                                        <div class="hover-icons">
-                                            <div>
-                                                <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+                                        <div class="background-gray left-side favorite-product-hover">
+                                            @if(!empty($product->image))
 
-                                                    <span class="left-buy-it" >
+                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="herer" onerror="this.src='{{url('assets/images/default.png')}}';">
+                                            @else
+                                            <img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" srcset="" />
+                                            @endif
+                                            <div class="hover-icons">
+                                                <div>
+                                                    <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+
+                                                        <span class="left-buy-it">
                                                             @if($product->want_to_list=='b')
                                                             Buy It Now
                                                             @elseif($product->want_to_list=='a')
@@ -279,171 +272,165 @@ $favoriteProduct=new App\Models\Product;
                                                             @else
                                                             Both
                                                             @endif
-                                                            
+
                                                             <i class="fas fa-angle-double-right"></i>
-                                                    </span>
+                                                        </span>
 
-                                                </a>
+                                                    </a>
 
-                                                
-                                                <?php
-                                                    $user=Auth::user();                                               
 
-                                                    if(!empty($user))
-                                                    {
-                                                    
-                                                    $value= $favoriteProduct->favorite_product_details($product->id,Auth::user()->id);
-                                                    
+                                                    <?php
+                                                    $user = Auth::user();
 
-                                                    if(count($value)!=0){
-                                                        $title= 'Remove in your favorite list';
-                                                        $color=1;
+                                                    if (!empty($user)) {
+
+                                                        $value = $favoriteProduct->favorite_product_details($product->id, Auth::user()->id);
+
+
+                                                        if (count($value) != 0) {
+                                                            $title = 'Remove in your favorite list';
+                                                            $color = 1;
+                                                        } else {
+                                                            $title = 'Add in favorite list';
+                                                            $color = 2;
                                                         }
-                                                        else{
-                                                        $title= 'Add in favorite list';
-                                                        $color=2;
-                                                        }
+                                                    } else {
+                                                        //  $value=[];
+                                                        $title = 'Add in favorite list';
+                                                        $color = 0;
                                                     }
-                                                    else{                                                     
-                                                    //  $value=[];
-                                                        $title= 'Add in favorite list';
-                                                        $color=0;
-                                                    }
-                                                ?>
-                                
-                                                
-                                                @if(!empty($product->quantity->id))
+                                                    ?>
+
+
+                                                    @if(!empty($product->quantity->id))
                                                     @if($color==1)
-                                                            <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},{{$value[0]->id}},'user_exists')">
-                                                                <i class="fas fa-heart" style="color:red"></i>
-                                                            </button>
-                                                        @elseif($color==2)
-                                                            <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','user_empty')">
-                                                                    <i class="fa fa-heart-o"></i>
-                                                            </button>
-                                                        @else
-
-                                                                <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','auth_required')">
-                                                                    <i class="fa fa-heart-o"></i>
-                                                            </button>
-                                                        @endif
-                                                @else
-                                                    <button class="circle" title="Quantity id not available" >
-                                                            <i class="fa fa-heart-o"></i>
+                                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},{{$value[0]->id}},'user_exists')">
+                                                        <i class="fas fa-heart" style="color:red"></i>
                                                     </button>
-                                                
-                                                @endif  
+                                                    @elseif($color==2)
+                                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','user_empty')">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                    @else
 
-                                                            
-                                            </div>
-                                            <div class="bottom-on-hover">
-                                                    
+                                                    <button class="circle" title="{{$title}}" onclick="addedFav({{$product->id}},{{$product->quantity->id}},'not__yet','auth_required')">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                    @endif
+                                                    @else
+                                                    <button class="circle" title="Quantity id not available">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+
+                                                    @endif
+
+
+                                                </div>
+                                                <div class="bottom-on-hover">
+
                                                     @if(!empty($product->category->categoryName))
                                                     <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
-                                                    {{$product->category->categoryName}}</span>
+                                                        {{$product->category->categoryName}}</span>
                                                     @endif
                                                     @if(!empty($product->subCategory->subCategoryName))
                                                     <span title="Sub Category"><i class="fa fa-tag"></i>&nbsp;
-                                                    {{$product->subCategory->subCategoryName}}</span>
+                                                        {{$product->subCategory->subCategoryName}}</span>
                                                     @endif
                                                     @if(!empty($product->brand))
                                                     <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$product->brand->brandName}}</span>
                                                     @endif
                                                     <span title="Bid" class="hide"><i class="fa fa-gavel"></i>&nbsp;Bid 0</span>
-                                            </div>                                
+                                                </div>
+                                            </div>
                                         </div>
+                                        <br />
+                                        <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+
+                                            <h4>{{$product->product_name}}</h4>
+                                            @if(!empty($product->quantity))
+                                            <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
+                                            @else
+                                            <span><strike>$0</strike> &nbsp; <span> $0</span></span>
+                                            @endif
+
+
+                                            <div class="rating-review-upload">
+
+                                                <?php
+
+                                                $review = new App\Models\ProductReview;
+                                                $avg_review = $review->review_average($product->id);
+                                                ?>
+
+
+                                                @for($star = 1; $star <= 5; $star++) <?php $class_name = ''; ?> @if($avg_review>= $star)
+                                                    <?php $class_name = ' text-warning'; ?>
+                                                    @else
+                                                    <?php $class_name = '-o star-light checked'; ?>
+                                                    @endif
+
+                                                    <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
+                                                    @endfor
+
+
+
+                                            </div>
+                                        </a>
                                     </div>
-                                    <br/>
-                                    <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+                                    {{--</a>--}}
+                                </div>
+                                @endif
+                                @endforeach
 
-                                        <h4>{{$product->product_name}}</h4>
-                                        @if(!empty($product->quantity))
-                                        <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
-                                        @else
-                                        <span><strike>$0</strike> &nbsp; <span> $0</span></span>
-                                        @endif
-                                        
-
-                                        <div class="rating-review-upload">
-
-                                            <?php
-                                            
-                                            $review=new App\Models\ProductReview;
-                                            $avg_review=$review->review_average($product->id);            
-                                            ?>
-
-
-                                            @for($star = 1; $star <= 5; $star++)
-                                            <?php  $class_name = ''; ?>
-                                        
-                                                @if($avg_review >= $star)
-                                                <?php $class_name = ' text-warning'; ?>
-                                                @else
-                                                <?php $class_name = '-o star-light checked'; ?>
-                                                @endif
-                                            
-                                            <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
-                                            @endfor
-
-                                        
-
-                                        </div>
-                                    </a>
+                                @endif
                             </div>
-                            {{--</a>--}}
-                        </div>
-                            @endif
-                            @endforeach
-                        
-                    @endif
-                    </div>
                         </div>
                     </div>
                 </div>
-            <!-- special item end here -->
+                <!-- special item end here -->
 
-            <!-- start news letter here -->
-            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add remove-padding-here">
-                <div class="card ">
-                    <div class="row">
-                        <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xl-8">
-                            <p class="font-family-change">NEWSLETTERS</p>
-
-                        </div>
-                    </div>
-                    <hr class="margin-top-bottom">
-                    <div>
+                <!-- start news letter here -->
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add remove-padding-here">
+                    <div class="card ">
                         <div class="row">
+                            <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xl-8">
+                                <p class="font-family-change">NEWSLETTERS</p>
 
-                            <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
-                                <div class="images image-left">
-                                    <div class="background-white">
-                                        <span class="newslatter">
-                                            Sign Up for Our Newslatters!
-                                        </span>
-                                        <div class="inputfieldform">
-                                            <input type="text" class="inputfield">
+                            </div>
+                        </div>
+                        <hr class="margin-top-bottom">
+                        <div>
+                            <div class="row">
+
+                                <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
+                                    <div class="images image-left">
+                                        <div class="background-white">
+                                            <span class="newslatter">
+                                                Sign Up for Our Newslatters!
+                                            </span>
+                                            <div class="inputfieldform">
+                                                <input type="text" class="inputfield">
+                                            </div>
+                                            <div>
+                                                <input type="button" value="SUBSCRIBE" class="buttonSubscribe">
+                                            </div>
+
                                         </div>
-                                        <div>
-                                            <input type="button" value="SUBSCRIBE" class="buttonSubscribe">
-                                        </div>
-                                        
+
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- end news letter here -->
-            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 adv-image-left remove-padding-here" style="background: url('assets/images/frontend/Layer_63.png');
+                <!-- end news letter here -->
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 adv-image-left remove-padding-here" style="background: url('assets/images/frontend/Layer_63.png');
                 margin-left: 15px;
                 background-repeat: no-repeat;
                 ">
 
-            </div>
+                </div>
 
             </div>
 
@@ -494,7 +481,7 @@ $favoriteProduct=new App\Models\Product;
                                     <header>
                                         <div class="rotationclass">
                                             <h1 class="yearColor">
-                                            2022
+                                                2022
 
                                             </h1>
                                             <span class="Deals">
@@ -521,22 +508,22 @@ $favoriteProduct=new App\Models\Product;
                 <!-- adds banner end here -->
 
                 <!-- start latest product -->
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add remove-padding-here" >
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 margin-top-add remove-padding-here">
                     <div class="card">
 
-                    <div class="row">
+                        <div class="row">
 
-                        <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
-                            <p class="font-family-change">LATEST ITEMS</p>
-                        </div>
-
-                        <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
-                        <div class="buttons-left-right">
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
+                                <p class="font-family-change">LATEST ITEMS</p>
                             </div>
+
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
+                                <div class="buttons-left-right">
+                                </div>
                                 <div id="latest_id_acive">
 
-                                    <ul class="popular-items tab" >
-                                    @if(!empty($category_list))
+                                    <ul class="popular-items tab">
+                                        @if(!empty($category_list))
                                         <li class="active">
                                             <button class="tablinks" onclick="filteringLetest('all')">All</button>
                                         </li>
@@ -545,16 +532,16 @@ $favoriteProduct=new App\Models\Product;
                                             <button class="tablinks" onclick="filteringLetest({{$cat->id}})">{{$cat->categoryName}}</button>
                                         </li>
                                         @endforeach
-                                    @endif
+                                        @endif
                                     </ul>
                                 </div>
-                        </div>
+                            </div>
 
                         </div>
                         <hr class="margin-top-bottom">
                         <ul class="row product-show-list product-latest-slider">
-                        <div class="" id="home-product-latest-product"></div>
-                        </ul> 
+                            <div class="" id="home-product-latest-product"></div>
+                        </ul>
 
                     </div>
 
@@ -575,9 +562,9 @@ $favoriteProduct=new App\Models\Product;
                                 <h1 class="readytosell">READY TO SELL NOW 50% OFF!</h1>
                                 <a href="{{url('product-list/noav/noav/noav/popular')}}">
 
-                                <button class="colorBlack">SHOP NOW</button>
+                                    <button class="colorBlack">SHOP NOW</button>
                                 </a>
-                               
+
                             </div>
                         </div>
 
@@ -592,7 +579,7 @@ $favoriteProduct=new App\Models\Product;
 
                         <div class="row">
 
-                        <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
+                            <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
                                 <p class="font-family-change">FEATURED PRODUCTS</p>
 
                             </div>
@@ -604,15 +591,15 @@ $favoriteProduct=new App\Models\Product;
                                     <i class="fa fa-chevron-circle-right" style="font-size:24px"></i> -->
                                 </div>
                                 <ul class="popular-items tab">
-                                {{--
+                                    {{--
                                     @if(!empty($feature_list))
                                         @foreach ($feature_list as $cat)
                                             <li>
                                                 <button class="tablinks3"  id="{{$loop->index==0?'defaultOpen3':''}}" onclick="open3(event, '{{$cat->categoryName}}3')">{{$cat->categoryName}}</button>
-                                            </li>
-                                        @endforeach
+                                    </li>
+                                    @endforeach
                                     @endif --}}
-                                  
+
 
                                 </ul>
 
@@ -622,72 +609,69 @@ $favoriteProduct=new App\Models\Product;
                         <hr class="margin-top-bottom">
 
 
-                        @if(!empty($featured_products))                   
+                        @if(!empty($featured_products))
 
-                            <div  class="tabcontent3">
-                            
+                        <div class="tabcontent3">
+
                             @if(!empty($featured_products))
-                                <div class="row product-feature_list slider">
+                            <div class="row product-feature_list slider">
                                 @foreach ($featured_products as $product)
-                                    <a href="{{url('product-details/'.$product->id)}}" title="product's details">
+                                <a href="{{url('product-details/'.$product->id)}}" title="product's details">
                                     <div class="col-12 col-xs-12 col-md-4 col-sm-4 col-lg-4 col-xl-4 reducewidth slide">
 
                                         <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-6">
                                             <div class="background-gray new-size">
-                                            @if(!empty($product->image))
-                                            <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images" onerror="this.src='{{url('assets/images/default.png')}}';"/>
-                                            @else
+                                                @if(!empty($product->image))
+                                                <img src="{{url('assets/images/product-images/'.$product->image->product_img)}}" alt="" srcset="" class="resize-images" onerror="this.src='{{url('assets/images/default.png')}}';" />
+                                                @else
                                                 <img src="https://images.everydayhealth.com/images/ordinary-fruits-with-amazing-health-benefits-05-1440x810.jpg" alt="" srcset="" />
-                                            @endif
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 reducewidth col-xs-6">
-                                                <h4>{{$product->product_name}}</h4>
-                                                @if(!empty($product->quantity))
-                                                <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
-                                                @else
-                                                <span><strike>$0</strike> &nbsp; <span> $0</span></span>
-                                                @endif
-                                                
-                                                <div class="rating-review-upload">
+                                            <h4>{{$product->product_name}}</h4>
+                                            @if(!empty($product->quantity))
+                                            <span><strike>${{$product->quantity->price}}</strike> &nbsp; <span> ${{$product->quantity->price - ($product->quantity->discount*$product->quantity->price/100)}}</span></span>
+                                            @else
+                                            <span><strike>$0</strike> &nbsp; <span> $0</span></span>
+                                            @endif
 
-                                                    <?php
-                                                    
-                                                    $review=new App\Models\ProductReview;
-                                                    $avg_review=$review->review_average($product->id);            
-                                                    ?>
+                                            <div class="rating-review-upload">
 
-                                                    @for($star = 1; $star <= 5; $star++)
-                                                    <?php  $class_name = ''; ?>
-                                                
-                                                        @if($avg_review >= $star)
-                                                        <?php $class_name = ' text-warning'; ?>
-                                                        @else
-                                                        <?php $class_name = '-o star-light checked'; ?>
-                                                        @endif
-                                                    
+                                                <?php
+
+                                                $review = new App\Models\ProductReview;
+                                                $avg_review = $review->review_average($product->id);
+                                                ?>
+
+                                                @for($star = 1; $star <= 5; $star++) <?php $class_name = ''; ?> @if($avg_review>= $star)
+                                                    <?php $class_name = ' text-warning'; ?>
+                                                    @else
+                                                    <?php $class_name = '-o star-light checked'; ?>
+                                                    @endif
+
                                                     <i class="fa fa-star<?php echo $class_name ?>  mr-1"></i>
                                                     @endfor
 
-                                                
 
-                                                </div>
+
+                                            </div>
                                         </div>
 
 
 
                                     </div>
-                                    </a>
-                                    @endforeach                           
-                                
-                                </div>
-                                
+                                </a>
+                                @endforeach
+
+                            </div>
+
 
                             @endif
-                            
-                            </div>
-                    
-                        @endif 
+
+                        </div>
+
+                        @endif
 
 
                         <!-- <div id="Fruits3" class="tabcontent3">
@@ -764,7 +748,7 @@ $favoriteProduct=new App\Models\Product;
                             </div>
                         </div>  -->
 
-     
+
 
                     </div>
 
@@ -786,29 +770,25 @@ $favoriteProduct=new App\Models\Product;
 <script src="{{ asset('assets/js/frontend/product/home-page-listing.js') }}"></script>
 
 <script>
+    $(document).ready(function() {
+
+        $('#popular_id_acive ul li button').click(function() {
+            //removing the previous selected menu state
+            $('#popular_id_acive').find('li.active').removeClass('active');
+            //adding the state for this parent menu
+            console.log($(this).parents("li").addClass('active'));
+
+        });
+
+        $('#latest_id_acive ul li button').click(function() {
+            //removing the previous selected menu state
+            $('#latest_id_acive').find('li.active').removeClass('active');
+            //adding the state for this parent menu
+            console.log($(this).parents("li").addClass('active'));
+
+        });
 
 
-$(document).ready(function () {
-    
-    $('#popular_id_acive ul li button').click(function () {
-        //removing the previous selected menu state
-        $('#popular_id_acive').find('li.active').removeClass('active');
-        //adding the state for this parent menu
-        console.log($(this).parents("li").addClass('active'));
 
-    });
-
-    $('#latest_id_acive ul li button').click(function () {
-        //removing the previous selected menu state
-        $('#latest_id_acive').find('li.active').removeClass('active');
-        //adding the state for this parent menu
-        console.log($(this).parents("li").addClass('active'));
-
-    });
-
-    
-
-})
-
-
+    })
 </script>

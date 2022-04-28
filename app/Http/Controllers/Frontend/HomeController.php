@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use DB;
+use Illuminate\Support\Facades\Session;
+
 class HomeController extends Controller
 {
     /**
@@ -22,57 +24,59 @@ class HomeController extends Controller
         // print_r($details); // city 
         // die;
 
-        $list=Category::with(['category_based_product'])
-        ->limit(4)
-        ->get();
+        $list = Category::with(['category_based_product'])
+            ->limit(4)
+            ->get();
 
-        $category_list=Category::with(['category_based_product'])
-        ->get();
+        $category_list = Category::with(['category_based_product'])
+            ->get();
 
-        $popular_produts=Category::with(['category_based_product'])
-        ->limit(1)
-        ->get();
+        $popular_produts = Category::with(['category_based_product'])
+            ->limit(1)
+            ->get();
 
-        $special_produts=Category::with(['category_based_product'])
-        ->limit(1)
-        ->get();
+        $special_produts = Category::with(['category_based_product'])
+            ->limit(1)
+            ->get();
 
-        $latest_produts=Category::with(['category_based_product'])
-        ->limit(4)
-        ->get();
+        $latest_produts = Category::with(['category_based_product'])
+            ->limit(4)
+            ->get();
 
-        $feature_produts=Category::with(['category_based_product'])
-        ->limit(4)
-        ->get();
+        $feature_produts = Category::with(['category_based_product'])
+            ->limit(4)
+            ->get();
         // dd($list);die;
-        return view('frontend/home',['data'=>$list,'popular_list'=>$popular_produts,'special_list'=>$special_produts,'latest_list'=>$latest_produts,'feature_list'=>$feature_produts,'category_list'=>$category_list]);
+        return view('frontend/home', ['data' => $list, 'popular_list' => $popular_produts, 'special_list' => $special_produts, 'latest_list' => $latest_produts, 'feature_list' => $feature_produts, 'category_list' => $category_list]);
     }
 
 
 
-    public function homeListing(Request $request){
+    public function homeListing(Request $request)
+    {
         if ($request->ajax()) {
             try {
                 // $details = json_decode(file_get_contents("http://ipinfo.io/"));
 
-                $category_list_popular=Category::limit(4)->get();
-                $category_list_featured=Category::limit(4)->get();
+                $category_list_popular = Category::limit(4)->get();
+                $category_list_featured = Category::limit(4)->get();
 
-                $list=Category::with(['category_based_product'])
-                ->limit(4)
-                ->get();
+                $list = Category::with(['category_based_product'])
+                    ->limit(4)
+                    ->get();
 
-                $popular_produts=Category::with(['category_based_product'])
-                ->limit(1)
-                ->get();
+                $popular_produts = Category::with(['category_based_product'])
+                    ->limit(1)
+                    ->get();
 
 
-                $hot_products=Product::limit(5)->get();
-                $special_products=Product::limit(5)->get();
-                $featured_products=Product::limit(6)->orderBy('id','desc')->get();
+                $hot_products = Product::limit(5)->get();
+                $special_products = Product::limit(5)->get();
+                $featured_products = Product::limit(6)->orderBy('id', 'desc')->get();
 
                 $completeSessionView = view(
-                    'frontend/home-listing',['popular_list'=>$popular_produts,'data'=>$list,'category_list'=>$category_list_popular,'hot_products'=>$hot_products,'special_products'=>$special_products,'featured_products'=>$featured_products]
+                    'frontend/home-listing',
+                    ['popular_list' => $popular_produts, 'data' => $list, 'category_list' => $category_list_popular, 'hot_products' => $hot_products, 'special_products' => $special_products, 'featured_products' => $featured_products]
                 )->render();
 
                 if (!empty($popular_produts)) {
@@ -108,43 +112,43 @@ class HomeController extends Controller
     }
 
 
-    public function homeProductListing(Request $request){
+    public function homeProductListing(Request $request)
+    {
         if ($request->ajax()) {
             try {
                 $details = getAddressUsingIP();
-               
-                $order_list = DB::table('tbl_orders')
-                ->select('tbl_orders.shipping_address','tbl_orders.order_number', 'tbl_order_items.*')
-                ->join('tbl_order_items','tbl_order_items.order_number','=','tbl_orders.order_number')
-                ->where('tbl_orders.shipping_address', 'like', '%' . $details->city . '%')
-                ->get();
 
-                $idsArr=array(); //for category id
-                foreach($order_list as $order){
-                   $getid=idBasedOrderDetails($order->product_detail_1);
-                   array_push($idsArr,$getid);
+                $order_list = DB::table('tbl_orders')
+                    ->select('tbl_orders.shipping_address', 'tbl_orders.order_number', 'tbl_order_items.*')
+                    ->join('tbl_order_items', 'tbl_order_items.order_number', '=', 'tbl_orders.order_number')
+                    ->where('tbl_orders.shipping_address', 'like', '%' . $details->city . '%')
+                    ->get();
+
+                $idsArr = array(); //for category id
+                foreach ($order_list as $order) {
+                    $getid = idBasedOrderDetails($order->product_detail_1);
+                    array_push($idsArr, $getid);
                 }
 
 
-                $popular_produts=new Product;
-                if($request->id!='all'){
-                    $popular_produts_list=Product::whereIn('id',$idsArr)
-                    ->where('cat_id',$request->id)
-                    ->orderBy('id','DESC')
-                    ->limit(5)
-                    ->get();
-                            
-                }else{
+                $popular_produts = new Product;
+                if ($request->id != 'all') {
+                    $popular_produts_list = Product::whereIn('id', $idsArr)
+                        ->where('cat_id', $request->id)
+                        ->orderBy('id', 'DESC')
+                        ->limit(5)
+                        ->get();
+                } else {
 
-                    $popular_produts_list=Product::whereIn('id',$idsArr)
-                    ->orderBy('id','DESC')
-                    ->get();
-
+                    $popular_produts_list = Product::whereIn('id', $idsArr)
+                        ->orderBy('id', 'DESC')
+                        ->get();
                 }
 
 
                 $completeSessionView = view(
-                    'frontend/home-product-listing',['popular_list'=>$popular_produts_list]
+                    'frontend/home-product-listing',
+                    ['popular_list' => $popular_produts_list]
                 )->render();
 
                 if (!empty($popular_produts)) {
@@ -180,30 +184,31 @@ class HomeController extends Controller
     }
 
 
-    public function homeLatestProductListing(Request $request){
+    public function homeLatestProductListing(Request $request)
+    {
         if ($request->ajax()) {
             try {
 
-                $popular_produts=new Product;
-                if($request->id!='all'){
+                $popular_produts = new Product;
+                if ($request->id != 'all') {
 
-                    $popular_produts_list= $popular_produts
-                                            ->where('cat_id',$request->id)
-                                            ->orderBy('id','DESC')
-                                            ->limit(5)
-                                            ->get();
-                }else{
+                    $popular_produts_list = $popular_produts
+                        ->where('cat_id', $request->id)
+                        ->orderBy('id', 'DESC')
+                        ->limit(5)
+                        ->get();
+                } else {
 
-                    $popular_produts_list= $popular_produts
-                                            // ->where('cat_id',$request->id)
-                                            ->orderBy('id','DESC')
-                                            ->limit(5)
-                                            ->get();
-
+                    $popular_produts_list = $popular_produts
+                        // ->where('cat_id',$request->id)
+                        ->orderBy('id', 'DESC')
+                        ->limit(5)
+                        ->get();
                 }
 
                 $completeSessionView = view(
-                    'frontend/home-special-product-listing',['popular_list'=>$popular_produts_list]
+                    'frontend/home-special-product-listing',
+                    ['popular_list' => $popular_produts_list]
                 )->render();
 
                 if (!empty($popular_produts)) {
@@ -255,7 +260,7 @@ class HomeController extends Controller
     {
         return view('frontend/contactus');
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -331,5 +336,15 @@ class HomeController extends Controller
     {
         return view('frontend/blog-details');
     }
-    
+
+    public function setLanguage()
+    {
+        if (Session::get('locale') == 'en') {
+            Session::put('locale', 'ar');
+            return redirect()->back();
+        } else {
+            Session::put('locale', 'en');
+            return redirect()->back();
+        }
+    }
 }

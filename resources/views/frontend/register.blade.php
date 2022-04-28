@@ -10,7 +10,7 @@
             <div class="col-10 col-md-10 col-lg-10 col-sm-10 col-xs-12">
                 <div class="cardlogin">
                     <h3 class="login-heading">
-                        ACCOUNT REGISTER
+                       {{lang('REGISTRATION')}}
                     </h3>
                     <form id="registrationFrm" method="post" action="{{route('registrationAction')}}" enctype="multipart/form-data">
                         {{csrf_field()}}
