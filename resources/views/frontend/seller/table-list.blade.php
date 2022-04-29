@@ -4,12 +4,12 @@
 
 <table id="customers">
     <tr>
-        <th>PRODUCT</th>
-        <th>CATEGORIES</th>
-        <th>QUENTITY</th>
-        <th>SOURCE</th>
-        <th>DATE</th>
-        <th>ACCEPT</th>
+        <th>{{lang('PRODUCTS')}}</th>
+        <th>{{lang('CATEGORY')}}</th>
+        <th>{{lang('QUENTITY')}}</th>
+        <th>{{lang('SOURCE')}}</th>
+        <th>{{lang('DATE')}}</th>
+        <th>{{lang('ACCEPT')}}</th>
     </tr>
 
         @foreach($rfqlist as $li)
@@ -22,12 +22,12 @@
             <td>{{$li->rfq_createdatetime}} </td>
             <td>
             @if($li->rfq_accerpt_userid!="")
-                Accepted
+            {{lang('ACCEPTED')}}
             @else
                   
             <div>
                 <button class="aceept-button" onclick="window.location.href='{{url('acept-rfq-request/'.$li->rfq_id)}}'">
-                     Accept
+                {{lang('ACCEPT')}}
                 </button>
             </div>
             @endif

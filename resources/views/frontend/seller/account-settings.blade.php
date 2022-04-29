@@ -5,7 +5,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>Account settings</span></h3>
+        <h3>{{lang('ACCOUNT_SETTINGS')}}</span></h3>
 
     </div>
 </div>
@@ -20,7 +20,7 @@
 
         <div class="col-md-12 col-sm-12 col-lg-8 col-xl-8 col-xs-12">
             <div class="card-dashboard  col-12uy">
-                <h3>PASSWORD SETTINGS</h3>
+                <h3>{{lang('PASSWORD_SETTINGS')}}</h3>
                 <hr class="business-address" />
                 <div class="form-settings-account">
                     <form id="change-password-form" action="{{route('save/password') }}" method="POST">
@@ -53,7 +53,7 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="buttons-account-seetings">
-                                    <input type="submit" value="CHANGE PASSWORD" class="change-password" id="submit-btn">
+                                    <input type="submit" value="{{lang('CHANGE_PASSWORD')}}" class="change-password" id="submit-btn">
                                     <!-- <button type="submit" id="submit-btn" class="btn btn-primary mw-210 ml-20 ripple-effect">CHANGE PASSWORD</button> -->
                                 </div>
                             </div>
@@ -63,12 +63,12 @@
 
                 </div>
 
-                <h3 class="margin-top-heading">NOTIFICATION SETTINGS</h3>
+                <h3 class="margin-top-heading">{{lang('NOTIFICATION_SETTINGS')}}</h3>
                 <hr class="business-address" />
 
                 <div class="form-notification">
                     <div class="notifications-list">
-                        <span class="notification-text">Notification for refund request</span>
+                        <span class="notification-text">{{lang('NOTI_S_REFUND_REQ')}}</span>
                         <label class="switch position-changes">
                             <input type="checkbox" id="togBtn">
                             <div class="slider-notification"></div>
@@ -77,7 +77,7 @@
 
 
                     <div class="notifications-list">
-                        <span class="notification-text">Notification when bid is recieved</span>
+                        <span class="notification-text">{{lang('NOTIFICATION_WHEN_BID')}}</span>
                         <label class="switch position-changes">
                             <input type="checkbox" checked id="togBtn">
                             <div class="slider-notification"></div>
@@ -86,7 +86,7 @@
 
 
                     <div class="notifications-list">
-                        <span class="notification-text">Notification when buyer places an order</span>
+                        <span class="notification-text">{{lang('NOTIFICATION_WHEN_BUYER_PLACES')}}</span>
                         <label class="switch position-changes">
                             <input type="checkbox" id="togBtn">
                             <div class="slider-notification"></div>
@@ -95,7 +95,7 @@
 
 
                     <div class="notifications-list">
-                        <span class="notification-text">Notification for when redeem request amount is paid</span>
+                        <span class="notification-text">{{lang('NOTIFICATION_FOR_REDEEM_REQUEST')}}</span>
                         <label class="switch position-changes">
                             <input type="checkbox" id="togBtn">
                             <div class="slider-notification"></div>
@@ -107,7 +107,7 @@
 
 
                 <div class="payment-form">
-                    <h3 class="margin-top-heading">PAYMENT GATEWAY ID</h3>
+                    <h3 class="margin-top-heading">{{lang('PAYMENT_GATEWAY_ID')}}</h3>
                     <hr class="business-address" />
                     <div class="form-settings-account">
                         <form action="#">
@@ -130,7 +130,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="buttons-account-seetings">
-                                        <input type="submit" value="SAVE CHANGES" class="change-password">
+                                        <input type="submit" value="{{lang('SAVE_CHANGES')}}" class="change-password">
                                     </div>
                                 </div>
 

@@ -6,7 +6,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>Delivery Areas</h3>
+        <h3>{{lang('MY_DELIVERY_AREAS')}}</h3>
 
     </div>
 </div>
@@ -27,9 +27,9 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12 float-right">
                        
-                    <button class="business-adding" > <a href="{{route('add-delivery-area-buyer')}}" >Add New</a></button>
+                    <button class="business-adding" > <a href="{{route('add-delivery-area-buyer')}}" >{{lang('ADD_NEW')}}</a></button>
 
-                        {{--<span class="show-pagination sorting-pagination uploaded-product">Show Records :</span>    
+                        {{--<span class="show-pagination sorting-pagination uploaded-product">{{lang('SHOWRECORDS')}} :</span>    
                         <select class="sorting-low-high uploaded-product" id="bids_product_page">
                             <!-- <option disabled selected >--Show--</option> -->
                             <option value="4" selected >4</option>

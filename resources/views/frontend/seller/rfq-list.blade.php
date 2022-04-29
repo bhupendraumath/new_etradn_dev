@@ -7,7 +7,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>RFQ LIST</h3>
+        <h3>{{lang('RFQ_LIST')}}</h3>
     </div>
 </div>
 
@@ -21,7 +21,7 @@
            
             <div class="card-dashboard  col-12uy rfq-list-right">
                 <div class="">
-                    <span class="show-pagination sorting-pagination uploaded-product">Show Records :</span>    
+                    <span class="show-pagination sorting-pagination uploaded-product">{{lang('SHOWRECORDS')}} :</span>    
                     <select class="sorting-low-high uploaded-product" id="rfq-page">
                         <option value="10" selected >10</option>
                         <option value="20" >20</option>

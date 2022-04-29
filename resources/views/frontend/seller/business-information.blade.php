@@ -98,7 +98,7 @@
                         <div class="row">
                         <div class="buttons">
                             <input type="submit" value="{{lang('SAVE_CHANGES')}}" class="save-changes" id="updateSubmitbtn">
-                            <a href="{{url('business-address')}}" <input type="button" value="Cancel" class="cancel">
+                            <a href="{{url('business-address')}}" <input type="button" value="{{lang('CANCAL')}}" class="cancel">
                             </a>
                         </div>
                         </div>
