@@ -22,7 +22,7 @@
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                         <div class="inner-addon left-addon search-bar">
                             <i class="fa fa-search glyphicon"></i>
-                            <input type="text" class="form-control 60per lock change-style-search" name="payment-id" placeholder="Searching..." />
+                            <input type="text" class="form-control 60per lock change-style-search" name="payment-id" placeholder="Search"  id="searching_buyer" />
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12 float-right">

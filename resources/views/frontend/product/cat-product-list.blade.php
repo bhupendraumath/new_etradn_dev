@@ -10,7 +10,7 @@ $favoriteProduct=new App\Models\Product;
 
     @foreach($productlist as $productvalue)
 
-    @if(!empty($productvalue->quantity))
+   {{-- @if(!empty($productvalue->quantity))--}}
         <div class="product col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4" data-id="aloe" data-category="green small medium africa">
          {{--   <a href="{{url('product-details/'.$productvalue->id)}}">--}}
                 <div class="images onhover-show-menus">
@@ -165,7 +165,7 @@ $favoriteProduct=new App\Models\Product;
                 </div>
          {{--   </a>--}}
         </div>
-    @endif
+    {{--@endif--}}
     @endforeach
 </div>
 @else

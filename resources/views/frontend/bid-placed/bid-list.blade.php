@@ -3,45 +3,46 @@
 use Carbon\Carbon;
 
 ?>
+
+
 @if(!empty($bindlist) && count($bindlist)!=0)
 <div class="row">
     @foreach($bindlist as $productvalue)
 
-
         <div class="product col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4" data-id="aloe" data-category="green small medium africa">
 
-                                
+                      
         <?php
                         
-                        $bid=new App\Models\Bids;
-                        if(Auth::user()->usertype=='s'){
-                            $user_id=Auth::user()->id;
-                        }
-                        else{
-                            $user_id= $productvalue->product->user_id;
-                        }
-                        $bid_count=$bid->count_bids($user_id,$productvalue->product_id);    
-                        $b_count=count($bid_count);                        
-                        ?>
-                    
+            $bid=new App\Models\Bids;
+            if(Auth::user()->usertype=='s'){
+                $user_id=Auth::user()->id;
+            }
+            else{
+                $user_id= $productvalue->user_id;
+            }
+            $bid_count=$bid->count_bids($user_id,$productvalue->product_id);  
 
+            $b_count=count($bid_count);                        
+            ?>
+    
 
                 <div class="images onhover-show-menus">
                     <div class="background-gray uploaded-image-edited">
-                        @if(!empty($productvalue->image->product_img))
-                        <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
+                        @if(!empty($productvalue->product_img))
+                        <img src="{{url('assets/images/product-images/'.$productvalue->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
                         @else
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif
-
+                     
 
                         <div class="hover-icons">
                                 <div>
                                      
                                     <span class="left-buy-it" >
-                                            @if($productvalue->product->want_to_list=='b')
+                                            @if($productvalue->want_to_list=='b')
                                             Buy It Now
-                                            @elseif($productvalue->product->want_to_list=='a')
+                                            @elseif($productvalue->want_to_list=='a')
                                             Auction
                                             @else
                                             Both
@@ -69,17 +70,17 @@ use Carbon\Carbon;
 
                                                 @if(!empty($user))
                                                 <input type="hidden" name="customer_id" value="{{Auth::user()->id}}">
-                                                <input type="hidden" name="seller_id" value="{{$productvalue->product->user_id}}">
-                                                <input type="hidden" name="product_id" value="{{$productvalue->product->id}}">
-                                                <input type="hidden" name="paq_id" value="{{$productvalue->product->quantity->id}}">
-                                                <input type="hidden" name="attribute_ids" value="{{$productvalue->product->quantity->id}}">
-                                                <input type="hidden" name="attribute_value_ids" value="{{$productvalue->product->quantity->id}}">
+                                                <input type="hidden" name="seller_id" value="{{$productvalue->user_id}}">
+                                                <input type="hidden" name="product_id" value="{{$productvalue->id}}">
+                                                <input type="hidden" name="paq_id" value="{{$productvalue->quantity->id}}">
+                                                <input type="hidden" name="attribute_ids" value="{{$productvalue->quantity->id}}">
+                                                <input type="hidden" name="attribute_value_ids" value="{{$productvalue->quantity->id}}">
                                                 <input type="hidden" name="quantity" value="1" id="hiddenqty">
-                                                <input type="hidden" name="price" value="{{$productvalue->product->quantity->price}}">
-                                                <input type="hidden" name="discount" value="{{$productvalue->product->quantity->discount}}">
-                                                <input type="hidden" name="pro_condition" value="{{$productvalue->product->quantity->condition_id}}">
+                                                <input type="hidden" name="price" value="{{$productvalue->quantity->price}}">
+                                                <input type="hidden" name="discount" value="{{$productvalue->quantity->discount}}">
+                                                <input type="hidden" name="pro_condition" value="{{$productvalue->quantity->condition_id}}">
                                                 <input type="hidden" name="is_checkout" value="n">
-                                                <input type="hidden" name="selling_type" value="{{$productvalue->product->want_to_list}}">
+                                                <input type="hidden" name="selling_type" value="{{$productvalue->want_to_list}}">
                                                 <input type="hidden" name="is_delete" value="n">
                                                 <input type="hidden" name="action" value="n">
                                                 <input type="hidden" name="product_array" value="{{$productvalue->product}}">
@@ -104,11 +105,11 @@ use Carbon\Carbon;
 
                                 <div class="bottom-on-hover">
                                         <span class="left-side-text" title="Category"><i class="fa fa-tag"></i> &nbsp;
-                                        {{$productvalue->product->category->categoryName}}</span>
+                                        {{$productvalue->categoryName}}</span>
                                         <span title="Sub Category"><i class="fa fa-tag"></i>&nbsp;
-                                        {{$productvalue->product->subCategory->subCategoryName}}</span>
-                                        @if(!empty($productvalue->product->brand))
-                                        <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$productvalue->product->brand->brandName}}</span>
+                                        {{$productvalue->subCategoryName}}</span>
+                                        @if(!empty($productvalue->brand))
+                                        <span title="Brand"><i class="fa fa-gavel"></i>&nbsp;{{$productvalue->brandName}}</span>
                                         @endif
                                         <span title="Bid"><i class="fa fa-gavel"></i>&nbsp;Bid {{$b_count}}</span>
                                         
@@ -127,8 +128,8 @@ use Carbon\Carbon;
                     <br/>
                     
                    
-                    <h4>{{$productvalue->product->product_name}}</h4>
-                    <span>Minimum Bid: ${{$productvalue->product->bid_amount}}<span><br/>
+                    <h4>{{$productvalue->product_name}}</h4>
+                    <span>Minimum Bid: ${{$productvalue->bid_amount}}<span><br/>
 
                     <!-- <span>{{$productvalue->bid_status}}<span> -->
                    </span>

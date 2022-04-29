@@ -147,9 +147,22 @@ class AddressController extends Controller
                 $user_id=Auth::user()->id;
                 // print_r($user_id);
                 // die;
-                $address= Address::where(['address_type'=>'delivery','userId'=>$user_id])
-                        ->paginate(4);
+                $list= Address::query()->where(['address_type'=>'delivery','userId'=>$user_id]);
+                        
                 // $bindlist = RefundRequest::paginate($request->record);                   
+
+                if(isset($request->searching))
+                {
+                    $list->where('name','LIKE','%'.$request->searching.'%');
+                    // $list->where('state','LIKE','%'.$request->searching.'%');
+                    // $list->where('country','LIKE','%'.$request->searching.'%');
+                    // $list->orWhere('zip_code','LIKE','%'.$request->searching.'%');
+                }
+                // ,'address1','address2','city','state','country','zip_code']
+
+                $address = $list->paginate(4);
+
+
 
                 $completeSessionView = view(
                     'frontend/buyer/delivery-areas-list',

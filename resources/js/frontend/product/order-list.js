@@ -63,10 +63,21 @@ $("#order-list_records").change(function() {
 });
 
 
+$("#order_searching_purchase").change(function() {
+    var searching = $("#order_searching_purchase").val();
+    var number_records = $("#order-list_records").val();
+    var page = 1;
+
+    console.log("searching... ", searching)
+
+    searching == null ? orderListbySeller(page, number_records) : orderListbySeller(page, number_records, searching);
+});
+
+
 // var pageno = 1;
 // var records = 4;
 
-function orderListbySeller(pageno, records) {
+function orderListbySeller(pageno, records, searching) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
@@ -75,7 +86,8 @@ function orderListbySeller(pageno, records) {
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: records
+            record: records,
+            searching: searching
         },
         processData: true,
         contentType: false,

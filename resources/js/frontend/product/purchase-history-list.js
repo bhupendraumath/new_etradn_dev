@@ -6,7 +6,7 @@ $(window).load(function() {
     // });
 
     var pageno = 1;
-    var records = 4;
+    var records = 2;
 
     function getProductlList(pageno, records) {
         console.log("reords -- ", records)
@@ -17,7 +17,7 @@ $(window).load(function() {
             data: {
                 filter_by: filter_by,
                 page: pageno,
-                record: 6
+                record: 2
             },
             processData: true,
             contentType: false,
@@ -55,23 +55,38 @@ $(window).load(function() {
 });
 
 
-$("#uploaded_product_page").change(function() {
-    var number_records = $("#uploaded_product_page").val();
+$("#purchase_product_page").change(function() {
+    var searching = $("#searching_purchase").val();
+    var number_records = $("#purchase_product_page").val();
     var page = 1;
-    getProductlList(page, number_records);
+    getProductlList(page, number_records, searching);
 });
 
 
-function getProductlList(pageno, records) {
+
+
+$("#searching_purchase").change(function() {
+    var searching = $("#searching_purchase").val();
+    var number_records = $("#purchase_product_page").val();
+    var page = 1;
+
+    searching == null ? getProductlList(page, number_records) : getProductlList(page, number_records, searching);
+});
+
+function getProductlList(pageno, records, searching) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
+
+    // records==null?2:records;
+    console.log("records --->", records);
     $.ajax({
         url: process.env.MIX_APP_URL + "/purchase-history-list-post",
         type: "POST",
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: 6
+            record: records == null ? 2 : records,
+            searching: searching
         },
         processData: true,
         contentType: false,
