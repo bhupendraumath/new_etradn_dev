@@ -9,8 +9,8 @@ Session::put('back_url', URL::full());
 @endphp
 <div class="page-head_agile_info_w3l">
     <div class="container">
-        <h3>Products..<span> </span></h3>
-<span style="color:white" ><a href="{{route('home')}}" style="color:#f2ae3d" >Home</a> > Product </span>
+        <h3>{{lang('PRODUCTS')}}..<span> </span></h3>
+<span style="color:white" ><a href="{{route('home')}}" style="color:#f2ae3d" >{{lang('HOME')}}</a> > {{lang('PRODUCTS')}} </span>
     </div>
 </div>
 
@@ -23,7 +23,7 @@ Session::put('back_url', URL::full());
             <div class="card remove-showdow">
                 <div class="row">
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
-                        <p class="font-family-change">FILTER OPTIONS 
+                        <p class="font-family-change">{{lang('FILTER_OPTIONS')}} 
                             <button class="hidebutton circle" title="show or hide filter list" onclick="myFilterlist()">></button>
 </p>
                         <hr />
@@ -55,7 +55,7 @@ Session::put('back_url', URL::full());
                {{-- <div class="row">
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
                         <select class="sorting-low-high remove-borders" onchange="showRecords()" id="page_limit">
-                            <option disabled selected>Show records</option>
+                            <option disabled selected>{{lang('SHOWRECORDS')}}</option>
                             <option value="6">6</option>
                             <option value="12">12</option>
                             <option value="48">48</option>
@@ -78,7 +78,7 @@ Session::put('back_url', URL::full());
                             @endphp
 
 
-                           <option value="{{$route_cat_id}}" selected>Select Category</option>
+                           <option value="{{$route_cat_id}}" selected>{{lang('SELECT_CATEGORY')}}</option>
                             @foreach($category_list as $cat)
                             <option value="{{$cat->id}}">{{$cat->categoryName}}</option>
                             @endforeach
@@ -97,7 +97,7 @@ Session::put('back_url', URL::full());
                             @php
                             $route_subcat_id=request()->route('subid');
                             @endphp
-                            <option value="{{ $route_subcat_id }}" selected>Select Category</option>
+                            <option value="{{ $route_subcat_id }}" selected>{{lang('SUBCATEGORY')}}</option>
                             <!-- <option  selected disabled>Select Subcategory</option> -->
 
                         </select>
@@ -110,7 +110,7 @@ Session::put('back_url', URL::full());
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
 
                     
-                   <b> BRAND</b>
+                   <b> {{lang('BRAND')}}</b>
                     <hr class="hr-width"/>
                         <div class="myBoxBrand">
                         @if(!empty($brand_list))
@@ -134,7 +134,7 @@ Session::put('back_url', URL::full());
                 <div class="row margin-top-filter">
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
 
-                   <b> PRICE RANGE</b>
+                   <b>{{lang('PRICE_RANGE')}}</b>
                     <hr class="hr-width"/>
                         <div class="price-range">
                             <input type="range" class="price-range-input" id="price-range" min="1" max="1500" value="0">
@@ -149,7 +149,7 @@ Session::put('back_url', URL::full());
                 <div class="row margin-top-filter">
                     <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
 
-                   <b> CONDITION</b>
+                   <b> {{lang('CONDITION')}}</b>
                     <hr class="hr-width"/>
 
                     
@@ -206,13 +206,13 @@ Session::put('back_url', URL::full());
                             $value= $favoriteProduct->where('cat_id',$route_cat_id)->get();
                         @endphp 
                         <div class="col-md-10 col-sm-10 col-lg-10 col-xl-10 col-xs-8">
-                            <h3 class="favorite-heading ">PRODUCTS
+                            <h3 class="favorite-heading ">{{lang('PRODUCTS')}}
                                 {{--<span class="color-yellow-number">({{count($value)}})</span>--}}
                             </h3>
                         </div>
                         <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xs-4 float-right">
                             <select class="sorting-low-high remove-borders margin-top" onchange="showRecords()" id="page_limit">
-                                <option disabled selected>Show records</option>
+                                <option disabled selected>{{lang('SHOWRECORDS')}}</option>
                                 <option value="6">6</option>
                                 <option value="12">12</option>
                                 <option value="48">48</option>

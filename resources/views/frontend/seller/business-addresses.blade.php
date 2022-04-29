@@ -6,7 +6,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>BUSINESS INFORMATION LIST</span></h3>
+        <h3>{{lang('BUSINESS_INFORMATION')}}</span></h3>
 
     </div>
 </div>
@@ -33,7 +33,7 @@
                     <input type="text" id="search" class="searching-business-address" name="search" placeholder="Searching..." />
                 </div>
 
-                <button class="business-adding" > <a href="{{route('businessInformation')}}" >Add New</a></button>
+                <button class="business-adding" > <a href="{{route('businessInformation')}}" >{{lang('ADD_NEW')}}</a></button>
 
                 
                 
@@ -41,13 +41,13 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Shop Name</th>
-                                <th>Address Line 1</th>
-                                <th>City</th>
-                                <th>State</th>
-                                <th>Country</th>
-                                <th>Zipcode</th>
-                                <th>Action</th>
+                                <th>{{lang('SHOP_NAME')}}</th>
+                                <th>{{lang('ADDRESS_ONE')}}</th>
+                                <th>{{lang('CITY')}}</th>
+                                <th>{{lang('STATE')}}</th>
+                                <th> {{lang('COUNTRY')}}</th>
+                                <th> {{lang('ZIPCODE')}}</th>
+                                <th>{{lang('ACTION')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,7 +80,7 @@
                         @else
                         <tr>
                             <div class="col-12 col-xs-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 reducewidth no-records">
-                                <div>No Records Found</div>
+                                <div>{{lang('NO_RECORD_FOUND')}}}}</div>
                             </div>
                         </tr>
                         @endif

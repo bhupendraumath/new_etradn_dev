@@ -86,7 +86,7 @@ Session::put('back_url', URL::full());
                         </div>
                     </div>
         
-                    <span class="item_price"><b>PRICE:</b> &nbsp;
+                    <span class="item_price"><b>{{lang('PRICE')}}:</b> &nbsp;
                     <del>
                         @if(!empty($product_details->quantity->price))
                         ${{$product_details->quantity->price}} &nbsp;</del>
@@ -157,7 +157,7 @@ Session::put('back_url', URL::full());
 
                                                 
                                                 @else
-                                                <input type="button" <?php if($product_details->quantity->quantity==0){echo 'disabled';}?> name="submit" onclick="checkSwal(event)" value="Add to cart" class="button">
+                                                <input type="button" <?php if($product_details->quantity->quantity==0){echo 'disabled';}?> name="submit" onclick="checkSwal(event)" value="{{lang('ADD_TO_CART')}}" class="button">
                                                 @endif
                                             @endif
                                         </fieldset>
@@ -174,7 +174,7 @@ Session::put('back_url', URL::full());
                   
         
                     <span class="item_price"><b>SKU:</b> &nbsp; IFF_grapes_186</span> <br />
-                    <span class="item_price"><b>Category:</b> &nbsp; <span class="uppercase">{{$product_details['category']['categoryName']}}</span></span><br />
+                    <span class="item_price"><b>{{lang('CATEGORY')}}:</b> &nbsp; <span class="uppercase">{{$product_details['category']['categoryName']}}</span></span><br />
                     <!-- <span class="item_price"><b>Tags:</b> &nbsp; Casual, Fashion, Loose, Stylish</span> -->
                     
                     <?php $user=Auth::user(); ?>
@@ -187,7 +187,7 @@ Session::put('back_url', URL::full());
                    
                    
                     <ul class="social-nav model-3d-0 footer-social w3_agile_social single_page_w3ls">
-                        <li class="share">SOCIAL MEDIA SHARE : </li>
+                        <li class="share">{{lang('SOCIALMEDIASHARE')}} : </li>
                         <li><a href="#">
                                 <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
                                 <div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
@@ -214,9 +214,9 @@ Session::put('back_url', URL::full());
                         <div class="responsive_tabs_agileits">
                             <div id="horizontalTab">
                                 <ul class="resp-tabs-list">
-                                    <li>Description</li>
-                                    <li>Reviews</li>
-                                    <li>Seller Information</li>
+                                    <li>{{lang('DESCRIPTION')}}</li>
+                                    <li>{{lang('REVIEWS')}}</li>
+                                    <li>{{lang('SELLERINFORMATION')}}</li>
                                 </ul>
 
                                 <div class="resp-tabs-container">
@@ -224,14 +224,14 @@ Session::put('back_url', URL::full());
                             <div class="tab1">
 
                                 <div class="single_page_agile_its_w3ls">
-                                    <h3 class="description-policy"> WARRANTY - </h3>
+                                    <h3 class="description-policy">{{lang('WARRANTY')}} - </h3>
                                     <p>{{$product_details['warranty_desc']}}</p>
 
                                     <br/>
                                     <br/>
                                     <br/>
 
-                                    <h3 class="description-policy"> REFUND POLICY - </h3>
+                                    <h3 class="description-policy">{{lang('REFUND_POLICY')}} - </h3>
                                     <!-- <h6>Lorem ipsum dolor sit amet</h6> -->
                                     @if($product_details['refund_request']=='y')
                                     <div>
@@ -262,7 +262,7 @@ Session::put('back_url', URL::full());
                                                     <i class="fa fa-star star-light mr-1 main_star"></i>
                                                     <i class="fa fa-star star-light mr-1 main_star"></i>
                                                 </div>
-                                                <h3><span id="total_review">0</span> Review</h3>
+                                                <h3><span id="total_review">0</span> {{lang('REVIEWS')}}</h3>
                                             </div>
                                             <div class="col-sm-4">
                                                 <p>
@@ -352,7 +352,7 @@ Session::put('back_url', URL::full());
                                             {{-- @if(!empty($user))--}}
                                                 <button type="button" name="add_review" id="add_review" class="btn btn-primary">Your Review</button>
                                             {{-- @else
-                                                <button type="button" name="add_review"  class="btn btn-primary" onclick="confirm('Please login before giving your review and rating...')"><a href="{{route('login')}}">Your Review</a></button>
+                                                <button type="button" name="add_review"  class="btn btn-primary" onclick="confirm('Please login before giving your review and rating...')"><a href="{{route('login')}}">{{lang('REVIEWS')}}</a></button>
                                                 @endif --}}
                                             </div>
                                         </div>
@@ -376,10 +376,10 @@ Session::put('back_url', URL::full());
                                         </div>
                                         <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-12">
                                             <div class="details change-font-syle-here">
-                                                Business Name :  {{$product_details->user_information['business_name']}}<br/>
+                                            {{lang('BUSINESS_NAME')}} :  {{$product_details->user_information['business_name']}}<br/>
 
-                                                Email :  {{$product_details->user_information['email']}}<br />
-                                                Delivery Areas :- <br />
+                                            {{lang('EMAIL')}} :  {{$product_details->user_information['email']}}<br />
+                                                {{lang('DELIVERYAREAS')}} :- <br />
                                                 <ul class="change-ul-style">
                                                     @foreach($product_details->user_delivery_address as $address)
                                                     <li>{{$address->name}}, {{$address->state}}, {{$address->country}}</li>

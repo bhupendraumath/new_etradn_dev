@@ -147,7 +147,7 @@ $favoriteProduct=new App\Models\Product;
         <!-- </div> -->
     @else
     <div class="product-not-available">
-        <h4 class="not-avaiable"> Popular items not available for this</h4>
+        <h4 class="not-avaiable"> {{lang('POPULARITEMNOTAVAILABLE')}}</h4>
     </div>
     @endif
 

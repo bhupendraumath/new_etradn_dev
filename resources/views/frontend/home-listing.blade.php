@@ -8,7 +8,7 @@ $favoriteProduct=new App\Models\Product;
             <div class="card ">
                 <div class="row">
                     <div class="col-12 col-md-7 col-sm-7 col-lg-7 col-xl-7">
-                        <p class="font-family-change">HOT ITEMS</p>
+                        <p class="font-family-change">{{lang('HOTITEM')}}</p>
 
                     </div>
 
@@ -171,7 +171,7 @@ $favoriteProduct=new App\Models\Product;
                 <div class="row">
 
                     <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
-                        <p class="font-family-change">POPULAR ITEMS</p>
+                        <p class="font-family-change">{{lang('POPULAR_PRODUCTS')}}</p>
 
                     </div>
 
@@ -186,7 +186,7 @@ $favoriteProduct=new App\Models\Product;
                             <ul class="popular-items tab">
                                 @if(!empty($category_list))
                                 <li class="active">
-                                    <button class="tablinks" onclick="filtering('all')">All</button>
+                                    <button class="tablinks" onclick="filtering('all')">{{lang('ALL')}}</button>
                                 </li>
                                 @foreach ($category_list as $cat)
                                 <li>
@@ -231,7 +231,7 @@ $favoriteProduct=new App\Models\Product;
                     <div class="card ">
                         <div class="row">
                             <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xl-8">
-                                <p class="font-family-change">SPEACIAL ITEMS</p>
+                                <p class="font-family-change">{{lang('SPEACIALITEMS')}}</p>
                             </div>
 
                             <div class="col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4">
@@ -394,7 +394,7 @@ $favoriteProduct=new App\Models\Product;
                     <div class="card ">
                         <div class="row">
                             <div class="col-12 col-md-8 col-sm-8 col-lg-8 col-xl-8">
-                                <p class="font-family-change">NEWSLETTERS</p>
+                                <p class="font-family-change">{{lang('NEWSLETTERS')}}</p>
 
                             </div>
                         </div>
@@ -406,13 +406,13 @@ $favoriteProduct=new App\Models\Product;
                                     <div class="images image-left">
                                         <div class="background-white">
                                             <span class="newslatter">
-                                                Sign Up for Our Newslatters!
+                                                {{lang('SIGNUPNEWSLATTERS')}}
                                             </span>
                                             <div class="inputfieldform">
                                                 <input type="text" class="inputfield">
                                             </div>
                                             <div>
-                                                <input type="button" value="SUBSCRIBE" class="buttonSubscribe">
+                                                <input type="button" value="{{lang('SUBSCRIBE')}}" class="buttonSubscribe">
                                             </div>
 
                                         </div>
@@ -514,7 +514,7 @@ $favoriteProduct=new App\Models\Product;
                         <div class="row">
 
                             <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
-                                <p class="font-family-change">LATEST ITEMS</p>
+                                <p class="font-family-change">{{lang('LATESTITEMS')}}</p>
                             </div>
 
                             <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
@@ -525,7 +525,7 @@ $favoriteProduct=new App\Models\Product;
                                     <ul class="popular-items tab">
                                         @if(!empty($category_list))
                                         <li class="active">
-                                            <button class="tablinks" onclick="filteringLetest('all')">All</button>
+                                            <button class="tablinks" onclick="filteringLetest('all')">{{lang('ALL')}}</button>
                                         </li>
                                         @foreach ($category_list as $cat)
                                         <li>
@@ -558,11 +558,11 @@ $favoriteProduct=new App\Models\Product;
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-12">
                             <div class="right-adv">
-                                <h1 class="wholesale">WHOLESALE PRODUCTS</h1>
-                                <h1 class="readytosell">READY TO SELL NOW 50% OFF!</h1>
+                                <h1 class="wholesale">{{lang('WHOLESALEPRODUCTS')}}</h1>
+
                                 <a href="{{url('product-list/noav/noav/noav/popular')}}">
 
-                                    <button class="colorBlack">SHOP NOW</button>
+                                    <button class="colorBlack">{{lang('SHOPNOW')}}</button>
                                 </a>
 
                             </div>
@@ -580,7 +580,7 @@ $favoriteProduct=new App\Models\Product;
                         <div class="row">
 
                             <div class="col-12 col-md-6 col-sm-6 col-lg-6 col-xl-6">
-                                <p class="font-family-change">FEATURED PRODUCTS</p>
+                                <p class="font-family-change">{{lang('FEATUREDPRODUCTS')}}</p>
 
                             </div>
 

@@ -87,18 +87,18 @@
             <div class="col-10 col-md-10 col-lg-10 col-sm-10 col-xs-12">
                 <div class="cardlogin">
                     <h3 class="login-heading">
-                        ACCOUNT LOGIN
+                        {{lang('ACCOUNTLOGIN')}}
                     </h3>
 
 
 
                     <form method="POST" id="loginFrm" action="{{ route('login') }}">
                         {{csrf_field()}}
-                        <label for="email" class="label-11">Phone Number or Email*</label>
+                        <label for="email" class="label-11">{{lang('PHONEANDEMAIL')}}*</label>
                         <div class="form-field">
                             <input type="email" id="email" name="email" placeholder="Enter email address" />
                         </div>
-                        <label for="password" class="label-11">Password*</label>
+                        <label for="password" class="label-11">{{lang('PASSWORD')}}*</label>
                         <div class="form-field">
                             <input type="password" id="password" placeholder="Password" name="password" required />
                         </div>
@@ -106,12 +106,12 @@
                         <div class="form-field">
 
                             <!-- id="loginBtn" -->
-                            <button class="btn color-chnage-btn" type="submit" id="loginBtn">LOGIN</button>
+                            <button class="btn color-chnage-btn" type="submit" id="loginBtn">{{lang('LOGIN')}}</button>
                         </div>
 
                         <div class="form-field bottom">
-                            <a href="#" class="forget-btn">Forget your password?</a>
-                            <a href="{{route('registration')}}" class="signup">Not a Member, Sign Up Now</a>
+                            <a href="#" class="forget-btn">{{lang('FORGETPASSWORD')}}</a>
+                            <a href="{{route('registration')}}" class="signup">{{lang('NOTSIGNUP')}}</a>
                         </div>
                     </form>
                 </div>

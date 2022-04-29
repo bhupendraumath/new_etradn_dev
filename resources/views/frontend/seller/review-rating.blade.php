@@ -7,7 +7,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>MY REVIEW & RATING</h3>
+        <h3>{{lang('MY_REVIEW_AND_RATING')}}</h3>
 
     </div>
 </div>
@@ -23,7 +23,7 @@
         <div class="card-dashboard  col-12uy">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
-                        <h3>REVIEW & RATING</h3>
+                        <h3>{{lang('MY_REVIEW_AND_RATING')}}</h3>
                     </div>
                 </div>
                 <hr/>

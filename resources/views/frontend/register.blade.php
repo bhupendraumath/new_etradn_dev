@@ -16,7 +16,7 @@
                         {{csrf_field()}}
 
 
-                        <label for="lname" class="label-11">User type*</label>
+                        <label for="lname" class="label-11">{{lang('USERTYPE')}}*</label>
                         <div class="form-field">
                             <select class="form-control" name="user_type" id="usertype" onchange="showDivuser(this)">
                                 <option value="">select</option>
@@ -25,26 +25,26 @@
                             </select>
                         </div>
 
-                        <label for="fname" class="label-11">First Name*</label>
+                        <label for="fname" class="label-11">{{lang('FNAME')}}*</label>
                         <div class="form-field">
                             <input type="text" placeholder="Please enter your first name" required name="first_name" />
                         </div>
 
-                        <label for="lname" class="label-11">Last Name*</label>
+                        <label for="lname" class="label-11">{{lang('LNAME')}}*</label>
                         <div class="form-field">
                             <input type="text" placeholder="Please enter your last name" required name="last_name" />
                         </div>
 
-                        <label for="email" class="label-11"> Email*</label>
+                        <label for="email" class="label-11"> {{lang('EMAIL')}}*</label>
                         <div class="form-field">
                             <input type="email" name="email" placeholder="Please enter your Email" />
                         </div>
-                        <label for="lname" class="label-11">Telephone*</label>
+                        <label for="lname" class="label-11">{{lang('TELEPHONE')}}*</label>
                         <div class="form-field">
                             <input type="text" placeholder="Please enter your telephone" required name="phone" />
                         </div>
                         <div id="byseller">
-                            <label for="lname" class="label-11">Upload Logo*</label>
+                            <label for="lname" class="label-11">{{lang('UPLOAD_LOGO')}}*</label>
                             <div class="form-field">
                                 <input type="file" class="upload-logo" id="uploadImage" onChange="setImage(this,'profile_image');" accept="image/png,image/jpg,image/jpeg">
                             </div>
@@ -53,11 +53,11 @@
                                  <img id="previewImage" width="100" height="100">
                             </div>
                             <input type="hidden" name="business_logoo" id="imagedata">
-                            <label for="lname" class="label-11">Business Name*</label>
+                            <label for="lname" class="label-11">{{lang('BUSINESS_NAME')}}*</label>
                             <div class="form-field">
                                 <input type="text" placeholder="Please enter your Business Name" required name="business_name" />
                             </div>
-                            <label for="lname" class="label-11">Select Business Type*</label>
+                            <label for="lname" class="label-11">{{lang('SELECT_BUSINESS_TYPE')}}*</label>
                             <div class="form-field">
                                 <select class="form-control" name="business_type_id" id="category-b">
                                     <option value="">select</option>
@@ -66,7 +66,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <label for="lname" class="label-11">Select Business Category*</label>
+                            <label for="lname" class="label-11">{{lang('SELECT_BUSINESS_CATEGORY')}}*</label>
                             <div class="form-field">
                                 <select class="form-control" name="business_category" id="business_type_id">
                                     <option value="">select</option>
@@ -75,22 +75,22 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <label for="lname" class="label-11">Business Address*</label>
+                            <label for="lname" class="label-11">{{lang('BUSINESS_ADDRESS')}}*</label>
                             <div class="form-field">
                                 <input type="text" placeholder="Please enter your Business Address" required name="business_address" />
                             </div>
                         </div>
-                        <label for="password" class="label-11">Password*</label>
+                        <label for="password" class="label-11">{{lang('PASSWORD')}}*</label>
                         <div class="form-field">
                             <input type="password" placeholder="Password" required name="password" />
                         </div>
-                        <label for="password" class="label-11">Confirm Password*</label>
+                        <label for="password" class="label-11">{{lang('CONFIRM_PASSWORD')}}*</label>
                         <div class="form-field">
                             <input type="password" placeholder="Password" required name="password_confirmation" />
                         </div>
 
                         <div class="form-field">
-                            <button class="btn color-chnage-btn" type="button" id="registerBtn">REGISTER</button>
+                            <button class="btn color-chnage-btn" type="button" id="registerBtn">{{lang('REGISTER')}}</button>
                         </div>
 
                         <div class="form-field bottom">

@@ -20,7 +20,7 @@
         @include('frontend/include/seller-side-bar')
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
             <div class="card-dashboard  col-12uy">
-            <a href="{{url()->previous()}}" class="back-button">back</a>
+            <a href="{{url()->previous()}}" class="back-button">{{lang('BACK')}}</a>
                 <h3>{{$title}}</h3>
                 <hr class="business-address" />
                 <div class="form-settings">
@@ -48,7 +48,7 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12">
-                            <label class="left-align">Shop Name</label>
+                            <label class="left-align">{{lang('SHOP_NAME')}}</label>
 
                             <input type="text"  name="name" value ="{{$details[0]->name}}"placeholder="Shop Name*" class="shopname"> 
 
@@ -57,14 +57,14 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">Address Line1</label>
+                            <label class="left-align">{{lang('ADDRESS_ONE')}}</label>
 
                             <input type="text" value="{{$details[0]->address1}}"  name="address1" placeholder="Address Line1*" class="60per">
 
 
                             </div>
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">Address Line2</label>
+                            <label class="left-align">{{lang('ADDRESS_LINE2')}}</label>
                             <input type="text"  value="{{$details[0]->address2}}" name="address2" placeholder="Address Line2*" class="60per"> 
 
                             </div>
@@ -73,11 +73,11 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">City</label>
+                            <label class="left-align">{{lang('CITY')}}</label>
                             <input type="text" value="{{$details[0]->city}}" name="city" placeholder="City*" class="60per">
                             </div>
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">State</label>
+                            <label class="left-align">{{lang('STATE')}}</label>
                             <input type="text" name="state" value="{{$details[0]->state}}"  placeholder="State*" class="60per">
 
                             </div>
@@ -85,11 +85,11 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">Country</label>
+                            <label class="left-align">{{lang('COUNTRY')}}</label>
                             <input type="text" name="country" value="{{$details[0]->country}}" placeholder="Country*" class="60per">
                             </div>
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">Zip Code</label>
+                            <label class="left-align">{{lang('ZIPCODE')}}</label>
                             <input type="text" name="zip_code" value="{{$details[0]->zip_code}}"  placeholder="Zip Code*" class="60per">
                             </div>
                         </div>
@@ -97,7 +97,7 @@
 
                         <div class="row">
                         <div class="buttons">
-                            <input type="submit" value="Save Changes" class="save-changes" id="updateSubmitbtn">
+                            <input type="submit" value="{{lang('SAVE_CHANGES')}}" class="save-changes" id="updateSubmitbtn">
                             <a href="{{url('business-address')}}" <input type="button" value="Cancel" class="cancel">
                             </a>
                         </div>
@@ -122,7 +122,7 @@
                         <input type="hidden" name="userId" value="{{Auth::user()->id}}">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12">
-                            <label class="left-align">Shop Name</label>
+                            <label class="left-align">{{lang('SHOP_NAME')}}</label>
 
                             <input type="text"  name="name" placeholder="Shop Name*" class="shopname"> 
 
@@ -131,14 +131,14 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">Address Line1</label>
+                            <label class="left-align">{{lang('ADDRESS_ONE')}}</label>
 
                             <input type="text"  name="address1" placeholder="Address Line1*" class="60per">
 
 
                             </div>
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">Address Line2</label>
+                            <label class="left-align">{{lang('ADDRESS_LINE2')}}</label>
 
                             <input type="text"  name="address2" placeholder="Address Line2*" class="60per"> 
 
@@ -148,12 +148,12 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">City</label>
+                            <label class="left-align">{{lang('CITY')}}</label>
 
                             <input type="text" name="city" placeholder="City*" class="60per">
                             </div>
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">State</label>
+                            <label class="left-align">{{lang('STATE')}}</label>
 
                             <input type="text" name="state" placeholder="State*" class="60per">
 
@@ -162,11 +162,11 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">Country</label>
+                            <label class="left-align">{{lang('COUNTRY')}}</label>
                             <input type="text" name="country" placeholder="Country*" class="60per">
                             </div>
                             <div class="col-12 col-sm-6 col-md-6">
-                            <label class="left-align">Zip Code</label>
+                            <label class="left-align">{{lang('ZIPCODE')}}</label>
                             <input type="text" name="zip_code" placeholder="Zip Code*" class="60per">
                             </div>
                         </div>
@@ -174,7 +174,7 @@
 
                         <div class="row">
                         <div class="buttons">
-                            <input type="submit" value="Save Changes" class="save-changes" id="submitbtn">
+                            <input type="submit" value="{{lang('SAVE_CHANGES')}}" class="save-changes" id="submitbtn">
                             <a href="{{url('business-address')}}" <input type="button" value="Cancel" class="cancel">
                             </a>
                         </div>

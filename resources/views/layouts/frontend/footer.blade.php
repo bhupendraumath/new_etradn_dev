@@ -108,7 +108,9 @@
 
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xl-3 col-xs-12">
-                <h3 class="footerclass">Store Information </h3>
+                <h3 class="footerclass">
+                {{lang('STOREINFORMATION')}}
+                </h3>
                 <ul class="colorwhite">
                     <li> <i class="fa fa-phone yellow"></i> &nbsp;+1 000 111 6666</li>
                     <li><i class="fa fa-envelope yellow"></i> &nbsp; info@B2B.com
@@ -118,11 +120,11 @@
                 </ul>
             </div>
             <div class="col-md-3 col-sm-6 col-xl-3 col-xs-12">
-                    <h3 class="footerclass">Products </h3>
+                    <h3 class="footerclass">{{lang('PRODUCTS')}} </h3>
 
                     <ul class="colorwhite">
-                    <li>Promotions</li>
-                    <li>New Arrivals
+                    <li>{{lang('PROMOTIONS')}}</li>
+                    <li>{{lang('NOWARRIVALS')}}
                     </li>
                     <li>Fruits and Vegetables</li>
                     <li>Beverages</li>
@@ -130,26 +132,26 @@
 
             </div>
             <div class="col-md-3 col-sm-6 col-xl-3 col-xs-12">
-                    <h3 class="footerclass">Customer Support
+                    <h3 class="footerclass">{{lang('CUSTOMERSUPPORT')}}
                     </h3>
 
                     <ul class="colorwhite">
                     <a href="{{route('about')}}">
-                    <li>About Us    
+                    <li>{{lang('ABOUT_US')}}   
                     </li>
                     </a>
                     <a href="{{route('contact')}}">
-                    <li>Contact
+                    <li>{{lang('CONTACTUS')}}
                     </li>
                     </a>
-                    <li>Returns
+                    <li>{{lang('RETURNS')}}
                     </li>
-                    <li>Shipping & Payment</li>
+                    <li>{{lang('SHIPPINGANDPYMENT')}}</li>
                     </ul>
             </div>
             <div class="col-md-3 col-sm-6 col-xl-3 col-xs-12">
-                    <h3 class="footerclass">Follow us</h3>
-                    <p style="color:white" class="lignmentforfooter">Keep up with us on Instagram and Facebook for new products, imagery, and events.</p>
+                    <h3 class="footerclass">{{lang('FOLLOWUS')}}</h3>
+                    <p style="color:white" class="lignmentforfooter">{{lang('KEEPUPWITH')}}</p>
                     <br />
 
                     <ul class="colorwhite social  icons-social-media">

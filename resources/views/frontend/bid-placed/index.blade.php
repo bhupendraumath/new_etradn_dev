@@ -6,7 +6,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>MY PLACED BIDS</h3>
+        <h3>{{lang('BIDS_PLACED')}}</h3>
 
     </div>
 </div>
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12 float-right">
-                        <span class="show-pagination sorting-pagination uploaded-product">Show Records :</span>    
+                        <span class="show-pagination sorting-pagination uploaded-product">{{lang('SHOWRECORDS')}} :</span>    
                         <select class="sorting-low-high uploaded-product" id="bids_product_page">
                             <!-- <option disabled selected >--Show--</option> -->
                             <option value="6" selected >6</option>

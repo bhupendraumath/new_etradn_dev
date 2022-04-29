@@ -32,7 +32,7 @@
             <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
                 <div class="row  class-row-color-change">
                     <div class="col-md-5 col-sm-5 col-lg-5 col-xl-5 col-xs-6 edit-button">
-                        <h4 class="Heading-h4-button">EDIT></h4>
+                        <h4 class="Heading-h4-button">{{lang('EDIT')}}></h4>
                     </div>
 
                     <div class="col-md-7 col-sm-7 col-lg-7 col-xl-7 col-xs-6">
@@ -41,7 +41,7 @@
 
                             <div class="details-right-settings">
                                 <button class="view-more-button">
-                                    VIEW MORE
+                                    {{lang('VIEW_MORE')}}
                                 </button>
                             </div>
                         </a>
@@ -110,7 +110,7 @@
         <a href="{{route('dashboard')}}">
             <div class="row border-row-top-border top-vv">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-list margin-leftor-right"></i> <b class="heading-business">DASHBOARD</b> </span>
+                    <span><i class="fas fa-list margin-leftor-right"></i> <b class="heading-business">{{lang('DASHBOARD')}}</b> </span>
                 </div>
             </div>
         </a>
@@ -120,7 +120,7 @@
         <a href="{{route('add-product-page')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-plus margin-leftor-right"></i> <b class="heading-business">ADD PRODUCT</b> </span>
+                    <span><i class="fas fa-plus margin-leftor-right"></i> <b class="heading-business">{{lang('ADD_PRODUCT')}}</b> </span>
                 </div>
             </div>
         </a>
@@ -130,14 +130,15 @@
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
                     <!-- <i class="fas fa-bags-shopping"></i> -->
                     <!-- <i class="fa-solid fa-bag-shopping"></i> -->
-                    <span><i class="fa fa-shopping-bag margin-leftor-right"></i> <b class="heading-business">MY ORDERS</b> </span>
+                    <span><i class="fa fa-shopping-bag margin-leftor-right"></i> <b class="heading-business">{{lang('MYORDERS')}}</b> </span>
                 </div>
             </div>
         </a>
         <a href="{{route('myUploadProduct')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-file-upload margin-leftor-right"></i> <b class="heading-business">MY UPLOADED PRODUCTS</b> </span>
+                    <span><i class="fas fa-file-upload margin-leftor-right"></i> <b class="heading-business">{{lang('MY_UPLOADED_PRODUCTS')}}
+                        </b> </span>
                 </div>
             </div>
         </a>
@@ -146,7 +147,9 @@
 
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fa fa-star margin-leftor-right"></i> <b class="heading-business">MY REVIEW AND RATING</b> </span>
+                    <span><i class="fa fa-star margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('MY_REVIEW_AND_RATING')}}
+                    </b> </span>
                 </div>
             </div>
         </a>
@@ -155,7 +158,7 @@
 {{--        <a href="{{route('businessInformation')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-user-alt margin-leftor-right"></i> <b class="heading-business">BUSINESS INFORMATION</b> </span>
+                    <span><i class="fas fa-user-alt margin-leftor-right"></i> <b class="heading-business">{{lang('BUSINESS_INFORMATION')}}</b> </span>
                 </div>
             </div>
         </a> --}}
@@ -163,7 +166,9 @@
         <a href="{{route('business-address')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-map-marker-alt margin-leftor-right"></i> <b class="heading-business">BUSINESS ADDRESSES</b> </span>
+                    <span><i class="fas fa-map-marker-alt margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('BUSINESS_ADDRESS')}}
+                    </b> </span>
                 </div>
             </div>
         </a>
@@ -171,7 +176,9 @@
         <a href="{{route('delivery-areas')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="delivary-area.php">
-                    <span><i class="fa fa-truck margin-leftor-right"></i> <b class="heading-business">MY DELIVERY AREAS</b> </span>
+                    <span><i class="fa fa-truck margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('MY_DELIVERY_AREAS')}}
+                    </b> </span>
                 </div>
             </div>
         </a>
@@ -180,7 +187,9 @@
         <a href="{{route('bidsPlaced')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" >
-                    <span><i class="fas fa-gavel margin-leftor-right"></i> <b class="heading-business">BIDS PLACED</b> </span>
+                    <span><i class="fas fa-gavel margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('BIDS_PLACED')}}
+                    </b> </span>
                 </div>
             </div>
         </a>
@@ -188,7 +197,8 @@
         <a href="{{route('refund-request')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-hand-holding-usd margin-leftor-right"></i> <b class="heading-business">REFUND REQUEST</b> </span>
+                    <span><i class="fas fa-hand-holding-usd margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('REFUND_REQUEST')}} </b> </span>
                 </div>
             </div>
         </a>
@@ -196,7 +206,9 @@
         <a href="{{route('wallet')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="wallet.php">
-                    <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">WALLET</b> </span>
+                    <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('WALLET')}}
+                    </b> </span>
                 </div>
             </div>
         </a>
@@ -204,7 +216,8 @@
         <a href="{{route('accountSetting')}}" class="top-borders">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" href="account-settings.php">
-                    <span><i class="fas fa-cog margin-leftor-right"></i> <b class="heading-business">ACCOUNT SETTINGS</b> </span>
+                    <span><i class="fas fa-cog margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('ACCOUNT_SETTINGS')}}</b> </span>
                 </div>
             </div>
         </a>
@@ -212,7 +225,9 @@
         <a href="{{route('rfq_list')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" >
-                    <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">RFQ LIST</b> </span>
+                    <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('RFQ_LIST')}}
+                    </b> </span>
                 </div>
             </div>
         </a>

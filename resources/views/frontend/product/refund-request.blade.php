@@ -6,7 +6,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>Refund Request</h3>
+        <h3>{{lang('REFUND_REQUEST')}}</h3>
 
     </div>
 </div>

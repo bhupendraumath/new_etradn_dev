@@ -53,10 +53,10 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-6">
             <ul class="right-menu">
-                <li> <a href="{{route('about')}}">  {{lang('ABOUT_US')}} &nbsp;| </a></li>
+                <li> <a href="{{route('about')}}"> {{lang('ABOUT_US')}} &nbsp;| </a></li>
                 <li> <a href="{{route('request')}}"> {{lang('REQUEST_PAGE')}} &nbsp;|</a></li>
 
-                <li> <a href="{{route('login')}}"> My Account &nbsp;| </a></li>
+                <li> <a href="{{route('login')}}"> {{lang('MYACCOUNT')}} &nbsp;| </a></li>
                 <li> <a href="{{route('blog')}}">{{lang('BLOG')}}&nbsp;|</a></li>
                 <li> <a href="{{route('contact')}}"> {{lang('CONTACTUS')}} </a></li>
                 <!-- <li><i class="fa fa-phone" aria-hidden="true"></i> Call : 01234567898</li>
@@ -129,7 +129,7 @@
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     </button>
                     <div class="right">
-                        <span>Total</span> <br />
+                        <span> {{lang('TOTAL')}}</span> <br />
                         <span style="font-weight: bold;" id="total_header_cart">$00.00</span>
                     </div>
                 </a>
@@ -147,16 +147,16 @@
                     <?php $user = Auth::user(); ?>
 
                     <div class="">
-                        <span class="dropbtn"><b>Account</b></span>
+                        <span class="dropbtn"><b>{{lang('ACCOUNT')}}</b></span>
 
                         <div class="dropdown-content">
 
-                            <a href="{{route('dashboard')}}">Dashboard</a>
+                            <a href="{{route('dashboard')}}">{{lang('DASHBOARD')}}</a>
 
                             <a>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button style="background: transparent;border: none;" type="submit">Logout</button>
+                                    <button style="background: transparent;border: none;" type="submit">{{lang('LOGOUT')}}</button>
                                 </form>
                             </a>
 
@@ -307,7 +307,7 @@
                                     <a class="dropdown-toggle menu__link" data-toggle="dropdown">
                                         <span class="changes-font-color">
                                             <i class="fa fa-list"></i>
-                                            Explore all products
+                                            {{lang('EXPLORE_ALL_PRODUCT')}}
                                             <span class="caret"></span>
                                         </span>
                                     </a>
@@ -367,7 +367,7 @@
                                 <!-- <li class=" menu__item"><a class="menu__link" href="promotions.html">Products  By brand</a></li> -->
 
                                 <li class="menu__item dropdown">
-                                    <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Products By brand </a>
+                                    <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">{{lang('PRODUCTS_BY_BRAND')}} </a>
                                     <ul class="dropdown-menu agile_short_dropdown">
                                         @if(!empty($brands) && count($brands)!=0)
                                         @foreach($brands as $brand)
@@ -383,7 +383,9 @@
                                 </li>
 
                                 <li class="dropdown menu__item">
-                                    <a href="{{url('product-list/noav/noav/noav/popular')}}">Popular products</a>
+                                    <a href="{{url('product-list/noav/noav/noav/popular')}}">
+                                        {{lang('POPULAR_PRODUCTS')}}
+                                    </a>
 
                                 </li>
 
@@ -391,7 +393,8 @@
 
 
                                 <li class="menu__item dropdown">
-                                    <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Popular category<b class="caret"></b></a>
+                                    <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        {{lang('POPULAR_CATEGORY')}}<b class="caret"></b></a>
                                     <ul class="dropdown-menu agile_short_dropdown">
                                         @if(!empty($popular_category) && count($popular_category)!=0)
                                         @foreach($popular_category as $category)
@@ -404,7 +407,8 @@
                                 </li>
 
                                 <li class="menu__item dropdown">
-                                    <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Ending Soon <b class="caret"></b></a>
+                                    <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        {{lang('ENDING_SOON')}}<b class="caret"></b></a>
                                     <ul class="dropdown-menu agile_short_dropdown">
                                         <li><a href="icons.html">Web Icons</a></li>
                                         <li><a href="typography.html">Typography</a></li>
@@ -413,16 +417,18 @@
 
                                 <!-- //rinky -->
                                 <li class="menu__item dropdown languag-acoount">
-                                    <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+                                    <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">{{lang('ACCOUNT')}} <b class="caret"></b></a>
 
                                     <ul class="dropdown-menu agile_short_dropdown">
                                         @if(!empty(Auth::user()))
                                         <li>
-                                            <a href="{{route('dashboard')}}">Dashboard</a>
+                                            <a href="{{route('dashboard')}}">
+                                                {{lang('DASHBOARD')}}</a>
                                         </li>
-                                        <li><a href="{{route('logout')}}">Logout</a></li>
+                                        <li><a href="{{route('logout')}}">
+                                            {{lang('LOGOUT')}}</a></li>
                                         @else
-                                        <li><a href="{{route('login')}}">Login</a></li>
+                                        <li><a href="{{route('login')}}">{{lang('LOGIN')}}</a></li>
 
                                         @endif
                                     </ul>

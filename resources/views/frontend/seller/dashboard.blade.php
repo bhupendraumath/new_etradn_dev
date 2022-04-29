@@ -7,7 +7,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>SELLER<span> DASHBOARD </span></h3>
+        <h3>{{lang('SELLER')}}<span> {{lang('DASHBOARD')}} </span></h3>
 
     </div>
 </div>
@@ -24,19 +24,19 @@
                     <div class="col-md-4 col-sm-4 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY REVIEW AND RATING
+                            {{lang('MY_REVIEW_AND_RATING')}}
                             </h4>
                             <div class="gray-number">{{sellerRatingCount()}}</div><br />
-                            <span class="view-more dashboard"><a href="{{route('review-rating')}}">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('review-rating')}}">{{lang('VIEW_MORE')}}</a></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                BUSINESS ADDRESS
+                            {{lang('BUSINESS_ADDRESS')}}
                             </h4>
                             <div class="gray-number">{{sellerBusinessAddressCount('business')}}</div><br />
-                            <span class="view-more dashboard"><a href="{{route('business-address')}}">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('business-address')}}">{{lang('VIEW_MORE')}}</a></span>
                         </div>
                     </div>
                 <!-- </div>
@@ -45,19 +45,19 @@
                     <div class="col-md-4 col-sm-4 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY UPLOAD PRODUCTS
+                            {{lang('MY_UPLOADED_PRODUCTS')}}
                             </h4>
                             <div class="gray-number">{{sellerUploadProductCount()}}</div><br />
-                            <span class="view-more dashboard"><a href="{{route('myUploadProduct')}}">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('myUploadProduct')}}">{{lang('VIEW_MORE')}}</a></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                BIDS PLACED ON MY <br />LISTED PRODUCT
+                            {{lang('BIDS_PLACED')}}
                             </h4>
                             <div class="gray-number">{{sellerBidPlacedCount()}}</div><br />
-                            <span class="view-more dashboard"><a href="{{route('bidsPlaced')}}">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('bidsPlaced')}}">{{lang('VIEW_MORE')}}</a></span>
                         </div>
                     </div>
                 <!-- </div>
@@ -66,19 +66,19 @@
                     <div class="col-md-4 col-sm-4 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY ORDERS
+                            {{lang('MYORDERS')}}
                             </h4>
                             <div class="gray-number">{{sellerorderCount()}}</div><br />
-                            <span class="view-more dashboard"><a href="{{route('my-order')}}">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('my-order')}}">{{lang('VIEW_MORE')}}</a></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                MY DELIVARY AREAS
+                            {{lang('MY_DELIVERY_AREAS')}}
                             </h4>
                             <div class="gray-number">{{sellerBusinessAddressCount('delivery')}}</div><br />
-                            <span class="view-more dashboard"><a href="{{route('delivery-areas')}}">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('delivery-areas')}}">{{lang('VIEW_MORE')}}</a></span>
                         </div>
                     </div>
                 <!-- </div>
@@ -86,19 +86,19 @@
                     <div class="col-md-4 col-sm-4 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                REFUND REQUESTS
+                            {{lang('REFUND_REQUEST')}}
                             </h4>
                             <div class="gray-number">{{sellerRefundCount()}}</div><br />
-                            <span class="view-more dashboard"><a href="{{route('refund-request')}}">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('refund-request')}}">{{lang('VIEW_MORE')}}</a></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-6 col-xl-6 col-xs-12">
                         <div class="card-2">
                             <h4 class="review-dashbord">
-                                ACCOUNT SETTINGS
+                            {{lang('ACCOUNT_SETTINGS')}}
                             </h4>
                             <div class="gray-number"></div><br />
-                            <span class="view-more dashboard"><a href="{{route('accountSetting')}}">VIEW MORE</a></span>
+                            <span class="view-more dashboard"><a href="{{route('accountSetting')}}">{{lang('VIEW_MORE')}}</a></span>
                         </div>
                     </div>
                 </div>
