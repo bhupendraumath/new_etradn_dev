@@ -66,9 +66,9 @@
                                             <option value="Non-customized Product">
                                             {{lang('NON_CUSTOMIZED_PRODUCT')}}
                                             </option>
-                                            <option value="Customized Product">{{lang('TOTAL_SOLUTION')}}</option>
+                                            <option value="total product">{{lang('TOTAL_SOLUTION')}}</option>
                                             <option value="Customized Product">{{lang('BUSINESS_SERVICE')}}</option>
-                                            <option value="Customized Product">{{lang('OTHER')}}</option>
+                                            <option value="other">{{lang('OTHER')}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
                                         <input type="number" name="rfq_Preferred">
 
                                         <select class="form-control" name="rfq_carrency">
-                                            <option value="">Select Currency</option>
+                                            <option value=""> {{lang('SELECT_CURRECY')}}</option>
                                             <option value="USD" selected>USD</option>
                                             <option value="INR">INR</option>
                                             <option value="ALL">ALL</option>
@@ -140,7 +140,9 @@
 
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form ">
                                     <div class="inner-addon">
-                                        <label for="">Details</label>
+                                        <label for="">
+                                        {{lang('DETAILS')}}
+                                        </label>
                                         <textarea name="rfq_Details" placeholder="Description" required="" value=""></textarea>
                                     </div>
 
@@ -148,16 +150,20 @@
 
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for=""> &nbsp;Attachments</label>
+                                        <label for=""> &nbsp;
+                                        {{lang('ATTACHMENTS')}}
+                                        </label>
                                         <input type="file" value="upload" class="form-control" name="rfq_Attachments" />
                                     </div>
                                 </div>
 
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for=""> &nbsp;Certications</label>
+                                        <label for=""> &nbsp;
+                                        {{lang('CERTICATIONS')}}
+                                        </label>
                                         <select class="form-control" name="rfq_Certifications">
-                                            <option value="">Select Certications</option>
+                                            <option value=""> {{lang('CERTICATIONS')}}</option>
                                             <option value="ISO22000" selected>ISO22000</option>
 
                                         </select>
@@ -166,24 +172,28 @@
 
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for="">Other Requirement</label>
+                                        <label for="">
+                                        {{lang('OTHER_REQUIREMENT')}}
+                                        </label>
                                         <textarea name="rfq_otherRequirements" placeholder="Other Requirement" required="" value=""></textarea>
                                     </div>
                                 </div>
 
 
-                                <h3 class="shipping-payment">Shipping and Payment<h3>
+                                <h3 class="shipping-payment"> {{lang('SHIPPING_AND_PAYMENT')}}<h3>
 
                                         <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                             <div class="inner-addon left-addon">
-                                                <label for="">Shipping method</label>
+                                                <label for="">{{lang('SHIPPING_METHOD')}}</label>
 
                                                 <select class="form-control rfq" name="rfq_Shipping">
-                                                    <option value="">Please select</option>
-                                                    <option value="Sea freight" selected>Sea freight</option>
-                                                    <option value="Air freight">Air freight</option>
-                                                    <option value="Express">Express</option>
-                                                    <option value="Land freight">Land freight</option>
+                                                    <option value="">{{lang('PLEASE_SELECT')}}</option>
+                                                    <option value="Sea freight" selected>{{lang('SEA_FREIGHT')}}</option>
+                                                    <option value="Air freight">{{lang('AIR_FREIGHT')}}</option>
+                                                    <option value="Express">
+                                                    {{lang('EXPRESS')}}
+                                                    </option>
+                                                    <option value="Land freight"> {{lang('LAND_FREIGHT')}}</option>
                                                 </select>
 
                                             </div>
@@ -191,7 +201,7 @@
 
                                         <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                             <div class="inner-addon left-addon">
-                                                <label for="">Destination</label>
+                                                <label for=""> {{lang('DESTINATION')}}</label>
                                                 <select class="form-control" name="rfq_country">
                                                     <option value="213">Saudi Arabia</option>
                                                 </select>
@@ -201,7 +211,7 @@
 
                                         <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                             <div class="inner-addon left-addon">
-                                                <label for="">Lead time Ship in</label>
+                                                <label for=""> {{lang('LEAD_TIME_SHIP_IN')}}</label>
                                                 <input type="number" class="form-control" name="rfq_Leadtime" placeholder="Product Name" required="">
 
                                             </div>
@@ -209,7 +219,9 @@
 
                                         <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                             <div class="inner-addon left-addon">
-                                                <label for="">Payment Term</label>
+                                                <label for="">
+                                                {{lang('PAYMENT_TERM')}}
+                                                </label>
                                                 <select class="form-control" name="rfq_Payment_Term">
                                                     <option value="TT">TT</option>
                                                     <option value="LC">LC</option>
@@ -220,12 +232,12 @@
 
                             <div class="col-md-12">
                                 <input type="checkbox" class="checkbox" name="rfq_agree" value="1">
-                                <span class="right-float">I agree to share my Business Card with quoted suppliers.</span>
+                                <span class="right-float">{{lang('I_AGREE_TO_SHARE_MY_BUSINESS_CARD_SUPPLIERS')}}</span>
                             </div>
                             <div class="col-md-12">
 
                                 <input type="checkbox" class="checkbox" name="" value="2">
-                                <span class="right-float">I have read, understood and agreed to abide by the Buying Request Posting Rules.</span>
+                                <span class="right-float">{{lang('I_HAVE_READ_UNDERSTOOD_AND_AGREED')}}</span>
                             </div>
 
                             
@@ -233,9 +245,9 @@
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <br /><br />
                                     <div class="buttonsnew-fsd">
-                                        <input type="submit" value="Submit" class="save-changes" id="rfq-btn">
+                                        <input type="submit" value="{{lang('SUBMIT')}}" class="save-changes" id="rfq-btn">
                                         
-                                        <a href="{{route('home')}}"><input type="button" value="Cancel" class="cancel" id="rfq-btn">
+                                        <a href="{{route('home')}}"><input type="button" value="{{lang('CANCEL')}}" class="cancel" id="rfq-btn">
                                         </a>
                                     </div>
                                 </div>
