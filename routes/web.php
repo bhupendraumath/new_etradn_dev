@@ -214,7 +214,7 @@ Route::post(
 )->name('rfqListAction');
 
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
-Route::get('process-transaction/{car_ids}/{payment_tpye}/{shipping_address}', [PayPalController::class, 'processTransaction']);
+Route::get('process-transaction/{car_ids}/{payment_tpye}/{shipping_address}/{total_price}', [PayPalController::class, 'processTransaction']);
 
 Route::get('success-transaction/{car_ids_arr}/{payment_type}/{shipping_address}', [PayPalController::class, 'successTransaction'])->name('successTransaction');
 Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');

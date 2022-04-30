@@ -114,13 +114,13 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <i class="fab fa-paypal glyphicon"></i>
+                                        <i class="fa fa-paypal glyphicon"></i>
                                         <input type="text" class="form-control 60per lock" name="payment-id" placeholder="Sadad gateway ID*" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                     <div class="inner-addon left-addon">
-                                        <i class="fab fa-paypal glyphicon"></i>
+                                        <i class="fa fa-paypal glyphicon"></i>
                                         <input type="text" class="form-control 60per lock" name="Current-password" placeholder="Payment gateway ID*" />
                                     </div>
                                 </div>

@@ -115,7 +115,7 @@ class RefundController extends Controller
                 //  ->paginate($request->record);
 
 
-                $bindlist = DB::table('tbl_refund_details')
+                $bind_list = DB::table('tbl_refund_details')
                 ->select('tbl_product.id','tbl_product.product_name','tbl_product.user_id','tbl_product.user_id','tbl_refund_details.id as ref_id', 'tbl_refund_details.*','tbl_product_image.product_img','tbl_product_image.product_id','tbl_order_items.sub_total as total_order_amount','tbl_product.want_to_list','tbl_product.cat_id','tbl_product.sub_cat_id','tbl_product.brand_id','tbl_product_cat.*','tbl_product_brand.*','tbl_product_sub_cat.*')
                 ->join('tbl_product','tbl_product.id','=','tbl_refund_details.product_id')
                 ->leftJoin('tbl_order_items','tbl_order_items.id','=','tbl_refund_details.order_item_id')
@@ -125,11 +125,21 @@ class RefundController extends Controller
                 ->leftJoin('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
                 ->leftJoin('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id')
                 ->leftJoin('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
-                ->where('tbl_product.user_id',$id)
-                ->distinct('tbl_product_image.product_id')
+                ->where('tbl_product.user_id',$id);
+                // ->distinct('tbl_product_image.product_id')
+                // ->orderBy('tbl_refund_details.id','desc')
+                // ->paginate($request->record);
+
+
+
+                if(isset($request->searching) && $request->searching!=null)
+                {
+                    $bind_list->where('tbl_product.product_name', 'like', '%' .$request->searching . '%');
+                }
+
+                $bindlist=$bind_list->distinct('tbl_product_image.product_id')
                 ->orderBy('tbl_refund_details.id','desc')
                 ->paginate($request->record);
-
 
 
                 // $bindlist = RefundRequest::paginate($request->record);                   

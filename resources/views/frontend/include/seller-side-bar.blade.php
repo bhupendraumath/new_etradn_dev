@@ -125,6 +125,16 @@
             </div>
         </a>
 
+        <a href="{{route('myUploadProduct')}}">
+            <div class="row border-row-top-border">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
+                    <span><i class="fas fa-file-upload margin-leftor-right"></i> <b class="heading-business">{{lang('MY_UPLOADED_PRODUCTS')}}
+                        </b> </span>
+                </div>
+            </div>
+        </a>
+
+
         <a href="{{route('my-order')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
@@ -134,14 +144,18 @@
                 </div>
             </div>
         </a>
-        <a href="{{route('myUploadProduct')}}">
+
+
+        <a href="{{route('bidsPlaced')}}">
             <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-file-upload margin-leftor-right"></i> <b class="heading-business">{{lang('MY_UPLOADED_PRODUCTS')}}
-                        </b> </span>
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" >
+                    <span><i class="fas fa-gavel margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('BIDS_PLACED')}}
+                    </b> </span>
                 </div>
             </div>
         </a>
+
 
         <a href="{{route('review-rating')}}">
 
@@ -154,6 +168,15 @@
             </div>
         </a>
 
+        
+        <a href="{{route('refund-request')}}">
+            <div class="row border-row-top-border">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
+                    <span><i class="fas fa-hand-holding-usd margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('REFUND_REQUEST')}} </b> </span>
+                </div>
+            </div>
+        </a>
 
 {{--        <a href="{{route('businessInformation')}}">
             <div class="row border-row-top-border">
@@ -183,25 +206,16 @@
             </div>
         </a>
 
-
-        <a href="{{route('bidsPlaced')}}">
+        <a href="{{route('rfq_list')}}">
             <div class="row border-row-top-border">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" >
-                    <span><i class="fas fa-gavel margin-leftor-right"></i> <b class="heading-business">
-                    {{lang('BIDS_PLACED')}}
+                    <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">
+                    {{lang('RFQ_LIST')}}
                     </b> </span>
                 </div>
             </div>
         </a>
 
-        <a href="{{route('refund-request')}}">
-            <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row">
-                    <span><i class="fas fa-hand-holding-usd margin-leftor-right"></i> <b class="heading-business">
-                    {{lang('REFUND_REQUEST')}} </b> </span>
-                </div>
-            </div>
-        </a>
 
         <a href="{{route('wallet')}}">
             <div class="row border-row-top-border">
@@ -222,15 +236,7 @@
             </div>
         </a>
 
-        <a href="{{route('rfq_list')}}">
-            <div class="row border-row-top-border">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 class-row" >
-                    <span><i class="fas fa-wallet margin-leftor-right"></i> <b class="heading-business">
-                    {{lang('RFQ_LIST')}}
-                    </b> </span>
-                </div>
-            </div>
-        </a>
+
 
     </div>
 

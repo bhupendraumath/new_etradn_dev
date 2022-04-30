@@ -56,12 +56,24 @@ $(window).load(function() {
 
 $("#uploaded_product_page").change(function() {
     var number_records = $("#uploaded_product_page").val();
+    var searching = $("#uploaded_product_searching").val();
     var page = 1;
-    getProductlList(page, number_records);
+    getProductlList(page, number_records, searching);
 });
 
 
-function getProductlList(pageno, records) {
+$("#uploaded_product_searching").keypress(function() {
+    var searching = $("#uploaded_product_searching").val();
+    var number_records = $("#uploaded_product_page").val();
+    var page = 1;
+
+    console.log("searching... ", searching)
+
+    searching == null ? getProductlList(page, number_records) : getProductlList(page, number_records, searching);
+});
+
+
+function getProductlList(pageno, records, searching) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
@@ -70,7 +82,8 @@ function getProductlList(pageno, records) {
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: records
+            record: records == null ? 6 : records,
+            searching: searching
         },
         processData: true,
         contentType: false,

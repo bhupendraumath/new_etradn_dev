@@ -54,12 +54,22 @@ $(window).load(function() {
 
 $("#bids_product_page").change(function() {
     var number_records = $("#bids_product_page").val();
+    var searching = $("#bids_product_searching_seller").val();
+
     var page = 1;
-    getBidsList(page, number_records);
+    getBidsList(page, number_records, searching);
 });
 
 
-function getBidsList(pageno, records) {
+$("#bids_product_searching_seller").keypress(function() {
+    var searching = $("#bids_product_searching_seller").val();
+    var page = 1;
+    var records = 6;
+    getBidsList(page, records, searching);
+});
+
+
+function getBidsList(pageno, records, searching) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
@@ -68,7 +78,8 @@ function getBidsList(pageno, records) {
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: records
+            record: records,
+            searching: searching
         },
         processData: true,
         contentType: false,
