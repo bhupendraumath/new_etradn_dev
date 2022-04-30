@@ -5,7 +5,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l">
     <div class="container">
-        <h3>REQUEST OF QUOTA</h3>
+        <h3>{{lang('REQUEST_OF_QUOTA')}}</h3>
 
     </div>
 </div>
@@ -17,7 +17,7 @@
         <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12 col-sm-offset-2 col-md-2">
             <div class="card-dashboard  col-12uy">
                 <div class="form-settings-account">
-                    <h3>&nbsp; Request for quatation *</h3>
+                    <h3>&nbsp; {{lang('REQUEST_OF_QUOTA')}} *</h3>
                     <hr />
                     <form class="rfq-form" id="rfq-form" enctype="multipart/form-data" method="post">
                         <div class="rfq-form">
@@ -26,15 +26,19 @@
                             <div class="row">
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for=""> &nbsp;Product Name</label>
+                                        <label for=""> &nbsp;{{lang('PRODUCT_NAME')}}</label>
                                         <input type="text" class="form-control" name="rfq_product_name" placeholder="Product Name*" value="" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for=""> &nbsp;Category</label>
+                                        <label for=""> &nbsp;
+                                        {{lang('CATEGORY')}}
+                                        </label>
                                         <select class="form-control" name="rfq_product_categories">
-                                            <option value="">Select Category</option>
+                                            <option value="">
+                                            {{lang('SELECT_CATEGORY')}}
+                                            </option>
                                             @if(!empty($category))
 
                                             @foreach($category as $cat)
@@ -51,33 +55,39 @@
                             <div class="row">
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for=""> &nbsp;Sourcing Type</label>
+                                        <label for=""> &nbsp;
+                                        {{lang('SOURCING_TYPE')}}
+                                        </label>
                                         <select class="form-control" name="rfq_Sourcing">
-                                            <option value="">Select Source Type</option>
-                                            <option value="Customized Product" selected>Customized Product</option>
-                                            <option value="Non-customized Product">Non-customized Product</option>
-                                            <option value="Customized Product">Total Solution</option>
-                                            <option value="Customized Product">Business Service</option>
-                                            <option value="Customized Product">Other</option>
+                                            <option value="">{{lang('SELECT_SOURCE_TYPE')}}
+                                            
+                                            </option>
+                                            <option value="Customized Product" selected>{{lang('CUSTOMIZED_PRODUCT')}}</option>
+                                            <option value="Non-customized Product">
+                                            {{lang('NON_CUSTOMIZED_PRODUCT')}}
+                                            </option>
+                                            <option value="Customized Product">{{lang('TOTAL_SOLUTION')}}</option>
+                                            <option value="Customized Product">{{lang('BUSINESS_SERVICE')}}</option>
+                                            <option value="Customized Product">{{lang('OTHER')}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for=""> &nbsp;Sourcing Purpose</label>
+                                        <label for=""> &nbsp;{{lang('SOURCING_PURPOSE')}}</label>
                                         <select class="form-control" name="rfq_sPurpose">
-                                            <option value="">Select Sourcing Purpose</option>
-                                            <option value="Wholesale" selected>Wholesale</option>
-                                            <option value="Retail">Retail</option>
-                                            <option value="Production Equipment">Production Equipment</option>
-                                            <option value="Raw Materials for Production">Raw Materials for Production</option>
-                                            <option value="Corporate Consumption">Corporate Consumption</option>
-                                            <option value="Personal Use">Personal Use</option>
-                                            <option value="Other">Other</option>
+                                            <option value="">{{lang('SELECT_SOURCING_PURPOSE')}}</option>
+                                            <option value="Wholesale" selected>{{lang('WHOLESALE')}}</option>
+                                            <option value="Retail">{{lang('RETAIL')}}</option>
+                                            <option value="Production Equipment">{{lang('PRODUCTION_EQUIPMENT')}}</option>
+                                            <option value="Raw Materials for Production">{{lang('RAW_MATERIAL_FOR_PRODUCTION')}}</option>
+                                            <option value="Corporate Consumption">{{lang('CORPORATE_CONSUMPTION')}}</option>
+                                            <option value="Personal Use">{{lang('PERSONAL_USE')}}</option>
+                                            <option value="Other">{{lang('OTHER')}}</option>
                                         </select>
 
                                         <select class="form-control rfq" name="rfq_part">
-                                            <option value="">Select Sourcing Purpose</option>
+                                            <option value="">{{lang('SELECT_SOURCING_PURPOSE')}}</option>
                                             <option value="Acres" selected>Acres</option>
                                             <option value="Amperes">Amperes</option>
                                         </select>
@@ -88,14 +98,17 @@
                             <div class="row">
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for=""> &nbsp;Inventory</label>
+                                        <label for=""> &nbsp;
+                                        {{lang('INVENTORY')}}
+                                        </label>
 
                                         <input type="text" class="form-control" name="rfq_Quantity" placeholder="Inventory*" value="" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for=""> &nbsp;Trade Terms</label>
+                                        <label for=""> &nbsp;
+                                        {{lang('TREDE_TERMS')}}</label>
                                         <select class="form-control" name="rfq_Trade">
                                             <option value="FOB" selected>FOB</option>
                                         </select>
@@ -106,7 +119,7 @@
                             <div class="row">
                                 <div class=" col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12 col-rqf-form">
                                     <div class="inner-addon left-addon">
-                                        <label for=""> &nbsp;Preferred Unit Price</label>
+                                        <label for=""> &nbsp; {{lang('PREFERRED_UNIT_PRICE')}}</label>
                                         <input type="number" name="rfq_Preferred">
 
                                         <select class="form-control" name="rfq_carrency">

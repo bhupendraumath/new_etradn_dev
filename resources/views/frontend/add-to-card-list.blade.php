@@ -41,7 +41,8 @@
 
                                 <div class="row">
                                     <div class="col-md-8 col-sm-8 col-lg-8 col-xl-8 col-xs-12">
-                                        <span class="item_price"><b>PRICE:</b> &nbsp;
+                                        <span class="item_price"><b>
+                                        {{lang('PRICE')}}:</b> &nbsp;
                                             <del class="del">-
                                                 ${{$detail->price}} &nbsp;
                                             </del>&nbsp;&nbsp;
@@ -57,7 +58,8 @@
 
 
                                         <span class="item_price">
-                                            <b>Shipping Amount:</b> &nbsp;
+                                            <b>{{lang('SHIPPING_AMOUNT')}}
+                                            {{lang('PRICE')}}:</b> &nbsp;
                                             <span class="del">
                                                 @if($detail->product->shipping_type=='f')
                                                 Free
@@ -67,7 +69,7 @@
                                         </span> <br />
 
                                         <span class="item_price">
-                                            <b>Sub total:</b> &nbsp;
+                                            <b>{{lang('SUB_TOTAL')}}:</b> &nbsp;
                                             <span class="uppercase del" id="including_shipping-{{$index}}">
                                                 ${{$detail->product->shipping_price+ (($detail->price - $detail->price*$detail->discount/100)*$detail->quantity)}}</span>
                                         </span><br />
@@ -108,17 +110,18 @@
 
             <div class="col-md-5 col-sm-5 col-lg-4 col-xl-4 col-xs-12">
                 <div class="card ">
-                    <h4 class="delivery-address-cart"> <i class="fa fa-map-o orange"></i> DELIVERY ADDRESS</h4>
+                    <h4 class="delivery-address-cart"> <i class="fa fa-map-o orange"></i>
+                    {{lang('DELIVERY_ADDRESS')}}</h4>
                     <hr />
                    
                     @if(empty($address)||count($address)==0)
                     <button class="checkout-address-cart" >
-                    <a href="{{route('add-delivery-area-buyer')}}" > Add a Delivery Address to Checkout</a>
+                    <a href="{{route('add-delivery-area-buyer')}}" >{{lang('ADD_DELIVERY_ADDRESS_TO_CHECKOUT')}}</a>
                        
                     </button>
                     @else
                     <div>
-                        Please select Address <span style="color:red">*</span><br/><br/>
+                        {{lang('SELECT_ADDRESS')}} <span style="color:red">*</span><br/><br/>
                         @foreach($address as $ads)
                         
                         <input type="radio" <?php if($loop->index==0){ echo 'checked';}?> class="radio" id="{{$ads->id}}" name="fav_language" value="{{$ads->id}}">
@@ -130,21 +133,21 @@
                     @endif
                     <br />
 
-                    <h4 class="delivery-address-cart"> <i class="fa fa-shopping-basket orange"></i> DELIVERY ADDRESS
+                    <h4 class="delivery-address-cart"> <i class="fa fa-shopping-basket orange"></i>{{lang('DELIVERY_ADDRESS')}}
                     </h4>
                     <hr />
 
                     <!-- <div class="row"> -->
                         <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12 col-xs-12">
                             <span class="item_price">
-                                <b>PRICE:</b>
+                                <b>{{lang('PRICE')}}:</b>
 
                                 &nbsp;
                                 <del class="del">- ${{$without_discount}} &nbsp;</del>
                                 &nbsp;&nbsp;<b>${{$with_discount}}</b>
                             </span><br />
 
-                            <span class="item_price"><b>Shipping Amount:</b> &nbsp; <span class="del">
+                            <span class="item_price"><b>{{lang('SHIPPING_AMOUNT')}}:</b> &nbsp; <span class="del">
                             @if($shipping_price==0)
                             Free
                             @else
@@ -152,7 +155,7 @@
                             @endif    
                             </span></span>
                             <br />
-                            <span class="item_price"><b>Sub total:</b> &nbsp; <span
+                            <span class="item_price"><b>{{lang('SUB_TOTAL')}}:</b> &nbsp; <span
                                     class="uppercase del">${{$total_amount}}</span></span><br />
                         </div>
                     <!-- </div> -->

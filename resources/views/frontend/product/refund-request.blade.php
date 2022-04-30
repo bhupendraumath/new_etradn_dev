@@ -30,7 +30,7 @@
                        
 
 
-                        <span class="show-pagination sorting-pagination uploaded-product">Show Records :</span>    
+                        <span class="show-pagination sorting-pagination uploaded-product">{{lang('SHOWRECORDS')}} :</span>    
                         <select class="sorting-low-high uploaded-product" id="bids_product_page">
                             <!-- <option disabled selected >--Show--</option> -->
                             <option value="4" selected >4</option>

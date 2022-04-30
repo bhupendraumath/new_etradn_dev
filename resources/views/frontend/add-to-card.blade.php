@@ -5,7 +5,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l">
     <div class="container">
-        <h3>SHOPPING CART</h3>
+        <h3>{{lang('SHOPPING_CART')}}</h3>
     </div>
 </div>
 

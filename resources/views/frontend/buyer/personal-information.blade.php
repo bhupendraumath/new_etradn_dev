@@ -35,7 +35,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3><span>EDIT PERSONAL INFORMATION</span></h3>
+        <h3><span>{{lang('EDIT_PERSONAL_INFO')}}</span></h3>
 
     </div>
 </div>
@@ -97,8 +97,8 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12">
                                 <div class="buttonsnew-fsd">
-                                    <input type="submit" value="Save Changes" class="save-changes" id="profile-btn">
-                                    <a href="{{url('dashboard')}}"><input type="button" value="Cancel" class="cancel" id="profile-btn">
+                                    <input type="submit" value="{{lang('SAVE_CHANGES')}}" class="save-changes" id="profile-btn">
+                                    <a href="{{url('dashboard')}}"><input type="button" value="{{lang('CANCEL')}}" class="cancel" id="profile-btn">
                                     </a>
                                 </div>
                             </div>

@@ -6,7 +6,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>MY FAVORITE PRODUCT</h3>
+        <h3>{{lang('MY_FAVORITE_PRODUCTS')}}</h3>
 
     </div>
 </div>
@@ -28,12 +28,12 @@
                         @endphp 
                     <div class="col-md-6 col-sm-6 col-lg-9 col-xl-9 col-xs-7">
 
-                    <h3 class="favorite-heading">MY FAVORITES <span class="color-yellow-number">({{count($value)}})</span></h3>
+                    <h3 class="favorite-heading">{{lang('MY_FAVORITE_PRODUCTS')}} <span class="color-yellow-number">({{count($value)}})</span></h3>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-3 col-xl-3 col-xs-5 float-right" >
                     <!-- filter section    -->
                         @if(count($value)!=0)
-                        <button class="filter-button remove-color-black" onclick="allremove()"  >REMOVE ALL </button>
+                        <button class="filter-button remove-color-black" onclick="allremove()">{{lang('REMOVE_ALL')}} </button>
                         <br/>
                         @endif
                     </div>

@@ -7,7 +7,7 @@
 <!-- /banner_bottom_agile_info -->
 <div class="page-head_agile_info_w3l-seller-dashboard">
     <div class="container">
-        <h3>MY PURCHASE HISTORY</h3>
+        <h3>{{lang('MY_PURCHASE_HISTORY')}}</h3>
 
     </div>
 </div>
@@ -20,7 +20,7 @@
 
             <div class="card-dashboard  col-12uy">
                 <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-12">
-                    <h3>MY PURCHASE HISTORY</h3>
+                    <h3>{{lang('MY_PURCHASE_HISTORY')}}</h3>
                 </div>
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12 float-right">
                     <!-- <span class="show-pagination sorting-pagination uploaded-product">Show Records :</span>     -->
@@ -36,7 +36,7 @@
                 <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xs-12 float-right">
                     <!-- <span class="show-pagination sorting-pagination uploaded-product">Show Records :</span>     -->
                     <select class="sorting-low-high uploaded-product" id="purchase_product_page">
-                        <option disabled selected >-Show-</option>
+                        <option disabled selected >-{{lang('SHOWRECORDS')}}-</option>
                         <option value="6" >6</option>
                         <option value="12" >12</option>
                         <option value="48">48</option>
