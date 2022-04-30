@@ -88,12 +88,34 @@ class BidController extends Controller
         if ($request->ajax()) {
             try {
 
-                $bindlist = Bids::where('seller_id', Auth::user()->id)
-                    ->groupBy('product_id')
-                    ->orderBy('id', 'desc')
-                    ->paginate($request->record);
+                // $bindlist = Bids::where('seller_id', Auth::user()->id)
+                //     ->groupBy('product_id')
+                //     ->orderBy('id', 'desc')
+                //     ->paginate($request->record);
 
 
+                $list =  DB::table('tbl_bids')
+                ->select('tbl_bids.*','tbl_product.want_to_list','tbl_product.product_name','tbl_product.bid_amount as product_bid_amount','tbl_product.bid_ending_datetime','tbl_product_attribute_quantity.quantity as product_quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_image.product_img','tbl_product_cat.categoryName','tbl_product_cat.id as c_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_brand.brandName','tbl_product_brand.id as brand_id',)
+                ->join('tbl_product','tbl_product.id','=','tbl_bids.product_id')
+                ->leftJoin('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_bids.product_id')
+                ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_bids.product_id')
+                ->join('tbl_product_cat','tbl_product_cat.id','=','tbl_product.cat_id')
+                ->join('tbl_product_sub_cat','tbl_product_sub_cat.id','=','tbl_product.sub_cat_id')
+                ->join('tbl_product_brand','tbl_product_brand.id','=','tbl_product.brand_id')
+                ->where('tbl_bids.seller_id', Auth::user()->id);
+                // ->where('tbl_product.product_name', 'like', '%' .'appl' . '%')
+                // ->orderBy('tbl_bids.id','desc')
+                
+                // ->paginate($request->record);
+
+                if(isset($request->searching))
+                {
+                    $list->where('tbl_product.product_name', 'like', '%' .$request->searching . '%');
+                }
+
+                $bindlist=$list->orderBy('tbl_bids.id','desc') ->groupBy('product_id')                        
+                ->paginate($request->record);
+                
 
                 $completeSessionView = view(
                     'frontend/bid-placed/bid-list',
@@ -144,7 +166,7 @@ class BidController extends Controller
                 // ->paginate($request->record);
 
                 $list =  DB::table('tbl_bids')
-                        ->select('tbl_bids.*','tbl_product.product_name','tbl_product.want_to_list','tbl_product.product_name','tbl_product.bid_amount','tbl_product.bid_ending_datetime','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_attribute_quantity.quantity','tbl_product_image.product_img','tbl_product_cat.categoryName','tbl_product_cat.id as c_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_brand.brandName','tbl_product_brand.id as brand_id',)
+                        ->select('tbl_bids.*','tbl_product.want_to_list','tbl_product.product_name','tbl_product.bid_amount','tbl_product.bid_ending_datetime','tbl_product_attribute_quantity.quantity','tbl_product_attribute_quantity.price','tbl_product_attribute_quantity.id as q_id','tbl_product_attribute_quantity.discount','tbl_product_image.product_img','tbl_product_cat.categoryName','tbl_product_cat.id as c_id','tbl_product_sub_cat.subCategoryName','tbl_product_sub_cat.id as s_c_id','tbl_product_brand.brandName','tbl_product_brand.id as brand_id',)
                         ->join('tbl_product','tbl_product.id','=','tbl_bids.product_id')
                         ->leftJoin('tbl_product_attribute_quantity','tbl_product_attribute_quantity.product_id','=','tbl_bids.product_id')
                         ->join('tbl_product_image','tbl_product_image.product_id','=','tbl_bids.product_id')

@@ -8,11 +8,12 @@
         <div class="product col-12 col-md-4 col-sm-4 col-lg-4 col-xl-4" data-id="aloe" data-category="green small medium africa">
 
 
+
             <!-- <a href="{{url('product-details/'.$productvalue->id)}}"> -->
                 <div class="images onhover-show-menus">
                     <div class="background-gray uploaded-image-edited">
-                        @if(!empty($productvalue->image->product_img))
-                        <img src="{{url('assets/images/product-images/'.$productvalue->image->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
+                        @if(!empty($productvalue->product_img))
+                        <img src="{{url('assets/images/product-images/'.$productvalue->product_img)}}" alt="" srcset="" onerror="this.src='{{url('assets/images/default.png')}}';" />
                         @else
                         <img src="{{url('assets/images/default.png')}}" alt="" srcset="" />
                         @endif
@@ -32,13 +33,13 @@
                     
                     <h4>{{$productvalue->product_name}}</h4>
                     
-                    @if(!empty($productvalue->quantity))
+                    @if(!empty($productvalue->que_price))
                     <span>
                             <strike>
-                               $ {{$productvalue->quantity->price}}
+                               $ {{$productvalue->que_price}}
                             </strike> &nbsp;
                              <span> $                                 
-                                 {{$productvalue->quantity->price - ($productvalue->quantity->discount*$productvalue->quantity->price/100)}}
+                                 {{$productvalue->que_price - ($productvalue->discount*$productvalue->que_price/100)}}
                                 
                              </span>
                     </span>

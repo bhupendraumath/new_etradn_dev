@@ -27,13 +27,13 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 col-xs-12 float-right">
                     <!-- <span class="show-pagination sorting-pagination uploaded-product">Show Records :</span>     -->
-                    <!-- <select class="sorting-low-high uploaded-product" id="order_searching_purchase">
+                    <select class="sorting-low-high uploaded-product" id="order_searching_purchase">
                         <option disabled selected >-Listed-</option>
                         <option value="pending" >Pending</option>
                         <option value="paid" >Transferred</option>
                         <option value="cancelled">Cancelled</option>
                         <option value="failed">Failed</option>
-                    </select>  -->
+                    </select> 
                     <!-- filter section    -->
                 </div>
                 <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2 col-xs-12 float-right">

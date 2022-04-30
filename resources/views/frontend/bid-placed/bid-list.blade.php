@@ -15,7 +15,11 @@ use Carbon\Carbon;
         <?php
                         
             $bid=new App\Models\Bids;
-            if(Auth::user()->usertype=='s'){
+
+            $detail=Auth::user();
+
+            // print_r( $detail['user_type']);
+            if($detail['user_type']=='s'){
                 $user_id=Auth::user()->id;
             }
             else{

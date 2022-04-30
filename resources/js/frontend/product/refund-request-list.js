@@ -55,12 +55,22 @@ $(window).load(function() {
 
 $("#bids_product_page").change(function() {
     var number_records = $("#bids_product_page").val();
+    var searching = $("#searching_bid").val();
+
     var page = 1;
-    getRefundRequest(page, number_records);
+    getRefundRequest(page, number_records, searching);
 });
 
 
-function getRefundRequest(pageno, records) {
+$("#searching_bid").keypress(function() {
+    var searching = $("#searching_bid").val();
+    var number_records = $("#bids_product_page").val();
+    var page = 1;
+
+    searching == null ? getRefundRequest(page, number_records) : getRefundRequest(page, number_records, searching);
+});
+
+function getRefundRequest(pageno, records, searching) {
     console.log("reords -- ", records)
     var filter_by = 'desc';
     $.ajax({
@@ -69,7 +79,8 @@ function getRefundRequest(pageno, records) {
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: records
+            record: records == null ? 2 : records,
+            searching: searching
         },
         processData: true,
         contentType: false,

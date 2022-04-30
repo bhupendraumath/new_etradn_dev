@@ -165,14 +165,15 @@
                         Continue
                     </button>
                     </a>
-<!-- 
-                    <button class="continue pay">
+
+
+                    <input type="hidden" value="{{$total_amount}}" id="subtotal">
+                    <button class="continue" style="background:black" id="myHref">
                         Pay
-                    </button> -->
+                    </button>
                
                        {{-- @include('frontend.common.transaction')   href="{{ url('process-transaction/1/2/3') }}--}}
 
-                    <a class="btn btn-primary m-3" id="myHref" ">Pay $1000</a>
                     @if(\Session::has('error'))
                     <div class="alert alert-danger">{{ \Session::get('error') }}</div>
                     {{ \Session::forget('error') }}
@@ -276,10 +277,11 @@
     var shipping_address='indore';
     var arr=$('#arr_value_ids').val();
 
-$("#myHref").on('click', function() {
-alert("inside onclick");
-window.location = "{{ url('process-transaction') }}"+'/'+arr+'/'+payment_type+'/'+shipping_address;
-});
+    $("#myHref").on('click', function() {
+
+    var total= $("#subtotal").val();
+    window.location = "{{ url('process-transaction') }}"+'/'+arr+'/'+payment_type+'/'+shipping_address+'/'+total;
+    });
         
     function payment(){
         console.log(" payment_type " ,payment_type)

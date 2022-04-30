@@ -53,10 +53,10 @@
                             </b>
                             <br/> 
                             
-                            @if($list->payment_status=='failed')
+                            @if($list->order_payment_status=='failed')
                                 <button class="failed-transferd" disabled> Failed</button>
 
-                            @elseif($list->payment_status=='paid')
+                            @elseif($list->order_payment_status=='paid')
                                 
                                 <button class="paid-transferd" disabled> Transferred</button>
                             @else
@@ -81,10 +81,10 @@
                                     
 
                                     <div class="details-order">
-                                    Payment status : {{$list->payment_status}}<br>
+                                    Payment status : {{$list->order_payment_status}}<br>
                                     Order Number : {{$list->order_number}}<br>
                                     Payment Type : {{$list->payment_type}}<br>
-                                    Transaction Id :{{$list->transaction}} <br>
+                                    Transaction Id :{{$list->txn_id}} <br>
                                     Transaction Date : {{$list->createdDate}}<br>
                                     </div>
 

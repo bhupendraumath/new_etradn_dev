@@ -2,7 +2,7 @@ $(window).load(function() {
 
 
     var pageno = 1;
-    var records = 4;
+    var records = 2;
 
     orderListbySeller();
 
@@ -16,7 +16,7 @@ $(window).load(function() {
             data: {
                 filter_by: filter_by,
                 page: pageno,
-                record: 3
+                record: 2
             },
             processData: true,
             contentType: false,
@@ -55,11 +55,12 @@ $(window).load(function() {
 
 
 $("#order-list_records").change(function() {
-    console.log("in order listing")
+    console.log("in order listing");
+    var searching = $("#order_searching_purchase").val();
     var number_records = $("#order-list_records").val();
     var page = 1;
 
-    orderListbySeller(page, number_records);
+    orderListbySeller(page, number_records, searching);
 });
 
 
@@ -86,7 +87,7 @@ function orderListbySeller(pageno, records, searching) {
         data: {
             filter_by: filter_by,
             page: pageno,
-            record: records,
+            record: records == null ? 2 : records,
             searching: searching
         },
         processData: true,

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductReview;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 class OrderController extends Controller
 {
     /**
@@ -42,9 +42,26 @@ class OrderController extends Controller
             try {
                 $userid=Auth::user()->id;
 
-                $productlist = OrderItem::where('seller_id',$userid)
-                            ->orderBy("id",'desc')
-                            ->paginate($request->record);
+                // $productlist = OrderItem::where('seller_id',$userid)
+                //             ->orderBy("id",'desc')
+                //             ->paginate($request->record);
+
+
+                $product_list = DB::table('tbl_order_items')
+                ->select('tbl_order_items.*', 'tbl_orders.buyer_id','tbl_orders.total_order_amount','tbl_orders.payment_type','tbl_orders.payment_status as order_payment_status','tbl_orders.txn_id','tbl_orders.order_number','tbl_refund_details.seller_approval_status','tbl_refund_details.admin_approval_status as tbl_refund_details_record ','tbl_users.firstName','tbl_users.lastName' )
+                ->join('tbl_orders','tbl_order_items.order_number','=','tbl_orders.order_number')
+                ->leftJoin('tbl_refund_details','tbl_refund_details.order_item_id','tbl_order_items.id')
+                ->join('tbl_users','tbl_users.id','tbl_order_items.seller_id')
+                ->where('tbl_order_items.seller_id',$userid);
+
+                
+                if(isset($request->searching) && $request->searching!=null)
+                {
+                    $product_list->where('tbl_orders.payment_status',$request->searching);
+                }
+
+                $productlist=$product_list->orderBy("id",'desc')->paginate($request->record);
+
 
                 $completeSessionView = view(
                     'frontend/seller/my-order-list',
